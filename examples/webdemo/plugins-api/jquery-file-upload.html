@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		
+		<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../plugins/jquery.json.min.js" type="text/javascript"></script>
+		
+		<title>jQuery File Upload</title>
+		<style>
+			body { padding-top: 50px; }
+			.ca{color:#008080;}
+			.url{color:#df5000;}
+			.nt{color:blue;}
+			.cm{color:gray;}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<div class="bs-docs-header">
+			<div class="container">
+				<h1>jQuery-file-upload是一个jQuery插件，用于实现文件上传功能，支持拖放，进度条，验证和预览图像，音频和视频。</h1>
+			</div>
+		</div>
+		<div class="container bs-docs-container">
+			<div class="row">
+				<div class="col-md-9" role="main">
+					<h3>
+						初始化插件
+					</h3>
+					<p>
+						文件上传控件是通过与目标HTML元素的jQuery对象调用FileUpload方法初始化：
+					</p>
+					<pre>$(<span class="url">'fileupload'</span>).fileupload();</pre>
+					<p>
+						The target element is usually a container element holding the file upload form, 
+						or the file upload form itself, but it can also be just the file input element 
+						itself for a customized UI and if an url is provided as options parameter.
+					</p>
+					<p>The initialization method's first argument is an object that allows you to initialize 
+					the widget with various <span class="ca">Options</span>:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload({
+    url: <span class="url">'/path/to/upload/handler.json'</span>,
+    sequentialUploads: true
+});</pre>
+					<br>
+					<h3>数据属性</h3>
+					<hr>
+					<p>It is possible to pass options to the initialization method as <span class="ca">HTML5 data attributes</span>:</p>
+					<pre><span class="nt">&lt;input</span> <span class="ca">id=</span><span class="url">"fileupload"</span> 
+					<span class="ca">type=</span><span class="url">"file"</span> 
+					<span class="ca">name=</span><span class="url">"files[]"</span> <span class="ca">multiple</span>
+    <span class="ca">data-url=</span><span class="url">"/path/to/upload/handler.json"</span>
+    <span class="ca">data-sequential-uploads=</span><span class="url">"true"</span>
+    <span class="ca">data-form-data=</span><span class="url">'{"script": "true"}'</span><span class="nt">&gt;</span>
+</pre>
+					<pre><span class="cm">/* Initializes the File Upload widget with</span>
+<span class="cm">{</span>
+<span class="cm">    url: '/path/to/upload/handler.json',</span>
+<span class="cm">    sequentialUploads: true,</span>
+<span class="cm">    formData: {script: true}</span>
+<span class="cm">}</span>
+<span class="cm">*/</span>
+<span class="nx">$</span><span class="p">(</span><span class="url">'#fileupload'</span><span class="p">).</span><span class="nx">fileupload</span><span class="p">();</span>
+</pre>	
+					<br>
+					<h3>Options</h3>
+					<hr>
+					<p>It is possible to change Options after initializing the widget:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload(
+    <span class="url">'option'</span>,
+    <span class="url">'url'</span>,
+    <span class="url">'/path/to/upload/handler.json'</span>
+);</pre>
+					<p>如果没有指定任何值，选择作为一个getter方法：</p>
+					<pre>var dropZone = $(<span class="url">'#fileupload'</span>).fileupload(
+    <span class="url">'option'</span>,
+    <span class="url">'dropZone</span>'
+);</pre>			
+					<p>多个参数的设置可以通过传入一个对象作为第二个参数</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload(
+    <span class="url">'option'</span>,
+    {
+        url: <span class="url">'/path/to/upload/handler.json'</span>,
+        sequentialUploads: true
+    }
+);</pre>
+					<br>
+					<h3>撤销控件</h3>
+					<hr>
+					<p>从元素节点删除的文件上传组件的功能，调用destroy方法：</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'destroy'</span>);</pre>
+					<p>这也将删除任何添加事件监听器。</p>
+					<br>
+					<h3>禁用/可用</h3>
+					<hr>
+					<p>和jQuery UI 其他控件一样，文件上传控件可以禁用/启用</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'disable'</span>);</pre>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'enable'</span>);</pre>
+					<br>
+					<h3>Retrieving overall progress data:</h3>
+					<hr>
+					<pre>var overallProgress = $(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'progress'</span>);</pre>
+					<br>
+					<h3>Retrieving overall progress data:</h3>
+					<hr>
+					<pre>var activeUploads = $(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'active'</span>);</pre>
+					<br>
+					<h3>Programmatic file upload</h3>
+					<hr>
+					<p>Usually, file uploads are invoked by selecting files via file input button or by dropping 
+					files on the drop zone.</p>
+
+					<p>However it is also possible to upload files programmatically for browsers with support 
+					for <a href="https://developer.mozilla.org/en/XmlHttpRequest">XHR</a> file uploads 
+					(see <a class="internal present" href="/blueimp/jQuery-File-Upload/wiki/Browser-support">
+					Browser support</a>):</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'add'</span>, {files: filesList});</pre>
+					<p>The second argument must be an object with an array (or array-like list) of <a href="https://developer.mozilla.org/en/DOM/File">File</a> 
+					or <a href="https://developer.mozilla.org/en/DOM/Blob">Blob</a> objects as <em>files</em> property.<br>
+						Other properties allow you to override options for the file upload, e.g. the upload url:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload('add', {files: filesList, url: '/path/to/upload/handler.json'});</pre>
+					<p>The <em>add</em> method uploads files by adding them to the upload queue, the same way that files are added via the file input button or drag&amp;drop.<br>
+						Files can also be sent directly using the <em>send</em> method:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'send'</span>, {files: filesList});</pre>
+					<p>The <em>send</em> method returns a <a href="http://api.jquery.com/jQuery.ajax/#jqXHR">jqXHR</a> object, that allows to bind callbacks 
+					to the ajax file upload request(s):</p>
+					<pre>var jqXHR = $(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'send'</span>, {files: filesList})
+    .success(<span style="font-weight:bold;">function</span> (result, textStatus, jqXHR) {<span class="cm">/* ... */</span>})
+    .error(<span style="font-weight:bold;">function</span> (jqXHR, textStatus, errorThrown) {<span class="cm">/* ... */</span>})
+    .complete(<span style="font-weight:bold;">function</span> (result, textStatus, jqXHR) {<span class="cm">/* ... */}</span>);</pre>
+    					<p><strong>Note</strong>: The <em>send</em> API method sends the given files directly, without splitting them up into multiple requests.
+So if your files argument is made up of 3 files, it will still only send one request.
+If the <em>multipart</em> option is true, it will still send all 3 files as part of one multipart request, else it will only send the first file.<br>
+So if you need to send files with multiple requests, either call the <em>send</em> API method multiple times, or use the <em>add</em> API method instead.</p>
+						<br>
+						<h3>Programmatic file uploads for browsers without support for XHR file uploads</h3>
+						<hr>
+						<p>It is also possible to use the add and send API methods for browsers without support for 
+						XHR file uploads, by making use of the fileInput option:</p>
+						<pre>$(<span class="url">'#some-file-input-field'</span>).bind(<span class="url">'change'</span>, <strong>function</strong> (e) {
+    $(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'add'</span>, {
+        fileInput: $(<strong>this</strong>)
+    });
+});</pre>
+					<p>The fileInput property must be a jQuery collection with an input of type file with a valid files selection.</p>
+					<p>Non-<a href="https://developer.mozilla.org/en/XmlHttpRequest">XHR</a> file uploads make use of the <a href="https://github.com/blueimp/jQuery-File-Upload/blob/master/js/jquery.iframe-transport.js">Iframe Transport</a>.</p>
+					<br>
+					<h3>Callbacks</h3>
+					<hr>
+					<p>The File Upload widget provides several callback hooks.</p>
+					<p>One way of using them is to provide callback methods as part of the Options object:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload({
+    drop: <strong>function</strong> (e, data) {
+        $.each(data.files, <strong>function</strong> (index, file) {
+            alert(<span class="url">'Dropped file:</span> ' + file.name);
+        });
+    },
+    change: <strong>function</strong> (e, data) {
+        $.each(data.files, <strong>function</strong> (index, file) {
+            alert(<span class="url">'Selected file: </span>' + file.name);
+        });
+    }
+});</pre>
+					<p>The second way of using them is by binding event listeners to the widget element:</p>
+					<pre>$(<span class="url">'#fileupload'</span>)
+    .bind(<span class="url">'fileuploaddrop'</span>, function (e, data) {<span class="cm">/* ... */</span>})
+    .bind(<span class="url">'fileuploadchange'</span>, function (e, data) {<span class="cm">/* ... */</span>});</pre>
+    				<p>Each event name has "fileupload" as prefix.</p>
+    				<p><strong>Note:</strong>Adding additional event listeners via bind method is the preferred option to preserve callback settings by the jQuery File Upload UI version.</p>
+    				<p>One special callback is the add callback, as it provides a submit method for the data argument, that will start the file upload:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload({
+    add: <strong>function</strong> (e, data) {
+        data.submit();
+    }
+});</pre>
+					<p>The submit method of the data argument given to the add callback returns a jqXHR object, that allows 
+					to bind callbacks to the ajax file upload request:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload({
+    add: <strong>function</strong> (e, data) {
+        var jqXHR = data.submit()
+            .success(<storng>function</storng> (result, textStatus, jqXHR) {/* ... */})
+            .error(<strong>function</strong> (jqXHR, textStatus, errorThrown) {/* ... */})
+            .complete(<strong>function</strong> (result, textStatus, jqXHR) {/* ... */});
+    }
+});</pre>
+					<br>
+					<h3>How to cancel an upload</h3>
+					<hr>
+					<p>Uploads can be canceled by invoking the abort method on a jqXHR object:</p>
+					<pre>var jqXHR = $(<span class="url">'#fileupload'</span>).fileupload(<span class="url">'send'</span>, {files: filesList})
+    .error(<strong>function</strong> (jqXHR, textStatus, errorThrown) {
+        if (errorThrown === <span class="url">'abort'</span>) {
+            alert(<span class="url">'File Upload has been canceled'</span>);
+        }
+    });
+$(<span class="url">'button.cancel'</span>).click(<strong>function</strong> (e) {
+    jqXHR.abort();
+});</pre>
+					<br>
+					<h3>How to retrieve extra parameters before submitting files</h3>
+					<hr>
+					<p>Sometimes you will want to retrieve extra parameters asynchronously via AJAX request before 
+					submitting files to the upload server.</p>
+					<h4>Overriding the add callback</h4>
+					<p>One way to do this is by overriding the default add callback of the basic file upload plugin and 
+					calling the <strong>submit()</strong> method on the <strong>data</strong> parameter after retrieving your 
+					parameters and setting them as formData object:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload({
+    add: <strong>function</strong> (e, data) {
+        $.getJSON(<span class="url">'/example/url'</span>, <strong>function</strong> (result) {
+            data.formData = result; <span class="cm">// e.g. {id: 123}</span>
+            data.submit();
+        });
+    } 
+});</pre>
+					<p>The UI version of the File Upload plugin uses this approach to render the upload template and invokes <strong>data.submit()</strong> after clicking the start button.<br>
+						If you want to override the <strong>add</strong> callback, but still want to keep the features of the UI version of the <strong>add</strong> callback, you can call it 
+						the following way, using the prototype property of the UI widget:
+					</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload({
+    add: <strong>function</strong> (e, data) {
+        var that = <strong>this</strong>;
+        $.getJSON(<span class="url">'/example/url'</span>, <strong>function</strong> (result) {
+            data.formData = result; <span class="cm">// e.g. {id: 123}</span>
+            $.blueimp.fileupload.prototype
+                .options.add.call(that, e, data);
+        });
+    } 
+});</pre>
+					<p>However, this also means that the upload template is not rendered until your AJAX call returns.</p>
+					<br>
+					<h4>Using the submit callback option</h4>
+					<br>
+					<p>Another approach is to make use of the submit callback option. This approach allows you to 
+					render the upload template and only retrieve your additional parameters when the file upload 
+					is actually submitted:</p>
+					<pre>$(<span class="url">'#fileupload'</span>).fileupload({
+    submit: <strong>function</strong> (e, data) {
+        var $this = $(<strong>this</strong>);
+        $.getJSON(<span class="url">'/example/url'</span>, <strong>function</strong> (result) {
+            data.formData = result; <span class="cm">// e.g. {id: 123}</span>
+            data.jqXHR = $this.fileupload(<span class="url">'send'</span>, data);
+        });
+        <strong>return</strong> false;
+    } 
+});</pre>
+					<p>Returning false in the submit callback prevents the upload from being started (see Options documentation). 
+					The upload is started manually after retrieving the additional parameters by making use of the File Upload send API method.</p>
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>

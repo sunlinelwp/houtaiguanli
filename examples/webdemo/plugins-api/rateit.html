@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<title>rateit</title>
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<style>
+body {
+	padding-top: 70px;
+	margin-left:30px;
+}
+</style>
+</head>
+<body>
+     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<article class="markdown-body entry-content">
+		<p><strong><span style="font-size:16px">Prerequisites</span></strong></p>
+		<p>In order to use RateIt you'll need:</p>
+		<ul>
+		<li><a href="http://www.jquery.com">jQuery 1.6.0</a> or newer. &nbsp;[not included in download]
+		</li><li>jquery.rateit.min.js, rateit.css, delete.gif, star.gif [<a href="http://rateit.codeplex.com/releases/view/55958">included in download</a>]
+		</li><li>Place a reference to the rateit.css stylesheet into the page head. </li><li>Place a script reference to jquery.rateit.min.js before your &lt;/body&gt; tag.
+		</li></ul>
+		<p><span style="font-size:16px; font-weight:bold">Options</span></p>
+		<p>The following options can be set. <strong>See the <a href="http://www.radioactivethinking.com/rateit/example/example.htm">
+		online examples</a> (or the one included in the download) in order to see different configuration utilizing these options.</strong></p>
+		<ul>
+		<li>HTML: data-rateit-value, JS: <strong>value</strong>&nbsp;&nbsp;=&nbsp; initial value (default: same as min)
+		</li><li>HTML: data-rateit-min, JS: <strong>min </strong>=&nbsp; min value (default: 0).
+		</li><li>HTML: data-rateit-max, JS: <strong>max </strong>=&nbsp; max value (default: 5).
+		</li><li>HTML: data-rateit-step, JS: <strong>step </strong>=&nbsp; step size (default: 0.5)
+		</li><li>HTML: data-rateit-backingfld, JS: <strong>backingfld </strong>=&nbsp; CSS selector to the backing field (default: null)
+		</li><li>HTML: data-rateit-readonly, JS: <strong>readonly </strong>=&nbsp; whether or not is readonly (default: false)
+		</li><li>HTML: data-rateit-ispreset, JS:&nbsp;<strong>ispreset&nbsp;</strong>=&nbsp; whether or not the current value is a preset value (default: false)<br>
+		<em>When this value is true, the value looks visually different than a normal value (using another layer in the sprite). The ispreset value gets set to false&nbsp;when the user makes a selection.</em>
+		</li><li>HTML: data-rateit-resetable, JS: <strong>resetable </strong>=&nbsp; when not readonly, whether to show the reset button (default: true)
+		</li><li>HTML: data-rateit-starwidth,&nbsp;JS:&nbsp; <strong>starwidth </strong>= width of the star picture
+		</li><li>HTML: data-rateit-starheight,&nbsp;JS: <strong>starheight </strong>= height of the star picture
+		</li></ul>
+		<p>You can set RateIt options in many different ways:</p>
+		<ul>
+		<li>HTML: on the rateit div, using the data-* attributes. </li><li>HTML: RateIt will get the corresponding values from the backingfield (When it is input type=rating it will use min, max and step, when it is a select it will calculate them by itself, with any other type it will just get their value).
+		</li><li>JS: When creating a RateIt object you can add these options as an object into the first parameter ie. $('XX').rateit( { step : 1 , min : 2 } );.
+		</li><li>JS: When a RateIt object exists, you can get/set values in the normal jQuery way: $('XX').rateit('min') &nbsp; to get a value, &nbsp;$('XX').rateit('min',3); to set a value.
+		</li></ul>
+		<p>And you can mix and match. The order of importance is from high to low: Backing field, data-*, JS options, JS defaults.</p>
+		<h3>Events</h3>
+		<p>RateIt triggers the following events:&nbsp;</p>
+		<ul>
+		<li><strong>rated </strong>(when a rating happened, get the rating via $(this).rateit('value'), or if you supplied a backing field, via its value, or via the second param of the callback)
+		</li><li><strong>reset </strong>(when the reset button was clicked). </li><li><strong>over </strong>( / <strong>hover</strong> until &nbsp;RateIt version 1.0.3) &nbsp;(when hovering over the element, the hover value is the second parameter of the event callback)
+		</li><li><strong>beforerated</strong> occurs before the item is actually rated. When calling
+		<code>preventDefault()</code> it is possible to cancel the rating. </li><li><strong>beforereset </strong>occurs before the item is actually reset. When calling
+		<code>preventDefault()</code> it is possible to cancel the reset. </li></ul>
+		<p>Bind to the events using:</p>
+		<pre>$(XXX).bind('rated', function() { alert('rating: ' + $(this).rateit('value')); });</pre>
+		<p>or</p>
+		<pre>$(XXX).bind('reset', function () { alert('I was reset'); } );</pre>
+		<p>or</p>
+		<pre>$(XXX).bind('over', function (event, value) { alert('Hovering over: ' + value); } );</pre>
+		<p>or</p>
+		<pre>$(XXX).bind('beforereset', function (event) { if(!confirm('Are you sure?')) { event.preventDefault(); } } );</pre>
+		<p>or</p>
+		<pre>$(XXX).bind('beforerated', function (event,value) { if(!confirm('Are you sure you want to rate it: ' + value + ' stars?')) { event.preventDefault(); } } );</pre>
+		<h3>Methods</h3>
+		<ul>
+		<li><strong>reset</strong> to revert rateit to it's initial state. </li></ul>
+		<p>Call methods using:</p>
+		<pre>$(XXX).bind('reset')<br><br></pre>
+		<p><strong>S<strong>ee the&nbsp;<a href="http://www.radioactivethinking.com/rateit/example/example.htm">online examples</a>&nbsp;for sample implementations of these events.</strong></strong></p>
+	</article>	
+</body>
+</html>		

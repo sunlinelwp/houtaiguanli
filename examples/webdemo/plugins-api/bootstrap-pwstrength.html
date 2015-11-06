@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script src="../plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<title>bootstrap-pwstrength</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 40px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+	<article class="markdown-body entry-content">
+	<h1>bootstrap-pwstrength</h1>
+	<p>一个JS密码强度验证插件</p>
+	<h2>
+	<a id="user-content-how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use it</h2>
+	
+	<p>Just invoke the plugin on the password fields you want to attach a strength
+	meter to. For example, to use it on all the password fields with the default
+	examples:</p>
+	
+	<div class="highlight highlight-javascript"><pre>    $(<span class="pl-s1"><span class="pl-pds">'</span>:password<span class="pl-pds">'</span></span>).pwstrength();</pre></div>
+	
+	<p>To apply it only to one input and change the options:</p>
+	
+	<div class="highlight highlight-javascript"><pre>    $(<span class="pl-s1"><span class="pl-pds">'</span>#passwd1<span class="pl-pds">'</span></span>).pwstrength({
+	        ui<span class="pl-ko">:</span> { showVerdictsInsideProgressBar<span class="pl-ko">:</span> <span class="pl-c1">true</span> }
+	    });</pre></div>
+	
+	<h2>
+	<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+	
+	<p>The plugin expect the options to follow this structure:</p>
+	
+	<div class="highlight highlight-javascript"><pre>options <span class="pl-ko">=</span> {
+	    common<span class="pl-ko">:</span> {},
+	    rules<span class="pl-ko">:</span> {},
+	    ui<span class="pl-ko">:</span> {}
+	};</pre></div>
+	
+	<p>Let's see the options of each section.</p>
+	
+	<h3>
+	<a id="user-content-common" class="anchor" href="#common" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common</h3>
+	
+	<ul class="task-list">
+	<li>
+	<p><strong>minChar</strong>:</p>
+	
+	<p>Default: <code>6</code> (Integer)</p>
+	
+	<p>Sets the minimum required of characters for a password to not be considered
+	too weak.</p>
+	</li>
+	<li>
+	<p><strong>usernameField</strong>:</p>
+	
+	<p>Default: <code>"#username"</code> (String)</p>
+	
+	<p>The username field to match a password to, to ensure the user does not use
+	the same value for their password.</p>
+	</li>
+	<li>
+	<p><strong>userInputs</strong>:</p>
+	
+	<p>Default: <code>[]</code> (Array)</p>
+	
+	<p>Array of CSS selectors for input fields with user input. The content of these
+	fields will be retrieved and passed to the zxcvbn library.</p>
+	
+	<p>This option only takes effect when the zxcvbn library is being used. Check
+	the <code>zxcvbn</code> option.</p>
+	</li>
+	<li>
+	<p><strong>onLoad</strong>:</p>
+	
+	<p>Default: <code>undefined</code> (Function)</p>
+	
+	<p>A callback function, fired on load of the widget. No arguments will be
+	passed.</p>
+	</li>
+	<li>
+	<p><strong>onKeyUp</strong>:</p>
+	
+	<p>Default: <code>undefined</code> (Function)</p>
+	
+	<p>A callback function, fired on key up when the user is typing. The <code>keyup</code>
+	event will be passed as first argument, and an object as second with the
+	score and the verdict text and level.</p>
+	
+	<p>This handler will also be called when the <code>change</code> or the <code>onpaste</code> events
+	happen.</p>
+	</li>
+	<li>
+	<p><strong>zxcvbn</strong>:</p>
+	
+	<p>Default: <code>false</code> (Boolean)</p>
+	
+	<p>Use the zxcvbn to calculate the password entropy and use it as the score. For
+	more information about zxcvbn plase check this
+	<a href="https://tech.dropbox.com/2012/04/zxcvbn-realistic-password-strength-estimation/">post</a>.</p>
+	
+	<p>If you activate this setting, then all the rules won't be applied, and all
+	the options under the <em>Rules</em> section will be ignored as well. zxcvbn will be
+	used instead of the default rules engine.</p>
+	
+	<p>To use this option you must load the zxcvbn library file on your site. You'll
+	find it at their <a href="https://github.com/lowe/zxcvbn">repository</a>.</p>
+	</li>
+	<li>
+	<p><strong>debug</strong>:</p>
+	
+	<p>Default: <code>false</code> (Boolean)</p>
+	
+	<p>If true, it prints the password strength in the javascript console, so you
+	can test and tune your rules settings.</p>
+	</li>
+	</ul>
+	
+	<h3>
+	<a id="user-content-rules" class="anchor" href="#rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rules</h3>
+	
+	<ul class="task-list">
+	<li>
+	<p><strong>extra</strong>:</p>
+	
+	<p>Default: <code>{}</code> (Object)</p>
+	
+	<p>Empty object where custom rules functions will be stored.</p>
+	</li>
+	<li>
+	<p><strong>scores</strong>:</p>
+	
+	<p>Default: (Object)</p>
+	
+	<pre><code>{
+	  wordNotEmail: -100,
+	  wordLength: -50,
+	  wordSimilarToUsername: -100,
+	  wordSequences: -50,
+	  wordTwoCharacterClasses: 2,
+	  wordRepetitions: -25,
+	  wordLowercase: 1,
+	  wordUppercase: 3,
+	  wordOneNumber: 3,
+	  wordThreeNumbers: 5,
+	  wordOneSpecialChar: 3,
+	  wordTwoSpecialChar: 5,
+	  wordUpperLowerCombo: 2,
+	  wordLetterNumberCombo: 2,
+	  wordLetterNumberCharCombo: 2
+	}
+	</code></pre>
+	
+	<p>Scores returned by the rules when they match. Negative values are for
+	penalizations.</p>
+	</li>
+	<li>
+	<p><strong>activated</strong>:</p>
+	
+	<p>Default: (Object)</p>
+	
+	<pre><code>{
+	  wordNotEmail: true,
+	  wordLength: true,
+	  wordSimilarToUsername: true,
+	  wordSequences: true,
+	  wordTwoCharacterClasses: false,
+	  wordRepetitions: false,
+	  wordLowercase: true,
+	  wordUppercase: true,
+	  wordOneNumber: true,
+	  wordThreeNumbers: true,
+	  wordOneSpecialChar: true,
+	  wordTwoSpecialChar: true,
+	  wordUpperLowerCombo: true,
+	  wordLetterNumberCombo: true,
+	  wordLetterNumberCharCombo: true
+	}
+	</code></pre>
+	
+	<p>An object that sets wich validation rules are activated. By changing this
+	object is possible to deactivate some validations, or to activate them for
+	extra security.</p>
+	</li>
+	<li>
+	<p><strong>raisePower</strong>:</p>
+	
+	<p>Default: <code>1.4</code> (Double)</p>
+	
+	<p>The value used to modify the final score, based on the password length,
+	allows you to tailor your results.</p>
+	</li>
+	</ul>
+	
+	<h3>
+	<a id="user-content-user-interface" class="anchor" href="#user-interface" aria-hidden="true"><span class="octicon octicon-link"></span></a>User Interface</h3>
+	
+	<ul class="task-list">
+	<li>
+	<p><strong>bootstrap2</strong>:</p>
+	
+	<p>Default: <code>false</code> (Boolean)</p>
+	
+	<p>Sets if it supports legacy Bootstrap 2 (true) or the current Bootstrap 3
+	(false), the progress bar html is different.</p>
+	</li>
+	<li>
+	<p><strong>showProgressBar</strong>:</p>
+	
+	<p>Default: <code>true</code> (Boolean)</p>
+	
+	<p>Displays the password strength in a progress bar.</p>
+	</li>
+	<li>
+	<p><strong>showPopover</strong>:</p>
+	
+	<p>Default: <code>false</code> (Boolean)</p>
+	
+	<p>Displays the error messages and the verdicts in a Bootstrap popover, instead
+	of below the input field. Bootstrap tooltip.js and popover.js must to be
+	included.</p>
+	
+	<p>If the <code>showVerdictsInsideProgressBar</code> option is active, then the verdicts
+	won't appear on the popover.</p>
+	</li>
+	<li>
+	<p><strong>showStatus</strong>:</p>
+	
+	<p>Default: <code>false</code> (Boolean)</p>
+	
+	<p>Displays the password strength as a validation status in the password field,
+	for this to work, the Bootstrap form structure must be followed.</p>
+	</li>
+	<li>
+	<p><strong>spanError</strong>:</p>
+	
+	<p>Default: (Function)</p>
+	
+	<div class="highlight highlight-javascript"><pre><span class="pl-s">function</span> (<span class="pl-vpf">options</span>, <span class="pl-vpf">key</span>) {
+	  <span class="pl-s">var</span> text <span class="pl-ko">=</span> options.ui.errorMessages[key];
+	  <span class="pl-k">return</span> <span class="pl-s1"><span class="pl-pds">'</span>&lt;span style="color: #d52929"&gt;<span class="pl-pds">'</span></span> <span class="pl-ko">+</span> text <span class="pl-ko">+</span> <span class="pl-s1"><span class="pl-pds">'</span>&lt;/span&gt;<span class="pl-pds">'</span></span>;
+	};</pre></div>
+	
+	<p>Function to generate a span with the style property set to red font color,
+	used in the errors messages. Overwrite for custom styling.</p>
+	</li>
+	<li>
+	<p><strong>errorMessages</strong>:</p>
+	
+	<p>Default: (Object)</p>
+	
+	<pre><code>{
+	  wordLength: "Your password is too short",
+	  wordNotEmail: "Do not use your email as your password",
+	  wordSimilarToUsername: "Your password cannot contain your username",
+	  wordTwoCharacterClasses: "Use different character classes",
+	  wordRepetitions: "Too many repetitions",
+	  wordSequences: "Your password contains sequences"
+	}
+	</code></pre>
+	
+	<p>An object containing error messages. These can be overwritten for language
+	purposes, and extra messages can also be added for other rules, existing or
+	custom. Use the name of the rule as key.</p>
+	</li>
+	<li>
+	<p><strong>verdicts</strong>:</p>
+	
+	<p>Default: <code>["Weak", "Normal", "Medium", "Strong", "Very Strong"]</code> (Array)</p>
+	
+	<p>The display names for the verdicts related to the progressClass. It has to
+	have 5 elements, and they would be the 5 possible strength categories.</p>
+	</li>
+	<li>
+	<p><strong>showVerdicts</strong>:</p>
+	
+	<p>Default: <code>true</code> (Boolean)</p>
+	
+	<p>Determines if the verdicts are displayed or not.</p>
+	</li>
+	<li>
+	<p><strong>showVerdictsInsideProgressBar</strong>:</p>
+	
+	<p>Default: <code>false</code> (Boolean)</p>
+	
+	<p>Determines if the verdicts are displayed inside the progress bar or not. When
+	this setting is active, the verdict viewport is ignored and they won't appear
+	on the popover if it is being showed. Also this option overrides the value of
+	the <em>showVerdicts</em> one.</p>
+	</li>
+	<li>
+	<p><strong>showErrors</strong>:</p>
+	
+	<p>Default: <code>false</code> (Boolean)</p>
+	
+	<p>Determines if the error list is displayed with the progress bar or not.</p>
+	</li>
+	<li>
+	<p><strong>container</strong>:</p>
+	
+	<p>Default: <code>undefined</code> (CSS selector, or DOM node)</p>
+	
+	<p>If defined, it will be used to locate the viewports, if undefined, the parent
+	of the input password will be used instead. The viewports must be children of
+	this node.</p>
+	</li>
+	<li>
+	<p><strong>viewports</strong>:</p>
+	
+	<p>Default: (Object)</p>
+	
+	<pre><code>{
+	  progress: undefined,
+	  verdict: undefined,
+	  errors: undefined
+	}
+	</code></pre>
+	
+	<p>An object containing the viewports to use to show the elements of the
+	strength meter. Each one can be a CSS selector (<code>"#progressbar"</code>) or a DOM
+	node reference.</p>
+	</li>
+	<li>
+	<p><strong>scores</strong>:</p>
+	
+	<p>Default: <code>[17, 26, 40, 50]</code> (Array)</p>
+	
+	<p>The scores used to determine what progressClass and verdicts to display. It
+	has to have 4 elements, which creates 5 categories of strength (the 5
+	possible verdicts).</p>
+	</li>
+	</ul>
+	
+	<h4>
+	<a id="user-content-example-of-an-options-object" class="anchor" href="#example-of-an-options-object" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example of an options object</h4>
+	
+	<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> options <span class="pl-ko">=</span> {};
+	options.common <span class="pl-ko">=</span> {
+	    minChar<span class="pl-ko">:</span> <span class="pl-cn">8</span>;
+	};
+	options.rules <span class="pl-ko">=</span> {
+	    activated<span class="pl-ko">:</span> {
+	        wordTwoCharacterClasses<span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+	        wordRepetitions<span class="pl-ko">:</span> <span class="pl-c1">true</span>
+	    }
+	};
+	options.ui <span class="pl-ko">=</span> {
+	    showErrors<span class="pl-ko">:</span> <span class="pl-c1">true</span>
+	};</pre></div>
+	
+	<h2>
+	<a id="user-content-methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+	
+	<p>Once the plugin has been initialized, it is possible to interact with it
+	through the methods.</p>
+	
+	<h3>
+	<a id="user-content-force-an-update" class="anchor" href="#force-an-update" aria-hidden="true"><span class="octicon octicon-link"></span></a>Force an update</h3>
+	
+	<p>It is possible to force an update on a password strength meter. It will force
+	a new score calculation and an update of the UI elements, the <code>onKeyUp</code>
+	callback will be called.</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">"</span>#passwdfield<span class="pl-pds">"</span></span>).pwstrength(<span class="pl-s1"><span class="pl-pds">"</span>forceUpdate<span class="pl-pds">"</span></span>);</pre></div>
+	
+	<h3>
+	<a id="user-content-remove-the-strength-meter" class="anchor" href="#remove-the-strength-meter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Remove the strength meter</h3>
+	
+	<p>This will remove the data associated to the meter, and the UI elements.</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">"</span>#passwdfield<span class="pl-pds">"</span></span>).pwstrength(<span class="pl-s1"><span class="pl-pds">"</span>destroy<span class="pl-pds">"</span></span>);</pre></div>
+	
+	<h3>
+	<a id="user-content-adding-custom-rules" class="anchor" href="#adding-custom-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding Custom Rules</h3>
+	
+	<p>The plugin comes with the functionality to easily define your own custom rules.
+	The format is as follows:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">"</span>#passwdfield<span class="pl-pds">"</span></span>).pwstrength(<span class="pl-s1"><span class="pl-pds">"</span>addRule<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>ruleName<span class="pl-pds">"</span></span>, <span class="pl-s">function</span> (<span class="pl-vpf">options</span>, <span class="pl-vpf">word</span>, <span class="pl-vpf">score</span>) {}, rule_score, rule_enabled);</pre></div>
+	
+	<p>Example:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">"</span>#passwdfield<span class="pl-pds">"</span></span>).pwstrength(<span class="pl-s1"><span class="pl-pds">"</span>addRule<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>testRule<span class="pl-pds">"</span></span>, <span class="pl-s">function</span> (<span class="pl-vpf">options</span>, <span class="pl-vpf">word</span>, <span class="pl-vpf">score</span>) {
+	    <span class="pl-k">return</span> word.<span class="pl-sf">match</span>(<span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">[<span class="pl-c1">a-z</span>]</span><span class="pl-c1">.</span><span class="pl-c1">[<span class="pl-c1">0-9</span>]</span><span class="pl-pds">/</span></span>) <span class="pl-ko">&amp;&amp;</span> score;
+	}, <span class="pl-cn">10</span>, <span class="pl-c1">true</span>);</pre></div>
+	
+	<h3>
+	<a id="user-content-change-the-score-associated-to-a-rule" class="anchor" href="#change-the-score-associated-to-a-rule" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change the score associated to a rule</h3>
+	
+	<p>It is possible to change the score given by a rule. It works like this:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">"</span>#passwdfield<span class="pl-pds">"</span></span>).pwstrength(<span class="pl-s1"><span class="pl-pds">"</span>changeScore<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>wordSequences<span class="pl-pds">"</span></span>, <span class="pl-ko">-</span><span class="pl-cn">100</span>);</pre></div>
+	
+	<p>That would penalize even more the presence of sequences in the password.</p>
+	
+	<h3>
+	<a id="user-content-activate-and-deactivate-rules" class="anchor" href="#activate-and-deactivate-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Activate and deactivate rules</h3>
+	
+	<p>It is also possible to activate or deactivate rules. It as simple as:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">"</span>#passwdfield<span class="pl-pds">"</span></span>).pwstrength(<span class="pl-s1"><span class="pl-pds">"</span>ruleActive<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>wordSequences<span class="pl-pds">"</span></span>, <span class="pl-c1">false</span>);</pre></div>
+	
+	<p>That would avoid looking for sequences in the password being tested.</p>
+	
+	<h2>
+	<a id="user-content-callback-functions" class="anchor" href="#callback-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callback Functions</h2>
+	
+	<p>The plugin provides two callback functions, onLoad and onKeyUp.  You can use
+	them like this:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-sc">document</span>).ready(<span class="pl-s">function</span> () {
+	    <span class="pl-s">var</span> options <span class="pl-ko">=</span> {};
+	    options.common <span class="pl-ko">=</span> {
+	        <span class="pl-enf">onLoad</span>: <span class="pl-s">function</span> () {
+	            $(<span class="pl-s1"><span class="pl-pds">'</span>#messages<span class="pl-pds">'</span></span>).text(<span class="pl-s1"><span class="pl-pds">'</span>Start typing password<span class="pl-pds">'</span></span>);
+	        },
+	        <span class="pl-enf">onKeyUp</span>: <span class="pl-s">function</span> (<span class="pl-vpf">evt</span>, <span class="pl-vpf">data</span>) {
+	            $(<span class="pl-s1"><span class="pl-pds">"</span>#length-help-text<span class="pl-pds">"</span></span>).text(<span class="pl-s1"><span class="pl-pds">"</span>Current length: <span class="pl-pds">"</span></span> <span class="pl-ko">+</span> $(evt.target).val().length <span class="pl-ko">+</span> <span class="pl-s1"><span class="pl-pds">"</span> and score: <span class="pl-pds">"</span></span> <span class="pl-ko">+</span> data.score);
+	        }
+	    };
+	    $(<span class="pl-s1"><span class="pl-pds">'</span>:password<span class="pl-pds">'</span></span>).pwstrength(options);
+	});</pre></div>
+	
+	<h2>
+	<a id="user-content-extra-security" class="anchor" href="#extra-security" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extra security</h2>
+	
+	<p>The plugin comes with two validation rules deactivated by default. One checks
+	for too many character repetitions, and the other checks the number of
+	character classes used. An easy way to increase the security of the passwords
+	is to activate this two rules:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-sc">document</span>).ready(<span class="pl-s">function</span> () {
+	    <span class="pl-s">var</span> options <span class="pl-ko">=</span> {};
+	    options.rules <span class="pl-ko">=</span> {
+	        activated<span class="pl-ko">:</span> {
+	            wordTwoCharacterClasses<span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+	            wordRepetitions<span class="pl-ko">:</span> <span class="pl-c1">true</span>
+	        }
+	    };
+	    $(<span class="pl-s1"><span class="pl-pds">'</span>:password<span class="pl-pds">'</span></span>).pwstrength(options);
+	});</pre></div>
+	
+	<h2>
+	<a id="user-content-examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+	
+	<p>There are some examples in the <code>examples</code> directory. Just serve them with any
+	webserver and check them in your browser. Make sure you serve the <code>examples</code>
+	directory as the site root. For example:</p>
+	
+	<div class="highlight highlight-bash"><pre><span class="pl-sf">cd</span> examples
+	python -m SimpleHTTPServer</pre></div>
+	
+	<p>And go to <a href="http://localhost:8000">localhost:8000</a>.</p>
+	
+	<h2>
+	<a id="user-content-build-and-test" class="anchor" href="#build-and-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build and Test</h2>
+	
+	<p>The build and testing processes rely on <a href="http://gruntjs.com/">Grunt</a>. To use
+	them you need to have <a href="http://nodejs.org/">node.js</a> and grunt-cli installed on
+	your system. Assuming you have node.js in your Linux system, you'll need to do
+	something like this:</p>
+	
+	<div class="highlight highlight-bash"><pre>sudo npm install -g grunt-cli</pre></div>
+	
+	<p>Now you have the grunt command line utility installed globally.</p>
+	
+	<h3>
+	<a id="user-content-bundle-and-minified" class="anchor" href="#bundle-and-minified" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bundle and minified</h3>
+	
+	<p>To generate the bundle and the minified file you only need to execute this in
+	the project directory:</p>
+	
+	<div class="highlight highlight-bash"><pre>npm install -d
+	grunt</pre></div>
+	
+	<p>It will check the source files, and build a minified version with its
+	corresponding source map. The generated files will be available in the <code>dist</code>
+	directory.</p>
+	
+	<h3>
+	<a id="user-content-testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing</h3>
+	
+	<p>To run the tests the only thing you need to do is execute this in the project
+	directory:</p>
+	
+	<div class="highlight highlight-bash"><pre>npm install -d
+	grunt <span class="pl-sf">test</span></pre></div>
+	
+	<p>It will check all the source files with <a href="http://jslint.com">JSLint</a> and run the
+	tests, which are written with <a href="http://jasmine.github.io/">Jasmine</a>. You'll find
+	the tests source code in the <code>spec</code> directory.</p>
+	
+	<p><a href="https://travis-ci.org/ablanco/jquery.pwstrength.bootstrap">Travis</a> is being
+	used for continuos integration. You can check there if the tests are passing.</p>
+	</article>
+</body>
+</html>	

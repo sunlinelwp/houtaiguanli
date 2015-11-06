@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<style>
+body {
+	padding-top: 70px;
+	margin-left:30px;
+}
+</style>
+<title>moment</title></head>
+<body>
+     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+	<article class="markdown-body entry-content">
+	<h1>
+				<a id="user-content-jquery-tags-input-plugin" class="anchor"
+					href="#jquery-tags-input-plugin" aria-hidden="true"><span
+					class="octicon octicon-link"></span></a>moment
+			</h1>
+			<p>强大的时间处理插件</p>
+		<div class="page-moment-index">
+
+			<h3 id="format-dates">Format Dates</h3>
+			<pre>
+	      <code class="language-js">moment().format(<span class="string">'MMMM Do YYYY, h:mm:ss a'</span>);
+		moment().format(<span class="string">'dddd'</span>);
+		moment().format(<span class="string">"MMM Do YY"</span>);
+		moment().format(<span class="string">'YYYY [escaped] YYYY'</span>);
+		moment().format();</code>
+			</pre>
+			<h3 id="relative-time">Relative Time</h3>
+			<pre>
+	      <code class="language-js">moment(<span class="string">"20111031"</span>, <span class="string">"YYYYMMDD"</span>).fromNow();
+		moment(<span class="string">"20120620"</span>, <span class="string">"YYYYMMDD"</span>).fromNow();
+		moment().startOf(<span class="string">'day'</span>).fromNow();
+		moment().endOf(<span class="string">'day'</span>).fromNow();
+		moment().startOf(<span class="string">'hour'</span>).fromNow();</code>
+			</pre>
+			<h3 id="calendar-time">Calendar Time</h3>
+			<pre>
+	      <code class="language-js">moment().subtract(<span class="number">10</span>, <span class="string">'days'</span>).calendar();
+		moment().subtract(<span class="number">6</span>, <span class="string">'days'</span>).calendar();
+		moment().subtract(<span class="number">3</span>, <span class="string">'days'</span>).calendar();
+		moment().subtract(<span class="number">1</span>, <span class="string">'days'</span>).calendar();
+		moment().calendar();
+		moment().add(<span class="number">1</span>, <span class="string">'days'</span>).calendar();
+		moment().add(<span class="number">3</span>, <span class="string">'days'</span>).calendar();
+		moment().add(<span class="number">10</span>, <span class="string">'days'</span>).calendar();</code>
+			</pre>
+			<h3 id="multiple-locale-support">Multiple Locale Support</h3>
+			<pre>
+		<code class="language-js">moment().format(<span	class="string">'L'</span>);
+		moment().format(<span class="string">'l'</span>);
+		moment().format(<span class="string">'LL'</span>);
+		moment().format(<span class="string">'ll'</span>);
+		moment().format(<span class="string">'LLL'</span>);
+		moment().format(<span class="string">'lll'</span>);
+		moment().format(<span class="string">'LLLL'</span>);
+		moment().format(<span class="string">'llll'</span>);</code>
+			</pre>
+		</div>
+	</article>
+</body></html>

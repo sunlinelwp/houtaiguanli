@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+<title>jQuery-tags-Input</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 30px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<article class="markdown-body entry-content">
+			<h1>
+				<a id="user-content-jquery-tags-input-plugin" class="anchor"
+					href="#jquery-tags-input-plugin" aria-hidden="true"><span
+					class="octicon octicon-link"></span></a>jQuery Tags Input Plugin
+			</h1>
+
+			<p>Do you use tags to organize content on your site? This plugin
+				will turn your boring tag list into a magical input that turns each
+				tag into a style-able object with its own delete link. The plugin
+				handles all the data - your form just sees a comma-delimited list of
+				tags!</p>
+
+		
+
+			<h2>
+				<a id="user-content-instructions" class="anchor"
+					href="#instructions" aria-hidden="true"><span
+					class="octicon octicon-link"></span></a>说明
+			</h2>
+
+			<p>首先，将 Javascript 和 CSS 文件添加到您的  </p>
+			标签  :
+
+			<pre>
+				<code>&lt;script src="jquery.tagsinput.js"&gt;&lt;/script&gt;
+   &lt;link rel="stylesheet" type="text/css" href="jquery.tagsinput.css" /&gt;
+              </code>
+			</pre>
+
+			<p>创建一个真正的输入框中包含一个逗号分隔的标记列表。你可以设成任何默认或 已存在标签 属性值，并且他们会正确处理  </p>
+
+			<pre>
+				<code>&lt;input name="tags" id="tags" value="foo,bar,baz" /&gt;
+				</code>
+			</pre>
+
+			<p>然后，只需调用 tagsInput 函数在任何领域把它填上被视为标记  列表中.</p>
+
+			<pre>
+			<code>$('#tags').tagsInput();
+			</code>
+			</pre>
+
+			<p>如果您想要使用 jQuery.autocomplete，您可以通过在形参使用记忆式键入 url  .</p>
+
+			<pre>
+				<code>$('#tags').tagsInput({
+			  autocomplete_url:'http://myserver.com/api/autocomplete'
+			});
+			</code>
+			</pre>
+
+			<p>如果您使用的是bassistance jQuery.autocomplete，这
+				需要额外的参数，也可以发送选项​​中
+				自动完成插件，如下描述.</p>
+
+			<pre>
+				<code>$('#tags').tagsInput({    
+				  autocomplete_url:'http://myserver.com/api/autocomplete',
+				  autocomplete:{selectFirst:true,width:'100px',autoFill:true}
+				});
+				</code>
+			</pre>
+
+			<p>您可以添加和删除标签调用addTag（）和
+				removeTag（）函数。</p>
+
+			<pre>
+				<code>$('#tags').addTag('foo');
+				$('#tags').removeTag('bar');
+				</code>
+			</pre>
+
+			<p>可以导入使用importTags标签列表（）
+				功能。..</p>
+
+			<pre>
+				<code>$('#tags').importTags('foo,bar,baz');
+			</code>
+			</pre>
+
+			<p>您也可以使用importTags（）重置标签列表...</p>
+
+			<pre>
+				<code>$('#tags').importTags('');
+				</code>
+			</pre>
+
+			<p>你可以检查标签是否存在使用tagExist（）您也可以使用importTags（）重置标签列表...</p>
+
+			<pre>
+				<code>if ($('#tags').tagExist('foo')) { ... }
+				</code>
+			</pre>
+
+			<p>如果当一个标签被添加是必需的额外的功能或
+			删除后，您可以通过onAddTag指定回调函数和
+			onRemoveTag参数。这两个函数应该接受一个标签作为
+			的参数。.</p>
+
+			<p>如果您不希望提供一种方式来添加标签，或者你会
+					宁愿添加标签到盒提供一个备用接口，
+					你可能会传递一个错误的进入可选的'互动'参数。该
+					标签将仍然呈现为按通常和addTag和
+					removeTag功能将正常运行。.</p>
+
+			<p>如果你想有一个函数被调用每次标签
+				更新/删除，将其设置为“的onChange'选项。.</p>
+
+			<p>默认情况下，如果光标立即标签后，打
+				退格键将删除该标签。如果你想改变这个设置
+				在“removeWithBackspace”选项设置为false.</p>
+
+			<h2>
+				<a id="user-content-options" class="anchor" href="#options"
+					aria-hidden="true"><span class="octicon octicon-link"></span></a>Options
+			</h2>
+
+			<pre>
+				<code>$(selector).tagsInput({
+				   'autocomplete_url': url_to_autocomplete_api,
+				   'autocomplete': { option: value, option: value},
+				   'height':'100px',
+				   'width':'300px',
+				   'interactive':true,
+				   'defaultText':'add a tag',
+				   'onAddTag':callback_function,
+				   'onRemoveTag':callback_function,
+				   'onChange' : callback_function,
+				   'removeWithBackspace' : true,
+				   'minChars' : 0,
+				   'maxChars' : 0 //if not provided there is no limit,
+				   'placeholderColor' : '#666666'
+				});
+				</code>
+			</pre>
+		</article>
+</body>
+</html>

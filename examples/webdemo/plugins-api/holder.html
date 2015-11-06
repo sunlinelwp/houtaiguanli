@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script src="../plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<title>holder</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 40px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+	<article class="markdown-body entry-content">
+		<a id="user-content-holder" class="anchor" href="#holder"
+			aria-hidden="true"><span class="octicon octicon-link"></span></a>Holder
+		</h1>
+
+		<p>
+			<a
+				href="https://camo.githubusercontent.com/78f349c228b30af11712a25351d1e0f2879822d8/687474703a2f2f696d736b792e6769746875622e696f2f686f6c6465722f696d616765732f6865616465722e706e67"
+				target="_blank"><img
+				src="https://camo.githubusercontent.com/78f349c228b30af11712a25351d1e0f2879822d8/687474703a2f2f696d736b792e6769746875622e696f2f686f6c6465722f696d616765732f6865616465722e706e67"
+				alt=""
+				data-canonical-src="http://imsky.github.io/holder/images/header.png"
+				style="max-width: 100%;"></a>
+		</p>
+
+		<p>Holder renders image placeholders on the client side using SVG.</p>
+
+		<p>
+			Used by <a href="http://getbootstrap.com">Bootstrap</a>, thousands of
+			<a
+				href="https://github.com/search?q=holder.js+in%3Apath&amp;type=Code&amp;ref=searchresults">open
+				source projects</a>, and <a
+				href="https://search.nerdydata.com/search/#!/searchTerm=holder.js/searchPage=1/sort=pop">many
+				other sites</a>.
+		</p>
+
+		<h2>
+			<a id="user-content-installing" class="anchor" href="#installing"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing
+		</h2>
+
+		<ul class="task-list">
+			<li><a href="http://bower.io/">Bower</a>: <code>bower
+					install holderjs</code></li>
+			<li><a href="http://cdnjs.com/">cdnjs</a>: <a
+				href="http://cdnjs.com/libraries/holder">http://cdnjs.com/libraries/holder</a>
+			</li>
+			<li><a href="http://www.jsdelivr.com">jsDelivr</a>: <a
+				href="http://www.jsdelivr.com/#!holder">http://www.jsdelivr.com/#!holder</a>
+			</li>
+			<li><a href="https://rails-assets.org">Rails Assets</a>: <code>gem
+					'rails-assets-holderjs'</code></li>
+			<li><a href="http://atmospherejs.com/">Meteor</a>: <code>mrt
+					add holder</code></li>
+			<li><a href="https://packagist.org/">Composer</a>: <code>php
+					composer.phar update imsky/holder</code></li>
+			<li><a href="http://www.nuget.org/">NuGet</a>: <code>Install-Package
+					Holder.js</code></li>
+		</ul>
+
+		<h2>
+			<a id="user-content-usage" class="anchor" href="#usage"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage
+		</h2>
+
+		<p>
+			Include
+			<code>holder.js</code>
+			in your HTML:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">script</span> <span class="na">src</span>=<span
+					class="s2">"holder.js"</span>&gt;&lt;/<span class="nt">script</span>&gt;</pre>
+		</div>
+
+		<p>
+			Holder will then process all images with a specific
+			<code>src</code>
+			attribute, like this one:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">src</span>=<span
+					class="s2">"holder.js/200x300"</span>&gt;</pre>
+		</div>
+
+		<p>The above tag will render as a placeholder 200 pixels wide and
+			300 pixels tall.</p>
+
+		<p>
+			To avoid console 404 errors, you can use
+			<code>data-src</code>
+			instead of
+			<code>src</code>
+			.
+		</p>
+
+		<h2>
+			<a id="user-content-themes" class="anchor" href="#themes"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>Themes
+		</h2>
+
+		<p>
+			<a
+				href="https://camo.githubusercontent.com/1a8575f6cd2c3b570e9b096db3072c07327df158/687474703a2f2f696d736b792e6769746875622e696f2f686f6c6465722f696d616765732f686f6c6465725f736b792e706e67"
+				target="_blank"><img
+				src="https://camo.githubusercontent.com/1a8575f6cd2c3b570e9b096db3072c07327df158/687474703a2f2f696d736b792e6769746875622e696f2f686f6c6465722f696d616765732f686f6c6465725f736b792e706e67"
+				alt=""
+				data-canonical-src="http://imsky.github.io/holder/images/holder_sky.png"
+				style="max-width: 100%;"></a><a
+				href="https://camo.githubusercontent.com/623790337b7a5c987cc92fa82bfc4ec271b87614/687474703a2f2f696d736b792e6769746875622e696f2f686f6c6465722f696d616765732f686f6c6465725f76696e652e706e67"
+				target="_blank"><img
+				src="https://camo.githubusercontent.com/623790337b7a5c987cc92fa82bfc4ec271b87614/687474703a2f2f696d736b792e6769746875622e696f2f686f6c6465722f696d616765732f686f6c6465725f76696e652e706e67"
+				alt=""
+				data-canonical-src="http://imsky.github.io/holder/images/holder_vine.png"
+				style="max-width: 100%;"></a><a
+				href="https://camo.githubusercontent.com/683bc234017b2542f3e8b5d177adec21bcd3613e/687474703a2f2f696d736b792e6769746875622e696f2f686f6c6465722f696d616765732f686f6c6465725f6c6176612e706e67"
+				target="_blank"><img
+				src="https://camo.githubusercontent.com/683bc234017b2542f3e8b5d177adec21bcd3613e/687474703a2f2f696d736b792e6769746875622e696f2f686f6c6465722f696d616765732f686f6c6465725f6c6176612e706e67"
+				alt=""
+				data-canonical-src="http://imsky.github.io/holder/images/holder_lava.png"
+				style="max-width: 100%;"></a>
+		</p>
+
+		<p>Holder includes support for themes, to help placeholders blend
+			in with your layout.</p>
+
+		<p>
+			There are 6 default themes:
+			<code>sky</code>
+			,
+			<code>vine</code>
+			,
+			<code>lava</code>
+			,
+			<code>gray</code>
+			,
+			<code>industrial</code>
+			, and
+			<code>social</code>
+			. Use them like so:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">src</span>=<span
+					class="s2">"holder.js/200x300/sky"</span>&gt;</pre>
+		</div>
+
+		<h2>
+			<a id="user-content-custom-colors" class="anchor"
+				href="#custom-colors" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Custom colors
+		</h2>
+
+		<p>
+			Custom colors on a specific image can be specified in the
+			<code>background:foreground</code>
+			format using hex notation, like this:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">data-src</span>=<span
+					class="s2">"holder.js/100x200/#000:#fff"</span>&gt;</pre>
+		</div>
+
+		<p>The above will render a placeholder with a black background and
+			white text.</p>
+
+		<h2>
+			<a id="user-content-custom-text" class="anchor" href="#custom-text"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom
+			text
+		</h2>
+
+		<p>
+			You can specify custom text using the
+			<code>text:</code>
+			operator:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">data-src</span>=<span
+					class="s2">"holder.js/200x200/text:hello world"</span>&gt;</pre>
+		</div>
+
+		<p>
+			If you have a group of placeholders where you'd like to use
+			particular text, you can do so by adding a
+			<code>text</code>
+			property to the theme:
+		</p>
+
+		<div class="highlight highlight-js">
+			<pre>Holder.addTheme(<span class="s2">"thumbnail"</span>, { background: <span
+					class="s2">"#fff"</span>, text: <span class="s2">"Thumbnail"</span> });</pre>
+		</div>
+
+		<p>
+			Holder automatically adds line breaks to text that goes outside of
+			the image boundaries. If the text is so long it goes out of both
+			horizontal and vertical boundaries, the text is moved to the top. If
+			you prefer to control the line breaks, you can add
+			<code>\n</code>
+			to the
+			<code>text</code>
+			property:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">data-src</span>=<span
+					class="s2">"holder.js/300x200/text:Add \n line breaks \n anywhere."</span>&gt;</pre>
+		</div>
+
+		<h2>
+			<a id="user-content-custom-fonts-web-fonts-and-icon-fonts"
+				class="anchor" href="#custom-fonts-web-fonts-and-icon-fonts"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom
+			fonts, web fonts and icon fonts
+		</h2>
+
+		<p>
+			You can set a placeholder's font either through a theme or through
+			the
+			<code>font</code>
+			flag:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">data-src</span>=<span
+					class="s2">"holder.js/300x200/font:Helvetica"</span>&gt;</pre>
+		</div>
+
+		<p>
+			Placeholders using a custom font are rendered using canvas by
+			default, due to SVG's constraints on cross-domain resource linking.
+			If you're using only locally available fonts, you can disable this
+			behavior by setting
+			<code>noFontFallback</code>
+			to
+			<code>true</code>
+			in
+			<code>Holder.run</code>
+			options. However, if you need to render a SVG placeholder using an
+			externally loaded font, you have to use the
+			<code>object</code>
+			tag instead of the
+			<code>img</code>
+			tag and add a
+			<code>holderjs</code>
+			class to the appropriate
+			<code>link</code>
+			tags. Here's an example:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">head</span>&gt;
+&lt;<span class="nt">link</span> <span class="na">href</span>=<span
+					class="s2">"http://.../font-awesome.css"</span> <span class="na">rel</span>=<span
+					class="s2">"stylesheet"</span> <span class="na">class</span>=<span
+					class="s2">"holderjs"</span>&gt;
+&lt;/<span class="nt">head</span>&gt;
+&lt;<span class="nt">body</span>&gt;
+&lt;<span class="nt">object</span> <span class="na">data</span>=<span
+					class="s2">"holder.js/300x200/font:FontAwesome"</span>&gt;&lt;/<span
+					class="nt">object</span>&gt;</pre>
+		</div>
+
+		<p>
+			<strong>Important:</strong> When testing locally, font URLs must have
+			a
+			<code>http</code>
+			or
+			<code>https</code>
+			protocol defined.
+		</p>
+
+		<p>
+			<code>&lt;object&gt;</code>
+			placeholders work like
+			<code>&lt;img&gt;</code>
+			placeholders, with the added benefit of their DOM being able to be
+			inspected and modified.
+		</p>
+
+		<h2>
+			<a id="user-content-customizing-themes" class="anchor"
+				href="#customizing-themes" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Customizing themes
+		</h2>
+
+		<p>
+			Themes have 5 properties:
+			<code>foreground</code>
+			,
+			<code>background</code>
+			,
+			<code>size</code>
+			,
+			<code>font</code>
+			and
+			<code>fontweight</code>
+			. The
+			<code>size</code>
+			property specifies the minimum font size for the theme. The
+			<code>fontweight</code>
+			default value is
+			<code>bold</code>
+			. You can create a sample theme like this:
+		</p>
+
+		<div class="highlight highlight-js">
+			<pre>Holder.addTheme(<span class="s2">"dark"</span>, {
+  background: <span class="s2">"#000"</span>,
+  foreground: <span class="s2">"#aaa"</span>,
+  size: <span class="m">11</span>,
+  font: <span class="s2">"Monaco"</span>,
+  fontweight: <span class="s2">"normal"</span>
+});</pre>
+		</div>
+
+		<h2>
+			<a id="user-content-using-custom-themes" class="anchor"
+				href="#using-custom-themes" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Using custom themes
+		</h2>
+
+		<p>There are two ways to use custom themes with Holder:</p>
+
+		<ul class="task-list">
+			<li>Include theme at runtime to render placeholders already
+				using the theme name</li>
+			<li>Include theme at any point and re-render placeholders that
+				are using the theme name</li>
+		</ul>
+
+		<p>
+			The first approach is the easiest. After you include
+			<code>holder.js</code>
+			, add a
+			<code>script</code>
+			tag that adds the theme you want:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">script</span> <span class="na">src</span>=<span
+					class="s2">"holder.js"</span>&gt;&lt;/<span class="nt">script</span>&gt;
+<span class="h">&lt;<span class="nt">script</span>&gt;</span>
+<span class="h">Holder.addTheme(<span class="s2">"bright"</span>, {</span>
+<span class="h">  background: <span class="s2">"white"</span>, foreground: <span
+					class="s2">"gray"</span>, size: <span class="m">12</span></span>
+<span class="h">});</span>
+<span class="h">&lt;/<span class="nt">script</span>&gt;</span>
+			</pre>
+		</div>
+
+		<p>
+			The second approach requires that you call
+			<code>run</code>
+			after you add the theme, like this:
+		</p>
+
+		<div class="highlight highlight-js">
+			<pre>Holder.addTheme(<span class="s2">"bright"</span>, {background: <span
+					class="s2">"white"</span>, foreground: <span class="s2">"gray"</span>, size: <span
+					class="m">12</span>}).run();</pre>
+		</div>
+
+		<h2>
+			<a
+				id="user-content-using-custom-themes-and-domain-on-specific-images"
+				class="anchor"
+				href="#using-custom-themes-and-domain-on-specific-images"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>Using
+			custom themes and domain on specific images
+		</h2>
+
+		<p>You can use Holder in different areas on different images with
+			custom themes:</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">data-src</span>=<span
+					class="s2">"example.com/100x100/simple"</span> <span class="na">id</span><span
+					class="o">=</span><span class="s2">"new"</span>&gt;</pre>
+		</div>
+
+		<div class="highlight highlight-js">
+			<pre>Holder.run({
+  domain: <span class="s2">"example.com"</span>,
+  themes: {
+    <span class="s2">"simple"</span>: {
+      background: <span class="s2">"#fff"</span>,
+      foreground: <span class="s2">"#000"</span>,
+      size: <span class="m">12</span>
+    }
+  },
+  images: <span class="s2">"#new"</span>
+});</pre>
+		</div>
+
+		<h2>
+			<a id="user-content-random-themes" class="anchor"
+				href="#random-themes" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Random themes
+		</h2>
+
+		<p>
+			You can render a placeholder with a random theme using the
+			<code>random</code>
+			flag:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">data-src</span>=<span
+					class="s2">"holder.js/300x200/random"</span>&gt;</pre>
+		</div>
+
+		<h2>
+			<a id="user-content-fluid-placeholders" class="anchor"
+				href="#fluid-placeholders" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Fluid placeholders
+		</h2>
+
+		<p>Specifying a dimension in percentages creates a fluid
+			placeholder that responds to media queries.</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">data-src</span>=<span
+					class="s2">"holder.js/100%x75/social"</span>&gt;</pre>
+		</div>
+
+		<p>
+			By default, the fluid placeholder will show its current size in
+			pixels. To display the original dimensions, i.e. 100%x75, set the
+			<code>textmode</code>
+			flag to
+			<code>literal</code>
+			like so:
+			<code>holder.js/100%x75/textmode:literal</code>
+			.
+		</p>
+
+		<p>
+			Fluid placeholders need to be visible in order to work. In cases when
+			a placeholder is not visible, the
+			<code>Holder.invisibleErrorFn</code>
+			function is called, which takes the callee function as an argument
+			and returns a function that takes the placeholder element as an
+			argument. This function by default throws an exception, however its
+			behavior can and should be overridden by the user.
+		</p>
+
+		<h2>
+			<a id="user-content-automatically-sized-placeholders" class="anchor"
+				href="#automatically-sized-placeholders" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Automatically sized placeholders
+		</h2>
+
+		<p>
+			If you'd like to avoid Holder enforcing an image size, use the
+			<code>auto</code>
+			flag like so:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">data-src</span>=<span
+					class="s2">"holder.js/200x200/auto"</span>&gt;</pre>
+		</div>
+
+		<p>The above will render a placeholder without any embedded CSS
+			for height or width.</p>
+
+		<p>
+			To show the current size of an automatically sized placeholder, set
+			the
+			<code>textmode</code>
+			flag to
+			<code>exact</code>
+			like so:
+			<code>holder.js/200x200/auto/textmode:exact</code>
+			.
+		</p>
+
+		<h2>
+			<a id="user-content-background-placeholders" class="anchor"
+				href="#background-placeholders" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Background placeholders
+		</h2>
+
+		<p>
+			Holder can render placeholders as background images for elements with
+			the
+			<code>holderjs</code>
+			class, like this:
+		</p>
+
+		<div class="highlight highlight-css">
+			<pre>
+				<span class="na">#sample</span> {<span class="nc">background</span><span
+					class="o">:</span><span class="nf">url</span>(<span class="nv">?holder.js/200x200/social</span>) <span
+					class="no">no-repeat</span>}</pre>
+		</div>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">div</span> <span class="na">id</span><span
+					class="o">=</span><span class="s2">"sample"</span> <span class="na">class</span>=<span
+					class="s2">"holderjs"</span>&gt;&lt;/<span class="nt">div</span>&gt;</pre>
+		</div>
+
+		<p>
+			The Holder URL in CSS should have a
+			<code>?</code>
+			in front. Like in image placeholders, you can specify the Holder URL
+			in a
+			<code>data-background-src</code>
+			attribute:
+		</p>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">div</span> <span class="na">data-background-src</span>=<span
+					class="s2">"?holder.js/300x200"</span>&gt;&lt;/<span class="nt">div</span>&gt;</pre>
+		</div>
+
+		<p>
+			<strong>Important:</strong> Make sure to define a height and/or width
+			for elements with background placeholders. Fluid background
+			placeholders are not yet supported.
+		</p>
+
+		<p>
+			<strong>Important:</strong> Some browsers can't parse URLs like
+			<code>?holder.js/300x200/#fff:#000</code>
+			due to the
+			<code>#</code>
+			characters. You can use
+			<code>^</code>
+			in place of
+			<code>#</code>
+			like this:
+			<code>?holder.js/300x200/^fff:^000</code>
+			.
+		</p>
+
+		<h2>
+			<a id="user-content-custom-settings" class="anchor"
+				href="#custom-settings" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Custom settings
+		</h2>
+
+		<p>Holder extends its default settings with the settings you
+			provide, so you only have to include those settings you want changed.
+			For example, you can run Holder on a specific domain like this:</p>
+
+		<div class="highlight highlight-js">
+			<pre>Holder.run({domain:<span class="s2">"example.com"</span>});</pre>
+		</div>
+
+		<h2>
+			<a id="user-content-using-custom-settings-on-load" class="anchor"
+				href="#using-custom-settings-on-load" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Using custom settings on load
+		</h2>
+
+		<p>
+			You can prevent Holder from running its default configuration by
+			executing
+			<code>Holder.run</code>
+			with your custom settings right after including
+			<code>holder.js</code>
+			. However, you'll have to execute
+			<code>Holder.run</code>
+			again to render any placeholders that use the default configuration.
+		</p>
+
+		<h2>
+			<a id="user-content-inserting-an-image-with-optional-custom-theme"
+				class="anchor" href="#inserting-an-image-with-optional-custom-theme"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>Inserting
+			an image with optional custom theme
+		</h2>
+
+		<p>You can add a placeholder programmatically by chaining Holder
+			calls:</p>
+
+		<div class="highlight highlight-js">
+			<pre>Holder.addTheme(<span class="s2">"new"</span>, {
+  foreground: <span class="s2">"#ccc"</span>,
+  background: <span class="s2">"#000"</span>,
+  size: <span class="m">10</span>
+}).addImage(<span class="s2">"holder.js/200x100/new"</span>, <span
+					class="s2">"body"</span>).run();</pre>
+		</div>
+
+		<p>
+			The first argument in
+			<code>addImage</code>
+			is the
+			<code>src</code>
+			attribute, and the second is a CSS selector of the parent element.
+		</p>
+
+		<h2>
+			<a id="user-content-using-different-renderers" class="anchor"
+				href="#using-different-renderers" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Using different renderers
+		</h2>
+
+		<p>
+			Holder has three renderers: canvas, SVG, and HTML. The SVG renderer
+			is used by default, however you can set the renderer using the
+			<code>renderer</code>
+			option, with either
+			<code>svg</code>
+			,
+			<code>canvas</code>
+			, or
+			<code>html</code>
+			values.
+		</p>
+
+		<div class="highlight highlight-js">
+			<pre>Holder.run({renderer: <span class="s1">'canvas'</span>});</pre>
+		</div>
+
+		<h2>
+			<a id="user-content-using-with-lazyloadjs" class="anchor"
+				href="#using-with-lazyloadjs" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Using with <a
+				href="https://github.com/tuupola/jquery_lazyload">lazyload.js</a>
+		</h2>
+
+		<p>
+			Holder is compatible with
+			<code>lazyload.js</code>
+			and works with both fluid and fixed-width images. For best results,
+			run
+			<code>.lazyload({skip_invisible:false})</code>
+			.
+		</p>
+
+		<h2>
+			<a id="user-content-using-with-angularjs" class="anchor"
+				href="#using-with-angularjs" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Using with Angular.js
+		</h2>
+
+		<p>
+			You can use Holder in Angular projects with the following JS and HTML
+			code (by <a href="https://github.com/NickClark">Nick Clark</a>):
+		</p>
+
+		<div class="highlight highlight-js">
+			<pre>angular.module(<span class="s1">'MyModule'</span>).directive(<span
+					class="s1">'myHolder'</span>, <span class="kt">function</span>() {
+  <span class="k">return</span> {
+    link: <span class="kt">function</span>(<span class="nv">scope</span>, <span
+					class="nv">element</span>, <span class="nv">attrs</span>) {
+      attrs.$set(<span class="s1">'data-src'</span>, attrs.myHolder);
+      Holder.run({images:element[<span class="m">0</span>]});
+    }
+  };
+});</pre>
+		</div>
+
+		<div class="highlight highlight-html">
+			<pre>&lt;<span class="nt">img</span> <span class="na">my-holder</span>=<span
+					class="s2">"holder.js/200x300"</span>&gt;</pre>
+		</div>
+
+		<h2>
+			<a id="user-content-browser-support" class="anchor"
+				href="#browser-support" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>Browser support
+		</h2>
+
+		<ul class="task-list">
+			<li>Chrome</li>
+			<li>Firefox 3+</li>
+			<li>Safari 4+</li>
+			<li>Internet Explorer 9+ (with partial support for 6-8)</li>
+			<li>Opera 15+ (with partial support for 12)</li>
+			<li>Android (with fallback)</li>
+		</ul>
+
+		<h2>
+			<a id="user-content-license" class="anchor" href="#license"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>License
+		</h2>
+
+		<p>
+			Holder is provided under the <a
+				href="http://opensource.org/licenses/MIT">MIT License</a>.
+		</p>
+
+		<h2>
+			<a id="user-content-credits" class="anchor" href="#credits"
+				aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits
+		</h2>
+
+		<p>
+			Holder is a project by <a href="http://imsky.co">Ivan Malopinsky</a>.
+		</p>
+	</article>
+
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="../plugins/jquery-notific8/jquery.notific8.min.css" media="screen">
+		<style type="text/css">
+			.label label{color:#000;}
+		</style>
+		<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		
+		<title>jQuery Notific8</title>
+		<style>
+			body { padding-top: 50px; }
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<div class="bs-docs-header">
+			<div class="container">
+				<h1>jQuery-notfic8是一个jQuery插件，实现类似window 8系统通知的通知窗口！</h1>
+			</div>
+		</div>
+		<div class="container bs-docs-container">
+			<div class="row">
+				<div class="col-md-9" role="main">
+					<p>Notific8 is a notification plug-in inspired by the notifications introduced in Windows 8 with some web ready restyling and customizations. Notific8 has built in themes and is easy to create new themes for. The plug-in was born from a want for a simply designed yet modern and stylish notification system. The plug-in is also designed to scale based on the page's font-size setting (it was designed for the default of 100%/16px as the default).</p>
+
+<h2>
+<a id="user-content-install-with-bower" class="anchor" href="#install-with-bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install with Bower</h2>
+
+<pre><code>$ bower install jquery-notific8 --save
+</code></pre>
+
+<h2>
+<a id="user-content-demo-page" class="anchor" href="#demo-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo page</h2>
+
+<p>An interactive demo page can be found in the ./demo/ directory</p>
+
+<h2>
+<a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul class="task-list">
+<li>Notifications slide in and out from the upper right corner of the page</li>
+<li>Configurable life span of the notification</li>
+<li>Option to display a heading</li>
+<li>Option to pick an icon from the including icon font</li>
+<li>Built in theme options with ability to create custom themes (see CSS for built in themes)</li>
+<li>Ability to make the notification sticky</li>
+<li>Ability to set up custom settings for reuse without having to type them over and over</li>
+<li>Ability to set which corner the notifications are shown in</li>
+<li>Ability to set the z-index
+
+<ul class="task-list">
+<li>Can be set via config/configure or the zindex function</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<pre><code>// basic
+$.notific8('My notification message goes here.');
+// with a life set
+$.notific8('My notification message has a life span.', {life: 5000});
+// with a heading
+$.notific8('My notification has a heading line.', {heading: 'Notification Heading'});
+// with an icon
+$.notific8('My notification has an icon.', {icon: 'check-mark-2'});
+// with a theme
+$.notific8('My notification has a theme.', {theme: 'amethyst'});
+// make the notification sticky
+$.notific8('My notification is sticky.', {sticky: true});
+// change whether to notification is at the top or bottom
+$.notific8('My notification is at the bottom.', {horizontalEdge: 'bottom'});
+// change whether to notification is on the left or right
+$.notific8('My notification is on the left.', {verticalEdge: 'left'});
+// set the z-index
+$.notific8('My notification has a z-index of 1500.', {zindex: 1500});
+// all options set
+$.notific8('My notification with all options.', {
+  life: 5000,
+  heading: 'Notification Heading',
+  icon: 'check-mark-2',
+  theme: 'amethyst',
+  sticky: true,
+  horizontalEdge: 'bottom',
+  verticalEdge: 'left',
+  zindex: 1500
+});
+
+// set up your own default settings to save time and typing later
+// NOTE this is not required
+$.notific8('configure', {
+  life: 5000,
+  theme: 'ruby',
+  icon: 'minus-circle',
+  sticky: true,
+  horizontalEdge: 'bottom',
+  verticalEdge: 'left',
+  zindex: 1500
+});
+
+// set the zindex
+$.notific8('zindex', 1500);
+</code></pre>
+
+<h2>
+<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<ul class="task-list">
+<li>life: number of milliseconds that the notification will be visible (default: 10000)</li>
+<li>heading: short heading for the notification</li>
+<li>icon: string for the icon
+
+<ul class="task-list">
+<li>Open the included demo file for an example of the included icons</li>
+</ul>
+</li>
+<li>theme: string for the theme (default: 'teal')
+
+<ul class="task-list">
+<li>Custom themes should be named .jquery-notific8-notification.[theme name] in your stylesheet - see note below about custom themes</li>
+</ul>
+</li>
+<li>sticky: boolean for whether or not the notification should stick
+
+<ul class="task-list">
+<li>If sticky is set to true, life will be ignored if it is also set</li>
+</ul>
+</li>
+<li>horizontalEdge: string value for top or bottom of the page (default: 'top')
+
+<ul class="task-list">
+<li>only accepts values 'top' and 'bottom'</li>
+</ul>
+</li>
+<li>verticalEdge: string value for left or right of the page (default: 'right')
+
+<ul class="task-list">
+<li>only accepts values 'left' and 'right'</li>
+</ul>
+</li>
+<li>zindex: integer value for the z-index (default: 1100)
+
+<ul class="task-list">
+<li>this must be set before calling notific8 to create a notification via either config/configure or zindex</li>
+</ul>
+</li>
+</ul>
+
+<p>All of these settings are available to be configured. The configure function is used if you have specific settings such as theme and life that you want every notification to share. By configuring these settings, they become the new defaults and you don't have to type them for every notification. The configure function can be called multiple times.</p>
+
+<h2>
+<a id="user-content-custom-themes" class="anchor" href="#custom-themes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom themes</h2>
+
+<p>As of notific8 version 0.9.0, the plug-in's CSS is coded in SASS (SCSS format). To create a custom theme, open the jquery.notific8.scss file, copy and paste the template line, uncomment your pasted line, and replace the variables with your own values. Be sure to recompile your SASS file to CSS to use the new theme. The goal is to only make development updates to the _notific8.scss file so that updates will not wipe out your custom themes.</p>
+
+<p>If you are using SASS for the rest of your project, you can include the _notific8.scss file in your project's main SCSS file to create your custom themes in there.</p>
+
+<h2>
+<a id="user-content-browser-support" class="anchor" href="#browser-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser support</h2>
+
+<p>Currently supported and testing:</p>
+
+<ul class="task-list">
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Safari (Mac only)</li>
+<li>IE 9+</li>
+</ul>
+
+<p>Future support and testing</p>
+
+<ul class="task-list">
+<li>Opera (will start after their transition to webkit)</li>
+<li>IE support will bump to 10 with version 2.0</li>
+</ul>
+
+<h3>
+<a id="user-content-browser-version-support" class="anchor" href="#browser-version-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser version support</h3>
+
+<p>As a rule of thumb, only the most recent plus one version older of a browser is supported unless marked otherwise. While it may work in IE8, notific8 will not be tested or officially supported in legacy browsers such as versions of IE older than 9.</p>
+
+<h2>
+<a id="user-content-future-development" class="anchor" href="#future-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Future development</h2>
+
+<ul class="task-list">
+<li>Create new theme style with theme options
+
+<ul class="task-list">
+<li>Existing themes will be kept in a legacy SASS module included with the plug-in and new included themes will have different names for backwards compatibility</li>
+</ul>
+</li>
+<li>Add the ability to use a custom image instead of one of the built in icons</li>
+</ul>
+					<h1>jQuery notific8 demo</h1>
+
+<p>jQuery notific8 is a notification plug-in that was inspired by the notification style introduced in Windows 8.</p>
+<p>Use the fields below to test the different options for the plug-in.</p>
+<table>
+    <tbody>
+        <tr>
+            <td class="label">
+                <label for="notific8Text">Notification text</label>
+            </td>
+            <td>
+                <input type="text" name="notific8Text" id="notific8Text" size="50" maxlength="100" value="notific8 was inspired by Windows 8 notifications" />
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label for="notific8Sticky">Sticky</label>
+            </td>
+            <td>
+                <input type="checkbox" name="notific8Sticky" id="notific8Sticky" /> (if checked, setting life below will be ignored)
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label for="notific8Life">Life</label>
+            </td>
+            <td>
+                <select name="notific8Life" id="notific8Life">
+                    <option value="1000">1 second</option>
+                    <option value="5000">5 seconds</option>
+                    <option value="10000" selected="selected">10 seconds (default)</option>
+                    <option value="25000">25 seconds</option>
+                    <option value="60000">60 seconds</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label for="notific8Heading">Heading (optional)</label>
+            </td>
+            <td>
+                <input type="text" name="notific8Heading" id="notific8Heading" size="50" maxlength="50" />
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label for="notific8Icon">Icon (optional)</label>
+            </td>
+            <td>
+                <select name="notific8Icon" id="notific8Icon">
+                    <option value="">- None -</option>
+                    <option value="trash-bin">trash-bin</option>
+                    <option value="pencil">pencil</option>
+                    <option value="lifebuoy">lifebuoy</option>
+                    <option value="info-circled">info-circled</option>
+                    <option value="fontawesome-webfont">fontawesome-webfont</option>
+                    <option value="barcode">barcode</option>
+                    <option value="book">book</option>
+                    <option value="calendar">calendar</option>
+                    <option value="briefcase-case-two">briefcase-case-two</option>
+                    <option value="camera-retro">camera-retro</option>
+                    <option value="chat-bubble-two">chat-bubble-two</option>
+                    <option value="check-mark-2">check-mark-2</option>
+                    <option value="cloud">cloud</option>
+                    <option value="cloud-download">cloud-download</option>
+                    <option value="cloud-upload">cloud-upload</option>
+                    <option value="code">code</option>
+                    <option value="code-fork">code-fork</option>
+                    <option value="cog-gear">cog-gear</option>
+                    <option value="css3">css3</option>
+                    <option value="cut-scissor">cut-scissor</option>
+                    <option value="dropbox">dropbox</option>
+                    <option value="facebook-square">facebook-square</option>
+                    <option value="file-document">file-document</option>
+                    <option value="files">files</option>
+                    <option value="filmstrip">filmstrip</option>
+                    <option value="flag">flag</option>
+                    <option value="folder2">folder2</option>
+                    <option value="globe-world">globe-world</option>
+                    <option value="google-plus">google-plus</option>
+                    <option value="group">group</option>
+                    <option value="heart">heart</option>
+                    <option value="instagram">instagram</option>
+                    <option value="html5">html5</option>
+                    <option value="like-filled">like-filled</option>
+                    <option value="linkedin-square">linkedin-square</option>
+                    <option value="link">link</option>
+                    <option value="log-in">log-in</option>
+                    <option value="log-out">log-out</option>
+                    <option value="male">male</option>
+                    <option value="pinterest-square">pinterest-square</option>
+                    <option value="photo">photo</option>
+                    <option value="qrcode">qrcode</option>
+                    <option value="power-off">power-off</option>
+                    <option value="random">random</option>
+                    <option value="repeat-redo">repeat-redo</option>
+                    <option value="reply-all">reply-all</option>
+                    <option value="reply-mail">reply-mail</option>
+                    <option value="retweet">retweet</option>
+                    <option value="rss">rss</option>
+                    <option value="save-disk">save-disk</option>
+                    <option value="science-laboratory">science-laboratory</option>
+                    <option value="stackoverflow">stackoverflow</option>
+                    <option value="skype">skype</option>
+                    <option value="star">star</option>
+                    <option value="star-half">star-half</option>
+                    <option value="star-half-1">star-half-1</option>
+                    <option value="star-two">star-two</option>
+                    <option value="tachometer">tachometer</option>
+                    <option value="tag-2">tag-2</option>
+                    <option value="ticket">ticket</option>
+                    <option value="talk-chat-2">talk-chat-2</option>
+                    <option value="talk-chat">talk-chat</option>
+                    <option value="tumblr-square">tumblr-square</option>
+                    <option value="twitter-square">twitter-square</option>
+                    <option value="umbrella">umbrella</option>
+                    <option value="user">user</option>
+                    <option value="video-camera">video-camera</option>
+                    <option value="volume-down">volume-down</option>
+                    <option value="volume-down-1">volume-down-1</option>
+                    <option value="volume-up">volume-up</option>
+                    <option value="window-list">window-list</option>
+                    <option value="windows">windows</option>
+                    <option value="youtube-square">youtube-square</option>
+                    <option value="linux">linux</option>
+                    <option value="android">android</option>
+                    <option value="apple">apple</option>
+                    <option value="bar-chart">bar-chart</option>
+                    <option value="bitbucket">bitbucket</option>
+                    <option value="box-inbox">box-inbox</option>
+                    <option value="bullhorn">bullhorn</option>
+                    <option value="bug">bug</option>
+                    <option value="compass">compass</option>
+                    <option value="credit-card">credit-card</option>
+                    <option value="cutlery">cutlery</option>
+                    <option value="dollar">dollar</option>
+                    <option value="euro">euro</option>
+                    <option value="bitcoin">bitcoin</option>
+                    <option value="exclamation-triangle">exclamation-triangle</option>
+                    <option value="external-link">external-link</option>
+                    <option value="eye">eye</option>
+                    <option value="eye-slash-close">eye-slash-close</option>
+                    <option value="facebook">facebook</option>
+                    <option value="file-text">file-text</option>
+                    <option value="filter">filter</option>
+                    <option value="folder-open">folder-open</option>
+                    <option value="google-plus-1">google-plus-1</option>
+                    <option value="github-square">github-square</option>
+                    <option value="github">github</option>
+                    <option value="gears-setting">gears-setting</option>
+                    <option value="gamepad">gamepad</option>
+                    <option value="harddrive">harddrive</option>
+                    <option value="home">home</option>
+                    <option value="leaf">leaf</option>
+                    <option value="location-arrow">location-arrow</option>
+                    <option value="magic-wand">magic-wand</option>
+                    <option value="mail-forward">mail-forward</option>
+                    <option value="mic">mic</option>
+                    <option value="mic-no">mic-no</option>
+                    <option value="moon-sleep">moon-sleep</option>
+                    <option value="minus-circle">minus-circle</option>
+                    <option value="paper-clip">paper-clip</option>
+                    <option value="pin-map">pin-map</option>
+                    <option value="pin-map-2">pin-map-2</option>
+                    <option value="pinterest">pinterest</option>
+                    <option value="plane-airport">plane-airport</option>
+                    <option value="pound">pound</option>
+                    <option value="present-gift">present-gift</option>
+                    <option value="ptint">ptint</option>
+                    <option value="refresh">refresh</option>
+                    <option value="road">road</option>
+                    <option value="rss-two">rss-two</option>
+                    <option value="rupee">rupee</option>
+                    <option value="shield">shield</option>
+                    <option value="sitemap">sitemap</option>
+                    <option value="smile">smile</option>
+                    <option value="smiley-frown">smiley-frown</option>
+                    <option value="smiley-meh">smiley-meh</option>
+                    <option value="tablet">tablet</option>
+                    <option value="tag">tag</option>
+                    <option value="tags">tags</option>
+                    <option value="tasks">tasks</option>
+                    <option value="thumbnails">thumbnails</option>
+                    <option value="thumbnails-large">thumbnails-large</option>
+                    <option value="undo">undo</option>
+                    <option value="tumblr">tumblr</option>
+                    <option value="twitter">twitter</option>
+                    <option value="tint">tint</option>
+                    <option value="won">won</option>
+                    <option value="wrench">wrench</option>
+                    <option value="yen">yen</option>
+                    <option value="youtube">youtube</option>
+                    <option value="youtube-play">youtube-play</option>
+                    <option value="unlock">unlock</option>
+                    <option value="unlock-2">unlock-2</option>
+                    <option value="amazon">amazon</option>
+                    <option value="app-store">app-store</option>
+                    <option value="basecamp">basecamp</option>
+                    <option value="blogger">blogger</option>
+                    <option value="evernote">evernote</option>
+                    <option value="dropbox-1">dropbox-1</option>
+                    <option value="digg">digg</option>
+                    <option value="pandora">pandora</option>
+                    <option value="reddit">reddit</option>
+                    <option value="steam">steam</option>
+                    <option value="stumbleupon">stumbleupon</option>
+                    <option value="vimeo">vimeo</option>
+                    <option value="ie">ie</option>
+                    <option value="chrome">chrome</option>
+                    <option value="firefox">firefox</option>
+                    <option value="safari">safari</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label"><label for="notific8Theme">Theme</label></td>
+            <td>
+                <select name="notific8Theme" id="notific8Theme">
+                    <option value="teal" selected="selected">teal (default)</option>
+                    <option value="amethyst">amethyst</option>
+                    <option value="ruby">ruby</option>
+                    <option value="tangerine">tangerine</option>
+                    <option value="lemon">lemon</option>
+                    <option value="lime">lime</option>
+                    <option value="ebony">ebony</option>
+                    <option value="smoke">smoke</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">Position</td>
+            <td>
+                <select name="notific8horizontal" id="notific8horizontal">
+                    <option value="top">top (default)</option>
+                    <option value="bottom">bottom</option>
+                </select> <select name="notific8vertical" id="notific8vertical">
+                    <option value="right">right (default)</option>
+                    <option value="left">left</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label"></td>
+            <td>
+                <button type="button" name="notific8Test" id="notific8Test">Test notific8</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- script includes -->
+<script src="../plugins/jquery-1.11.0.min.js"></script>
+<script src="../plugins/jquery-notific8/jquery.notific8.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('#notific8Test').on('click', function (event) {
+        var params = {
+                life: $('#notific8Life').find('option:selected').val(),
+                theme: $('#notific8Theme').val(),
+                sticky: $('#notific8Sticky').is(':checked'),
+                horizontalEdge: $('#notific8horizontal').find('option:selected').val(),
+                verticalEdge: $('#notific8vertical').find('option:selected').val()
+            },
+            text = $('#notific8Text').val(),
+            $heading = $('#notific8Heading');
+            $icon = $('#notific8Icon');
+
+        if ($.trim($heading.val()) !== '') {
+            params.heading = $heading.val();
+        }
+        if ($.trim($icon.val()) !== '') {
+            params.icon = $icon.val();
+        }
+
+        // show notification
+        $.notific8(text, params);
+    });
+});
+</script>
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>

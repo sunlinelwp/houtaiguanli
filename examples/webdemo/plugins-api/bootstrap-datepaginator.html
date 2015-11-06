@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../plugins/bootstrap-datepaginator/bootstrap-datepaginator.min.css" rel="stylesheet" media="screen">
+		
+		<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../plugins/moment.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap-datepaginator/bootstrap-datepaginator.min.js" type="text/javascript"></script>
+		
+		<title>bootstrap-datepaginator</title>
+		<style>
+			body { padding-top: 50px; }
+		</style>
+	</head>
+	<body>
+		 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<div class="bs-docs-header">
+			<div class="container">
+				<h1>bootstrap-datepaginator 是一个小型的 JavaScript 库用来日期分页控件，基于 Twitter 的 Bootstrap 开发。</h1>
+			</div>
+		</div>
+		<div class="container bs-docs-container">
+			<div class="row">
+				<div class="col-md-9" role="main">
+					<p><i>Example, minimum usage:</i></p>
+							<pre class="prettyprint">
+&lt;!-- Required Stylesheets --&gt;
+&lt;link href="./css/bootstrap.min.css" rel="stylesheet" media="screen"&gt;
+&lt;link href="./css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen"&gt;
+
+&lt;!-- Markup - paginator will be injected as html into this div --&gt;
+&lt;div id="example"&gt;&lt;/div&gt;
+
+&lt;!-- Required Javascript --&gt;
+&lt;script type="text/javascript" src="./js/jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./js/moment.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./js/bootstrap-datetimepicker.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./js/bootstrap-datepaginator.js"&gt;&lt;/script&gt;
+
+&lt;!-- Basic initialization using defaults --&gt;
+&lt;script type='text/javascript'&gt;
+  $('#example').datepaginator();
+&lt;/script&gt;</pre>
+						<p>The constructor also takes an options object which allows for extensive customization of lookup and feel, as well as behaviour.</p>
+						<p><i>Example, with initialization options:</i></p>
+						<pre class="prettyprint">
+&lt;!-- Initialization with options --&gt;
+&lt;script type='text/javascript'&gt;
+  var options = {
+    selectedDate: '2013-01-01',
+    selectedDateFormat: 'YYYY-MM-DD'
+  }
+  $('#example').datepaginator(options);
+&lt;/script&gt;</pre>
+					<div id="example"></div>
+					<!-- Initialization with options -->
+					<script type='text/javascript'>
+					 
+					  $('#example').datepaginator();
+					</script>
+					
+					<h2><a href="#options" class="anchor">Options</a></h2>
+							<hr/>
+
+							<h3>endDate</h3>
+							<p>Sets the latest date that may be selected, all later dates will be disabled.</p>
+							<code>Expects: String, or Moment.  Default: End of time</code>
+
+							<h3>endDateFormat</h3>
+							<p>Sets the date format used when parsing string representations of endDate.</p>
+							<code>Expects: String.  Default: 'YYYY-MM-DD'</code>
+							
+							<h3>highlightSelectedDate</h3>
+							<p>Whether or not to distinguish visually the selected date.</p>
+							<code>Expects: Boolean.  Default: true</code>
+							
+							<h3>highlightToday</h3>
+							<p>Whether or not to distinguish visually today's date.</p>
+							<code>Expects: Boolean.  Default: true</code>
+
+							<h3>hint</h3>
+							<p>Format used for on hover hint.  String tokens are parsed against a given date.</p>
+							<code>Expects: String.  Default: 'dddd, Do MMMM YYYY'</code>
+
+							<h3>injectStyle</h3>
+							<p>By default the required styles are injected into the DOM automatically and no external css reference is required.  In the event that you want to override and customize the default style, set injectStyle to false and ensure that bootstrap-datepaginator.css (or your modified .css) is referenced.</p>
+							<code>Expects: Boolean.  Default: true</code>
+							<p>Please note - where multiple paginators are applied to the same page, all must be set to injectStyle false otherwise the DOM injected style takes precedence.</p>
+
+							<h3>itemWidth</h3>
+							<p>Minimum width specified in pixels for an item.</p>
+							<code>Expects: Integer.  Default: 35</code>
+
+							<h3>navItemWidth</h3>
+							<p>Minimum width specified in pixels for the nav items e.g. left and right arrows</p>
+							<code>Expects: Integer.  Default: 20</code>
+							
+							<h3>offDays</h3>
+							<p>Sets days of the week to be considered off days, visually greyed out.</p>
+							<code>Expects: String (csv).  Default: 'Sat,Sun'</code>
+							
+							<h3>offDaysFormat</h3>
+							<p>Sets the format used when evaluating offDays.  For example, 'ddd' formats as a 3 letter abbreviation representing the day of the week, therefore Saturday becomes 'Sat'.</p>
+							<code>Expects: String.  Default: 'ddd'</code>
+							<p>Please review <a href="http://momentjs.com/docs/#/displaying/format/">Moment.js formatting guide</a> for a full list of supported options.</p>
+							
+							<h3>selectedDate</h3>
+							<p>Sets the initial selected date, provided as either a Moment.js moment object or String.</p>
+							<code>Expects: String, or Moment.  Default: moment(), equivalent to new Date()</code>
+							<p>*If you're planning on providing a String, please ensure you review the dateFormat option.</p>
+
+							<h3>selectedDateFormat</h3>
+							<p>Sets the date format used throughout the components lifecycle when parsing the selected date object.</p>
+							<code>Expects: String.  Default: 'YYYY-MM-DD'</code>
+
+							<h3>selectedItemWidth</h3>
+							<p>Minimum width specified in pixels for the selected item.</p>
+							<code>Expects: Integer.  Default: 120</code>
+							
+							<h3>showCalendar</h3>
+							<p>Whether or not to display the clickable calendar icon visible on selected date.  By setting to false you are effectively removing the calendar date select functionality from the user.</p>
+							<code>Expects: Boolean.  Default: true</code>
+							
+							<h3>showOffDays</h3>
+							<p>Whether or not to display off days.</p>
+							<code>Expects: Boolean.  Default: true</code>
+							
+							<h3>showStartOfWeek</h3>
+							<p>Whether or not to display the start of week divider.</p>
+							<code>Expects: Boolean.  Default: true</code>
+
+							<h3>size</h3>
+							<p>Sets the height of the paginator component.  Accepts small, normal, large.</p>
+							<code>Expects: String.  Default: normal</code>
+
+							<h3>startDate</h3>
+							<p>Sets the earliest date that may be selected, all earlier dates will be disabled.</p>
+							<code>Expects: String, or Moment.  Default: Beginning of time</code>
+
+							<h3>startDateFormat</h3>
+							<p>Sets the date format used when parsing string representations of startDate.</p>
+							<code>Expects: String.  Default: 'YYYY-MM-DD'</code>
+							
+							<h3>startOfWeek</h3>
+							<p>Sets for display purposes the start of the week, visually illustrated by a thicker dividing line betweeen dates.</p>
+							<code>Expects: String.  Default: 'Mon'</code>
+							
+							<h3>startOfWeekFormat</h3>
+							<p>Sets the format used when evaluating startOfWeek.  For example, 'ddd' formats as a 3 letter abbreviation representing the day of the week, therefore Saturday becomes 'Sat'.</p>
+							<code>Expects: String.  Default: 'ddd'</code>
+							<p>Please review <a href="http://momentjs.com/docs/#/displaying/format/">Moment.js formatting guide</a> for a full list of supported options.</p>
+							
+							<h3>squareEdges</h3>
+							<p>Toggles the border radius between Bootstrap's default rounded edges (border-radius: 4px) and overridden square edges (border-radius: 0px).</p>
+							<code>Expects: Boolean.  Default: false</code>
+
+							<h3>text</h3>
+							<p>Format used for item text i.e. date format.  String tokens are parsed against a given date.</p>
+							<code>Expects: String.  Defaults: 'ddd&lt;br/&gt;Do'</code>
+
+							<h3>textSelected</h3>
+							<p>Format used for the selected items text.  String tokens are parsed against a given date.</p>
+							<code>Expects: String.  Defaults: 'dddd&lt;br/&gt;Do, MMMM YYYY'</code>
+
+							<h3>width</h3>
+							<p>By default the paginator will automatically fill the entire width of it's container.  However, if you require more control over the component you can specify any given width in pixels e.g. <code>width: 400</code>.  </p>
+							<code>Expects: Integer.  Default: 0 (auto)</code>
+					<h2><a href="#methods" class="anchor">Methods</a></h2>
+							<hr/>
+							<h3>setSelectedDate</h3>
+							<!-- <code>Arguments: String date [, String format]</code> -->
+							<p>Sets the selected date, triggering a refresh to reflect the new state.</p>
+							<pre class="prettyprint">
+$('#datepaginator').datepaginator('setSelectedDate', ['2013-10-05', 'YYYY-MM-DD']);</pre>
+							<p>If called without passing a format argument, selectedDateFormat will be used.</p>
+							<pre class="prettyprint">
+$('#datepaginator').datepaginator('setSelectedDate', '2013-10-05');</pre>
+							<h3>remove</h3>
+							<!-- <code>Arguments: None</code> -->
+							<p>Removes the date paginator component.  Removing attached events, internal attached objects, and added HTML elements.</p>
+							<pre class="prettyprint">
+$('#datepaginator').datepaginator('remove');</pre>
+						
+
+
+						
+							<h2><a href="#events" class="anchor">Events</a></h2>
+							<hr/>
+							<h3>selectedDateChanged</h3>
+							<p>Fired when the selected date changes.  You can bind to it using either the callback handler or the standard jQuery .on method</p>
+							<p><i>Example: callback handler</i></p>
+							<pre class="prettyprint ">
+var options = {
+	onSelectedDateChanged: function(event, date) {
+		// Your logic goes here
+	}
+}
+$('#event-example').datepaginator(options);</pre>
+							<p><i>Example: jQuery .on method</i></p>
+							<pre class="prettyprint ">
+$('#event-example').on('selectedDateChanged', function(event, date) {
+	// Your logic goes here
+});
+							</pre>
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script src="../plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<title>bootstrap-sessiontimeout</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 40px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<article class="markdown-body entry-content">
+		<h1>sessiontimeout</h1>
+		<p>After a set amount of time, a dialog is shown to the user with
+			the option to either log out now, or stay connected. If log out now
+			is selected, the page is redirected to a logout URL. If stay
+			connected is selected, a keep-alive URL is requested through AJAX. If
+			no options is selected after another set amount of time, the page is
+			automatically redirected to a timeout URL.</p>
+	<h2>
+	<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+	
+	<p><strong>message</strong><br>
+	Text shown to user in dialog after warning period.
+	Default: 'Your session is about to expire.'</p>
+	
+	<p><strong>keepAliveUrl</strong><br>
+	URL to call through AJAX to keep session alive. This resource should do something innocuous that would keep the session alive, which will depend on your server-side platform.<br>
+	Default: '/keep-alive'</p>
+	
+	<p><strong>redirUrl</strong><br>
+	URL to take browser to if no action is take after warning period.<br>
+	Default: '/timed-out'</p>
+	
+	<p><strong>logoutUrl</strong><br>
+	URL to take browser to if user clicks "Log Out Now".<br>
+	Default: '/log-out'</p>
+	
+	<p><strong>warnAfter</strong><br>
+	Time in milliseconds after page is opened until warning dialog is opened.<br>
+	Default: 900000 (15 minutes)</p>
+	
+	<p><strong>redirAfter</strong><br>
+	Time in milliseconds after page is opened until browser is redirected to redirUrl.<br>
+	Default: 1200000 (20 minutes)</p>		
+	</article>
+</body>
+</html>	

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>bootstrap 排版</title>
+		
+		<link href="../../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		
+		<script src="../../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="../../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<style>
+			body { padding-top: 50px; }
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<div class="bs-docs-header">
+			<div class="container">
+				<h1>Bootstrap 排版</h1>
+				<p>Bootstrap 使用 Helvetica Neue、 Helvetica、 Arial 和 sans-serif 作为其默认的字体栈。使用 Bootstrap 的排版特性，您可以创建标题、段落、列表及其他内联元素。</p>
+			</div>
+		</div>
+		<div class="container bs-docs-container">
+			<div class="row">
+				<div class="col-md-9" role="main">
+					<h2>标题</h2>
+					<p>Bootstrap 中定义了所有的 HTML 标题（h1 到 h6）的样式。请看下面的实例：</p>
+					 <pre class="prettyprint tryit">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;Bootstrap 实例 - 标题&lt;/title&gt;
+   &lt;link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"&gt;
+   &lt;script src="/scripts/jquery.min.js"&gt;&lt;/script&gt;
+   &lt;script src="/bootstrap/js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;我是标题1 h1&lt;/h1&gt;
+&lt;h2&gt;我是标题2 h2&lt;/h2&gt;
+&lt;h3&gt;我是标题3 h3&lt;/h3&gt;
+&lt;h4&gt;我是标题4 h4&lt;/h4&gt;
+&lt;h5&gt;我是标题5 h5&lt;/h5&gt;
+&lt;h6&gt;我是标题6 h6&lt;/h6&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+					<p>结果如下所示：</p>
+					<div style="border:1px solid gray;padding-left:20px;">
+						<h1>我是标题1 h1</h1>
+						<h2>我是标题2 h2</h2>
+						<h3>我是标题3 h3</h3>
+						<h4>我是标题4 h4</h4>
+						<h5>我是标题5 h5</h5>
+						<h6>我是标题6 h6</h6>
+					</div>
+					<h4>内联子标题</h4>
+					<p>如果需要向任何标题添加一个内联子标题，只需要简单地在元素两旁添加 &lt;small>，或者添加 .small class，这样子您就能得到一个字号更小的颜色更浅的文本，如下面实例所示：</p>
+					<pre class="prettyprint tryit">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;Bootstrap 实例 - 内联子标题&lt;/title&gt;
+   &lt;link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"&gt;
+   &lt;script src="/scripts/jquery.min.js"&gt;&lt;/script&gt;
+   &lt;script src="/bootstrap/js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;我是标题1 h1. &lt;small&gt;我是副标题1 h1&lt;/small&gt;&lt;/h1&gt; 
+&lt;h2&gt;我是标题2 h2. &lt;small&gt;我是副标题2 h2&lt;/small&gt;&lt;/h2&gt;
+&lt;h3&gt;我是标题3 h3. &lt;small&gt;我是副标题3 h3&lt;/small&gt;&lt;/h3&gt;
+&lt;h4&gt;我是标题4 h4. &lt;small&gt;我是副标题4 h4&lt;/small&gt;&lt;/h4&gt;
+&lt;h5&gt;我是标题5 h5. &lt;small&gt;我是副标题5 h5&lt;/small&gt;&lt;/h5&gt;
+&lt;h6&gt;我是标题6 h6. &lt;small&gt;我是副标题6 h6&lt;/small&gt;&lt;/h6&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>				<p>结果如下所示：</p>
+					<div style="border:1px solid gray;padding-left:20px;">
+						<h1>我是标题1 h1. <small>我是副标题1 h1</small></h1> 
+						<h2>我是标题2 h2. <small>我是副标题2 h2</small></h2>
+						<h3>我是标题3 h3. <small>我是副标题3 h3</small></h3>
+						<h4>我是标题4 h4. <small>我是副标题4 h4</small></h4>
+						<h5>我是标题5 h5. <small>我是副标题5 h5</small></h5>
+						<h6>我是标题6 h6. <small>我是副标题6 h6</small></h6>
+					</div>
+					<h2>引导主体副本</h2>
+					<p>为了给段落添加强调文本，则可以添加 class="lead"，这将得到更大更粗、行高更高的文本，如下面实例所示：</p>
+					<pre class="prettyprint tryit">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;Bootstrap 实例 - 引导主体副本&lt;/title&gt;
+   &lt;link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"&gt;
+   &lt;script src="/scripts/jquery.min.js"&gt;&lt;/script&gt;
+   &lt;script src="/bootstrap/js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;hr&gt;
+&lt;h2&gt;引导主体副本&lt;/h2&gt;
+&lt;p class="lead"&gt;这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>			
+					<p>结果如下所示：</p>
+					<div style="border:1px solid gray;padding-left:20px;">
+						<h2>引导主体副本</h2>
+						<p class="lead">
+							这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。
+							这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。
+							这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。
+						</p>
+					</div>
+					<h3>强调</h3>
+					<p>HTML 的默认强调标签 <small>（设置文本为父文本大小的 85%）、<strong>（设置文本为更粗的文本）、<em>（设置文本为斜体）。</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

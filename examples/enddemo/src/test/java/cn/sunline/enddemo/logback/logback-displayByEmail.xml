@@ -1,0 +1,60 @@
+<configuration>
+  <!-- 指定属性文件的位置 -->
+  <property file="src/test/java/cn/sunline/enddemo/logback/gmailSSL.properties" />   
+  
+  <!-- 目的指定向email的appender -->
+  <!-- 
+                        以邮件形式输出日志，依赖于SMTPAppender ，SMTPAppender在固定大小的缓冲里积累记录时间，
+                        当用户指定的事件发生后，就通过email发出这些事件。
+                        默认情况下，email发送是由级别为 ERROR 或更高级别的记录事件触发的。
+                        
+                       详情请参考 SMTPAppender 的属性介绍 
+   -->
+  <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+    <SMTPHost>${SMTPHOST}</SMTPHost><!-- 邮件服务器地址 、主机名-->
+    <SMTPPort>${SMTPPORT}</SMTPPort><!--SMTPPORT端口-->
+    <SSL>true</SSL><!-- 如果设为true，则appender将打开与服务器之间的SSL连接。 默认为false -->
+    <Username>${EMAIL_USERNAME}</Username><!-- 用户名 -->
+    <Password>${EMAIL_PASSWORD}</Password><!-- 密码 -->
+
+    <To>${EMAIL-DESTINATION}</To><!-- 目标接收人 -->
+    <To>${ANOTHER_EMAIL_DESTINATION}</To> <!-- additional destinations are possible -->
+    <From>${EMAIL_USERNAME}</From><!-- 发件人 -->
+    <Subject>TESTING: %logger{20} - %m</Subject><!-- 主题 -->
+    <encoder><!-- 一般采用这种方式格式化输出 -->
+    	<layout class="ch.qos.logback.classic.html.HTMLLayout">
+		<!-- 采用什么渲染方式，这采取的是HTML方式 -->
+    		<Pattern>%date %-5level %logger - %message%n</Pattern>
+    	</layout>
+    </encoder>
+    <!-- 
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>%date %-5level %logger - %message%n</Pattern>
+    </layout>
+     -->
+  </appender>
+  
+  <!-- 输出到控制台，以便将日志也打印到控制台-->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+  	<encoder>
+      <pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+	  </pattern>
+    </encoder>
+  </appender>
+
+  <!-- 输出到文件，将日志记录到本地文件-->
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>d:/log/mailtest.log</file>
+    <encoder>
+      <!-- %msg表示日志信息，%n表示换行 -->
+      <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="debug">
+    <appender-ref ref="EMAIL" />
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE"></appender-ref>
+  </root>  
+</configuration>

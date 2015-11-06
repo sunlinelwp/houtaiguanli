@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" media="screen">
+		<link href="../plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" href="../plugins/simple-line-icons/simple-line-icons.min.css">
+		
+		<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+		
+		<title>bootstrap-datepicker</title>
+		<style>
+			body { padding-top: 50px; }
+		</style>
+	</head>
+	<body>
+		 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<div class="bs-docs-header">
+			<div class="container">
+				<h1>bootstrap-datepicker 是一个小型的 JavaScript 库用来日期选择控件，基于 Twitter 的 Bootstrap 开发。</h1>
+			</div>
+		</div>
+		<div class="container bs-docs-container">
+			<div class="row">
+				<div class="col-md-9" role="main">
+					<h2>Basic Exemple</h2>
+					<input type="text" value="2014-11-12" id="datepicker">
+					<script>
+						$('#datepicker').datepicker({
+							format: 'yyyy-mm-dd'
+						});
+					</script>
+					<br><br>
+					<pre>&lt;input type="text" value="02-16-2012" id="datepicker"&gt;
+					
+&lt;script&gt;
+	$('#datepicker').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+&lt;/script&gt;</pre>
+					<p>Attached to a field with the format specified via data tag:</p>
+					<pre>&lt;input type="text" value="02-16-2012" data-date=format="yyyy-mm-dd" id="datepicker"&gt;
+					
+&lt;script&gt;
+	$('#datepicker').datepicker();
+&lt;/script&gt;</pre>
+					<p>As component:</p>
+					<div class="input-append date" id="datepicker1" data-date="2014-11-12" data-date-format="yyyy-mm-dd">
+						<input size="16" type="text" value="2014-11-12" readonly>
+						<span class="add-on"><i class="icon-calendar"></i></span>
+					</div>
+					<script>
+						$('#datepicker1').datepicker();
+					</script>
+					<br>
+					<pre>&lt;div class="input-append date" id="datepicker1" data-date="2014-11-12" data-date-format="yyyy-mm-dd"&gt;
+	&lt;input size="16" type="text" value="2014-11-12" readonly&gt;
+	&lt;span class="add-on"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&ltscript&gt;
+	$('#datepicker1').datepicker();
+&lt/script&gt;</pre>
+					<p>As Inline</p>
+					<div id="datepicker2"></div>
+					<script>
+						$('#datepicker2').datepicker();
+					</script>
+					<br>
+					<pre>&lt;div id="datepicker2">&lt;/div>
+					
+&lt;script>
+	$('#datepicker2').datepicker();
+&lt;/script></pre>
+					<h4>As Range</h4>
+					<div class="input-daterange input-group" id="datepicker">
+						<input type="text" class="input-sm form-control" name="start" />
+						<span class="input-group-addon">to</span>
+						<input type="text" class="input-sm form-control" name="end" />
+					</div>
+					<script>
+						$('.input-daterange').datepicker({});
+					</script>
+					<br>
+					<pre>&lt;div class="input-daterange input-group" id="datepicker">
+	&lt;input type="text" class="input-sm form-control" name="start" />
+	&lt;span class="input-group-addon">to&lt;/span>
+	&lt;input type="text" class="input-sm form-control" name="end" />
+&lt;/div>
+&lt;script>
+	$('.input-daterange').datepicker({});
+&lt;/script></pre>
+					<hr>
+					<h2>
+<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>All options that take a "Date" can handle a <code>Date</code> object; a String formatted according to the given <code>format</code>; or a timedelta relative to today, eg '-1d', '+6m +1y', etc, where valid units are 'd' (day), 'w' (week), 'm' (month), and 'y' (year).</p>
+
+<h3>
+<a id="user-content-format" class="anchor" href="#format" aria-hidden="true"><span class="octicon octicon-link"></span></a>format</h3>
+
+<p>String.  Default: 'mm/dd/yyyy'</p>
+
+<p>The date format, combination of d, dd, D, DD, m, mm, M, MM, yy, yyyy.</p>
+
+<ul class="task-list">
+<li>d, dd: Numeric date, no leading zero and leading zero, respectively.  Eg, 5, 05.</li>
+<li>D, DD: Abbreviated and full weekday names, respectively.  Eg, Mon, Monday.</li>
+<li>m, mm: Numeric month, no leading zero and leading zero, respectively.  Eg, 7, 07.</li>
+<li>M, MM: Abbreviated and full month names, respectively.  Eg, Jan, January</li>
+<li>yy, yyyy: 2- and 4-digit years, respectively.  Eg, 12, 2012.</li>
+</ul>
+
+<h3>
+<a id="user-content-weekstart" class="anchor" href="#weekstart" aria-hidden="true"><span class="octicon octicon-link"></span></a>weekStart</h3>
+
+<p>Integer.  Default: 0</p>
+
+<p>Day of the week start. 0 (Sunday) to 6 (Saturday)</p>
+
+<h3>
+<a id="user-content-startdate" class="anchor" href="#startdate" aria-hidden="true"><span class="octicon octicon-link"></span></a>startDate</h3>
+
+<p>Date.  Default: Beginning of time</p>
+
+<p>The earliest date that may be selected; all earlier dates will be disabled.</p>
+
+<h3>
+<a id="user-content-enddate" class="anchor" href="#enddate" aria-hidden="true"><span class="octicon octicon-link"></span></a>endDate</h3>
+
+<p>Date.  Default: End of time</p>
+
+<p>The latest date that may be selected; all later dates will be disabled.</p>
+
+<h3>
+<a id="user-content-daysofweekdisabled" class="anchor" href="#daysofweekdisabled" aria-hidden="true"><span class="octicon octicon-link"></span></a>daysOfWeekDisabled</h3>
+
+<p>String, Array.  Default: '', []</p>
+
+<p>Days of the week that should be disabled. Values are 0 (Sunday) to 6 (Saturday). Multiple values should be comma-separated. Example: disable weekends: <code>'0,6'</code> or <code>[0,6]</code>.</p>
+
+<h3>
+<a id="user-content-autoclose" class="anchor" href="#autoclose" aria-hidden="true"><span class="octicon octicon-link"></span></a>autoclose</h3>
+
+<p>Boolean.  Default: false</p>
+
+<p>Whether or not to close the datepicker immediately when a date is selected.</p>
+
+<h3>
+<a id="user-content-startview" class="anchor" href="#startview" aria-hidden="true"><span class="octicon octicon-link"></span></a>startView</h3>
+
+<p>Number, String.  Default: 0, 'month'</p>
+
+<p>The view that the datepicker should show when it is opened.  Accepts values of 0 or 'month' for month view (the default), 1 or 'year' for the 12-month overview, and 2 or 'decade' for the 10-year overview.  Useful for date-of-birth datepickers.</p>
+
+<h3>
+<a id="user-content-todaybtn" class="anchor" href="#todaybtn" aria-hidden="true"><span class="octicon octicon-link"></span></a>todayBtn</h3>
+
+<p>Boolean, "linked".  Default: false</p>
+
+<p>If true or "linked", displays a "Today" button at the bottom of the datepicker to select the current date.  If true, the "Today" button will only move the current date into view; if "linked", the current date will also be selected.</p>
+
+<h3>
+<a id="user-content-todayhighlight" class="anchor" href="#todayhighlight" aria-hidden="true"><span class="octicon octicon-link"></span></a>todayHighlight</h3>
+
+<p>Boolean.  Default: false</p>
+
+<p>If true, highlights the current date.</p>
+
+<h3>
+<a id="user-content-keyboardnavigation" class="anchor" href="#keyboardnavigation" aria-hidden="true"><span class="octicon octicon-link"></span></a>keyboardNavigation</h3>
+
+<p>Boolean.  Default: true</p>
+
+<p>Whether or not to allow date navigation by arrow keys.</p>
+
+<h3>
+<a id="user-content-language" class="anchor" href="#language" aria-hidden="true"><span class="octicon octicon-link"></span></a>language</h3>
+
+<p>String.  Default: 'en'</p>
+
+<p>The two-letter code of the language to use for month and day names.  These will also be used as the input's value (and subsequently sent to the server in the case of form submissions).  If an unknown language code is given, English will be used.  See I18N below.</p>
+
+<h3>
+<a id="user-content-forceparse" class="anchor" href="#forceparse" aria-hidden="true"><span class="octicon octicon-link"></span></a>forceParse</h3>
+
+<p>Boolean.  Default: true</p>
+
+<p>Whether or not to force parsing of the input value when the picker is closed.  That is, when an invalid date is left in the input field by the user, the picker will forcibly parse that value, and set the input's value to the new, valid date, conforming to the given <code>format</code>.</p>
+
+<h2>
+<a id="user-content-markup" class="anchor" href="#markup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markup</h2>
+
+<p>Format a component.</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>input-append date<span class="pl-pds">"</span></span> <span class="pl-eoai">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>datepicker<span class="pl-pds">"</span></span> <span class="pl-eoa">data-date</span>=<span class="pl-s1"><span class="pl-pds">"</span>12-02-2012<span class="pl-pds">"</span></span> <span class="pl-eoa">data-date-format</span>=<span class="pl-s1"><span class="pl-pds">"</span>dd-mm-yyyy<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">input</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>span2<span class="pl-pds">"</span></span> <span class="pl-eoa">size</span>=<span class="pl-s1"><span class="pl-pds">"</span>16<span class="pl-pds">"</span></span> <span class="pl-eoa">type</span>=<span class="pl-s1"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-eoa">value</span>=<span class="pl-s1"><span class="pl-pds">"</span>12-02-2012<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">span</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>add-on<span class="pl-pds">"</span></span>&gt;&lt;<span class="pl-ent">i</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>icon-calendar<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">i</span>&gt;&lt;/<span class="pl-ent">span</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h2>
+<a id="user-content-methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+
+<h3>
+<a id="user-content-datepickeroptions" class="anchor" href="#datepickeroptions" aria-hidden="true"><span class="octicon octicon-link"></span></a>.datepicker(options)</h3>
+
+<p>Initializes an datepicker.</p>
+
+<h3>
+<a id="user-content-remove" class="anchor" href="#remove" aria-hidden="true"><span class="octicon octicon-link"></span></a>remove</h3>
+
+<p>Arguments: None</p>
+
+<p>Remove the datepicker.  Removes attached events, internal attached objects, and
+added HTML elements.</p>
+
+<pre><code>$('#datepicker').datepicker('remove');
+</code></pre>
+
+<h3>
+<a id="user-content-show" class="anchor" href="#show" aria-hidden="true"><span class="octicon octicon-link"></span></a>show</h3>
+
+<p>Arguments: None</p>
+
+<p>Show the datepicker.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>show<span class="pl-pds">'</span></span>);</pre></div>
+
+<h3>
+<a id="user-content-hide" class="anchor" href="#hide" aria-hidden="true"><span class="octicon octicon-link"></span></a>hide</h3>
+
+<p>Arguments: None</p>
+
+<p>Hide the datepicker.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>hide<span class="pl-pds">'</span></span>);</pre></div>
+
+<h3>
+<a id="user-content-update" class="anchor" href="#update" aria-hidden="true"><span class="octicon octicon-link"></span></a>update</h3>
+
+<p>Arguments: None</p>
+
+<p>Update the datepicker with the current input value.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>update<span class="pl-pds">'</span></span>);</pre></div>
+
+<h3>
+<a id="user-content-setstartdate" class="anchor" href="#setstartdate" aria-hidden="true"><span class="octicon octicon-link"></span></a>setStartDate</h3>
+
+<p>Arguments:</p>
+
+<ul class="task-list">
+<li>startDate (String)</li>
+</ul>
+
+<p>Sets a new lower date limit on the datepicker.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setStartDate<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2012-01-01<span class="pl-pds">'</span></span>);</pre></div>
+
+<p>Omit startDate (or provide an otherwise falsey value) to unset the limit.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setStartDate<span class="pl-pds">'</span></span>);
+$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setStartDate<span class="pl-pds">'</span></span>, <span class="pl-c1">null</span>);</pre></div>
+
+<h3>
+<a id="user-content-setenddate" class="anchor" href="#setenddate" aria-hidden="true"><span class="octicon octicon-link"></span></a>setEndDate</h3>
+
+<p>Arguments:</p>
+
+<ul class="task-list">
+<li>endDate (String)</li>
+</ul>
+
+<p>Sets a new upper date limit on the datepicker.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setEndDate<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2012-12-31<span class="pl-pds">'</span></span>);</pre></div>
+
+<p>Omit endDate (or provide an otherwise falsey value) to unset the limit.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setEndDate<span class="pl-pds">'</span></span>);
+$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setEndDate<span class="pl-pds">'</span></span>, <span class="pl-c1">null</span>);</pre></div>
+
+<h3>
+<a id="user-content-setdaysofweekdisabled" class="anchor" href="#setdaysofweekdisabled" aria-hidden="true"><span class="octicon octicon-link"></span></a>setDaysOfWeekDisabled</h3>
+
+<p>Arguments:</p>
+
+<ul class="task-list">
+<li>daysOfWeekDisabled (String|Array)</li>
+</ul>
+
+<p>Sets the days of week that should be disabled.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setDaysOfWeekDisabled<span class="pl-pds">'</span></span>, [<span class="pl-cn">0</span>,<span class="pl-cn">6</span>]);</pre></div>
+
+<p>Omit daysOfWeekDisabled (or provide an otherwise falsey value) to unset the disabled days.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setDaysOfWeekDisabled<span class="pl-pds">'</span></span>);
+$(<span class="pl-s1"><span class="pl-pds">'</span>#datepicker<span class="pl-pds">'</span></span>).datepicker(<span class="pl-s1"><span class="pl-pds">'</span>setDaysOfWeekDisabled<span class="pl-pds">'</span></span>, <span class="pl-c1">null</span>);</pre></div>
+
+<h2>
+<a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
+
+<p>Datepicker class exposes a few events for manipulating the dates.</p>
+
+<h3>
+<a id="user-content-show-1" class="anchor" href="#show-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>show</h3>
+
+<p>Fired when the date picker is displayed.</p>
+
+<h3>
+<a id="user-content-hide-1" class="anchor" href="#hide-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>hide</h3>
+
+<p>Fired when the date picker is hidden.</p>
+
+<h3>
+<a id="user-content-changedate" class="anchor" href="#changedate" aria-hidden="true"><span class="octicon octicon-link"></span></a>changeDate</h3>
+
+<p>Fired when the date is changed.</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>#date-end<span class="pl-pds">'</span></span>)
+    .datepicker()
+    .on(<span class="pl-s1"><span class="pl-pds">'</span>changeDate<span class="pl-pds">'</span></span>, <span class="pl-s">function</span>(<span class="pl-vpf">ev</span>){
+        <span class="pl-k">if</span> (ev.date.<span class="pl-sf">valueOf</span>() <span class="pl-ko">&lt;</span> date<span class="pl-ko">-</span>start<span class="pl-ko">-</span>display.<span class="pl-sf">valueOf</span>()){
+            ....
+        }
+    });</pre></div>
+
+<h3>
+<a id="user-content-changeyear" class="anchor" href="#changeyear" aria-hidden="true"><span class="octicon octicon-link"></span></a>changeYear</h3>
+
+<p>Fired when the <em>view</em> year is changed from decade view.</p>
+
+<h3>
+<a id="user-content-changemonth" class="anchor" href="#changemonth" aria-hidden="true"><span class="octicon octicon-link"></span></a>changeMonth</h3>
+
+<p>Fired when the <em>view</em> month is changed from year view.</p>
+
+<h2>
+<a id="user-content-keyboard-support" class="anchor" href="#keyboard-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Keyboard support</h2>
+
+<p>The datepicker includes some keyboard navigation:</p>
+
+<h3>
+<a id="user-content-up-down-left-right-arrow-keys" class="anchor" href="#up-down-left-right-arrow-keys" aria-hidden="true"><span class="octicon octicon-link"></span></a>up, down, left, right arrow keys</h3>
+
+<p>By themselves, left/right will move backward/forward one day, up/down will move back/forward one week.</p>
+
+<p>With the shift key, up/left will move backward one month, down/right will move forward one month.</p>
+
+<p>With the ctrl key, up/left will move backward one year, down/right will move forward oone year.</p>
+
+<p>Shift+ctrl behaves the same as ctrl -- that is, it does not change both month and year simultaneously, only the year.</p>
+
+<h3>
+<a id="user-content-escape" class="anchor" href="#escape" aria-hidden="true"><span class="octicon octicon-link"></span></a>escape</h3>
+
+<p>The escape key can be used to hide and re-show the datepicker; this is necessary if the user wants to manually edit the value.</p>
+
+<h3>
+<a id="user-content-enter" class="anchor" href="#enter" aria-hidden="true"><span class="octicon octicon-link"></span></a>enter</h3>
+
+<p>When the picker is visible, enter will simply hide it.  When the picker is not visible, enter will have normal effects -- submitting the current form, etc.</p>
+
+<h2>
+<a id="user-content-i18n" class="anchor" href="#i18n" aria-hidden="true"><span class="octicon octicon-link"></span></a>I18N</h2>
+
+<p>The plugin supports i18n for the month and weekday names and the <code>weekStart</code> option.  The default is English ('en'); other available translations are avilable in the <code>js/locales/</code> directory, simply include your desired locale after the plugin.  To add more languages, simply add a key to <code>$.fn.datepicker.dates</code>, before calling <code>.datepicker()</code>.  Example:</p>
+
+<div class="highlight highlight-javascript"><pre>$.fn.datepicker.dates[<span class="pl-s1"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>] <span class="pl-ko">=</span> {
+    days<span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>Sunday<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Monday<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Tuesday<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Wednesday<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Thursday<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Friday<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Saturday<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Sunday<span class="pl-pds">"</span></span>],
+    daysShort<span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>Sun<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Mon<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Tue<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Wed<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Thu<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Fri<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Sat<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Sun<span class="pl-pds">"</span></span>],
+    daysMin<span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>Su<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Mo<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Tu<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>We<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Th<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Fr<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Sa<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Su<span class="pl-pds">"</span></span>],
+    months<span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>January<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>February<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>March<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>April<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>May<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>June<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>July<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>August<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>September<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>October<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>November<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>December<span class="pl-pds">"</span></span>],
+    monthsShort<span class="pl-ko">:</span> [<span class="pl-s1"><span class="pl-pds">"</span>Jan<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Feb<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Mar<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Apr<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>May<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Jun<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Jul<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Aug<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Sep<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Oct<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Nov<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>Dec<span class="pl-pds">"</span></span>],
+    today<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>Today<span class="pl-pds">"</span></span>
+};</pre></div>
+
+<p>Right-to-left languages may also include <code>rtl: true</code> to make the calendar display appropriately.</p>
+
+<p>If your browser (or those of your users) is displaying characters wrong, chances are the browser is loading the javascript file with a non-unicode encoding.  Simply add <code>charset="UTF-8"</code> to your <code>script</code> tag:</p>
+					<pre>&lt;<span class="pl-ent">script</span> <span class="pl-eoa">type</span>=<span class="pl-s1"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-eoa">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>bootstrap-datepicker.XX.js<span class="pl-pds">"</span></span> <span class="pl-eoa">charset</span>=<span class="pl-s1"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre>
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>

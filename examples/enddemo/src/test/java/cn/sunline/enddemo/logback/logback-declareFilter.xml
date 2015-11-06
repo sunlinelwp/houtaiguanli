@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 展示logback的两种不同过滤器：turboFilter、filter -->
+    <!-- 
+        TurboFilter 与 Filter 的区别：
+        1.TurboFilter 会试图记录上下文环境，因此它在每次logging请求产生的时候调用，而不是一个指定的appender 使用时调用
+        2.更重要的是，TurboFilter 会在日志事件对象 event创建前调用。
+     -->
+
+	<!-- 创建日志event对象之后就会调用，所以建议不要用 -->
+	<!--  
+	<turboFilter class="cn.sunline.enddemo.logback.filter.SampleTurboFilter">
+		<key>userid=121,</key>
+	</turboFilter>
+	-->
+
+	<!-- 定义控制台输出 -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>
+				%date{yyyy-MM-dd HH:mm:ss} %level [%thread] %10logger[%file:%line] - %msg%n
+			</pattern>
+		</layout>
+		<!-- 这种过滤器是在调用具体的appender动作时执行 -->
+		<!-- 调用自定义的过滤类 -->
+		<filter class="cn.sunline.enddemo.logback.filter.SampleFilter">
+		    <!-- 过滤的条件参数 -->
+			<key>userid=121,</key>
+		</filter>
+		<!-- 使用EvaluateFilter,但必须引入 commons-compiler.jar 和 janino.jar -->
+		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+			<evaluator>
+				<expression>return message.contains("121");</expression>
+			</evaluator>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+	</appender>
+	
+	<root level="debug">
+		<appender-ref ref="CONSOLE" />
+	</root>
+</configuration>

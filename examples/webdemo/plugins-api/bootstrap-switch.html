@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- BEGIN GLOBAL CSS -->
+		<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="../plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- BEGIN CORE PLUGINS -->
+		<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+		<title>Bootstrap Switch</title>
+		<style>
+			body { padding-top: 50px; }
+		</style>
+	</head>
+	<body>
+
+			 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+
+		<div class="bs-docs-header">
+			<div class="container">
+				<h1>bootstrap-switch是Bootstrap的开关插件</h1>
+			</div>
+		</div>
+		<div class="container bs-docs-container">
+      <div class="row">
+        <div class="col-md-9" role="main">
+					<h3>
+						集成
+					</h3>
+					<p>
+						在html文档中的<code>&lt;head&gt;</code>部分，引入bootstrap-switch.css文件和bootstrap-switch.js文件。
+					</p>
+					<pre>&lt;link rel=&quot;stylesheet&quot; href=&quot;bootstrap.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;bootstrap-switch.css&quot;&gt;
+&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;bootstrap-switch.js&quot;&lt;/script&gt;</pre>
+					<hr>
+					<h3>
+						基础使用
+					</h3>
+					<p>
+						Add your checkbox:
+					</p>
+					<pre>&lt;input type="checkbox" name="my-checkbox" checked&gt;</pre>
+					<p>Initialize Bootstrap Switch on it:</p>
+					<pre>$("[name='my-checkbox']").bootstrapSwitch();</pre>
+					<hr>
+					<h3>尺寸</h3>
+					<div class="well well-transparent">
+						<input type="checkbox" checked data-size="null" />
+						<input type="checkbox" checked data-size="mini" />
+						<input type="checkbox" checked data-size="small"/>
+						<input type="checkbox" checked data-size="normal" />
+						<input type="checkbox" checked data-size="large" />
+					</div>
+					<hr>
+					<h3>颜色</h3>
+					<div class="well well-transparent">
+						<input type="checkbox" checked data-on-color="primary" data-off-color="info" />
+						<input type="checkbox" checked data-on-color="info" data-off-color="success" />
+						<input type="checkbox" checked data-on-color="success" data-off-color="warning" />
+						<input type="checkbox" checked data-on-color="warning" data-off-color="danger" />
+						<input type="checkbox" checked data-on-color="danger" data-off-color="primary" />
+					</div>
+					<hr>
+					<h3>状态</h3>
+					<div class="well well-transparent">
+						<input type="checkbox" checked />
+						<input type="checkbox"  />
+					</div>
+					<hr>
+					<h3>动画</h3>
+					<div class="well well-transparent">
+						<input type="checkbox" data-animate=true />
+						<input type="checkbox" data-animate=false />
+					</div>
+					<hr>
+					<h3>禁用</h3>
+					<div class="well well-transparent">
+						<input type="checkbox"  />
+						<input type="checkbox" checked disabled />
+					</div>
+					<hr>
+					<h3>只读</h3>
+					<div class="well well-transparent">
+						<input type="checkbox"  />
+						<input type="checkbox" readonly />
+					</div>
+					<hr>
+					<h3>文字</h3>
+					<div class="well well-transparent">
+						<input type="checkbox" data-on-text="是" data-off-text="否" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container content">
+      <div id="options-3">
+        <h2 class="page-header">Options</h2>
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Attribute</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Values</th>
+              <th>Default</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>state</td>
+              <td>checked</td>
+              <td>Boolean</td>
+              <td>The checkbox state</td>
+              <td>true, false</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>size</td>
+              <td>data-size</td>
+              <td>String</td>
+              <td>The checkbox state</td>
+              <td>null, 'mini', 'small', 'normal', 'large'</td>
+              <td>null</td>
+            </tr>
+            <tr>
+              <td>animate</td>
+              <td>data-animate</td>
+              <td>Boolean</td>
+              <td>Animate the switch</td>
+              <td>true, false</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>disabled</td>
+              <td>Boolean</td>
+              <td>Disable state</td>
+              <td>true, false</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>readonly</td>
+              <td>readonly</td>
+              <td>Boolean</td>
+              <td>Readonly state</td>
+              <td>true, false</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>indeterminate</td>
+              <td></td>
+              <td>Boolean</td>
+              <td>indeterminate state</td>
+              <td>true, false</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>onColor</td>
+              <td>data-on-color</td>
+              <td>String</td>
+              <td>Color of the left side of the switch</td>
+              <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+              <td>'primary'</td>
+            </tr>
+            <tr>
+              <td>offColor</td>
+              <td>data-off-color</td>
+              <td>String</td>
+              <td>Color of the right side of the switch</td>
+              <td>'primary', 'info', 'success', 'warning', 'danger', 'default'</td>
+              <td>'default'</td>
+            </tr>
+            <tr>
+              <td>onText</td>
+              <td>data-on-text</td>
+              <td>String</td>
+              <td>Text of the left side of the switch</td>
+              <td>String</td>
+              <td>'ON'</td>
+            </tr>
+            <tr>
+              <td>offText</td>
+              <td>data-off-text</td>
+              <td>String</td>
+              <td>Text of the right side of the switch</td>
+              <td>String</td>
+              <td>'OFF'</td>
+            </tr>
+            <tr>
+              <td>labelText</td>
+              <td>data-label-text</td>
+              <td>String</td>
+              <td>Text of the center handle of the switch</td>
+              <td>String</td>
+              <td>'&amp;nbsp;'</td>
+            </tr>
+            <tr>
+              <td>baseClass</td>
+              <td>data-base-class</td>
+              <td>String</td>
+              <td>Global class prefix</td>
+              <td>String</td>
+              <td>'bootstrap-switch'</td>
+            </tr>
+            <tr>
+              <td>wrapperClass</td>
+              <td>data-wrapper-class</td>
+              <td>String | Array</td>
+              <td>Container element class(es)</td>
+              <td>String | Array</td>
+              <td>'wrapper'</td>
+            </tr>
+            <tr>
+              <td>onInit</td>
+              <td></td>
+              <td>Function</td>
+              <td>Callback function to execute on initialization</td>
+              <td>Function</td>
+              <td>
+                <pre><code class="javascript">function(event, state) {}</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>onSwitchChange</td>
+              <td></td>
+              <td>Function</td>
+              <td>Callback function to execute on switch state change</td>
+              <td>Function</td>
+              <td>
+                <pre><code class="javascript">function(event, state) {}</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>radioAllOff</td>
+              <td>data-radio-all-off</td>
+              <td>Boolean</td>
+              <td>Allow this radio button to be unchecked by the user</td>
+              <td>true, false</td>
+              <td>false</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Global Defaults Overriding</h3>
+        <p>Follow the jQuery convention to override the default options of the library. For instance:</p>
+        <pre><code>$.fn.bootstrapSwitch.defaults.size = 'large';
+$.fn.bootstrapSwitch.defaults.onColor = 'success';</code></pre>
+      </div>
+      <div id="methods-3">
+        <h2 class="page-header">Methods</h2>
+        <p>In Bootstrap Switch, every option is also a method.</p>
+        <p>If the second parameter is omitted, the method return the current value.</p>
+        <p>You can invoke methods as follows:</p>
+        <pre><code>$('input[name="my-checkbox"]').bootstrapSwitch('state', true, true);</code></pre>
+        <h3>Additional Methods</h3>
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>toggleState</td>
+              <td>Toggle the switch state</td>
+            </tr>
+            <tr>
+              <td>toggleDisabled</td>
+              <td>Toggle the disabled state</td>
+            </tr>
+            <tr>
+              <td>toggleReadonly</td>
+              <td>Toggle the readonly state</td>
+            </tr>
+            <tr>
+              <td>destroy</td>
+              <td>Destroy the instance of Bootstrap Switch</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Special Behaviours</h3>
+        <ul>
+          <li>The method <code>state</code> can receive an optional third parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.</li>
+          <li>The method <code>toggleState</code> can receive an optional second parameter <code>skip</code>. if true, <code>switchChange</code> event is not executed. The default is false.</li>
+          <li>The method <code>wrapperClass</code> can accepts a falsy value as second parameter. If so, it resets the class to its default.</li>
+        </ul>
+      </div>
+      <div id="events-3">
+        <h2 class="page-header">Events</h2>
+        <p>
+          All the events are namespaced, therefore always append <code>.bootstrapSwitch</code> when you
+          attach your handlers.<br>
+          You can register to the emitted events as follow:
+        </p>
+        <pre><code>$('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+  console.log(this); // DOM element
+  console.log(event); // jQuery event
+  console.log(state); // true | false
+});</code></pre>
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Parameters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>init</td>
+              <td>Triggered on initialization. 'this' refers to the DOM element.</td>
+              <td>event (jQuery Event object)</td>
+            </tr>
+            <tr>
+              <td>switchChange</td>
+              <td>Triggered on switch state change. 'this' refers to the DOM element.</td>
+              <td>
+                event (jQuery Event object),
+                state (true | false)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				$("input[type='checkbox']").bootstrapSwitch();
+			});
+		</script>
+	</body>
+</html>

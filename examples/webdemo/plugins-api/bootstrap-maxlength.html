@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script src="../plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<title>bootstrap-maxlLength</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 40px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+	<article class="markdown-body entry-content">
+	<p>This plugin integrates by default with Twitter bootstrap using badges to display the maximum length of the field where the user is inserting text.
+	This plugin uses the HTML5 attribute "maxlength" to work.</p>
+	
+	<p>The indicator badge shows up on focusing on the element, and disappears when the focus is lost.</p>
+	
+	<h2>
+	<a id="user-content-configurable-options" class="anchor" href="#configurable-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configurable options</h2>
+	
+	<ul class="task-list">
+	<li>
+	<strong>alwaysShow</strong>: if true the threshold will be ignored and the remaining length indication will be always showing up while typing or on focus on the input. Default: false.</li>
+	<li>
+	<strong>threshold</strong>: this is a number indicating how many chars are left to start displaying the indications. Default: 10.</li>
+	<li>
+	<strong>warningClass</strong>: it's the class of the element with the indicator. By default is the bootstrap "label label-success" but can be changed to anything you'd like.</li>
+	<li>
+	<strong>limitReachedClass</strong>: it's the class the element gets when the limit is reached. Default is "label label-important label-danger" (to support Bootstrap 2 and 3).</li>
+	<li>
+	<strong>separator</strong>: represents the separator between the number of typed chars and total number of available chars. Default is "/".</li>
+	<li>
+	<strong>preText</strong>: is a string of text that can be outputted in front of the indicator. preText is empty by default.</li>
+	<li>
+	<strong>postText</strong>: is a string outputted after the indicator. postText is empty by default.</li>
+	<li>
+	<strong>showMaxLength</strong>: if false, will display just the number of typed characters, e.g. will not display the max length. Default: true.</li>
+	<li>
+	<strong>showCharsTyped</strong>: if false, will display just the remaining length, e.g. will display remaining lenght instead of number of typed characters. Default: true.</li>
+	<li>
+	<strong>placement</strong>: is a string, define where to output the counter. Possible values are: <strong>bottom</strong> ( <em>default option</em> ), <strong>left</strong>, <strong>top</strong>, <strong>right</strong>, <strong>bottom-right</strong>, <strong>top-right</strong>, <strong>top-left</strong>, <strong>bottom-left</strong> and <strong>centered-right</strong>.</li>
+	<li>
+	<strong>message</strong>: an alternative way to provide the message text, i.e. 'You have typed %charsTyped% chars, %charsRemaining% of %charsTotal% remaining'. %charsTyped%, %charsRemaining% and %charsTotal% will be replaced by the actual values. This overrides the options separator, preText, postText and showMaxLength.</li>
+	<li>
+	<strong>utf8</strong>: if true the input will count using utf8 bytesize/encoding.  For example: the '£' character is counted as two characters.</li>
+	<li>
+	<strong>twoCharLinebreak</strong>: count linebreak as 2 characters to match IE/Chrome textarea validation.</li>
+	<li>
+	<strong>customMaxAttribute</strong>: allows a custom maxlength attribute to allow exceeding maxlength.  'overmax' class gets added when exceeded to allow user to implement form validation.</li>
+	</ul>
+	
+	<h2>
+	<a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
+	
+	<ul class="task-list">
+	<li>
+	<strong>maxlength.reposition</strong> on an input element triggers re-placing of its indicator. Useful if textareas are resized by an external trigger.</li>
+	<li>
+	<strong>maxlength.shown</strong> is triggered when the indicator is displayed.</li>
+	<li>
+	<strong>maxlength.hidden</strong> is triggered when the indicator is removed from view.</li>
+	</ul>
+	
+	<h2>
+	<a id="user-content-examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+	
+	<p>Basic implementation:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>input[maxlength]<span class="pl-pds">'</span></span>).maxlength();</pre></div>
+	
+	<p>Change the threshold value:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>input.className<span class="pl-pds">'</span></span>).maxlength({
+	    threshold<span class="pl-ko">:</span> <span class="pl-cn">20</span>
+	});</pre></div>
+	
+	<p>An example with some of the configurable options:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>input.className<span class="pl-pds">'</span></span>).maxlength({
+	    alwaysShow<span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+	    threshold<span class="pl-ko">:</span> <span class="pl-cn">10</span>,
+	    warningClass<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>label label-info<span class="pl-pds">"</span></span>,
+	    limitReachedClass<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>label label-warning<span class="pl-pds">"</span></span>,
+	    placement<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>top<span class="pl-pds">'</span></span>,
+	    preText<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>used <span class="pl-pds">'</span></span>,
+	    separator<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span> of <span class="pl-pds">'</span></span>,
+	    postText<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span> chars.<span class="pl-pds">'</span></span>
+	});</pre></div>
+	
+	<p>The same example using the message option:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>input.className<span class="pl-pds">'</span></span>).maxlength({
+	    alwaysShow<span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+	    threshold<span class="pl-ko">:</span> <span class="pl-cn">10</span>,
+	    warningClass<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>label label-info<span class="pl-pds">"</span></span>,
+	    limitReachedClass<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">"</span>label label-warning<span class="pl-pds">"</span></span>,
+	    placement<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>top<span class="pl-pds">'</span></span>,
+	    message<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>used %charsTyped% of %charsTotal% chars.<span class="pl-pds">'</span></span>
+	});</pre></div>
+	
+	<p>An example allowing user to enter over max characters. Sample HTML element:</p>
+	
+	<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">textarea</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>form-control<span class="pl-pds">"</span></span> <span class="pl-eoai">id</span>=<span class="pl-s1"><span class="pl-pds">"</span>xyz<span class="pl-pds">"</span></span> <span class="pl-eoa">name</span>=<span class="pl-s1"><span class="pl-pds">"</span>xyz<span class="pl-pds">"</span></span> <span class="pl-eoa">maxlength</span>=<span class="pl-s1"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">textarea</span>&gt;</pre></div>
+	
+	<div class="highlight highlight-javascript"><pre><span class="pl-c"><span class="pl-pdc">//</span> Setup maxlength</span>
+	$(<span class="pl-s1"><span class="pl-pds">'</span>.form-control<span class="pl-pds">'</span></span>).maxlength({
+	    alwaysShow<span class="pl-ko">:</span> <span class="pl-c1">true</span>,
+	    validate<span class="pl-ko">:</span> <span class="pl-c1">false</span>,
+	    allowOverMax<span class="pl-ko">:</span> <span class="pl-c1">true</span>
+	});
+	
+	<span class="pl-c"><span class="pl-pdc">//</span> validate form before submit</span>
+	$(<span class="pl-s1"><span class="pl-pds">'</span>form<span class="pl-pds">'</span></span>).on(<span class="pl-s1"><span class="pl-pds">'</span>submit<span class="pl-pds">'</span></span>, <span class="pl-s">function</span> (<span class="pl-vpf">e</span>) {
+	    $(<span class="pl-s1"><span class="pl-pds">'</span>.form-control<span class="pl-pds">'</span></span>).each(
+	        <span class="pl-s">function</span> () {
+	            <span class="pl-k">if</span> ($(<span class="pl-v">this</span>).hasClass(<span class="pl-s1"><span class="pl-pds">'</span>overmax<span class="pl-pds">'</span></span>)) {
+	                <span class="pl-sf">alert</span>(<span class="pl-s1"><span class="pl-pds">'</span>prevent submit here<span class="pl-pds">'</span></span>);
+	                e.preventDefault();
+	                <span class="pl-k">return</span> <span class="pl-c1">false</span>;
+	            }
+	        }
+	    );
+	});</pre></div>
+	
+	<p>An example of triggering a <code>maxlength.reposition</code> event whenever an external autosize plugin resizes a textarea:</p>
+	
+	 <pre>$(<span class="pl-s1"><span class="pl-pds">'</span>textarea<span class="pl-pds">'</span></span>).on(<span class="pl-s1"><span class="pl-pds">'</span>autosize.resized<span class="pl-pds">'</span></span>, <span class="pl-s">function</span>() {
+	    $(<span class="pl-v">this</span>).trigger(<span class="pl-s1"><span class="pl-pds">'</span>maxlength.reposition<span class="pl-pds">'</span></span>);
+	});</pre>	
+	
+	</article>
+</body>
+</html>	

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		
+		<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../plugins/jquery.json.min.js" type="text/javascript"></script>
+		
+		<title>jQuery Nestable</title>
+		<style>
+			body { padding-top: 50px; }
+		</style>
+	</head>
+	<body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<div class="bs-docs-header">
+			<div class="container">
+				<h1>jQuery-nestable是一个jQuery插件，实现菜单树元素拖拽排序功能</h1>
+			</div>
+		</div>
+		<div class="container bs-docs-container">
+			<div class="row">
+				<div class="col-md-9" role="main">
+					<h2>
+<a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Write your nested HTML lists like so:</p>
+
+<pre><code>&lt;div class="dd"&gt;
+    &lt;ol class="dd-list"&gt;
+        &lt;li class="dd-item" data-id="1"&gt;
+            &lt;div class="dd-handle"&gt;Item 1&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class="dd-item" data-id="2"&gt;
+            &lt;div class="dd-handle"&gt;Item 2&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class="dd-item" data-id="3"&gt;
+            &lt;div class="dd-handle"&gt;Item 3&lt;/div&gt;
+            &lt;ol class="dd-list"&gt;
+                &lt;li class="dd-item" data-id="4"&gt;
+                    &lt;div class="dd-handle"&gt;Item 4&lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li class="dd-item" data-id="5"&gt;
+                    &lt;div class="dd-handle"&gt;Item 5&lt;/div&gt;
+                &lt;/li&gt;
+            &lt;/ol&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Then activate with jQuery like so:</p>
+
+<pre><code>$('.dd').nestable({ /* config options */ });
+</code></pre>
+
+<h3>
+<a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h3>
+
+<p>The <code>change</code> event is fired when items are reordered.</p>
+
+<pre><code>$('.dd').on('change', function() {
+    /* on change event */
+});
+</code></pre>
+
+<h3>
+<a id="user-content-methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h3>
+
+<p>You can get a serialised object with all <code>data-*</code> attributes for each item.</p>
+
+<pre><code>$('.dd').nestable('serialize');
+</code></pre>
+
+<p>The serialised JSON for the example above would be:</p>
+
+<pre><code>[{"id":1},{"id":2},{"id":3,"children":[{"id":4},{"id":5}]}]
+</code></pre>
+
+<h3>
+<a id="user-content-configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<p>You can change the follow options:</p>
+
+<ul class="task-list">
+<li>
+<code>maxDepth</code> number of levels an item can be nested (default <code>5</code>)</li>
+<li>
+<code>group</code> group ID to allow dragging between lists (default <code>0</code>)</li>
+</ul>
+
+<p>These advanced config options are also available:</p>
+
+<ul class="task-list">
+<li>
+<code>listNodeName</code> The HTML element to create for lists (default <code>'ol'</code>)</li>
+<li>
+<code>itemNodeName</code> The HTML element to create for list items (default <code>'li'</code>)</li>
+<li>
+<code>rootClass</code> The class of the root element <code>.nestable()</code> was used on (default <code>'dd'</code>)</li>
+<li>
+<code>listClass</code> The class of all list elements (default <code>'dd-list'</code>)</li>
+<li>
+<code>itemClass</code> The class of all list item elements (default <code>'dd-item'</code>)</li>
+<li>
+<code>dragClass</code> The class applied to the list element that is being dragged (default <code>'dd-dragel'</code>)</li>
+<li>
+<code>handleClass</code> The class of the content element inside each list item (default <code>'dd-handle'</code>)</li>
+<li>
+<code>collapsedClass</code> The class applied to lists that have been collapsed (default <code>'dd-collapsed'</code>)</li>
+<li>
+<code>placeClass</code> The class of the placeholder element (default <code>'dd-placeholder'</code>)</li>
+<li>
+<code>emptyClass</code> The class used for empty list placeholder elements (default <code>'dd-empty'</code>)</li>
+<li>
+<code>expandBtnHTML</code> The HTML text used to generate a list item expand button (default <code>'&lt;button data-action="expand"&gt;Expand&gt;&lt;/button&gt;'</code>)</li>
+<li>
+<code>collapseBtnHTML</code> The HTML text used to generate a list item collapse button (default <code>'&lt;button data-action="collapse"&gt;Collapse&lt;/button&gt;'</code>)</li>
+</ul>
+
+<p><strong>Inspect the <a href="http://dbushell.github.com/Nestable/">Nestable Demo</a> for guidance.</strong></p>
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>

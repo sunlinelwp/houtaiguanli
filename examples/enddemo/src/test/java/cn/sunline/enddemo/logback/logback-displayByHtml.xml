@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!-- 指定属性文件路径 -->
+  <property name="LOG_HOME" value="d:/log" />
+  <property name="fileName" value="displayByHtmlTest.html"></property>
+  
+  <!--  指定日志输出到文件-->
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      <!-- HTML输出依赖于 lagback-classic中的HTMLLayout -->
+      <layout class="ch.qos.logback.classic.html.HTMLLayout">
+        <!-- 默认情况下，PatternLayout 创建包含下列数据的表格：远程IP；日期；请求的URL；状态码；Content Length  -->
+        <!-- 这里可指定输出数据的表格项: 详情请搜索“logback的转换符说明”
+             relative:输出从程序启动到创建记录事件的逝去时间，单位毫秒
+             thread:输出产生日志事件的线程名
+             mdc:输出与产生记录事件的线程相关联的MDC
+             level:输出记录事件的级别（TRACE、 DEBUG、INFO、WARN、ERROR）
+             logger:输出源记录事件的logger名
+             class:输出执行记录请求的调用者的全限定类名
+             msg:输出与记录事件相关联的应用程序提供的消息
+             property{key}:输出名为“key”的上下文属性值，例如property{LOG_HOME}
+             method:输出执行日志记录请求的方法名
+        -->
+        
+        <pattern>%relative%thread%mdc%level%logger%method%msg</pattern>
+      </layout>
+    </encoder>
+    <!-- 指定文件的存放位置以及文件名 -->
+    <file>${LOG_HOME}/${fileName}</file>
+  </appender>
+
+  <root level="DEBUG">
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script src="../plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<title>jQuery-Sparkline</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 40px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+	<article class="markdown-body entry-content">
+		<h1>
+			<a id="user-content-jquery-tags-input-plugin" class="anchor"
+				href="#jquery-tags-input-plugin" aria-hidden="true"><span
+				class="octicon octicon-link"></span></a>jQuery-Sparkline
+		</h1>
+
+		<p>线状图插件jQuery-Sparkline</p>
+		<script type="text/javascript">
+			$(function() {
+				/** This code runs when everything has been loaded on the page */
+				/* Inline sparklines take their values from the contents of the tag */
+				$('.inlinesparkline').sparkline();
+
+				/* Sparklines can also take their values from the first argument 
+				passed to the sparkline() function */
+				var myvalues = [ 10, 8, 5, 7, 4, 4, 1 ];
+				$('.dynamicsparkline').sparkline(myvalues);
+
+				/* The second argument gives options such as chart type */
+				$('.dynamicbar').sparkline(myvalues, {
+					type : 'bar',
+					barColor : 'green'
+				});
+
+				/* Use 'html' instead of an array of values to pass options 
+				to a sparkline with data in the tag */
+				$('.inlinebar').sparkline('html', {
+					type : 'bar',
+					barColor : 'red'
+				});
+			});
+		</script>
+		<h2>示例</h2>
+		<p>
+			Inline Sparkline: <span class="inlinesparkline">1,4,4,7,5,9,10</span>.
+		</p>
+		<p>
+			Sparkline with dynamic data: <span class="dynamicsparkline">Loading..</span>
+		</p>
+		<p>
+			Bar chart with dynamic data: <span class="dynamicbar">Loading..</span>
+		</p>
+		<p>
+			Bar chart with inline data: <span class="inlinebar">1,3,4,5,3,5</span>
+		</p>
+		<h2>代码</h2>
+		<pre>
+	
+		    $(function() {
+		        /** This code runs when everything has been loaded on the page */
+		        /* Inline sparklines take their values from the contents of the tag */
+		        $('.inlinesparkline').sparkline(); 
+		
+		        /* Sparklines can also take their values from the first argument 
+		        passed to the sparkline() function */
+		        var myvalues = [10,8,5,7,4,4,1];
+		        $('.dynamicsparkline').sparkline(myvalues);
+		
+		        /* The second argument gives options such as chart type */
+		        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
+		
+		        /* Use 'html' instead of an array of values to pass options 
+		        to a sparkline with data in the tag */
+		        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
+		    });
+				
+		
+        </pre>
+		<h2>语法</h2>
+		<pre>
+        $(selector).sparkline(values, options);
+        </pre>
+		<p>值可以是数字数组或"html"，这些值可以被选定、解读，如：</p>
+		<pre>
+        <code>
+        &lt;span class="sparklines"&gt;1,2,3,4,5,4,3,2,1&lt;/span&gt;
+			&lt;span id="ticker""&gt;Loading..&lt;/span&gt;
+			&lt;script type="text/javascript"&gt;
+			$('.sparklines').sparkline('html');
+			$('#ticker').sparkline([1,2,3,4,5,4,3,2,1]);
+			&lt;/script&gt;
+        </code>
+        </pre>
+		<p>在标签提供的值也可出现在注释里，或者作为标签本身的属性</p>
+		<pre>
+        <code>
+        &lt;span class="sparklines"&gt;&lt;!-- 1,2,3,4,5,4,3,2,1 --&gt;&lt;/span&gt;
+        &lt;span class="sparklines" values="1,2,3,4,5,4,3,2,1"&gt;&lt;/span&gt;        
+        </code>       
+        </pre>
+		<p>
+			默认情况下，插件会查找名为标签上的“value”发现价值呈现的属性，但你可以通过设置tagValues Attribute<br>选项进行更改。如果你想创建一个复合图形，你可以使用不同的名称属性的值的每一个曲线图，这非常有用。
+		</p>
+		<p>选项 是一个对象，它指定sparkline的类型来绘制，颜色的使用，等等。</p>
+		<pre>
+	<code>
+	$('#barchart').sparkline(myvalues, { type:'bar', barColor:'green' });
+	</code>
+    </pre>
+		<p>如果有必要，选项可以通过为每个标签的属性。这需要调用sparklines()
+			函数时设置的enableTagOptions选项，有些会降低性能（在IE6更重要）</p>
+		<pre>
+    <code>
+    &lt;span class="sparklines" sparkType="bar" sparkBarColor="green"&gt;&lt;!-- 1,2,3,4,3,2,1 --&gt;&lt;/span&gt;
+	&lt;span class="sparklines" sparkType="bar" sparkBarColor="red"&gt;&lt;!-- 1,2,3,4,3,2,1 --&gt;&lt;/span&gt;
+	
+	&lt;script type="text/javascript"&gt;
+	$('.sparklines').sparkline('html', { enableTagOptions: true });
+	&lt;/script&gt;
+    </code>
+    </pre>
+		<p>
+			每个选项都必须以“spark”通过传递tagOptionPrefix选项的sparkline（前缀，虽然这是可以改变的）功能
+			您也可以通过赋值$ .fn.sparkline.defaults覆盖所有后续sparkline 默认选项<br>例如。改变如以下常用的选项中列出的默认线条颜色，你可以做:
+		</p>
+		<pre>
+     <code>
+     $.fn.sparkline.defaults.common.lineColor = 'red';
+     </code>
+     </pre>
+		<h2>常用属性</h2>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>属性名</th>
+					<th>属性介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>type</td>
+				<td>One of 'line' (default), 'bar', 'tristate', 'discrete',
+					'bullet', 'pie' or 'box'</td>
+			</tr>
+			<tr>
+				<td>width</td>
+				<td>Width of the chart - Defaults to 'auto' - May be any valid
+					css width - 1.5em, 20px, etc (using a number without a unit
+					specifier won't do what you want) - This option does nothing for
+					bar and tristate chars (see barWidth)</td>
+			</tr>
+			<tr>
+				<td>height</td>
+				<td>Height of the chart - Defaults to 'auto' (line height of
+					the containing tag)</td>
+			</tr>
+			<tr>
+				<td>lineColor</td>
+				<td>Used by line and discrete charts to specify the colour of
+					the line drawn as a CSS values</td>
+			</tr>
+			<tr>
+				<td>fillColor</td>
+				<td>Specify the colour used to fill the area under the graph as
+					a CSS value. Set to false to disable fill</td>
+			</tr>
+			<tr>
+				<td>chartRangeMin</td>
+				<td>Specify the minimum value to use for the range of Y values
+					of the chart - Defaults to the minimum value supplied</td>
+			</tr>
+			<tr>
+				<td>chartRangeMax</td>
+				<td>Specify the maximum value to use for the range of Y values
+					of the chart - Defaults to the maximum value supplied</td>
+			</tr>
+			<tr>
+				<td>composite</td>
+				<td>If true then don't erase any existing chart attached to the
+					tag, but draw another chart over the top - Note that width and
+					height are ignored if an existing chart is detected. Note: You'll
+					usually want to lock the axis on both charts using chartRangeMin
+					and chartRangeMax if you want the same value on each chart to
+					occupy the same point.</td>
+			</tr>
+			<tr>
+				<td>enableTagOptions</td>
+				<td>If true then options can be specified as attributes on each
+					tag to be transformed into a sparkline, as well as passed to the
+					sparkline() function. See also tagOptionPrefix</td>
+			</tr>
+			<tr>
+				<td>tagOptionPrefix</td>
+				<td>String that each option passed as an attribute on a tag
+					must begin with. Defaults to 'spark'</td>
+			</tr>
+			<tr>
+				<td>tagValuesAttribute</td>
+				<td>The name of the tag attribute to fetch values from, if
+					present - Defaults to 'values'</td>
+			</tr>
+			<tr>
+				<td>disableHiddenCheck</td>
+				<td>Set to true to disable checking for hidden sparklines. This
+					can be beneficial if you know you'll never attempt to draw a
+					sparkline into a hidden parent element as it avoids a browser
+					reflow for the test, increasing rendering performance. Defaults to
+					false - New in 2.0</td>
+			</tr>
+		</table>
+		<h2>范围图</h2>
+		<p>Several parameters, such as colorMap and tooltipLookupValues
+			accept a range map as a paramter. As the name suggest, it maps ranges
+			of numbers to values. For example:</p>
+		<pre>
+        <code>
+           var range_map = $.range_map({
+        1: 'red',
+        '2:9': 'yellow',
+        '10:': 'red'
+        })
+        </code>
+        </pre>
+		<p>This would map 1 to red, values of 2 through 9 (inclusive) to
+			yellow and values of 10 and higher to 'red'</p>
+
+		<h2>隐藏Sparklines</h2>
+		<p>If you try to display a sparkline in a tag that's currently not
+			visible (ie. the tag or one of its parents are set to display:none)
+			then you'll find that the sparkline hasn't been rendered when you
+			finally do make the tag visible. This is because a tag with
+			display:none has no size, and thus a canvas can't be created and
+			sized for the sparkline to be rendered to. The solution is to call
+			the $.sparkline_display_visible() function anytime a sparkline may
+			have become visible so that it can be correctly rendered. This is the
+			technique this site uses to handle the sparklines that are hidden in
+			the different tabbed sections; the site calls the routine in the
+			tab-changed callback. Note that as of version 2.0, support for hidden
+			sparklines can be disabled by supplying the disabledHiddenCheck
+			option. This can result in a performance increase in some cases.</p>
+		<h2>线状图</h2>
+		<p>Line charts are the default chart type, but to specify the type
+			explicitly set an option called "type" to "line".</p>
+		<h2>常用选项</h2>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>defaultPixelsPerValue</td>
+				<td>Defaults to 3 pixels of width for each value in the chart</td>
+			</tr>
+			<tr>
+				<td>spotColor</td>
+				<td>The CSS colour of the final value marker. Set to false or
+					an empty string to hide it</td>
+			</tr>
+			<tr>
+				<td>minSpotColor</td>
+				<td>The CSS colour of the marker displayed for the mimum value.
+					Set to false or an empty string to hide it</td>
+			</tr>
+			<tr>
+				<td>maxSpotColor</td>
+				<td>The CSS colour of the marker displayed for the maximum
+					value. Set to false or an empty string to hide it</td>
+			</tr>
+			<tr>
+				<td>maxSpotColor</td>
+				<td>The CSS colour of the marker displayed for the maximum
+					value. Set to false or an empty string to hide it</td>
+			</tr>
+			<tr>
+				<td>spotRadius</td>
+				<td>Radius of all spot markers, In pixels (default: 1.5) -
+					Integer</td>
+			</tr>
+			<tr>
+				<td>valueSpots</td>
+				<td>Specifies which points to draw spots on, and with which
+					colour. Accepts a range. For example, to render green spots on all
+					values less than 50 and red on values higher use {':49': 'green,
+					'50:': 'red'} - New in 2.0</td>
+			</tr>
+			<tr>
+				<td>highlightSpotColor</td>
+				<td>Specifies a colour for the spot that appears on a value
+					when moused over. Set to null to disable. Defaults to #f5f - New in
+					2.0</td>
+			</tr>
+			<tr>
+				<td>lineWidth</td>
+				<td>In pixels (default: 1) - Integer</td>
+			</tr>
+			<tr>
+				<td>normalRangeMin, normalRangeMax</td>
+				<td>Specify threshold values between which to draw a bar to
+					denote the "normal" or expected range of values. For example the
+					green bar here might denote a normal operating temperature range</td>
+			</tr>
+			<tr>
+				<td>drawNormalOnTop</td>
+				<td>By default the normal range is drawn behind the fill area
+					of the chart. Setting this option to true causes it to be drawn
+					over the top of the fill area</td>
+			</tr>
+			<tr>
+				<td>xvalues</td>
+				<td>See below</td>
+			</tr>
+			<tr>
+				<td>chartRangeClip</td>
+				<td>If true then the y values supplied to plot will be clipped
+					to fall between chartRangeMin and chartRangeMax - By default
+					chartRangeMin/Max just ensure that the chart spans at least that
+					range of values, but does not constrain it</td>
+			</tr>
+			<tr>
+				<td>chartRangeMinX</td>
+				<td>Specifies the minimum value to use for the X value of the
+					chart</td>
+			</tr>
+			<tr>
+				<td>chartRangeMaxX</td>
+				<td>Specifies the maximum value to use for the X value of the
+					chart</td>
+			</tr>
+		</table>
+		<p>By default the values supplied to line charts are presumed to
+			be y values mapping on to sequential (integer) x values. If you need
+			to specify both the x and y values for your chart, you have a few
+			options: Inline: x and y values are separated by a colon: x:y,x:y,x:y
+			- eg. &lt;span class="linechart"&gt;1:3,2.7:4,4.8:3&lt;/span&gt;
+			Array of arrays: An array of [x,y] arrays:
+			$('#linechart').sparkline([ [1,3], [2.7,4], [4.8,3] ]); Separate
+			arrays: Pass x values separately: $('#linechart').sparkline([3,4,3],
+			{ xvalues: [1,2.7,4.8]}); You can also specify a value of "null" to
+			omit values from the chart completely. eg: &lt;span
+			class="linechart"&gt;1,2,3,null,3,4,2&lt;/span&gt; becomes:</p>
+		<h2>柱状图</h2>
+		<p>设置到 '栏' type 选项，以生成条形图。通过使用 null 值,省略数字</p>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>barColor</td>
+				<td>CSS colour used for postive values</td>
+			</tr>
+			<tr>
+				<td>negBarColor</td>
+				<td>CSS colour used for negative values</td>
+			</tr>
+			<tr>
+				<td>zeroColor</td>
+				<td>CSS colour used for values equal to zero</td>
+			</tr>
+			<tr>
+				<td>nullColor</td>
+				<td>CSS colour used for values equal to null - By default null
+					values are omitted entirely, but setting this adds a thin marker
+					for the entry - This can be useful if your chart is pretty sparse;
+					perhaps try setting it to a light grey or something equally
+					unobtrusive</td>
+			</tr>
+			<tr>
+				<td>barWidth</td>
+				<td>Width of each bar, in pixels (integer)</td>
+			</tr>
+			<tr>
+				<td>barSpacing</td>
+				<td>Space between each bar, in pixels (integer)</td>
+			</tr>
+			<tr>
+				<td>zeroAxis</td>
+				<td>Centers the y-axis at zero if true (default)</td>
+			</tr>
+			<tr>
+				<td>colorMap</td>
+				<td>A range map to map specific values to selected colours. For
+					example if you want all values of -2 to appear yellow, use
+					colorMap: { '-2': '#ff0' }. As of version 1.5 you may also pass an
+					array of values here instead of a mapping to specifiy a color for
+					each individual bar. For example if your chart has three values
+					1,3,1 you can set colorMap=["red", "green", "blue"] As of version
+					2.0, objects will be automatically be converted to range maps so
+					you can specify colours for a range of values</td>
+			</tr>
+			<tr>
+				<td>stackedBarColor</td>
+				<td>An array of colours to use for stacked bar charts. The
+					first series will use the first value in the array, the second
+					series will use the second, etc. New in 2.0</td>
+			</tr>
+		</table>
+		<p>See also all of the common options above, that can also be used
+			with bar charts Version 2.0 adds support for stacked bar charts.
+			Values for each data series in the chart can be separated by colons
+			if passed by html, or as an array of arrays. For example, to draw
+			series one with values of 1,2,3,4 and series 2 with values of
+			4,3,2,1:</p>
+		<pre>
+     <code>  
+   &lt;span class="bar"&gt;1:4,2:3,3:2,4:1&lt;/span&gt;
+     </code>
+     <code>
+        // same result as the html data above
+    $('.bar').sparkline([ [1,4], [2, 3], [3, 2], [4, 1] ], { type: 'bar' });
+     </code>     
+     </pre>
+		<h2>三态图表</h2>
+		<p>三态图表非常有用来显示赢输抽奖信息。此外可以使用颜色选项来使用不同的颜色，为不同的值，在图表中的任意位置。</p>
+		<p>Type 将选项设置为"tristate"来生成三态图表。</p>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>posBarColor</td>
+				<td>CSS colour for positive (win) values</td>
+
+			</tr>
+			<tr>
+				<td>negBarColor</td>
+				<td>CSS colour for negative (lose) values</td>
+
+			</tr>
+			<tr>
+				<td>zeroBarColor</td>
+				<td>CSS colour for zero (draw) values</td>
+
+			</tr>
+			<tr>
+				<td>barWidth</td>
+				<td>Width of each bar, in pixels (integer)</td>
+
+			</tr>
+			<tr>
+				<td>barSpacing</td>
+				<td>Space between each bar, in pixels (integer)</td>
+
+			</tr>
+			<tr>
+				<td>colorMap</td>
+				<td>A range map to map specific values to selected colours. For
+					example if you want all values of -2 to appear yellow, use
+					colorMap: { '-2': '#ff0' }. As of version 1.5 you may also pass an
+					array of values here instead of a mapping to specifiy a color for
+					each individual bar. For example if your chart has three values
+					1,3,1 you can set colorMap=["red", "green", "blue"] As of version
+					2.0, objects will be automatically be converted to range maps so
+					you can specify colours for a range of values.</td>
+			</tr>
+		</table>
+		<h2>离散图</h2>
+		<p>Discrete charts provide a separated thin vertical line for each
+			value. Set the "type" option to "discrete" to generate discrete
+			charts.</p>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>lineHeight</td>
+				<td>Height of each line in pixels - Defaults to 30% of the
+					graph height</td>
+			</tr>
+			<tr>
+				<td>thresholdValue</td>
+				<td>Values less than this value will be drawn using
+					thresholdColor instead of lineColor</td>
+			</tr>
+			<tr>
+				<td>thresholdColor</td>
+				<td>Colour to use in combination with thresholdValue</td>
+			</tr>
+		</table>
+		<h2>推进图</h2>
+		<p>See the wikipedia page for more information on Bullet graphs.
+			Supplied values must be in this order: target, performance, range1,
+			range2, range3, ... Set the "type" option to "bullet" to generate
+			bullet graphs.</p>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>targetColor</td>
+				<td>The CSS colour of the vertical target marker</td>
+			</tr>
+			<tr>
+				<td>targetWidth</td>
+				<td>The width of the target marker in pixels (integer)</td>
+			</tr>
+			<tr>
+				<td>performanceColor</td>
+				<td>The CSS color of the performance measure horizontal bar</td>
+			</tr>
+			<tr>
+				<td>rangeColors</td>
+				<td>Colors to use for each qualitative range background color -
+					This must be a javascript array. eg ['red','green', '#22f']</td>
+			</tr>
+		</table>
+		<h2>饼状图</h2>
+		<p>Set the "type" option to "pie" to generate pie charts. These
+			little pie charts tend only to be useful with 2 or 3 values at most</p>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>sliceColors</td>
+				<td>An array of CSS colors to use for pie slices</td>
+			</tr>
+			<tr>
+				<td>offset</td>
+				<td>Angle in degrees to offset the first slice - Try -90 or +90</td>
+			</tr>
+			<tr>
+				<td>borderWidth</td>
+				<td>Width of the border to draw around the whole pie chart, in
+					pixels. Defaults to 0 (no border) - New in 2.0</td>
+			</tr>
+			<tr>
+				<td>borderColor</td>
+				<td>CSS color to use to draw the pie border. Defaults to #000 -
+					New in 2.0</td>
+			</tr>
+		</table>
+		<h2>盒线图</h2>
+		<p>See the wikipedia page for more information on Box plots Set
+			the "type" option to "box" to generate box plots.</p>
+		<p>Set the "type" option to "box" to generate box plots.</p>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>raw</td>
+				<td>If set to false (default) then the values supplied are used
+					to caculate the box data points for you. If true then you must
+					pre-calculate the points (see below)</td>
+			</tr>
+			<tr>
+				<td>showOutliers</td>
+				<td>If true (default) then outliers (values > 1.5x the IQR) are
+					marked with circles and the whiskers are placed at Q1 and Q3
+					instead of the least and greatest value</td>
+			</tr>
+			<tr>
+				<td>outlierIQR</td>
+				<td>Set the inter-quartile range multipler used to calculate
+					values that qualify as an outlier - Defaults to 1.5</td>
+			</tr>
+			<tr>
+				<td>boxLineColor</td>
+				<td>CSS line colour used to outline the box</td>
+			</tr>
+			<tr>
+				<td>boxFillColor</td>
+				<td>CSS fill colour used for the box</td>
+			</tr>
+			<tr>
+				<td>whiskerColor</td>
+				<td>CSS colour used to draw the whiskers</td>
+			</tr>
+			<tr>
+				<td>outlierLineColor</td>
+				<td>CSS colour used to draw the outlier circles</td>
+			</tr>
+			<tr>
+				<td>outlierFillColor</td>
+				<td>CSS colour used to fill the outlier circles</td>
+			</tr>
+			<tr>
+				<td>spotRadius</td>
+				<td>Radius in pixels to draw the outlier circles</td>
+			</tr>
+			<tr>
+				<td>medianColor</td>
+				<td>CSS colour used to draw the median line</td>
+			</tr>
+			<tr>
+				<td>target</td>
+				<td>If set to a value, then a small crosshair is drawn at that
+					point to represent a target value</td>
+			</tr>
+			<tr>
+				<td>targetColor</td>
+				<td>CSS colour used to draw the target crosshair, if set</td>
+			</tr>
+			<tr>
+				<td>minValue</td>
+				<td>If minvalue and maxvalue are set then the scale of the plot
+					is fixed. By default minValue and maxValue are deduced from the
+					values supplied</td>
+			</tr>
+			<tr>
+				<td>maxValue</td>
+				<td>See minValue</td>
+			</tr>
+
+		</table>
+		<h2>交互式 Sparklines图</h2>
+		<p>Version 2.0 of the plugin introduces support for interactive
+			sparklines in the form of tooltips, mouseover highlighting and click
+			interaction for all supported types of sparkline. If you're happy
+			with the default look and feel of the tooltips, you can skip this
+			entire section. Options to control sparkline interactions:</p>
+		<table class="table table-bordered table-striped table-responsive">
+			<thead>
+				<tr>
+					<th>type</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>disableInteraction</td>
+				<td>Set to true to disable all sparkline interactivity, making
+					the plugin behave in much the same way as it did in 1.x Defaults to
+					false</td>
+			</tr>
+			<tr>
+				<td>disableTooltips</td>
+				<td>Set to true to disable mouseover tooltips. Defaults to
+					false</td>
+			</tr>
+			<tr>
+				<td>disableHighlight</td>
+				<td>Set to true to disable the highlighting of individual
+					values when mousing over a sparkline. Defaults to false</td>
+			</tr>
+			<tr>
+				<td>highlightLighten</td>
+				<td>Controls the amount to lighten or darken a value when
+					moused over. A value of 1.5 will lighten by 50%, 0.5 will darken by
+					50%. Defaults to 1.4</td>
+			</tr>
+			<tr>
+				<td>highlightColor</td>
+				<td>If specified, then values that are moused over will be
+					changed to this colour instead of being lightend</td>
+			</tr>
+			<tr>
+				<td>tooltipContainer</td>
+				<td>Specifies the DOM element that tooltips should be rendered
+					into. Defaults to document.body</td>
+			</tr>
+			<tr>
+				<td>tooltipClassname</td>
+				<td>Specifies a CSS class name to apply to tooltips to override
+					the default built-in style.</td>
+			</tr>
+			<tr>
+				<td>tooltipOffsetX</td>
+				<td>Specifies how many pixels away from the mouse pointer to
+					render the tooltip on the X axis</td>
+			</tr>
+			<tr>
+				<td>tooltipOffsetY</td>
+				<td>Specifies how many pixels away from the mouse pointer to
+					render the tooltip on the Y axis</td>
+			</tr>
+			<tr>
+				<td>tooltipFormatter</td>
+				<td>Pass a javascript function to use as a callback to override
+					the HTML used to generate tooltips. The callback will be passed
+					arguments of (sparkline, options, fields). sparkline is the
+					sparkline object being rendered, "options" is the key:value mapping
+					of options set for this sparkline - use options.get(key, default)
+					to fetch an individual option. "fields" is an array of fields to
+					render for the sparkline. This will be a single element array
+					unless its a box plot.</td>
+			</tr>
+			<tr>
+				<td>tooltipChartTitle</td>
+				<td>If specified then the tooltip uses the string specified by
+					this setting as a title</td>
+			</tr>
+			<tr>
+				<td>tooltipFormat</td>
+				<td>A format string or spformat object (or an array thereof for
+					multiple entries) to control the format of the tooltip</td>
+			</tr>
+			<tr>
+				<td>tooltipPrefix</td>
+				<td>A string to prepend to each field displayed in a tooltip</td>
+			</tr>
+			<tr>
+				<td>tooltipSuffix</td>
+				<td>A string to append to each field displayed in a tooltip</td>
+			</tr>
+			<tr>
+				<td>tooltipSkipNull</td>
+				<td>If true then null values will not have a tooltip displayed
+					Defaults to true</td>
+			</tr>
+			<tr>
+				<td>tooltipValueLookups</td>
+				<td>An object or range map to map field values to tooltip
+					strings. For example you may want to map -1, 0 and 1 to the strings
+					"Lost", "Draw", "Won"</td>
+			</tr>
+			<tr>
+				<td>tooltipFormatFieldlist</td>
+				<td>An array of values specifying which fields to display in a
+					tooltip and in what order. Currently only useful for box plots. See
+					below for more details</td>
+			</tr>
+			<tr>
+				<td>tooltipFormatFieldlistKey</td>
+				<td>Specifies which key holds the field name to reference
+					above. For box plots this should be "field"</td>
+			</tr>
+			<tr>
+				<td>numberFormatter</td>
+				<td>Pass a javascript function to control how numbers are
+					formatted in tooltips. The callback will be passwd a number to
+					format and must return a string. Default behaviour is to format
+					numbers to western conventions.</td>
+			</tr>
+			<tr>
+				<td>numberDigitGroupSep</td>
+				<td>Character to use for group separator in numbers "1,234" for
+					l10n purposes. Defaults to the comma - ","</td>
+			</tr>
+			<tr>
+				<td>numberDecimalMark</td>
+				<td>Character to use for the decimal point in numbers for l10n
+					purposes. Defaults to the period - "."</td>
+			</tr>
+			<tr>
+				<td>numberDigitGroupCount</td>
+				<td>Number of digits between the group seperator in numbers for
+					l10n purposes. Defaults to 3.</td>
+			</tr>
+		</table>
+		<h2>格式设置工具</h2>
+		<p>There are a couple of approaches you can take to format
+			tooltips. Either you can manually generate tooltips by using the
+			tooltipFormatter callback function (perhaps to hook in an external
+			tooltip library), or you can use the other tooltip options above to
+			fine-tune the default formatter. The tooltipFormat and
+			toolipValueLookups options provide the main methods of formatting the
+			text displayed for each value in a toolip. The tooltipFormat is
+			applied whenever the mouse is moved over a value. Various fields
+			enclosed between double curly braces in the format string are
+			substituted depending on the type of sparkline in use. For example,
+			the default format string for line charts is:</p>
+		<pre>
+    <code>
+    &lt;span style="color: {{color}}"&gt;&#9679;&lt;/span&gt; {{prefix}}{{y}}{{suffix}}&lt;/span&gt;
+    </code>
+    </pre>
+		<p>"color" is derived from the colour of the line being drawn.
+			"prefix" and "suffix" and set by setting the tooltipPrefix and
+			tooltipSuffix items. "y" represents the y value of the point under
+			the mouse. "x" can also be used to if useful. The supported fields
+			for the different types of sparklines include:</p>
+		<ul>
+			<li>All types: "prefix", "suffix" as set by tooltipPrefix and
+				tooltipSuffix options</li>
+			<li>Line: "color", "fillColor", "x", "y", "isNull" (true if a
+				null value)</li>
+			<li>Bar: "value" (the value under the pointer), "color",
+				"isNull"</li>
+			<li>Tristate: "value" (the value under the pointer), "color",
+				"isNull"</li>
+			<li>Discrete: "value", "isNull"</li>
+			<li>Pie: "value", "percent" (number between 0 and 100), "color"
+				(of the moused-over slice)"</li>
+			<li>Bullet: "value", "fieldkey", "isNull"</li>
+			<li>Box: "field" and "value". Field may be one of "lq" (lower
+				quartile), "med" (median), "uq" (upper quartile), "lo" (left
+				outlier), "ro" (right outlier), "lw" (left whisker) "rw" (right
+				whisker)</li>
+		</ul>
+		<p>框绘制字段顺序。对于箱形图，您可以控制显示哪些字段和以什么顺序使用 tooltipFormatFieldlist 和
+			tooltipFormatFieldlistKey 选项。例如，若要显示只有中位数，降低四分位数和上部四分位数的值，按此顺序</p>
+		<pre>
+			<code>
+$('.boxplot').sparkline(values, {
+    type: 'box', 
+    tooltipFormatFieldlist: ['med', 'lq', 'uq'], 
+    tooltipFormatFieldlistKey: 'field'
+});
+</code>
+		</pre>
+		<p>字段名称和值的格式。你可以翻译的字段名称和值转换成其他使用 tooltipValueLookups
+			选项的任意字符串。框情节这样做，例如，重新映射 'lq' 字符串 '下四分位数' 等，但您还可以使用它将映射到字符串太使用范围映射的值
+			（数字） 或值的范围。例如，我们可以创建条形图与工具提示说 '低'，'中等' 或 '高' 值：</p>
+		<pre>
+<code>
+var values = [1, 3, 5, 3, 8];
+$('.bar').sparkline(values, {
+    type: 'bar',
+    tooltipFormat: '{{value:levels}} - {{value}}',
+    tooltipValueLookups: {
+        levels: $.range_map({ ':2': 'Low', '3:6': 'Medium', '7:': 'High' })
+    }
+});
+</code>
+</pre>
+		<p>您还可以指定要通过将格式字符串和类传递给 $.spformat 与格式关联的 CSS 类名：</p>
+		<pre>
+<code>
+$('.bar').sparkline(values, {
+    type: 'bar',
+    tooltipFormat: $.spformat('{{value}}', 'tooltip-class')
+});
+</code>
+</pre>
+		<h2>点击事件</h2>
+		<p>When a user clicks on a sparkline, a sparklineClick event is
+			generated. The event object contains a property called "sparklines"
+			that holds an array of the sparkline objects under the mouse at the
+			time of the click. For non-composite sparklines, this array will have
+			just one entry. This example will display an alert with the
+			moused-over value whenever a value is clicked:</p>
+		<pre>
+<code>
+$('.clickdemo').sparkline();
+$('.clickdemo').bind('sparklineClick', function(ev) {
+    var sparkline = ev.sparklines[0],
+        region = sparkline.getCurrentRegionFields();
+    alert("Clicked on x="+region.x+" y="+region.y);
+});
+</code>
+</pre>
+		<h2>鼠标悬停事件</h2>
+		<p>Mouse-over Events When the mouse moves over a different value
+			in a sparkline a sparklineRegionChange event is generated. This can
+			be useful to hook in an alternate tooltip library. As with the
+			sparklineClick event, the generated event has a property called
+			sparklines that holds an array of the sparklines under the pointer.
+
+			Example that updates a span with the current region details: Last
+			region:</p>
+		<pre>
+<code>
+$('.mouseoverdemo').sparkline();
+$('.mouseoverdemo').bind('sparklineRegionChange', function(ev) {
+    var sparkline = ev.sparklines[0],
+        region = sparkline.getCurrentRegionFields(),
+        value = region.y;
+    $('.mouseoverregion').text("x="+region.x+" y="+region.y);
+}).bind('mouseleave', function() {
+    $('.mouseoverregion').text('');
+});
+</code>
+</pre>
+	</article>
+	<h2>END</h2>

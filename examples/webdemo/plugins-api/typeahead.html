@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+<title>jQuery-tags-Input</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 30px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+<a id="user-content-bootstrap-3-typeahead" class="anchor" href="#bootstrap-3-typeahead" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bootstrap 3 Typeahead</h1>
+
+<p>For simple autocomplete use cases there seems to be nothing wrong with the dropped typeahead plugin. Here you will find the typeahead autocomplete plugin for Twitter's Bootstrap 2 ready to use with Twitter's Bootstrap 3. The original code is written by <a href="http://twitter.com/mdo">@mdo</a> and <a href="http://twitter.com/fat">@fat</a>.</p>
+
+<p>Users who migrate their website or app from Twitter's Bootstrap 2 to Bootstrap 3 can also use this plugin to keep their current autocomplete functions. See for a complete list of migrations steps: <a href="http://bassjobsen.weblogs.fm/migrate-your-templates-from-twitter-bootstrap-2-x-to-twitter-bootstrap-3/">Migrate your templates from Twitter Bootstrap 2.x to Twitter Bootstrap 3</a></p>
+
+<p>With Twitter Bootstrap 3 the typeahead plugin had been dropped. <a href="http://twitter.com/mdo">@mdo</a> says: "in favor of folks using <a href="https://github.com/twitter/typeahead.js">Twitter's typeahead</a>. Twitter's typeahead has more features than the old bootstrap-typeahead.js and less bugs." Twitter's typeahead don't work direct with Bootstrap 3. The DOM structure of the dropdown menu used by <code>typeahead.js</code> differs from the DOM structure of the Bootstrap dropdown menu. You'll need to load some additional CSS in order to get the <code>typeahead.js</code> dropdown menu to fit the default Bootstrap's theme. Try <a href="https://github.com/bassjobsen/typeahead.js-bootstrap-css">extended Bootstrap's LESS</a> or if your are looking for a more a more extended version try: <a href="https://github.com/hyspace/typeahead.js-bootstrap3.less/blob/master/typeahead.less">typeahead.js-bootstrap3.less</a>.</p>
+
+<p><del><code>Typeahead.js</code> doesn't seem ready for the new Twitter Bootstrap 3 at the moment. Code is not up to date and fixes are need. See also:
+<a href="http://stackoverflow.com/questions/18167246/typeahead-problems-with-bootstrap-3-0-rc1">Typeahead problems with Bootstrap 3.0 RC1</a>.</del></p>
+
+<h1>
+<a id="user-content-download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download</h1>
+
+<ul class="task-list">
+<li><p>Download the latest <a href="https://github.com/bassjobsen/Bootstrap-3-Typeahead/blob/master/bootstrap3-typeahead.js">bootstrap3-typeahead.js</a> or <a href="https://github.com/bassjobsen/Bootstrap-3-Typeahead/blob/master/bootstrap3-typeahead.min.js">bootstrap3-typeahead.min.js</a>.</p></li>
+<li><p>Include it in your source after jQuery and Bootstrap Javascript.</p></li>
+</ul>
+
+<h2>
+<a id="user-content-full-integration-with-bootstrap-3-typeahead" class="anchor" href="#full-integration-with-bootstrap-3-typeahead" aria-hidden="true"><span class="octicon octicon-link"></span></a>Full integration with Bootstrap 3 Typeahead</h2>
+
+<p>Download the latest version of Boostrap from <a href="https://github.com/twbs/bootstrap/archive/master.zip">Bootstrap</a>. Copy <code>bootstrap3-typeahead.js</code> to the js/ folder. Edit <code>gruntfile.js</code> and add <code>bootstrap3-typeahead.js</code> to the plugins' list.
+Build your own version with typeahead with <code>grunt dist</code>.</p>
+
+<h1>
+<a id="user-content-css" class="anchor" href="#css" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS</h1>
+
+<p>There is no additional css required to use the plugin. Bootstrap's css contains all required styles in the <code>.dropdown-menu</code> class. The original CSS add a <code>z-index</code> of 1051 to the dropdownmenu via the typeahead class. You could add this if you need it.
+<code>.typeahead { z-index: 1051;}</code> (less or css).</p>
+
+<h1>
+<a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<pre><code>&lt;input type="text" data-provide="typeahead"&gt;
+</code></pre>
+
+<p>You'll want to set <code>autocomplete="off"</code> to prevent default browser menus from appearing over the Bootstrap typeahead dropdown.</p>
+
+<h2>
+<a id="user-content-via-data-attributes" class="anchor" href="#via-data-attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Via data attributes</h2>
+
+<p>Add data attributes to register an element with typeahead functionality as shown in the example above.</p>
+
+<h2>
+<a id="user-content-via-javascript" class="anchor" href="#via-javascript" aria-hidden="true"><span class="octicon octicon-link"></span></a>Via JavaScript</h2>
+
+<p>Call the typeahead manually with:</p>
+
+<pre><code>$('.typeahead').typeahead()
+</code></pre>
+
+<p>Destroys previously initialized typeaheads. This entails reverting DOM modifications and removing event handlers:   </p>
+
+<pre><code>$('.typeahead').typeahead('destroy')
+</code></pre>
+
+<p>Also read: <a href="http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/">How to Use JSON Objects With Twitter Bootstrap Typeahead</a>   </p>
+
+<h1>
+<a id="user-content-javascript-example" class="anchor" href="#javascript-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Javascript Example</h1>
+
+<h2>
+<a id="user-content-loading-a-collection" class="anchor" href="#loading-a-collection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Loading a collection</h2>
+
+<pre><code>$.get('example_collection.json', function(data){
+    $("#name").typeahead({ source:data });
+},'json');
+//example_collection.json
+// ["item1","item2","item3"]
+</code></pre>
+
+<h1>
+<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h1>
+
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-source=""</code>.</p>
+
+<table>
+              <thead>
+               <tr>
+                 <th>Name</th>
+                 <th>type</th>
+                 <th>default</th>
+                 <th>description</th>
+               </tr>
+              </thead>
+              <tbody>
+                <tr>
+                 <td>source</td>
+                 <td>array, function</td>
+                 <td>[ ]</td>
+                 <td>The data source to query against. May be an array of strings or a function. The function accepts two arguments, the <code>query</code> value in the input field and the <code>process</code> callback. The function may be used synchronously by returning the data source directly or asynchronously via the <code>process</code> callback's single argument.</td>
+               </tr>
+               <tr>
+                 <td>items</td>
+                 <td>number</td>
+                 <td>8</td>
+                 <td>The max number of items to display in the dropdown. Can also be set to 'all'</td>
+               </tr>
+               <tr>
+                 <td>minLength</td>
+                 <td>number</td>
+                 <td>1</td>
+                 <td>The minimum character length needed before triggering autocomplete suggestions. You can set it to 0 so suggestion are shown even when there is no text when lookup function is called.</td>
+               </tr>
+               <tr>
+                 <td>showHintOnFocus</td>
+                 <td>boolean</td>
+                 <td>false</td>
+                 <td>If hints should be shown when applicable as soon as the input gets focus.</td>
+               </tr>
+              <tr>
+                 <td>scrollHeight</td>
+                 <td>number, function</td>
+                 <td>0</td>
+                 <td>Number of pixels the scrollable parent container scrolled down (scrolled out the viewport).</td>
+               </tr>
+               <tr>
+                 <td>matcher</td>
+                 <td>function</td>
+                 <td>case insensitive</td>
+                 <td>The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.</td>
+               </tr>
+               <tr>
+                 <td>sorter</td>
+                 <td>function</td>
+                 <td>exact match,<br> case sensitive,<br> case insensitive</td>
+                 <td>Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.</td>
+               </tr>
+               <tr>
+                 <td>updater</td>
+                 <td>function</td>
+                 <td>returns selected item</td>
+                 <td>The method used to return selected item. Accepts a single argument, the <code>item</code> and has the scope of the typeahead instance.</td>
+               </tr>
+               <tr>
+                 <td>highlighter</td>
+                 <td>function</td>
+                 <td>highlights all default matches</td>
+                 <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
+               </tr>
+              <tr>
+                 <td>autoSelect</td>
+                 <td>boolean</td>
+                 <td>true</td>
+                 <td>Allows you to dictate whether or not the first suggestion is selected automatically. Turning autoselect off also means that the input won't clear if nothing is selected and <kbd>enter</kbd> or <kbd>tab</kbd> is hit.</td>
+               </tr>
+               <tr>
+                 <td>afterSelect</td>
+                 <td>function</td>
+                 <td>$.noop()</td>
+                 <td>Call back function to execute after selected an item. </td>
+               </tr>
+              <tr>
+              </tr>
+</tbody>
+            </table>
+
+<h1>
+<a id="user-content-methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h1>
+
+<pre><code>.typeahead(options)
+.lookup: To trigger the lookup function externally
+</code></pre>
+
+<p>Initializes an input with a typeahead.</p>
+
+<h1>
+<a id="user-content-bower" class="anchor" href="#bower" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower</h1>
+
+<p>To use with <a href="http://bower.io/">Bower</a>. Add to your bower.json file:</p>
+
+<pre><code>{
+        "name": "MyProject",
+        "dependencies": {
+        "bootstrap3-typeahead": "git@github.com:bassjobsen/Bootstrap-3-Typeahead.git#master"
+        }
+   }
+</code></pre>
+
+<h1>
+<a id="user-content-bloodhound" class="anchor" href="#bloodhound" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bloodhound</h1>
+
+<p><a href="https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md">Bloodhound</a> is the <a href="https://github.com/twitter/typeahead.js">typeahead.js</a> suggestion engine, since version 0.10.0. Bloodhound is robust, flexible, and offers advanced functionalities such as prefetching, intelligent caching, fast lookups, and backfilling with remote data. To use Bloodhound with Bootstrap-3-Typeahead:</p>
+
+<pre><code>// instantiate the bloodhound suggestion engine
+var numbers = new Bloodhound({
+datumTokenizer: Bloodhound.tokenizers.whitespace,
+queryTokenizer: Bloodhound.tokenizers.whitespace,
+local:  ["(A)labama","Alaska","Arizona","Arkansas","Arkansas2","Barkansas"]
+});
+
+// initialize the bloodhound suggestion engine
+numbers.initialize();
+
+$('.typeahead').typeahead(
+{
+items: 4,
+source:numbers.ttAdapter()  
+});
+</code></pre>
+
+<h1>
+<a id="user-content-bootstrap-tags-input" class="anchor" href="#bootstrap-tags-input" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bootstrap Tags Input</h1>
+
+<p><a href="http://timschlechter.github.io/bootstrap-tagsinput/examples/">Bootstrap Tags Input</a> is a jQuery plugin providing a Twitter Bootstrap user interface for managing tags. Bootstrap Tags Input has a typeahead option which allows you to set the source:</p>
+
+<pre><code>$('input').tagsinput({
+  typeahead: {
+    source: ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo']
+  }
+});
+</code></pre>
+
+<p>or</p>
+
+<pre><code>$('input').tagsinput({
+  typeahead: {                  
+    source: function(query) {
+      return $.get('http://someservice.com');
+    }
+  }
+});
+</code></pre>
+
+<p>See also: <a href="https://github.com/bassjobsen/Bootstrap-3-Typeahead/issues/40">https://github.com/bassjobsen/Bootstrap-3-Typeahead/issues/40</a> </p>
+</article>
+
+</body>
+</html>

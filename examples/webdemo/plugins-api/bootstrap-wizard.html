@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script src="../plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<title>bootstrap-wizard 向导</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 40px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<h1>
+		bootstrap-wizard
+		</h1>
+		<article class="markdown-body entry-content">
+		  <p>This Twitter Bootstrap plugin builds a wizard using a formatted tabbable structure. It allows to build a wizard functionality using buttons to go through the different wizard steps and using events allows to hook into each step individually.</p>
+			<h5>
+			<a id="user-content-note" class="anchor" href="#note" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note</h5>
+			
+			<p>We will not longer be updating the bower version of bootstrap wizard or any other package manager. See <a href="https://github.com/VinceG/twitter-bootstrap-wizard/issues/81#issuecomment-42909528">#81</a> for the reason why. Please use 'master' branch instead.</p>
+			
+			<p><a href="http://vadimg.com/twitter-bootstrap-wizard-example/" target="_blank">Website &amp; Demo</a></p>
+			
+			<p><a href="https://twitter.com/gabrielva" target="_blank">Follow @gabrielva</a></p>
+			
+			<h2>
+			<a id="user-content-requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+			
+			<ul class="task-list">
+			<li>Requires jQuery v1.3.2 or later</li>
+			<li>Bootstrap 2.2.x, 2.3.x, 3.0</li>
+			</ul>
+			
+			<h2>
+			<a id="user-content-code-examples" class="anchor" href="#code-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code Examples</h2>
+			
+			<div class="highlight highlight-javascript"><pre><span class="pl-c"><span class="pl-pdc">//</span>basic wizard</span>
+			$(<span class="pl-sc">document</span>).ready(<span class="pl-s">function</span>() {
+			    $(<span class="pl-s1"><span class="pl-pds">'</span>#rootwizard<span class="pl-pds">'</span></span>).bootstrapWizard();
+			});</pre></div>
+			
+			<div class="highlight highlight-javascript"><pre><span class="pl-c"><span class="pl-pdc">//</span>wizard with options and events</span>
+			$(<span class="pl-sc">document</span>).ready(<span class="pl-s">function</span>() {
+			    $(<span class="pl-s1"><span class="pl-pds">'</span>#rootwizard<span class="pl-pds">'</span></span>).bootstrapWizard({
+			        tabClass<span class="pl-ko">:</span> <span class="pl-s1"><span class="pl-pds">'</span>nav nav-pills<span class="pl-pds">'</span></span>,
+			        <span class="pl-enf">onNext</span>: <span class="pl-s">function</span>(<span class="pl-vpf">tab</span>, <span class="pl-vpf">navigation</span>, <span class="pl-vpf">index</span>) {
+			            <span class="pl-sf">alert</span>(<span class="pl-s1"><span class="pl-pds">'</span>next<span class="pl-pds">'</span></span>);
+			        }
+			  });
+			});</pre></div>
+			
+			<div class="highlight highlight-javascript"><pre><span class="pl-c"><span class="pl-pdc">//</span>calling a method</span>
+			$(<span class="pl-s1"><span class="pl-pds">'</span>#rootwizard<span class="pl-pds">'</span></span>).bootstrapWizard(<span class="pl-s1"><span class="pl-pds">'</span>show<span class="pl-pds">'</span></span>,<span class="pl-cn">3</span>);</pre></div>
+			
+			<h2>
+			<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+			
+			<table class="table table-bordered table-striped table-responsive">
+			    <thead>
+			        <tr>
+			            <th>Key</th>
+			            <th>Default</th>
+			            <th>Description</th>
+			        </tr>   
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>tabClass</td>
+			            <td>'nav nav-pills'</td>
+			            <td>ul navigation class</td>
+			        </tr>
+			        <tr>
+			            <td>nextSelector</td>
+			            <td>'.wizard li.next'</td>
+			            <td>next element selector</td>
+			        </tr>
+			        <tr>
+			            <td>previousSelector</td>
+			            <td>'.wizard li.previous'</td>
+			            <td>previous element selector</td>
+			        </tr>
+			        <tr>
+			            <td>firstSelector</td>
+			            <td>'.wizard li.first'</td>
+			            <td>first element selector</td>
+			        </tr>
+			        <tr>
+			            <td>lastSelector</td>
+			            <td>'.wizard li.last'</td>
+			            <td>last element selector</td>
+			        </tr>   
+			        <tr>
+			            <td>backSelector</td>
+			            <td>'.wizard li.back'</td>
+			            <td>back element selector</td>
+			        </tr>
+			        <tr>
+			            <td>finishSelector</td>
+			            <td>'.wizard li.finish'</td>
+			            <td>finish element selector</td>
+			        </tr>
+			    </tbody>    
+			</table>
+			
+			<h2>
+			<a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
+			
+			<table class="table table-bordered table-striped table-responsive">
+			    <thead>
+			        <tr>
+			            <th>Key</th>
+			            <th>Description</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>onInit</td>
+			            <td>Fired when plugin is initialized</td>
+			        </tr>
+			        <tr>
+			            <td>onShow</td>
+			            <td>Fired when plugin data is shown</td>
+			        </tr>
+			        <tr>
+			            <td>onNext</td>
+			            <td>Fired when next button is clicked (return false to disable moving to the next step)</td>
+			        </tr>
+			        <tr>
+			            <td>onPrevious</td>
+			            <td>Fired when previous button is clicked (return false to disable moving to the previous step)</td>
+			        </tr>
+			        <tr>
+			            <td>onFirst</td>
+			            <td>Fired when first button is clicked (return false to disable moving to the first step)</td>
+			        </tr>
+			        <tr>
+			            <td>onLast</td>
+			            <td>Fired when last button is clicked (return false to disable moving to the last step)</td>
+			        </tr>
+			        <tr>
+			            <td>onBack</td>
+			            <td>Fired when back button is clicked (return false to disable moving backwards in navigation history)</td>
+			        </tr>
+			        <tr>
+			            <td>onFinish</td>
+			            <td>Fired when finish button is clicked (return value is irrelevant)</td>
+			        </tr>
+			        <tr>
+			            <td>onTabChange</td>
+			            <td>Fired when a tab is changed (return false to disable moving to that tab and showing its contents)</td>
+			        </tr>
+			        <tr>
+			            <td>onTabClick</td>
+			            <td>Fired when a tab is clicked (return false to disable moving to that tab and showing its contents)</td>
+			        </tr>
+			        <tr>
+			            <td>onTabShow</td>
+			            <td>Fired when a tab content is shown (return false to disable showing that tab content)</td>
+			        </tr>   
+			    </tbody>    
+			</table>
+			
+			<h2>
+			<a id="user-content-methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+			
+			<table class="table table-bordered table-striped table-responsive">
+			    <thead>
+			        <tr>
+			            <th>Key</th>
+			            <th>Parameters</th>
+			            <th>Description</th>
+			        </tr>   
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>next</td>
+			            <td></td>
+			            <td>Moves to the next tab</td>
+			        </tr>
+			        <tr>
+			            <td>previous</td>
+			            <td></td>
+			            <td>Moves to the previous tab</td>
+			        </tr>
+			        <tr>
+			            <td>first</td>
+			            <td></td>
+			            <td>Jumps to the first tab</td>
+			        </tr>
+			        <tr>
+			            <td>last</td>
+			            <td></td>
+			            <td>Jumps to the last tab</td>
+			        </tr>
+			        <tr>
+			            <td>back</td>
+			            <td></td>
+			            <td>Moves back in navigation history by jumping to the former tab</td>
+			        </tr>
+			        <tr>
+			            <td>finish</td>
+			            <td></td>
+			            <td>"Finishes" the wizard by calling onFinish callback</td>
+			        </tr>
+			        <tr>
+			            <td>show</td>
+			            <td>zero based index or tab target id</td>
+			            <td>Jumps to the specified tab</td>
+			        </tr>
+			        <tr>
+			            <td>currentIndex</td>
+			            <td></td>
+			            <td>Returns the zero based index number for the current tab</td>
+			        </tr>
+			        <tr>
+			            <td>navigationLength</td>
+			            <td></td>
+			            <td>Returns the number of tabs</td>
+			        </tr>
+			        <tr>
+			            <td>enable</td>
+			            <td>zero based index</td>
+			            <td>Enables a tab, allows a user to click it (removes .disabled if the item has that class)</td>
+			        </tr>
+			        <tr>
+			            <td>disable</td>
+			            <td>zero based index</td>
+			            <td>Disables a tab, disallows a user to click it (adds .disabled to the li element)</td>
+			        </tr>
+			        <tr>
+			            <td>display</td>
+			            <td>zero based index</td>
+			            <td>Displays the li element if it was previously hidden</td>
+			        </tr>
+			        <tr>
+			            <td>hide</td>
+			            <td>zero based index</td>
+			            <td>Hides the li element (will not remove it from the DOM)</td>
+			        </tr>
+			        <tr>
+			            <td>remove</td>
+			            <td>zero based index, optinal bool remove tab-pane element or not false by default</td>
+			            <td>Removes the li element from the DOM if second argument is true will also remove the tab-pane element</td>
+			        </tr>
+			    </tbody>    
+			</table>
+			
+			<p>© <a href="http://vadimg.com" target="_blank">Vadim Vincent Gabriel</a> <a href="https://twitter.com/gabrielva" target="_blank">Follow @gabrielva</a> 2012</p>
+			
+			<h1>
+			<a id="user-content-license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
+			
+			<p>The MIT License (MIT)</p>
+			
+			<p>Copyright (c) 2013 - Vincent Gabriel &amp; Jason Gill</p>
+			
+			<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+			of this software and associated documentation files (the "Software"), to deal
+			in the Software without restriction, including without limitation the rights
+			to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+			copies of the Software, and to permit persons to whom the Software is
+			furnished to do so, subject to the following conditions:</p>
+			
+			<p>The above copyright notice and this permission notice shall be included in
+			all copies or substantial portions of the Software.</p>
+			
+			<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+			IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+			FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+			AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+			LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+			THE SOFTWARE.</p>
+		</article>
+
+</body>
+</html>
+		

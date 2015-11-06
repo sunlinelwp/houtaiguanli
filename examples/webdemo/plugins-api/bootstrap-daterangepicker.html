@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />	
+		<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="../plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../plugins/bootstrap-daterangepicker/moment.min.js"></script>
+		<script src="../plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+		
+		<title>bootstrap-daterangepicker</title>
+		<style>
+			body { padding-top: 50px; }
+		</style>
+	</head>
+	<body>
+		 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+		<div class="bs-docs-header">
+			<div class="container">
+				<h1>bootstrap-daterangepicker - 基于 Bootstrap 框架的日期范围选择控件</h1>
+			</div>
+		</div>
+		<div class="container bs-docs-container">
+			<div class="row">
+				<div class="col-md-9" role="main">
+					<h2>集成</h2>
+					<pre>&lt;link rel="stylesheet" type="text/css" href="bootstrap.css" />
+&lt;link rel="stylesheet" type="text/css" href="daterangepicker-bs3.css" />
+
+&lt;script type="text/javascript" src="jquery.js">&lt;/script>
+&lt;script type="text/javascript" src="moment.js">&lt;/script>
+&lt;script type="text/javascript" src="daterangepicker.js">&lt;/script></pre>
+					<hr />
+					<h2>Basic Exemple</h2>
+					<input type="text" name="daterange" style="width:300px;border-radius:5px;height:35px;border:1px solid lightblue;"/>
+					<script type="text/javascript">
+						$(document).ready(function() {
+						  $('input[name="daterange"]').daterangepicker();
+						});
+					</script>
+					<br /><br />
+					<pre>&lt;&input type="text" name="daterange" style="width:300px;border-radius:5px;height:35px;border:1px solid lightblue;"/>
+&lt;script type="text/javascript">
+	$(document).ready(function() {
+	  $('input[name="daterange"]').daterangepicker();
+	});
+&lt;/script></pre>
+					<p>
+						The constructor also takes an optional options object and callback function. The function will be called whenever the selected 
+						date range has been changed by the user, and is passed the start and end dates (moment date objects) and the predefined range label 
+						chosen (if any), as parameters. It will not fire if the picker is closed without any change to the selected dates.
+					</p>
+					<pre>$('input[name="daterange"]').daterangepicker(
+  { 
+    format: 'YYYY-MM-DD',
+    startDate: '2013-01-01',
+    endDate: '2013-12-31'
+  },
+  function(start, end, label) {
+    alert('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  }
+);</pre>
+					<hr>
+					<h2>Options</h2>
+					<p><code>startDate</code>: (Date object, moment object or string) The start of the initially selected date range</p>
+					<p><code>endDate</code>: (Date object, moment object or string) The end of the initially selected date range</p>
+					<p><code>minDate</code>: (Date object, moment object or string) The earliest date a user may select</p>
+					<p><code>maxDate</code>: (Date object, moment object or string) The latest date a user may select</p>
+					<p><code>dateLimit</code>: (object) The maximum span between the selected start and end dates. Can have any property you can add to 
+					a moment object (i.e. days, months)</p>
+					<p><code>showDropdowns</code>: (boolean) Show year and month select boxes above calendars to jump to a specific month and year</p>
+					<p><code>showWeekNumbers</code>: (boolean) Show week numbers at the start of each week on the calendars</p>
+					<p><code>timePicker</code>: (boolean) Allow selection of dates with times, not just dates</p>
+					<p><code>timePickerIncrement</code>: (number) Increment of the minutes selection list for times (i.e. 30 to allow only selection of t
+					imes ending in 0 or 30)</p>
+					<p><code>timePicker12Hour</code>: (boolean) Use 12-hour instead of 24-hour times, adding an AM/PM select box</p>
+					<p><code>ranges</code>: (object) Set predefined date ranges the user can select from. Each key is the label for the range, and its 
+					value an array with two dates representing the bounds of the range</p>
+					<p><code>opens</code>: (string: 'left'/'right'/'center') Whether the picker appears aligned to the left, to the right, or centered 
+					under the HTML element it's attached to</p>
+					<p><code>buttonClasses</code>: (array) CSS class names that will be added to all buttons in the picker</p>
+					<p><code>applyClass</code>: (string) CSS class string that will be added to the apply button</p>
+					<p><code>cancelClass</code>: (string) CSS class string that will be added to the cancel button</p>
+					<p><code>format</code>: (string) Date/time format string used by moment when parsing or displaying the selected dates</p>
+					<p><code>separator</code>: (string) Separator string to display between the start and end date when populating a text input the picker
+					is attached to</p>
+					<p><code>locale</code>: (object) Allows you to provide localized strings for buttons and labels, and the first day of week for the 
+					calendars</p>
+					<p><code>singleDatePicker</code>: (boolean) Show only a single calendar to choose one date, instead of a range picker with two calendars; 
+					the start and end dates provided to your callback will be the same single date chosen</p>
+					<p><code>parentEl</code>: (string) jQuery selector of the parent element that the date range picker will be added to, if not provided this 
+					will be <code>'body'</code></p>
+					<hr />
+					<h2>Functions</h2>
+					<p>Several functions are provided for updating the picker's option and state after initialization:</p>
+					<p><code>setOptions(object, function)</code>: This function has the same signature and purpose as the date range picker's constructor: 
+					it sets the picker's options to their defaults, overrides them with any values in an options object you provide, and sets the callback 
+					for selection changes to whatever function you provide</p>
+					<p><code>setStartDate(Date/moment/string)</code>: Sets the date range picker's currently selected start date to the provided date</p>
+					<p><code>setEndDate(Date/moment/string)</code>: Sets the date range picker's currently selected end date to the provided date</p>
+					<p>Example usage:</p>
+
+					<pre><code>//create a new date range picker
+$('#daterange').daterangepicker({ startDate: '2014-03-05', endDate: '2014-03-06' });
+//change the selected date range of that picker
+$('#daterange').data('daterangepicker').setStartDate('2014-03-01');
+$('#daterange').data('daterangepicker').setEndDate('2014-03-31');
+</code></pre>
+					<hr />
+					<h2>Events</h2>
+					<p>Several events are triggered on the element you attach the picker to, which you can listen for:</p>
+					<p><code>show.daterangepicker</code>: Triggered when the picker is shown</p>
+					<p><code>hide.daterangepicker</code>: Triggered when the picker is hidden</p>
+					<p><code>apply.daterangepicker</code>: Triggered when the apply button is clicked</p>
+					<p><code>cancel.daterangepicker</code>: Triggered when the cancel button is clicked</p>
+					<p>Some applications need a "clear" instead of a "cancel" functionality, which can be achieved by changing the button label and watching 
+					for the cancel event:</p>
+					<pre><code>$('#daterange').daterangepicker({
+  locale: { cancelLabel: 'Clear' }  
+});
+
+$('#daterange').on('cancel.daterangepicker', function(ev, picker) {
+  //do something, like clearing an input
+  $('#daterange').val('');
+});
+</code></pre>
+					<p>While passing in a callback to the constructor is the easiest way to listen for changes in the selected date range, you can also do 
+					something every time the apply button is clicked even if the selection hasn't changed:</p>
+					<pre><code>$('#daterange').daterangepicker();
+$('#daterange').on('apply.daterangepicker', function(ev, picker) {
+  console.log(picker.startDate.format('YYYY-MM-DD'));
+  console.log(picker.endDate.format('YYYY-MM-DD'));
+});
+</code></pre>
+					
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script src="../plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script src="../plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<title>bootstrap-hover-dropdown</title>
+<style>
+body {
+	padding-top: 70px;
+	margin-left: 108px;
+}
+</style>
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="nav">
+       </nav>
+       	<script src="../plugins-js/navigation.js" type="text/javascript"></script>
+		 <script>
+		 jQuery(document).ready(function() { 
+			navigation.init(); 
+			});
+		</script>
+	<article class="markdown-body entry-content">
+	<h1>bootstrap-hover-dropdown</h1>
+	<h4>
+	<a id="user-content-name-change" class="anchor" href="#name-change" aria-hidden="true"><span class="octicon octicon-link"></span></a>Name Change</h4>
+	
+	<p><em>Twitter Bootstrap</em> is now just <em>Bootstrap</em>, and I've renamed this repo, <strong>renamed the files</strong> and change all references from <em>Twitter Bootstrap</em> to just <em>Bootstrap</em> in the docs/example to reflect that.</p>
+	
+	<p>No actual code changed, so I am keeping the current version (<code>2.0.1</code> at the time of this writing), but be aware of the lack of <em>twitter-</em> from the beginning of the JS files and how that might affect you.</p>
+	
+	<p>Sorry for any inconvenience!</p>
+	
+	<h4>
+	<a id="user-content-updated-for-bootstrap-3" class="anchor" href="#updated-for-bootstrap-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Updated for Bootstrap 3</h4>
+	
+	<p>I updated the demo with Bootstrap 3, as well as removed code associated to submenus (<a href="https://github.com/twbs/bootstrap/pull/6342#issuecomment-11594010">not supported in Bootstrap 3</a>) and touch devices (just make sure you have <code>data-toggle="dropdown"</code> to let Mobile do its thing and my plugin won't interfere).</p>
+	
+	<h2>
+	<a id="user-content-introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+	
+	<p>A simple plugin to enable Bootstrap dropdowns to activate on hover and provide a nice user experience.</p>
+	
+	<p>The dropdowns are dismissed after a configurable delay. This fixes an issue that can instantly close your nav because of a 1px gap between the button/nav item that activated the dropdown and the actual dropdown. It is also generally a better user experience, as users are not punished by going 1 pixel outside of the dropdown, which would instantly close the nav without a delay.</p>
+	
+	<p><strong>Note:</strong> The HTML markup is the same as with any other Bootstrap dropdown. This will not interfere with Bootstrap's default activate-on-click method (i.e. this plugin combined with Bootstrap's default behavior work well to support both the ideal experience on desktop and mobile).</p>
+	
+	<h2>
+	<a id="user-content-installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+	
+	<p>You can simply download and extract the package downloaded from GitHub. Alternatively, you can download the files via <a href="http://bower.io/">Bower</a> (a JavaScript package management system):</p>
+	
+	<pre><code>bower install bootstrap-hover-dropdown
+	</code></pre>
+	
+	<p>which will also automatically install Bootstrap and jQuery if needed.</p>
+	
+	<p>Once you have the files downloaded, link to the files in your code <em>after</em> you include the main Bootstrap JS file(s):</p>
+	
+	<div class="highlight highlight-html"><pre><span class="pl-c"><span class="pl-pdc">&lt;!--</span> script order matters! <span class="pl-pdc">--&gt;</span></span>
+	&lt;<span class="pl-ent">script</span> <span class="pl-eoa">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>/path/to/jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+	&lt;<span class="pl-ent">script</span> <span class="pl-eoa">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>/path/to/bootstrap.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+	&lt;<span class="pl-ent">script</span> <span class="pl-eoa">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>/path/to/bootstrap-hover-dropdown.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+	
+	<h2>
+	<a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+	
+	<p>Just like in Bootstrap you can activate it without any JavaScript, just by adding a data-attribute, you can make it automatically work.</p>
+	
+	<p>Add <code>data-hover="dropdown"</code> in addition (or in place of) Bootstrap's <code>data-toggle="dropdown"</code>.</p>
+	
+	<p>You can set options via data-attributes, too, via <code>data-delay</code> and <code>data-close-others</code>. Here's an example of markup:</p>
+	
+	<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">li</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>dropdown<span class="pl-pds">"</span></span>&gt;
+	    &lt;<span class="pl-ent">a</span> <span class="pl-eoa">href</span>=<span class="pl-s1"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>dropdown-toggle<span class="pl-pds">"</span></span> <span class="pl-eoa">data-toggle</span>=<span class="pl-s1"><span class="pl-pds">"</span>dropdown<span class="pl-pds">"</span></span> <span class="pl-eoa">data-hover</span>=<span class="pl-s1"><span class="pl-pds">"</span>dropdown<span class="pl-pds">"</span></span> <span class="pl-eoa">data-delay</span>=<span class="pl-s1"><span class="pl-pds">"</span>1000<span class="pl-pds">"</span></span> <span class="pl-eoa">data-close-others</span>=<span class="pl-s1"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>&gt;
+	        Account &lt;<span class="pl-ent">b</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>caret<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">b</span>&gt;
+	    &lt;/<span class="pl-ent">a</span>&gt;
+	    &lt;<span class="pl-ent">ul</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>dropdown-menu<span class="pl-pds">"</span></span>&gt;
+	        &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-eoa">tabindex</span>=<span class="pl-s1"><span class="pl-pds">"</span>-1<span class="pl-pds">"</span></span> <span class="pl-eoa">href</span>=<span class="pl-s1"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span>&gt;My Account&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+	        &lt;<span class="pl-ent">li</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>divider<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+	        &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-eoa">tabindex</span>=<span class="pl-s1"><span class="pl-pds">"</span>-1<span class="pl-pds">"</span></span> <span class="pl-eoa">href</span>=<span class="pl-s1"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span>&gt;Change Email&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+	        &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-eoa">tabindex</span>=<span class="pl-s1"><span class="pl-pds">"</span>-1<span class="pl-pds">"</span></span> <span class="pl-eoa">href</span>=<span class="pl-s1"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span>&gt;Change Password&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+	        &lt;<span class="pl-ent">li</span> <span class="pl-eoa">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>divider<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+	        &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-eoa">tabindex</span>=<span class="pl-s1"><span class="pl-pds">"</span>-1<span class="pl-pds">"</span></span> <span class="pl-eoa">href</span>=<span class="pl-s1"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span>&gt;Logout&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+	    &lt;/<span class="pl-ent">ul</span>&gt;
+	&lt;/<span class="pl-ent">li</span>&gt;</pre></div>
+	
+	<p>Alternatively, you can initialize via JavaScript:</p>
+	
+	<div class="highlight highlight-javascript"><pre>$(<span class="pl-s1"><span class="pl-pds">'</span>.dropdown-toggle<span class="pl-pds">'</span></span>).dropdownHover(options);</pre></div>
+	
+	<p>This also works with submenus without any other configuring since Bootstrap already supports this feature. Just use the markup like you were using before. Only the top level anchor tag needs any special markup for my plugin to work (see demo for proper markup).</p>
+	
+	<h2>
+	<a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+	
+	<ul class="task-list">
+	<li>
+	<strong>delay</strong>: <em>(optional)</em> The delay in miliseconds. This is the time to wait before closing a dropdown when the mouse is no longer over the dropdown or the button/nav item that activated it. Defaults to <code>500</code>.</li>
+	<li>
+	<strong>instantlyCloseOthers</strong>: <em>(optional)</em> A boolean value that when true, will instantly close all other dropdowns matched by the selector used when you activate a new navigation. This is nice for when you have dropdowns close together that may overlap. Default is <code>true</code>.</li>
+	</ul>
+	
+	<h2>
+	<a id="user-content-demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h2>
+	
+	<p>You can view a demo for this plugin on my site: <a href="http://cameronspear.com/demos/bootstrap-hover-dropdown/">http://cameronspear.com/demos/bootstrap-hover-dropdown/</a></p>
+	
+	<h3>
+	<a id="user-content-a-note-on-choosing-a-selector" class="anchor" href="#a-note-on-choosing-a-selector" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Note on Choosing a Selector</h3>
+	
+	<p>This plugin purposedly lets you choose a selector (as opposed to apply this to everything with the class of <code>.dropdown-toggle</code>). This is so that you can selectively apply it where you want. Maybe you only want to use it for the main nav, and not have it activate for dropdown buttons in the main content. You can add a class to the item that normally gets <code>.dropdown-toggle</code> and use that class with this plugin to easily achieve that, or use a selector such as <code>.main-nav .dropdown-toggle</code>.</p>
+	
+	<p><strong>Important:</strong> Bootstrap relies on styles associated with the class <code>.dropdown-toggle</code> (for stuff like the caret color), and it is recommended you leave that class alone.</p>
+	</article>
+</body>
+</html>	
