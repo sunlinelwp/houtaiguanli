@@ -615,4 +615,27 @@ public class CurtainController {
 		logger.info("返回参数================="+rspmap);
 		return rspmap;
 	}
+	
+	/**
+	 * 线下充值
+	 * @param reqmap
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value = "/seapon")
+	public Map<String,Object> seapon(@RequestBody Map<String,Object> reqmap , @ModelAttribute("User") BSBUser user){
+		reqmap.put("userid", user.getUserid());
+		reqmap.put("target", "1");
+		logger.info("请求参数================="+reqmap);
+		Map<String,Object> rspmap = new HashMap<String, Object>();
+		try{
+			rspmap =  clict.callClient("seapon", reqmap);
+		} catch(SumpException e){
+			rspmap.put("retCode", e.getErrCode());
+			rspmap.put("retMsg", e.getErrMsg());
+		}
+			
+		logger.info("返回参数================="+rspmap);
+		return rspmap;
+	}
 }
