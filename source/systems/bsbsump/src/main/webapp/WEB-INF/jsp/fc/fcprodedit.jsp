@@ -54,7 +54,7 @@
 					<div class="col-md-9">
 						<input type="text" name="prodmd"
 							class="form-control input-inline input-medium form-value"
-							placeholder="产品状态">
+							placeholder="产品模式">
 					</div>
 				</div>
 				
