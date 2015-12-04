@@ -1,8 +1,16 @@
 var fcsetprod = function() {    
 	
 	var prodstDict =Sunline.getDict("F_PRODST");//产品状态
-	var prodtpDict =Sunline.getDict("F_PRODTP");//产品状态
-	var onlyfgDict =Sunline.getDict("F_ONLYFG");//产品状态
+	var prodtpDict =Sunline.getDict("F_PRODTP");//产品类型
+	var onlyfgDict =Sunline.getDict("F_ONLYFG");//唯一规则
+	
+	//增加
+	var crcycdDict = Sunline.getDict("E_CRCYCD");//币种
+	var prodmdDict = Sunline.getDict("E_PRODMD");//产品模式
+	var lesrulDict = Sunline.getDict("E_LESRUL");//不足额规则
+	var addrulDict = Sunline.getDict("E_ADDRUL");//追加起投规则
+	var learulDict = Sunline.getDict("E_LEARUL");//不足额追加规则
+	//结束
 	var handleTable = function() {
 		var prodgrid = new Datatable();
 		var produrl = Sunline.ajaxPath("fc/fcqpro");
@@ -33,15 +41,48 @@ var fcsetprod = function() {
 								{
 									"data" : "prodtp",
 									"sortable" : false,
+									"searchable" : false
+								},
+								{
+									"data" : "prodde",
+									"sortable" : false,
+									"searchable" : false
+								},
+								{
+									"data" : "prodmd",
+									"sortable" : false,
 									"searchable" : false,
 									"render" : function(data, type, full) {
-										for (var i = 0; i < prodtpDict.length; i++) {
-											if (prodtpDict[i].id == data) {
-												return prodtpDict[i].text;
+										for (var i = 0; i < prodmdDict.length; i++) {
+											if (prodmdDict[i].id == data) {
+												return prodmdDict[i].text;
 											}
 										}
 										return data;
 									}
+								},
+								{
+									"data" : "prodst",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < prodstDict.length; i++) {
+											if (prodstDict[i].id == data) {
+												return prodstDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "fcsrcd",
+									"sortable" : false,
+									"searchable" : false
+								},
+								{
+									"data" : "fcsrna",
+									"sortable" : false,
+									"searchable" : false
 								},
 								{
 									"data" : "onlyfg",
@@ -57,6 +98,73 @@ var fcsetprod = function() {
 									}
 								},
 								{
+									"data" : "rvbson",
+									"sortable" : false,
+									"searchable" : false
+								},
+								{
+									"data" : "pybson",
+									"sortable" : false,
+									"searchable" : false
+								},
+								{
+									"data" : "crcycd",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < lesrulDict.length; i++) {
+											if (lesrulDict[i].id == data) {
+												return lesrulDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "lesrul",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < lesrulDict.length; i++) {
+											if (lesrulDict[i].id == data) {
+												return lesrulDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "addrul",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < addrulDict.length; i++) {
+											if (addrulDict[i].id == data) {
+												return addrulDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "addamt",
+									"sortable" : false,
+									"searchable" : false
+								},
+								{
+									"data" : "learul",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < learulDict.length; i++) {
+											if (learulDict[i].id == data) {
+												return learulDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
 									"data" : "efctdt",
 									"sortable" : false,
 									"searchable" : false
@@ -66,19 +174,6 @@ var fcsetprod = function() {
 									"sortable" : false,
 									"searchable" : false
 								},
-								{
-									"data" : "prodst",
-									"sortable" : false,
-									"searchable" : false,
-									"render" : function(data, type, full) {
-										for (var i = 0; i < prodstDict.length; i++) {
-											if (prodstDict[i].id == data) {
-												return prodstDict[i].text;
-											}
-										}
-										return data;
-									}
-								},								
 								{
 									"data" : null,
 									"sortable" : false,
@@ -102,7 +197,8 @@ var fcsetprod = function() {
 												+ data.depttm
 											    + "'>删除 </a>";
 									}
-								} ]
+								}								
+								]
 					}
 				});
 		prodgrid.bindTableDelete(prodsendData);
