@@ -108,15 +108,22 @@ var fcsubpage = function () {
     var loaddata = function(data) {	
     	$("input[name='prodcd']", $("#prod_form")).val(data.prodcd);
     	$("input[name='prodna']", $("#prod_form")).val(data.prodna);
+    	$("input[name='prodtp']", $("#prod_form")).val(data.prodtp).trigger("change");
+    	$("input[name='prodde']", $("#prod_form")).val(data.prodde);
+    	$("input[name='prodmd']", $("#prod_form")).val(data.prodmd).trigger("change");
+    	$("input[name='prodst']", $("#prod_form")).val(data.prodst).trigger("change");
     	$("input[name='fcsrcd']", $("#prod_form")).val(data.fcsrcd);
     	$("input[name='fcsrna']", $("#prod_form")).val(data.fcsrna);
     	$("input[name='onlyfg']", $("#prod_form")).val(data.onlyfg).trigger("change");
-    	$("input[name='efctdt']", $("#prod_form")).val(data.efctdt);
-    	$("input[name='inefdt']", $("#prod_form")).val(data.inefdt);
-    	$("input[name='prodtp']", $("#prod_form")).val(data.prodtp).trigger("change");
-    	$("input[name='prodst']", $("#prod_form")).val(data.prodst).trigger("change");
     	$("input[name='rvbsno']", $("#prod_form")).val(data.rvbsno);
     	$("input[name='pybsno']", $("#prod_form")).val(data.pybsno);
+    	$("input[name='crcycd']", $("#prod_form")).val(data.crcycd).trigger("change");
+    	$("input[name='lesrul']", $("#prod_form")).val(data.lesrul).trigger("change");
+    	$("input[name='addrul']", $("#prod_form")).val(data.addrul).trigger("change");
+    	$("input[name='addamt']", $("#prod_form")).val(data.addamt);
+    	$("input[name='learul']", $("#prod_form")).val(data.learul).trigger("change");
+    	$("input[name='efctdt']", $("#prod_form")).val(data.efctdt);
+    	$("input[name='inefdt']", $("#prod_form")).val(data.inefdt);
 	}
     
 
