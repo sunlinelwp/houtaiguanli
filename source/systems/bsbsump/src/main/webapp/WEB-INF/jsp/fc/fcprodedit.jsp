@@ -30,6 +30,7 @@
 							placeholder="产品名称">
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label class="col-md-3 control-label">产品类型</label>
 					<div class="col-md-9">
@@ -38,7 +39,34 @@
 							placeholder="产品类型">
 					</div>
 				</div>
-
+				
+				<div class="form-group">
+					<label class="col-md-3 control-label">产品描述</label>
+					<div class="col-md-9">
+						<input type="text" name="prodde"
+							class="form-control input-inline input-medium form-value"
+							placeholder="产品描述">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-3 control-label">产品模式</label>
+					<div class="col-md-9">
+						<input type="text" name="prodmd"
+							class="form-control input-inline input-medium form-value"
+							placeholder="产品状态">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-3 control-label">产品状态</label>
+					<div class="col-md-9">
+						<input type="text" name="prodst"
+							class="form-control input-inline input-medium form-value"
+							placeholder="产品状态">
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<label class="col-md-3 control-label">融资来源编号</label>
 					<div class="col-md-9">
@@ -47,6 +75,7 @@
 							placeholder="融资来源编号">
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label class="col-md-3 control-label">融资来源名称</label>
 					<div class="col-md-9">
@@ -64,7 +93,10 @@
 							placeholder="唯一规则">
 					</div>
 				</div>
+				
 			</div>
+			
+			
 			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-md-3 control-label">收款业务编号</label>
@@ -74,6 +106,7 @@
 							placeholder="收款业务编号">
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label class="col-md-3 control-label">收款业务名称</label>
 					<div class="col-md-9">
@@ -82,14 +115,55 @@
 							placeholder="收款业务名称">
 					</div>
 				</div>
+				
+				
+				
 				<div class="form-group">
-					<label class="col-md-3 control-label">产品状态</label>
+					<label class="col-md-3 control-label">货币代码</label>
 					<div class="col-md-9">
-						<input type="text" name="prodst"
+						<input type="text" name="crcycd"
 							class="form-control input-inline input-medium form-value"
-							placeholder="产品状态">
+							placeholder="货币代码">
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<label class="col-md-3 control-label">不足额规则</label>
+					<div class="col-md-9">
+						<input type="text" name="lesrul"
+							class="form-control input-inline input-medium form-value"
+							placeholder="不足额规则">
+							
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-3 control-label">追加起投规则</label>
+					<div class="col-md-9">
+						<input type="text" name="addrul"
+							class="form-control input-inline input-medium form-value"
+							placeholder="追加起投规则">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-3 control-label">追加起投金额</label>
+					<div class="col-md-9">
+						<input type="text" name="addamt"
+							class="form-control input-inline input-medium form-value"
+							placeholder="追加起投金额">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-3 control-label">不足额追加规则</label>
+					<div class="col-md-9">
+						<input type="text" name="learul"
+							class="form-control input-inline input-medium form-value"
+							placeholder="不足额追加规则">
+					</div>
+				</div>
+								
 				<div class="form-group">
 					<label class="col-md-3 control-label">生效日期</label>
 					<div class="col-md-9">
@@ -106,6 +180,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label class="col-md-3 control-label">失效日期</label>
 					<div class="col-md-9">
@@ -166,6 +241,36 @@
 					allowClear : true
 				});
 				
+				
+				var prodmdDict = Sunline.getDict("E_PRODMD");
+				$("input[name='prodmd']").select2({
+					data : prodmdDict,
+					allowClear : true
+				}); 
+				
+				var lesrulDict = Sunline.getDict("E_LESRUL");//不足额规则
+				$("input[name='lesrul']").select2({
+					data : lesrulDict,
+					allowClear : true
+				}); 
+				
+				var addrulDict = Sunline.getDict("E_ADDRUL");//追加起投规则
+				$("input[name='addrul']").select2({
+					data : addrulDict,
+					allowClear : true
+				}); 
+				
+				var learulDict = Sunline.getDict("E_LEARUL");//不足额追加规则
+				$("input[name='learul']").select2({
+					data : learulDict,
+					allowClear : true
+				}); 
+				
+				var crcycdDict = Sunline.getDict("E_CRCYCD");//币种
+				$("input[name='crcycd']").select2({
+					data : crcycdDict,
+					allowClear : true
+				});
 				//Metronic.initSlimScroll();
 			}
 
