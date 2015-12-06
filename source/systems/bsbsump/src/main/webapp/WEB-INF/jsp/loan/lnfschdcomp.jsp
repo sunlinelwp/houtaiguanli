@@ -67,6 +67,15 @@
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
+											<label class="col-md-3 control-label">产品代码</label>
+											<div class="col-md-9">
+												<input type="text" name="prodcd"
+													class="form-control input-inline input-medium form-value"
+													placeholder="产品代码">
+											</div>
+										</div>
+										
+										<div class="form-group">
 											<label class="col-md-3 control-label">货币代号</label>
 											<div class="col-md-9">
 												<input type="text" name="crcycd"
