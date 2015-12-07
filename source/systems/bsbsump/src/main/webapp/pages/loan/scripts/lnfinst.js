@@ -369,7 +369,7 @@ var lnfinst = function() {
 					$("input[name='lnirkd']", $("#editinstModal")).val(
 							info.lnirkd).trigger("change");
 					$("input[name='lnirtm']", $("#editinstModal")).val(
-							info.lnirtm);
+							info.lnirtm).trigger("change");
 					$("input[name='nfirtp']", $("#editinstModal")).val(
 							info.nfirtp).trigger("change");
 					$("input[name='irdytp']", $("#editinstModal")).val(
@@ -393,7 +393,7 @@ var lnfinst = function() {
 					$("input[name='piircd']", $("#editinstModal")).val(
 							info.piircd);
 					$("input[name='piirfg']", $("#editinstModal")).val(
-							info.piirfg);
+							info.piirfg).trigger("change");
 					$("input[name='pirtir']", $("#editinstModal")).val(
 							info.pirtir);
 					$("input[name='pirvtp']", $("#editinstModal")).val(
@@ -411,7 +411,7 @@ var lnfinst = function() {
 					$("input[name='cirtir']", $("#editinstModal")).val(
 							info.cirtir);
 					$("input[name='cirvtp']", $("#editinstModal")).val(
-							info.cirtir).trigger("change");
+							info.cirvtp).trigger("change");
 					$("input[name='cirvfm']", $("#editinstModal")).val(
 							info.cirvfm);
 					$("input[name='cifltp']", $("#editinstModal")).val(
@@ -431,7 +431,7 @@ var lnfinst = function() {
 					$("input[name='mifltp']", $("#editinstModal")).val(
 							info.mifltp).trigger("change");
 					$("input[name='miflvl']", $("#editinstModal")).val(
-							info.mifvl);
+							info.miflvl);
 					$("input[name='ricatp']", $("#editinstModal")).val(
 							info.ricatp).trigger("change");
 					$("input[name='ridyfg']", $("#editinstModal")).val(
