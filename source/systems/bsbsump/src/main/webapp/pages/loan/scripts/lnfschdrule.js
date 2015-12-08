@@ -2,7 +2,7 @@ var lnfschdrule = function() {
 
 	var dict = {
 			
-			crcycdDict : Sunline.getDict("crcycd"),
+			crcycdDict : Sunline.getDict("E_CRCYCD"),
 			schdsrDict : Sunline.getDict("E_SCHDSR"),
 			schdtpDict : Sunline.getDict("E_SCHDTP"),
 			ismurpDict : Sunline.getDict("E_ISMURP"),
@@ -28,9 +28,21 @@ var lnfschdrule = function() {
 			grrctpDict : Sunline.getDict("E_GRRCTP"),
 			grtftpDict : Sunline.getDict("E_GRTFTP"),
 			grhdtpDict : Sunline.getDict("E_GRHDTP"),
-			isgracDict : Sunline.getDict("E_ISREDU")
+			isgracDict : Sunline.getDict("E_ISREDU"),			
+			eqmodeDict : Sunline.getDict("E_EQMODE"),
+			ismuacDict : Sunline.getDict("E_ISINTF"),//E_ISMUAC 查不出来换成类似的E_ISINTF
+			iscyclDict : Sunline.getDict("E_ISCYCL"),
+			isintfDict : Sunline.getDict("E_ISINTF"),
+			retntpDict : Sunline.getDict("E_RETNTP"),
+			retncaDict : Sunline.getDict("E_RETNCA"),
+			mnepruDict : Sunline.getDict("E_EPRULE"),
+			mxepruDict : Sunline.getDict("E_EPRULE"),
+			ldchscDict : Sunline.getDict("E_ISCHSC"),
+			ispartDict : Sunline.getDict("E_ISPART"),
+			parttpDict : Sunline.getDict("E_EPRULE")
+			//38
 		}
-	
+	//41
 	$("input[name='crcycd']").select2({data:dict.crcycdDict,allowClear:true});
 	$("input[name='schdsr']").select2({data:dict.schdsrDict,allowClear:true});
 	$("input[name='schdtp']").select2({data:dict.schdtpDict,allowClear:true});
@@ -51,13 +63,29 @@ var lnfschdrule = function() {
 	$("input[name='isepym']").select2({data:dict.isepymDict,allowClear:true});
 	$("input[name='epymtp']").select2({data:dict.epymtpDict,allowClear:true});
 	$("input[name='iseptx']").select2({data:dict.iseptxDict,allowClear:true});
+	/*
 	$("input[name='ischse']").select2({data:dict.ischseDict,allowClear:true});
+	*/
 	$("input[name='grintp']").select2({data:dict.grintpDict,allowClear:true});
 	$("input[name='grovtp']").select2({data:dict.grovtpDict,allowClear:true});
 	$("input[name='grrctp']").select2({data:dict.grrctpDict,allowClear:true});
 	$("input[name='grtftp']").select2({data:dict.grtftpDict,allowClear:true});
 	$("input[name='grhdtp']").select2({data:dict.grhdtpDict,allowClear:true});
 	$("input[name='isgrac']").select2({data:dict.isgracDict,allowClear:true});
+	$("input[name='rtchsc']").select2({data:dict.ischseDict,allowClear:true});
+	$("input[name='tmchsc']").select2({data:dict.ischseDict,allowClear:true});
+	$("input[name='epchsc']").select2({data:dict.ischseDict,allowClear:true});
+	$("input[name='eqmode']").select2({data:dict.eqmodeDict,allowClear:true});
+	$("input[name='ismuac']").select2({data:dict.ismuacDict,allowClear:true});
+	$("input[name='iscycl']").select2({data:dict.iscyclDict,allowClear:true});
+	$("input[name='isintf']").select2({data:dict.isintfDict,allowClear:true});
+	$("input[name='retntp']").select2({data:dict.retntpDict,allowClear:true});
+	$("input[name='retnca']").select2({data:dict.retncaDict,allowClear:true});
+	$("input[name='mnepru']").select2({data:dict.mnepruDict,allowClear:true});
+	$("input[name='mxepru']").select2({data:dict.mxepruDict,allowClear:true});
+	$("input[name='ldchsc']").select2({data:dict.ldchscDict,allowClear:true});
+	$("input[name='ispart']").select2({data:dict.ispartDict,allowClear:true});
+	$("input[name='parttp']").select2({data:dict.parttpDict,allowClear:true});
 	
 	
 	var handleTable = function(prodcd) {
@@ -252,6 +280,7 @@ var lnfschdrule = function() {
 										return data;
 									}
 								},
+								
 								{
 									"data" : "isredu",
 									"sortable" : false,
@@ -348,6 +377,7 @@ var lnfschdrule = function() {
 										return data;
 									}
 								},
+								
 								{
 									"data" : "epymtp",
 									"sortable" : false,
@@ -374,6 +404,7 @@ var lnfschdrule = function() {
 										return data;
 									}
 								},
+								
 								{
 									"data" : "epchsc",
 									"sortable" : false,
@@ -400,6 +431,7 @@ var lnfschdrule = function() {
 										return data;
 									}
 								},
+								
 								{
 									"data" : "rtchsc",
 									"sortable" : false,
@@ -413,6 +445,7 @@ var lnfschdrule = function() {
 										return data;
 									}
 								},
+								
 								{
 									"data" : "isgrac",
 									"sortable" : false,
@@ -507,6 +540,214 @@ var lnfschdrule = function() {
 									}
 								},
 								{
+									"data" : "eqmode",//等额处理规则
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.eqmodeDict.length; i++) {
+											if (dict.eqmodeDict[i].id == data) {
+												return dict.eqmodeDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "progvl",
+									"sortable" : false,
+									"searchable" : false
+								},
+								
+								{
+									"data" : "progpv",
+									"sortable" : false,
+									"searchable" : false
+								},
+								{
+									"data" : "ismuac",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.ismuacDict.length; i++) {
+											if (dict.ismuacDict[i].id == data) {
+												return dict.ismuacDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								
+								{
+									"data" : "iscycl",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.iscyclDict.length; i++) {
+											if (dict.iscyclDict[i].id == data) {
+												return dict.iscyclDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "isintf",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.isintfDict.length; i++) {
+											if (dict.isintfDict[i].id == data) {
+												return dict.isintfDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "intfdy",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								{
+									"data" : "retncd",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								{
+									"data" : "retntp",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.retntpDict.length; i++) {
+											if (dict.retntpDict[i].id == data) {
+												return dict.retntpDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								
+								{
+									"data" : "retnfr",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								{
+									"data" : "retnca",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.retncaDict.length; i++) {
+											if (dict.retncaDict[i].id == data) {
+												return dict.retncaDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "retnpt",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								{
+									"data" : "epymlk",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								
+								{
+									"data" : "mxyrts",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								{
+									"data" : "mxtlts",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								{
+									"data" : "mnepru",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.mnepruDict.length; i++) {
+											if (dict.mnepruDict[i].id == data) {
+												return dict.mnepruDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "mnepvl",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								
+								{
+									"data" : "mxepru",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.mxepruDict.length; i++) {
+											if (dict.mxepruDict[i].id == data) {
+												return dict.mxepruDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "mxepvl",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								{
+									"data" : "ldchsc",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.ldchscDict.length; i++) {
+											if (dict.ldchscDict[i].id == data) {
+												return dict.ldchscDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "ispart",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.ispartDict.length; i++) {
+											if (dict.ispartDict[i].id == data) {
+												return dict.ispartDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "parttp",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < dict.parttpDict.length; i++) {
+											if (dict.parttpDict[i].id == data) {
+												return dict.parttpDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "partvl",
+									"sortable" : false,
+									"searchable" : false,
+								},
+								{
 									"data" : null,
 									"sortable" : false,
 									"searchable" : false,
@@ -574,6 +815,30 @@ var lnfschdrule = function() {
 			$("input[name='grrctp']").val($(nRowA[36]).text().substring($(nRowA[36]).text().indexOf("[")+1,$(nRowA[36]).text().indexOf("]"))).trigger("change");
 			$("input[name='grtftp']").val($(nRowA[37]).text().substring($(nRowA[37]).text().indexOf("[")+1,$(nRowA[37]).text().indexOf("]"))).trigger("change");
 			$("input[name='grhdtp']").val($(nRowA[38]).text().substring($(nRowA[38]).text().indexOf("[")+1,$(nRowA[38]).text().indexOf("]"))).trigger("change");
+			$("input[name='eqmode']").val($(nRowA[39]).text().substring($(nRowA[39]).text().indexOf("[")+1,$(nRowA[39]).text().indexOf("]"))).trigger("change");
+			
+			$("input[name='progvl']").val($(nRowA[40]).text());
+			$("input[name='progpv']").val($(nRowA[41]).text());
+			$("input[name='ismuac']").val($(nRowA[42]).text().substring($(nRowA[42]).text().indexOf("[")+1,$(nRowA[42]).text().indexOf("]"))).trigger("change");
+			$("input[name='iscycl']").val($(nRowA[43]).text().substring($(nRowA[43]).text().indexOf("[")+1,$(nRowA[43]).text().indexOf("]"))).trigger("change");
+			$("input[name='isintf']").val($(nRowA[44]).text().substring($(nRowA[44]).text().indexOf("[")+1,$(nRowA[44]).text().indexOf("]"))).trigger("change");
+			$("input[name='intfdy']").val($(nRowA[45]).text());
+			$("input[name='retncd']").val($(nRowA[46]).text());
+			$("input[name='retntp']").val($(nRowA[47]).text());
+			$("input[name='retnfr']").val($(nRowA[48]).text());
+			$("input[name='retnca']").val($(nRowA[49]).text().substring($(nRowA[49]).text().indexOf("[")+1,$(nRowA[49]).text().indexOf("]"))).trigger("change");
+			$("input[name='retnpt']").val($(nRowA[50]).text());
+			$("input[name='epymlk']").val($(nRowA[51]).text());
+			$("input[name='mxyrts']").val($(nRowA[52]).text());
+			$("input[name='mxtlts']").val($(nRowA[53]).text());
+			$("input[name='mnepru']").val($(nRowA[54]).text().substring($(nRowA[54]).text().indexOf("[")+1,$(nRowA[54]).text().indexOf("]"))).trigger("change");
+			$("input[name='mnepvl']").val($(nRowA[55]).text());
+			$("input[name='mxepru']").val($(nRowA[56]).text().substring($(nRowA[56]).text().indexOf("[")+1,$(nRowA[56]).text().indexOf("]"))).trigger("change");
+			$("input[name='mxepvl']").val($(nRowA[57]).text());
+			$("input[name='ldchsc']").val($(nRowA[58]).text().substring($(nRowA[58]).text().indexOf("[")+1,$(nRowA[58]).text().indexOf("]"))).trigger("change");
+			$("input[name='ispart']").val($(nRowA[59]).text().substring($(nRowA[59]).text().indexOf("[")+1,$(nRowA[59]).text().indexOf("]"))).trigger("change");
+			$("input[name='parttp']").val($(nRowA[60]).text().substring($(nRowA[60]).text().indexOf("[")+1,$(nRowA[60]).text().indexOf("]"))).trigger("change");
+			$("input[name='partvl']").val($(nRowA[61]).text());
 			$("#editruleModal").modal('show');
 			$("#editruleModal").on("hide.bs.modal", function() {
 				$(".alert-success",$('form', $("#editruleModal"))).hide();

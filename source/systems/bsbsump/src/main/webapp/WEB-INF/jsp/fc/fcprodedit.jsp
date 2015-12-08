@@ -223,19 +223,19 @@
 					});
 				};
 				
-				var prodstDict = Sunline.getDict("F_PRODST");
+				var prodstDict = Sunline.getDict("E_PRODST");
 				$("input[name='prodst']").select2({
 					data : prodstDict,
 					allowClear : true
 				});
 				
-				var onlyfgDict = Sunline.getDict("F_ONLYFG");
+				var onlyfgDict = Sunline.getDict("E_ONLYFG");
 				$("input[name='onlyfg']").select2({
 					data : onlyfgDict,
 					allowClear : true
 				});
 				
-				var prodtpDict = Sunline.getDict("F_PRODTP");
+				var prodtpDict = Sunline.getDict("E_PRODTP");
 				$("input[name='prodtp']").select2({
 					data : prodtpDict,
 					allowClear : true

@@ -186,20 +186,20 @@ var lnfschdcomp = function() {
 					$("input[name='sortno']", $("#editcompModal")).attr(
 							"readOnly", true);
 					// 给input框赋值
-					$("input[name='prodcd']", $("#editcompModal")).val(
+					$("input[name='sortno']", $("#editcompModal")).val(
 							$(nRowA[0]).text());
+					$("input[name='prodcd']", $("#editcompModal")).val(
+							$(nRowA[1]).text());
 					$("input[name='crcycd']", $("#editcompModal")).val(
-							$(nRowA[1]).text().substring(
-									$(nRowA[1]).text().indexOf("[") + 1,
-									$(nRowA[1]).text().indexOf("]"))).trigger(
-							"change");
-					$("input[name='comptp']", $("#editcompModal")).val(
 							$(nRowA[2]).text().substring(
 									$(nRowA[2]).text().indexOf("[") + 1,
 									$(nRowA[2]).text().indexOf("]"))).trigger(
 							"change");
-					$("input[name='sortno']", $("#editcompModal")).val(
-							$(nRowA[3]).text());
+					$("input[name='comptp']", $("#editcompModal")).val(
+							$(nRowA[3]).text().substring(
+									$(nRowA[3]).text().indexOf("[") + 1,
+									$(nRowA[3]).text().indexOf("]"))).trigger(
+							"change");
 					$("input[name='schdtp']", $("#editcompModal")).val(
 							$(nRowA[4]).text().substring(
 									$(nRowA[4]).text().indexOf("[") + 1,

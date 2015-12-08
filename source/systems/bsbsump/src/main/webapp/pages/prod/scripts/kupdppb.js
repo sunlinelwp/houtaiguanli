@@ -57,6 +57,104 @@ var kupdppb = function() {
 										return data;
 									}
 								},
+								
+								{
+									"data" : "presal",
+									"sortable" : false,
+									"searchable" : false
+								},
+								{
+									"data" : "pddpfg",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < kupdppbdict.pddpfgDict.length; i++) {
+											if (kupdppbdict.pddpfgDict[i].id == data) {
+												return kupdppbdict.pddpfgDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "prodtp",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < kupdppbdict.prodtpDict.length; i++) {
+											if (kupdppbdict.prodtpDict[i].id == data) {
+												return kupdppbdict.prodtpDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "pdcrcy",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < kupdppbdict.pdcrcyDict.length; i++) {
+											if (kupdppbdict.pdcrcyDict[i].id == data) {
+												return kupdppbdict.pdcrcyDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "brchfg",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < kupdppbdict.brchfgDict.length; i++) {
+											if (kupdppbdict.brchfgDict[i].id == data) {
+												return kupdppbdict.brchfgDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "custfg",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < kupdppbdict.custfgDict.length; i++) {
+											if (kupdppbdict.custfgDict[i].id == data) {
+												return kupdppbdict.custfgDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "debttp",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < kupdppbdict.debttpDict.length; i++) {
+											if (kupdppbdict.debttpDict[i].id == data) {
+												return kupdppbdict.debttpDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								{
+									"data" : "mginfg",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < kupdppbdict.mginfgDict.length; i++) {
+											if (kupdppbdict.mginfgDict[i].id == data) {
+												return kupdppbdict.mginfgDict[i].text;
+											}
+										}
+										return data;
+									}
+								},
+								
 								{
 									"data" : null,
 									"width" : "18%",
