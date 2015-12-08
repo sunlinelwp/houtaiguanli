@@ -25,15 +25,7 @@ var deptInfo = function(){
 	            "ajax": {
 	                "url": url, 
 	            },
-	            "columns" : [{
-			            	"data": "null",
-			            	"sortable": false,
-			            	"searchable": false,
-			            	"width": "2%",
-			            	"render": function (data, type, full) {
-			            		return '<input type="checkbox" class="checkboxes" value="1"/>';
-			            	}
-		            	},{     
+	            "columns" : [{     
 		            	"data": "prodcd",
 		            	"sortable": false,
 		            	"searchable": false
@@ -143,7 +135,7 @@ var deptInfo = function(){
 						}
 					});
 				}else{
-					bootbox.alert("新增失败");
+					bootbox.alert("新增失败，"+data.retMsg);
 				}
 			}, function(data) {
 			});
@@ -194,7 +186,7 @@ var deptInfo = function(){
 						}
 					});
 				}else{
-					bootbox.alert("新增失败");
+					bootbox.alert("新增失败，"+data.retMsg);
 				}
 			}, function(data) {
 			});
@@ -260,7 +252,7 @@ var deptInfo = function(){
 						}
 					});
 				}else{
-					bootbox.alert("新增失败");
+					bootbox.alert("新增失败，"+data.retMsg);
 				}
 			}, function(data) {
 			});
@@ -334,7 +326,7 @@ var deptInfo = function(){
 						}
 					});
 				}else{
-					bootbox.alert("修改失败");
+					bootbox.alert("修改失败，"+data.retMsg);
 				}
 			}, function(data) {
 			});
@@ -413,7 +405,7 @@ var deptInfo = function(){
 						}
 					});
 				}else{
-					bootbox.alert("修改失败");
+					bootbox.alert("修改失败，"+data.retMsg);
 				}
 			}, function(data) {
 			});
@@ -481,7 +473,7 @@ var deptInfo = function(){
 						}
 					});
 				}else{
-					bootbox.alert("删除失败");
+					bootbox.alert("删除失败，"+data.retMsg);
 				}
 			}, function(data) {
 			});
@@ -558,7 +550,7 @@ var deptInfo = function(){
 						}
 					});
 				}else{
-					bootbox.alert("删除失败");
+					bootbox.alert("删除失败，"+data.retMsg);
 				}
 			}, function(data) {
 			});
@@ -642,7 +634,7 @@ var deptInfo = function(){
 						}
 					});
 				}else{
-					bootbox.alert("删除失败");
+					bootbox.alert("删除失败，"+data.retMsg);
 				}
 			}, function(data) {
 			});

@@ -6,8 +6,8 @@
 		<div class="portlet-title">
 			<div class="caption">
 				<i class="fa fa-gift font-green-sharp"></i> <span
-					class="caption-subject font-green-sharp bold uppercase">客户信息</span>
-				<span class="caption-helper">客户基本信息...</span>
+					class="caption-subject font-green-sharp bold uppercase">融资产品转让规则配置</span>
+				<span class="caption-helper">融资产品转让规则配置...</span>
 			</div>
 		</div>
 		<div class="portlet-body">
@@ -30,7 +30,6 @@
 					id="cif_ajax">
 					<thead>
 						<tr role="row" class="heading">
-							<th width="2%"></th>
 							<th width="8%">产品编号</th>
 							<th width="8%">产品名称</th>
 							<th width="10%">转让期限</th>
@@ -45,9 +44,9 @@
 							<th width="6%">操作</th>
 						</tr>
 						<tr role="row" class="filter">
-							<td></td>
 							<td><input type="text" name="q_prodcd" id="q_prodcd"
 								class="form-control form-filter input-sm"></td>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
