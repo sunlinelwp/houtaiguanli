@@ -98,12 +98,12 @@ var fcsetprod = function() {
 									}
 								},
 								{
-									"data" : "rvbson",
+									"data" : "rvbsno",
 									"sortable" : false,
 									"searchable" : false
 								},
 								{
-									"data" : "pybson",
+									"data" : "pybsno",
 									"sortable" : false,
 									"searchable" : false
 								},
