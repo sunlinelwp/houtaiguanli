@@ -326,10 +326,12 @@ public class CustController {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		
+		if (reqmap.get("odorod") == null) {
+			reqmap.put("odorod", "");
+		}
 		Map<String,Object> rspmap = new HashMap<String, Object>();
 		try {
-			rspmap = clict.callClient("edhpay", reqmap);
+			rspmap = clict.callClient("ordrmd", reqmap);
 		} catch (SumpException e) {
 			rspmap.put("retCode", e.getErrCode());
 			rspmap.put("retMsg", e.getErrMsg());
@@ -348,4 +350,42 @@ public class CustController {
 		return rspmap;
 	}
 	
+	
+	/*
+	 * 大额审核订单信息查询(对账之后的订单信息)
+	 */
+	@RequestMapping(value = "/qrckod")
+	public Map<String,Object> qrckod(@RequestParam Map<String,Object> reqmap,@ModelAttribute("User") BSBUser user){
+		Map<String , Object> map = new HashMap<String, Object>();
+		int start = Integer.parseInt(reqmap.get("start").toString());
+		int length  = Integer.parseInt(reqmap.get("length").toString());
+		int pageno = start/length+1;
+		map.put("pageno", pageno);
+		map.put("pagect", length);
+		map.put("fronsq", reqmap.get("q_fronsq") == null ? null : reqmap
+				.get("q_fronsq"));
+		map.put("frondt", reqmap.get("q_frondt") == null ? null : reqmap
+				.get("q_frondt"));
+		
+		map.put("userid", user.getUserid());
+		logger.debug("请求map========"+map);
+		Map<String,Object> rspmap = new HashMap<String, Object>();
+		Map<String,Object> remap = new HashMap<String, Object>();
+		try {
+			rspmap = clict.callClient("qrckod", map);
+		} catch (SumpException e) {
+			remap.put("retCode", e.getErrCode());
+			remap.put("retMsg", e.getErrMsg());
+		}
+		remap.put(
+				"data",
+				rspmap.get("ordrinfo") == null ? new ArrayList<Object>() : rspmap
+						.get("ordrinfo"));
+		remap.put("iTotalDisplayRecords", rspmap.get("counts") == null ? Integer.parseInt("0")
+				: rspmap.get("counts"));
+		remap.put("iTotalRecords",
+				rspmap.get("counts") == null ? Integer.parseInt("0") : rspmap.get("counts"));
+		
+		return remap;
+	}
 }

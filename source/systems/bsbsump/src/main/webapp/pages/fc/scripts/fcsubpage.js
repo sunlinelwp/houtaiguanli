@@ -70,6 +70,7 @@ var fcsubpage = function () {
         if(this.validator!=null){
         	return ;
         }
+        
         return Sunline.getValidate( $("#prod_form"),
     			function() {
 			var data = {};
@@ -85,6 +86,8 @@ var fcsubpage = function () {
                   if(ret.retCode==="0000"){    
                 	   $(".alert-success", $("#prod_form")).show();
                 	   $('.alert-danger',  $("#prod_form")).hide(); 
+                	   $("#efctdat").css("color","black");
+                	   $("#inefect").css("color","black");
                 		//$('.'+pagese[tabindex],editModal).removeClass("active");            					
     					tabindex++;
     					//$('.'+pagese[tabindex],editModal).addClass("active");
@@ -94,13 +97,14 @@ var fcsubpage = function () {
                    	   $('.alert-danger',  $("#prod_form")).show();                        	  
                   }
                   $(".msg", $("#prod_form")).text(ret.msg);
+                  
 			});
-
 		}, {					 
 			 prodcd:{
 				 maxlength : 20,
 				 required : true
 				 }
+			
 		}); 
    }
     

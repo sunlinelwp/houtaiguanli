@@ -165,7 +165,7 @@
 				</div>
 								
 				<div class="form-group">
-					<label class="col-md-3 control-label">生效日期</label>
+					<label class="col-md-3 control-label" id="efctdat">生效日期</label>
 					<div class="col-md-9">
 						<div class="input-group col-md-12 date input-medium date-picker"
 							data-date-format="yyyymmdd" data-date-viewmode="years"
@@ -182,7 +182,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label class="col-md-3 control-label">失效日期</label>
+					<label class="col-md-3 control-label" id="inefect">失效日期</label>
 					<div class="col-md-9">
 						<div class="input-group col-md-12 date input-medium date-picker"
 							data-date-format="yyyymmdd" data-date-viewmode="years"
@@ -272,6 +272,18 @@
 					allowClear : true
 				});
 				//Metronic.initSlimScroll();
+				$("#btn_save_edit").click(function(){
+				    if($("input[name='inefdt']").val()<=$("input[name='efctdt']").val()){
+				      	$(".alert-success", $("#prod_form")).hide();
+				        $('.alert-danger',  $("#prod_form")).show(); 
+				      	$(".msg").text("请检查失效日期"); 
+				        	  return false;
+				    } else{
+				    	 $(".msg").text(""); 
+				    	$('.alert-danger',  $("#prod_form")).hide(); 
+				    }
+				       
+				});
 			}
 
 			return {
