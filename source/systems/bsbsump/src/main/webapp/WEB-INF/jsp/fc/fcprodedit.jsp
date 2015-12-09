@@ -274,13 +274,14 @@
 				//Metronic.initSlimScroll();
 				$("#btn_save_edit").click(function(){
 				    if($("input[name='inefdt']").val()<=$("input[name='efctdt']").val()){
-				      	  $(".alert-success", $("#prod_form")).hide();
-				      	  /* $(".msg").text("失效日期"); */
-				        	  $('.alert-danger',  $("#prod_form")).show(); 
+				      	$(".alert-success", $("#prod_form")).hide();
+				        $('.alert-danger',  $("#prod_form")).show(); 
+				      	$(".msg").text("请检查失效日期"); 
 				        	  return false;
-				        } else{
-				        	 $('.alert-danger',  $("#prod_form")).hide(); 
-				        }
+				    } else{
+				    	 $(".msg").text(""); 
+				    	$('.alert-danger',  $("#prod_form")).hide(); 
+				    }
 				       
 				});
 			}
