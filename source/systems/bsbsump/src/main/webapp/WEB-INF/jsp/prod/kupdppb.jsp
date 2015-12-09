@@ -31,6 +31,14 @@
 							<th width="10%">生效日期</th>
 							<th width="10%">失效日期</th>
 							<th width="10%">产品状态</th>
+							<th width="10%">产品定活标志</th>
+							<th width="10%">产品所属对象</th>
+							<th width="10%">产品适用币种</th>
+							<th width="10%">机构控制标志</th>
+							<th width="10%">客户控制标志</th>
+							<th width="10%">存款种类</th>
+							<th width="10%">早起息许可标志</th>
+							<th width="10%">预售份额</th>
 							<th width="24%" colspan="2">操作</th>
 						</tr>
 						<tr role="row" class="filter">
@@ -40,6 +48,14 @@
 							<td><input type="text"
 								class="form-control form-filter input-sm" id="q_prodtx"
 								name="q_prodtx" /></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -197,14 +213,14 @@
 															maxlength="2" placeholder="机构控制标志">
 													</div>
 												</div>
-												<!-- <div class="form-group">
+												<div class="form-group">
 													<label class="col-md-3 control-label">客户控制标志</label>
 													<div class="col-md-9">
 														<input type="text" name="custfg"
 															class="form-control input-inline input-medium form-value"
 															maxlength="2" placeholder="输入客户控制标志">
 													</div>
-												</div>-->
+												</div>
 												<div class="form-group">
 													<label class="col-md-3 control-label">存款种类</label>
 													<div class="col-md-9">

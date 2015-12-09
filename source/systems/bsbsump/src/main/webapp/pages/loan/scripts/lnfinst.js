@@ -1,4 +1,4 @@
-var lnfinst = function() {	
+var lnfinst = function() {
 	var crcycdDict = Sunline.getDict("crcycd"); // 币种
 	$("input[name='crcycd']").select2({
 		data : crcycdDict,
@@ -9,7 +9,7 @@ var lnfinst = function() {
 		data : lnirtmDict,
 		allowClear : true
 	});
-	
+
 	var nfirtpDict = Sunline.getDict("E_NFIRTP");
 	$("input[name='nfirtp']").select2({
 		data : nfirtpDict,
@@ -30,28 +30,39 @@ var lnfinst = function() {
 		data : irdyfgDict,
 		allowClear : true
 	});
+	$("input[name='piirfg']").select2({
+		data : irdyfgDict,
+		allowClear : true
+	});
 	var irrvtpDict = Sunline.getDict("E_IRRVTP");
 	$("input[name='irrvtp']").select2({
 		data : irrvtpDict,
 		allowClear : true
 	});
+	$("input[name='pirvtp']").select2({
+		data : irrvtpDict,
+		allowClear : true
+	});
+	
 	var irfltpDict = Sunline.getDict("E_IRFLTP");
 	$("input[name='irfltp']").select2({
 		data : irfltpDict,
 		allowClear : true
 	});
-	
+	$("input[name='pifltp']").select2({
+		data : irfltpDict,
+		allowClear : true
+	});
 	$("input[name='privtp']").select2({
 		data : irrvtpDict,
 		allowClear : true
 	});
-	
+
 	$("input[name='prfltp']").select2({
 		data : irfltpDict,
 		allowClear : true
 	});
-	
-	
+
 	$("input[name='ciirfg']").select2({
 		data : irdyfgDict,
 		allowClear : true
@@ -61,7 +72,7 @@ var lnfinst = function() {
 		data : irrvtpDict,
 		allowClear : true
 	});
-	
+
 	$("input[name='cifltp']").select2({
 		data : irfltpDict,
 		allowClear : true
@@ -83,7 +94,7 @@ var lnfinst = function() {
 		data : ricatpDict,
 		allowClear : true
 	});
-	
+
 	$("input[name='ricatp']").select2({
 		data : ricatpDict,
 		allowClear : true
@@ -92,13 +103,13 @@ var lnfinst = function() {
 		data : irdyfgDict,
 		allowClear : true
 	});
-	
+
 	var cainfgDict = Sunline.getDict("E_CAINFG");
 	$("input[name='cainfg']").select2({
 		data : cainfgDict,
 		allowClear : true
 	});
-	
+
 	///
 	var caintpDict = Sunline.getDict("E_CAINTP");
 	$("input[name='caintp']").select2({
@@ -188,7 +199,7 @@ var lnfinst = function() {
 		data : txorgnDict,
 		allowClear : true
 	});
-		
+
 	var txuforDict = Sunline.getDict("E_TXUFOR");
 	$("input[name='txufor']").select2({
 		data : txuforDict,
@@ -204,11 +215,13 @@ var lnfinst = function() {
 		data : txtimeDict,
 		allowClear : true
 	});
+	//修改
 	
+
 	var handleTable = function(prodcd) {
 		var instgrid = new Datatable();
 		var insturl = Sunline.ajaxPath("loan/qrinst");
-		var instsendData = [ "prodcd","crcycd" ]; // 主键
+		var instsendData = [ "prodcd", "crcycd" ]; // 主键
 		if (!Sunline.isNull(prodcd)) {
 			instgrid.setAjaxParam("q_prodcd", prodcd);
 		}
@@ -288,9 +301,8 @@ var lnfinst = function() {
 									"render" : function(data, type, full) {
 										return "<a class='edit' href='javascript:;' data-src='"
 												+ data.prodcd
-												+","
-												+ data.crcycd
-												+ "'>编辑 </a>";
+												+ ","
+												+ data.crcycd + "'>编辑 </a>";
 									}
 								},
 								{
@@ -299,141 +311,222 @@ var lnfinst = function() {
 									"searchable" : false,
 									"render" : function(data, type, full) {
 										return "<a class='delete' href='javascript:;' data-src='"
-												+ data.prodcd+","+data.crcycd
+												+ data.prodcd
+												+ ","
+												+ data.crcycd
 
 												+ "'>删除 </a>";
 									}
 								} ]
 					}
 				});
-		instgrid.bindTableDelete(instsendData); 
+		instgrid.bindTableDelete(instsendData);
 		// 新增窗口
-		$("#add_inst_btn").click(function() {
-			  $("input[name='crcycd']", $("#editinstModal")).attr("readOnly",false);	
-			  $("input", $("#editinstModal")).val("").trigger("change");
-			$("input[name='prodcd']", $("#editinstModal")).val(prodcd);
-			$("#editinstModal").modal('show');
-			$("#editinstModal").on("hide.bs.modal", function() {
-				$(".alert-success", $('form', $("#editinstModal"))).hide();
-				$('.alert-danger', $('form', $("#editinstModal"))).hide();
-				$(".msg", $('form', $("#editinstModal"))).text("");
-				instgrid.submitFilter();
-			});
-			return false;
-		});
-         //修改窗口
-		instgrid.bindTableEdit(instsendData,function(nRowA){
+		$("#add_inst_btn").click(
+				function() {
+					$("input[name='crcycd']", $("#editinstModal")).attr(
+							"readOnly", false);
+					$("input", $("#editinstModal")).val("").trigger("change");
+					$("input[name='prodcd']", $("#editinstModal")).val(prodcd);
+					$("#editinstModal").modal('show');
+					$("#editinstModal").on(
+							"hide.bs.modal",
+							function() {
+								$(".alert-success",
+										$('form', $("#editinstModal"))).hide();
+								$('.alert-danger',
+										$('form', $("#editinstModal"))).hide();
+								$(".msg", $('form', $("#editinstModal"))).text(
+										"");
+								instgrid.submitFilter();
+							});
+					return false;
+				});
+		//修改窗口
+		instgrid.bindTableEdit(instsendData, function(nRowA) {
 			//主键不可修改
-		  $("input[name='crcycd']", $("#editinstModal")).attr("readOnly",true);		
-		  //给input框赋值
-		  $("input[name='prodcd']", $("#editinstModal")).val($(nRowA[0]).text());
-		  //查询利息信息
-		   var input = {};
-		   input.prodcd = $(nRowA[0]).text();
-		  Sunline.ajaxRouter(
-		        	"loan/qrinst1", 
-		        	 input,
-		        	"POST",
-		            function(redata){
-		        		if(redata.retCode == '0000'){
-		        			var info = redata.pinfos[0];
-		        			 $("input[name='crcycd']", $("#editinstModal")).val(info.crcycd).trigger("change"); 
-		        			  $("input[name='mxlnir']", $("#editinstModal")).val(info.mxlnir);
-		        			  $("input[name='mnlnir']", $("#editinstModal")).val(info.mnlnir);
-		        			  $("input[name='mxflir']", $("#editinstModal")).val(info.mxflir);
-		        			  $("input[name='mnflir']", $("#editinstModal")).val(info.mnflir);
-		        			  $("input[name='lnirkd']", $("#editinstModal")).val(info.lnirkd).trigger("change");
-		        			  $("input[name='lnirtm']", $("#editinstModal")).val(info.lnirtm);
-		        			  $("input[name='nfirtp']", $("#editinstModal")).val(info.nfirtp).trigger("change");
-		        			  $("input[name='irdytp']", $("#editinstModal")).val(info.irdytp).trigger("change");
-		        			  $("input[name='exrttp']", $("#editinstModal")).val(info.exrttp).trigger("change");
-		        			  $("input[name='lnircd']", $("#editinstModal")).val(info.lnircd);
-		        			  $("input[name='irdyfg']", $("#editinstModal")).val(info.irdyfg).trigger("change");
-		        			  $("input[name='lnrtir']", $("#editinstModal")).val(info.lnrtir);
-		        			  $("input[name='irrvtp']", $("#editinstModal")).val(info.irrvtp).trigger("change");
-		        			  $("input[name='irrvfm']", $("#editinstModal")).val(info.irrvfm);
-		        			  $("input[name='irfltp']", $("#editinstModal")).val(info.irfltp).trigger("change");
-		        			  $("input[name='irflvl']", $("#editinstModal")).val(info.irflvl);
-		        			  $("input[name='piircd']", $("#editinstModal")).val(info.piircd);
-		        			  $("input[name='piirfg']", $("#editinstModal")).val(info.piirfg);
-		        			  $("input[name='pirtir']", $("#editinstModal")).val(info.pirtir);
-		        			  $("input[name='pirvtp']", $("#editinstModal")).val(info.pirvtp).trigger("change");
-		        			  $("input[name='pirvfm']", $("#editinstModal")).val(info.pirvfm);
-		        			  $("input[name='pifltp']", $("#editinstModal")).val(info.pifltp).trigger("change");
-		        			  $("input[name='piflvl']", $("#editinstModal")).val(info.piflvl);
-		        			  $("input[name='ciircd']", $("#editinstModal")).val(info.ciircd);
-		        			  $("input[name='ciirfg']", $("#editinstModal")).val(info.ciirfg).trigger("change");
-		        			  $("input[name='cirtir']", $("#editinstModal")).val(info.cirtir); 
-		        			  $("input[name='cirvtp']", $("#editinstModal")).val(info.cirtir).trigger("change");
-		        			  $("input[name='cirvfm']", $("#editinstModal")).val(info.cirvfm);
-		        			  $("input[name='cifltp']", $("#editinstModal")).val(info.cifltp).trigger("change");
-		        			  $("input[name='ciflvl']", $("#editinstModal")).val(info.ciflvl);
-		        			  $("input[name='miircd']", $("#editinstModal")).val(info.miircd);
-		        			  $("input[name='miirfg']", $("#editinstModal")).val(info.miirfg).trigger("change");
-		        			  $("input[name='mirtir']", $("#editinstModal")).val(info.mirtir); 
-		        			  $("input[name='mirvtp']", $("#editinstModal")).val(info.mirvtp).trigger("change");
-		        			  $("input[name='mirvfm']", $("#editinstModal")).val(info.mirvfm);
-		        			  $("input[name='mifltp']", $("#editinstModal")).val(info.mifltp).trigger("change");
-		        			  $("input[name='miflvl']", $("#editinstModal")).val(info.mifvl);
-		        			  $("input[name='ricatp']", $("#editinstModal")).val(info.ricatp).trigger("change");
-		        			  $("input[name='ridyfg']", $("#editinstModal")).val(info.ridyfg).trigger("change");
-		        			  $("input[name='realir']", $("#editinstModal")).val(info.realir);
-		        			  $("input[name='cainfg']", $("#editinstModal")).val(info.cainfg).trigger("change");
-		        			  $("input[name='caintp']", $("#editinstModal")).val(info.caintp).trigger("change");
-		        			  $("input[name='cainrt']", $("#editinstModal")).val(info.cainrt).trigger("change");
-		        			  $("input[name='cainfm']", $("#editinstModal")).val(info.cainfm);
-		        			  $("input[name='lscicd']", $("#editinstModal")).val(info.lscicd);
-		        			  $("input[name='isbkrt']", $("#editinstModal")).val(info.isbkrt).trigger("change");
-		        			  $("input[name='isltrt']", $("#editinstModal")).val(info.isltrt).trigger("change");
-		        			  $("input[name='crrtnm']", $("#editinstModal")).val(info.crrtnm);
-		        			  $("input[name='btmxnm']", $("#editinstModal")).val(info.btmxnm);
-		        			  $("input[name='ltmxnm']", $("#editinstModal")).val(info.ltmxnm);
-		        			  $("input[name='instbs']", $("#editinstModal")).val(info.instbs).trigger("change");
-		        			  $("input[name='instod']", $("#editinstModal")).val(info.instod).trigger("change");
-		        			  $("input[name='prinsr']", $("#editinstModal")).val(info.prinsr).trigger("change");
-		        			  $("input[name='instfs']", $("#editinstModal")).val(info.instfs).trigger("change");
-		        			  $("input[name='dycntp']", $("#editinstModal")).val(info.dycntp).trigger("change");
-		        			  $("input[name='mninam']", $("#editinstModal")).val(info.mninam);
-		        			  $("input[name='rountp']", $("#editinstModal")).val(info.rountp).trigger("change");
-		        			  $("input[name='rounit']", $("#editinstModal")).val(info.rounit);
-		        			  $("input[name='insgfg']", $("#editinstModal")).val(info.insgfg).trigger("change");
-		        			  $("input[name='instfg']", $("#editinstModal")).val(info.instfg).trigger("change");
-		        			  $("input[name='cistfg']", $("#editinstModal")).val(info.cistfg).trigger("change");
-		        			  $("input[name='ciflag']", $("#editinstModal")).val(info.ciflag).trigger("change");
-		        			  $("input[name='disctp']", $("#editinstModal")).val(info.disctp).trigger("change");
-		        			  $("input[name='inamfm']", $("#editinstModal")).val(info.inamfm);
-		        			  $("input[name='inamtp']", $("#editinstModal")).val(info.inamtp).trigger("change");
-		        			  $("input[name='inampt']", $("#editinstModal")).val(info.inampt);
-		        			  $("input[name='txtype']", $("#editinstModal")).val(info.txtype).trigger("change");
-		        			  $("input[name='txcutp']", $("#editinstModal")).val(info.txcutp).trigger("change");
-		        			  $("input[name='txorgn']", $("#editinstModal")).val(info.txorgn).trigger("change");
-		        			  $("input[name='txufor']", $("#editinstModal")).val(info.txufor).trigger("change");
-		        			  $("input[name='txcatp']", $("#editinstModal")).val(info.txcatp).trigger("change");
-		        			  $("input[name='txamvl']", $("#editinstModal")).val(info.txamvl);
-		        			  $("input[name='txtime']", $("#editinstModal")).val(info.txtime).trigger("change");
-		        			  $("#editinstModal").modal('show');
-		        			  $("#editinstModal").on("hide.bs.modal", function() {
-		        					$(".alert-success", $('form', $("#editinstModal"))).hide();
-		        					$('.alert-danger', $('form', $("#editinstModal"))).hide();
-		        					$(".msg", $('form', $("#editinstModal"))).text("");
-		        					instgrid.submitFilter();
-		        				});
-		        		} else {
-		        			bootbox.alert(redata.retMsg);
-		        		}
-		        	},
-		        	function(redata){
-		        		console.info(redata);
-		        		bootbox.alert("交易异常哦，请检查网络设置货重新登录"); 
-		        	},
-		        	"json",
-		        	false); 
-		 
-		
+			$("input[name='crcycd']", $("#editinstModal")).attr("readOnly",
+					true);
+			//给input框赋值
+			$("input[name='prodcd']", $("#editinstModal")).val(
+					$(nRowA[0]).text());
+			//查询利息信息
+			var input = {};
+			input.prodcd = $(nRowA[0]).text();
+			Sunline.ajaxRouter("loan/qrinst1", input, "POST", function(redata) {
+				if (redata.retCode == '0000') {
+					var info = redata.pinfos[0];
+					$("input[name='crcycd']", $("#editinstModal")).val(
+							info.crcycd).trigger("change");
+					$("input[name='mxlnir']", $("#editinstModal")).val(
+							info.mxlnir);
+					$("input[name='mnlnir']", $("#editinstModal")).val(
+							info.mnlnir);
+					$("input[name='mxflir']", $("#editinstModal")).val(
+							info.mxflir);
+					$("input[name='mnflir']", $("#editinstModal")).val(
+							info.mnflir);
+					$("input[name='lnirkd']", $("#editinstModal")).val(
+							info.lnirkd).trigger("change");
+					$("input[name='lnirtm']", $("#editinstModal")).val(
+							info.lnirtm).trigger("change");
+					$("input[name='nfirtp']", $("#editinstModal")).val(
+							info.nfirtp).trigger("change");
+					$("input[name='irdytp']", $("#editinstModal")).val(
+							info.irdytp).trigger("change");
+					$("input[name='exrttp']", $("#editinstModal")).val(
+							info.exrttp).trigger("change");
+					$("input[name='lnircd']", $("#editinstModal")).val(
+							info.lnircd);
+					$("input[name='irdyfg']", $("#editinstModal")).val(
+							info.irdyfg).trigger("change");
+					$("input[name='lnrtir']", $("#editinstModal")).val(
+							info.lnrtir);
+					$("input[name='irrvtp']", $("#editinstModal")).val(
+							info.irrvtp).trigger("change");
+					$("input[name='irrvfm']", $("#editinstModal")).val(
+							info.irrvfm);
+					$("input[name='irfltp']", $("#editinstModal")).val(
+							info.irfltp).trigger("change");
+					$("input[name='irflvl']", $("#editinstModal")).val(
+							info.irflvl);
+					$("input[name='piircd']", $("#editinstModal")).val(
+							info.piircd);
+					$("input[name='piirfg']", $("#editinstModal")).val(
+							info.piirfg).trigger("change");
+					$("input[name='pirtir']", $("#editinstModal")).val(
+							info.pirtir);
+					$("input[name='pirvtp']", $("#editinstModal")).val(
+							info.pirvtp).trigger("change");
+					$("input[name='pirvfm']", $("#editinstModal")).val(
+							info.pirvfm);
+					$("input[name='pifltp']", $("#editinstModal")).val(
+							info.pifltp).trigger("change");
+					$("input[name='piflvl']", $("#editinstModal")).val(
+							info.piflvl);
+					$("input[name='ciircd']", $("#editinstModal")).val(
+							info.ciircd);
+					$("input[name='ciirfg']", $("#editinstModal")).val(
+							info.ciirfg).trigger("change");
+					$("input[name='cirtir']", $("#editinstModal")).val(
+							info.cirtir);
+					$("input[name='cirvtp']", $("#editinstModal")).val(
+							info.cirvtp).trigger("change");
+					$("input[name='cirvfm']", $("#editinstModal")).val(
+							info.cirvfm);
+					$("input[name='cifltp']", $("#editinstModal")).val(
+							info.cifltp).trigger("change");
+					$("input[name='ciflvl']", $("#editinstModal")).val(
+							info.ciflvl);
+					$("input[name='miircd']", $("#editinstModal")).val(
+							info.miircd);
+					$("input[name='miirfg']", $("#editinstModal")).val(
+							info.miirfg).trigger("change");
+					$("input[name='mirtir']", $("#editinstModal")).val(
+							info.mirtir);
+					$("input[name='mirvtp']", $("#editinstModal")).val(
+							info.mirvtp).trigger("change");
+					$("input[name='mirvfm']", $("#editinstModal")).val(
+							info.mirvfm);
+					$("input[name='mifltp']", $("#editinstModal")).val(
+							info.mifltp).trigger("change");
+					$("input[name='miflvl']", $("#editinstModal")).val(
+							info.miflvl);
+					$("input[name='ricatp']", $("#editinstModal")).val(
+							info.ricatp).trigger("change");
+					$("input[name='ridyfg']", $("#editinstModal")).val(
+							info.ridyfg).trigger("change");
+					$("input[name='realir']", $("#editinstModal")).val(
+							info.realir);
+					$("input[name='cainfg']", $("#editinstModal")).val(
+							info.cainfg).trigger("change");
+					$("input[name='caintp']", $("#editinstModal")).val(
+							info.caintp).trigger("change");
+					$("input[name='cainrt']", $("#editinstModal")).val(
+							info.cainrt).trigger("change");
+					$("input[name='cainfm']", $("#editinstModal")).val(
+							info.cainfm);
+					$("input[name='lscicd']", $("#editinstModal")).val(
+							info.lscicd);
+					$("input[name='isbkrt']", $("#editinstModal")).val(
+							info.isbkrt).trigger("change");
+					$("input[name='isltrt']", $("#editinstModal")).val(
+							info.isltrt).trigger("change");
+					$("input[name='crrtnm']", $("#editinstModal")).val(
+							info.crrtnm);
+					$("input[name='btmxnm']", $("#editinstModal")).val(
+							info.btmxnm);
+					$("input[name='ltmxnm']", $("#editinstModal")).val(
+							info.ltmxnm);
+					$("input[name='instbs']", $("#editinstModal")).val(
+							info.instbs).trigger("change");
+					$("input[name='instod']", $("#editinstModal")).val(
+							info.instod).trigger("change");
+					$("input[name='prinsr']", $("#editinstModal")).val(
+							info.prinsr).trigger("change");
+					$("input[name='instfs']", $("#editinstModal")).val(
+							info.instfs).trigger("change");
+					$("input[name='dycntp']", $("#editinstModal")).val(
+							info.dycntp).trigger("change");
+					$("input[name='mninam']", $("#editinstModal")).val(
+							info.mninam);
+					$("input[name='rountp']", $("#editinstModal")).val(
+							info.rountp).trigger("change");
+					$("input[name='rounit']", $("#editinstModal")).val(
+							info.rounit);
+					$("input[name='insgfg']", $("#editinstModal")).val(
+							info.insgfg).trigger("change");
+					$("input[name='instfg']", $("#editinstModal")).val(
+							info.instfg).trigger("change");
+					$("input[name='cistfg']", $("#editinstModal")).val(
+							info.cistfg).trigger("change");
+					$("input[name='ciflag']", $("#editinstModal")).val(
+							info.ciflag).trigger("change");
+					$("input[name='disctp']", $("#editinstModal")).val(
+							info.disctp).trigger("change");
+					$("input[name='inamfm']", $("#editinstModal")).val(
+							info.inamfm);
+					$("input[name='inamtp']", $("#editinstModal")).val(
+							info.inamtp).trigger("change");
+					$("input[name='inampt']", $("#editinstModal")).val(
+							info.inampt);
+					$("input[name='txtype']", $("#editinstModal")).val(
+							info.txtype).trigger("change");
+					$("input[name='txcutp']", $("#editinstModal")).val(
+							info.txcutp).trigger("change");
+					$("input[name='txorgn']", $("#editinstModal")).val(
+							info.txorgn).trigger("change");
+					$("input[name='txufor']", $("#editinstModal")).val(
+							info.txufor).trigger("change");
+					$("input[name='txcatp']", $("#editinstModal")).val(
+							info.txcatp).trigger("change");
+					$("input[name='txamvl']", $("#editinstModal")).val(
+							info.txamvl);
+					$("input[name='txtime']", $("#editinstModal")).val(
+							info.txtime).trigger("change");
+					
+					$("#editinstModal").modal('show');
+					$("#editinstModal").on(
+							"hide.bs.modal",
+							function() {
+								$(".alert-success",
+										$('form', $("#editinstModal"))).hide();
+								$('.alert-danger',
+										$('form', $("#editinstModal"))).hide();
+								$(".msg", $('form', $("#editinstModal"))).text(
+										"");
+								instgrid.submitFilter();
+							});
+				} else {
+					bootbox.alert(redata.retMsg);
+				}
+			}, function(redata) {
+				console.info(redata);
+				bootbox.alert("交易异常哦，请检查网络设置货重新登录");
+			}, "json", false);
+
 		});
-		
-		
-		
+
 		$("#btn_save_inst").click(function() { // 保存按钮
 			$('form', $("#editinstModal")).submit();
 		});
@@ -448,28 +541,24 @@ var lnfinst = function() {
 							data[n.name] = n.value;
 						}
 					});
-					Sunline.ajaxRouter("loan/edinst", data, 'post',
-							function(ret) {
-								if (ret.retCode == "0000") {
-									$(".alert-success",
-											$('form', $("#editinstModal")))
-											.show();
-									$('.alert-danger',
-											$('form', $("#editinstModal")))
-											.hide();
-									$(".msg", $('form', $("#editinstModal"))).text(
-											"贷款产品计息属性提交成功");
-								} else {
-									$(".alert-success",
-											$('form', $("#editinstModal")))
-											.hide();
-									$('.alert-danger',
-											$('form', $("#editinstModal")))
-											.show();
-									$(".msg", $('form', $("#editinstModal"))).text(
-											ret.retMsg);
-								}
-							});
+					Sunline.ajaxRouter("loan/edinst", data, 'post', function(
+							ret) {
+						if (ret.retCode == "0000") {
+							$(".alert-success", $('form', $("#editinstModal")))
+									.show();
+							$('.alert-danger', $('form', $("#editinstModal")))
+									.hide();
+							$(".msg", $('form', $("#editinstModal"))).text(
+									"贷款产品计息属性提交成功");
+						} else {
+							$(".alert-success", $('form', $("#editinstModal")))
+									.hide();
+							$('.alert-danger', $('form', $("#editinstModal")))
+									.show();
+							$(".msg", $('form', $("#editinstModal"))).text(
+									ret.retMsg);
+						}
+					});
 
 				}, { // 字段规则
 					prodcd : {

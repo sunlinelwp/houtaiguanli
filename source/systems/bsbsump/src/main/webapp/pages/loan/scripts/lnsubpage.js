@@ -126,6 +126,8 @@ var lnsubpage = function () {
 		$("input[name='syndot']", $("#prod_form")).val(data.syndot).trigger("change");
 		$("input[name='ispion']", $("#prod_form")).val(data.ispion).trigger("change");
 		$("input[name='prodst']", $("#prod_form")).val(data.prodst).trigger("change");
+		$("input[name='creadt']", $("#prod_form")).val(data.creadt);		
+		$("input[name='creaus']", $("#prod_form")).val(data.creaus);
 	}
     
 
