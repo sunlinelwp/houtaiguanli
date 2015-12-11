@@ -27,7 +27,10 @@
 							<th scope="col">产品代码</th>
 							<th scope="col">产品名称</th>
 							<th scope="col">产品描述</th>
-							<!-- <th scope="col">贷款对象</th>
+							<th scope="col">生效日期</th>
+							<th scope="col">失效日期</th>
+							<th scope="col">产品状态</th>
+							<th scope="col">贷款对象</th>
 							<th scope="col">贷款对象细分</th>
 							<th scope="col">业务分类</th>
 							<th scope="col">表外产品</th>
@@ -41,11 +44,9 @@
 							<th scope="col">资产转让类型</th>
 							<th scope="col">纳入忠诚度/积分计划</th>
 							<th scope="col">产品关联的日历类型</th>
-							<th scope="col">贷款对象</th> -->
-							<th scope="col">生效日期</th>
-							<th scope="col">失效日期</th>
-							<th scope="col">产品状态</th>
-							<th scope="col" colspan="2">操作</th>
+							<th scope="col">产品建立日期</th>
+							<th scope="col">产品建立柜员</th>
+							<th scope="col" colspan="2">操作</th>  
 						</tr>
 						<tr role="row" class="filter">
 							<td><input type="text"
@@ -54,6 +55,22 @@
 							<td><input type="text"
 								class="form-control form-filter input-sm" id="q_prodtx"
 								name="q_prodna" /></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>

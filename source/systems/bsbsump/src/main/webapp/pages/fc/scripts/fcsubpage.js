@@ -70,6 +70,7 @@ var fcsubpage = function () {
         if(this.validator!=null){
         	return ;
         }
+        
         return Sunline.getValidate( $("#prod_form"),
     			function() {
 			var data = {};
@@ -85,6 +86,8 @@ var fcsubpage = function () {
                   if(ret.retCode==="0000"){    
                 	   $(".alert-success", $("#prod_form")).show();
                 	   $('.alert-danger',  $("#prod_form")).hide(); 
+                	   $("#efctdat").css("color","black");
+                	   $("#inefect").css("color","black");
                 		//$('.'+pagese[tabindex],editModal).removeClass("active");            					
     					tabindex++;
     					//$('.'+pagese[tabindex],editModal).addClass("active");
@@ -94,13 +97,14 @@ var fcsubpage = function () {
                    	   $('.alert-danger',  $("#prod_form")).show();                        	  
                   }
                   $(".msg", $("#prod_form")).text(ret.msg);
+                  
 			});
-
 		}, {					 
 			 prodcd:{
 				 maxlength : 20,
 				 required : true
 				 }
+			
 		}); 
    }
     
@@ -108,15 +112,22 @@ var fcsubpage = function () {
     var loaddata = function(data) {	
     	$("input[name='prodcd']", $("#prod_form")).val(data.prodcd);
     	$("input[name='prodna']", $("#prod_form")).val(data.prodna);
+    	$("input[name='prodtp']", $("#prod_form")).val(data.prodtp).trigger("change");
+    	$("input[name='prodde']", $("#prod_form")).val(data.prodde);
+    	$("input[name='prodmd']", $("#prod_form")).val(data.prodmd).trigger("change");
+    	$("input[name='prodst']", $("#prod_form")).val(data.prodst).trigger("change");
     	$("input[name='fcsrcd']", $("#prod_form")).val(data.fcsrcd);
     	$("input[name='fcsrna']", $("#prod_form")).val(data.fcsrna);
     	$("input[name='onlyfg']", $("#prod_form")).val(data.onlyfg).trigger("change");
-    	$("input[name='efctdt']", $("#prod_form")).val(data.efctdt);
-    	$("input[name='inefdt']", $("#prod_form")).val(data.inefdt);
-    	$("input[name='prodtp']", $("#prod_form")).val(data.prodtp).trigger("change");
-    	$("input[name='prodst']", $("#prod_form")).val(data.prodst).trigger("change");
     	$("input[name='rvbsno']", $("#prod_form")).val(data.rvbsno);
     	$("input[name='pybsno']", $("#prod_form")).val(data.pybsno);
+    	$("input[name='crcycd']", $("#prod_form")).val(data.crcycd).trigger("change");
+    	$("input[name='lesrul']", $("#prod_form")).val(data.lesrul).trigger("change");
+    	$("input[name='addrul']", $("#prod_form")).val(data.addrul).trigger("change");
+    	$("input[name='addamt']", $("#prod_form")).val(data.addamt);
+    	$("input[name='learul']", $("#prod_form")).val(data.learul).trigger("change");
+    	$("input[name='efctdt']", $("#prod_form")).val(data.efctdt);
+    	$("input[name='inefdt']", $("#prod_form")).val(data.inefdt);
 	}
     
 

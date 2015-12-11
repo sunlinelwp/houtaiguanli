@@ -27,15 +27,26 @@
 							<th scope="col">产品编号</th>
 							<th scope="col">产品名称</th>
 							<th scope="col">产品类型</th>
+							<th scope="col">产品描述</th>
+							<th scope="col">产品模式</th>
+							<th scope="col">产品状态</th>
 							<!-- <th scope="col">融资产品编号</th>
 							<th scope="col">融资产品名称</th> -->
+							<th scope="col">融资来源编号</th>
+							<th scope="col">融资来源名称</th>
 							<th scope="col">唯一规则</th>
+							<th scope="col">收款业务编号</th>
+							<th scope="col">收款业务名称</th>
+							<th scope="col">货币代码</th>
+							<th scope="col">不足额规则</th>
+							<th scope="col">追加起投规则</th>
+							<th scope="col">追加起投金额</th>
+							<th scope="col">不足额追加规则</th>
 							<th scope="col">生效日期</th>
 							<th scope="col">失效日期</th>
+							<th scope="col" colspan="2">操作</th>
 							<!-- <th scope="col">收款业务编号</th>
 							<th scope="col">付款业务编号</th> -->
-							<th scope="col">产品状态</th>
-							<th scope="col" colspan="2">操作</th>
 						</tr>
 						<tr role="row" class="filter">
 							<td><input type="text"
@@ -48,6 +59,20 @@
 							<td></td>
 							<td></td>
 							<td></td>
+							<td></td>
+							
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+
 							<td></td>
 							<td colspan="2">
 								<button class="btn btn-sm yellow filter-submit margin-bottom">
