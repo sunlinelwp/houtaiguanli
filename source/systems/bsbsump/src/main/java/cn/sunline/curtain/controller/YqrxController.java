@@ -24,6 +24,7 @@ import cn.sunline.domain.endauth.BSBUser;
 import cn.sunline.exception.SumpException;
 import cn.sunline.tmp.yqrx.check.TmpYqrxAmou;
 import cn.sunline.tmp.yqrx.check.TmpYqrxAmouDataWriterImpl;
+import cn.sunline.tmp.yqrx.check.TmpYqrxAmouPK;
 import cn.sunline.tmp.yqrx.check.TmpYqrxAmouService;
 import cn.sunline.utils.PageToDataTable;
 
@@ -56,12 +57,12 @@ public class YqrxController {
 		logger.debug("-------------------------有钱任信 回款/失败交易 文件导入开始-------------------------"+reqmap.get("trandt").toString());
 		Map<String, Object> map = new HashMap<String, Object>();
 		//获得清算日期
-		String keepdt = reqmap.get("trandt").toString();
+		String amoudt = reqmap.get("trandt").toString();
 		String cometp = reqmap.get("cometp").toString();
-		boolean flag = tmpYqrxAmouService.checkIsExitByKeepdt(keepdt,cometp);
+		boolean flag = tmpYqrxAmouService.checkIsExitByAmoudt(amoudt,cometp);
 		if(flag){
 			map.put("retCode", "0099");
-			map.put("retMsg", keepdt+"已回款");
+			map.put("retMsg", reqmap.get("file").toString()+amoudt+"文件已导入");
 			map.put("states", "1");
 			return map;
 		}
@@ -92,7 +93,7 @@ public class YqrxController {
 		int start=Integer.parseInt((String)reqmap.get("start"),10);		
 		Pageable pageable=new PageRequest(start/length,length);
 		TmpYqrxAmou tya = new TmpYqrxAmou();
-		tya.setKeepdt(reqmap.get("trandt").toString());
+		tya.setAmoudt(reqmap.get("trandt").toString());
 		tya.setCometp(reqmap.get("cometp").toString());
 		tya.setStates(reqmap.get("states").toString());
 
@@ -111,10 +112,32 @@ public class YqrxController {
 	@RequestMapping(value = "/senaou")
 	public Map<String,Object> senaou(@RequestBody Map<String,Object> reqmap,@ModelAttribute("User") BSBUser user){
 		logger.debug("-------------------------有钱任信 出金开始-------------------------");
+		TmpYqrxAmouPK tyaPK = new TmpYqrxAmouPK();
+		tyaPK.setAmouid(reqmap.get("amouid").toString());
+		TmpYqrxAmou tya = tmpYqrxAmouService.queryOneEntities(tyaPK);
 		reqmap.put("userid", user.getUserid());
-		Map<String, Object> map = clict.callClient("senaou", reqmap);
+		reqmap.put("acctno", tya.getAcctno());
+		reqmap.put("payeac", tya.getPayeac());
+		reqmap.put("payena", tya.getPayena());
+		reqmap.put("tranam", tya.getTranam());
+		reqmap.put("crcycd", tya.getCrcycd());
+		reqmap.put("chgeam", tya.getChgeam());
+		reqmap.put("pswdtp", tya.getPswdtp());
+		reqmap.put("pwflag", tya.getPwflag());
+		reqmap.put("tranpw", tya.getTranpw());
+		reqmap.put("remark", tya.getRemark());
+		reqmap.put("banknm", tya.getBanknm());
+		reqmap.put("provic", tya.getProvic());
+		reqmap.put("garden", tya.getGarden());
+		reqmap.put("ftbkcd", tya.getFtbkcd());
+		reqmap.put("acctpr", tya.getAcctpr());
+		reqmap.put("chnlcd", tya.getChnlcd());
+		reqmap.put("pytype", tya.getPytype());
+		reqmap.put("target", "1");//前置拦截
+		logger.debug(reqmap+"----------123");
+		Map<String, Object> map = clict.callClient("hfaxtx", reqmap);
 		if(map.get("retCode")=="0000"){
-			int i = tmpYqrxAmouService.updateStates(reqmap.get("frondt").toString(), reqmap.get("fronsq").toString(), "1");
+			int i = tmpYqrxAmouService.updateStates(reqmap.get("amouid").toString(), "1");
 		}
 		logger.debug("-------------------------有钱任信 出金结束-------------------------");
 		return map;
