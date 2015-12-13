@@ -41,7 +41,15 @@ var fcsetprod = function() {
 								{
 									"data" : "prodtp",
 									"sortable" : false,
-									"searchable" : false
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < prodmdDict.length; i++) {
+											if (prodmdDict[i].id == data) {
+												return prodmdDict[i].text;
+											}
+										}
+										return data;
+									}
 								},
 								{
 									"data" : "prodde",
