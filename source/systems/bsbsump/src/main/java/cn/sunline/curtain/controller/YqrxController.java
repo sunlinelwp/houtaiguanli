@@ -115,6 +115,12 @@ public class YqrxController {
 		TmpYqrxAmouPK tyaPK = new TmpYqrxAmouPK();
 		tyaPK.setAmouid(reqmap.get("amouid").toString());
 		TmpYqrxAmou tya = tmpYqrxAmouService.queryOneEntities(tyaPK);
+		//根据电子账号查询行号和行名称
+		reqmap.put("custac", tya.getAcctno());
+		Map<String, Object> mapcard = clict.callClient("secaac", reqmap);
+		reqmap.put("banknm", mapcard.get("brchna"));
+		reqmap.put("ftbkcd", mapcard.get("brchno"));
+		
 		reqmap.put("userid", user.getUserid());
 		reqmap.put("acctno", tya.getAcctno());
 		reqmap.put("payeac", tya.getPayeac());
@@ -126,10 +132,10 @@ public class YqrxController {
 		reqmap.put("pwflag", tya.getPwflag());
 		reqmap.put("tranpw", tya.getTranpw());
 		reqmap.put("remark", tya.getRemark());
-		reqmap.put("banknm", tya.getBanknm());
+//		reqmap.put("banknm", tya.getBanknm());
 		reqmap.put("provic", tya.getProvic());
 		reqmap.put("garden", tya.getGarden());
-		reqmap.put("ftbkcd", tya.getFtbkcd());
+//		reqmap.put("ftbkcd", tya.getFtbkcd());
 		reqmap.put("acctpr", tya.getAcctpr());
 		reqmap.put("chnlcd", tya.getChnlcd());
 		reqmap.put("pytype", tya.getPytype());
