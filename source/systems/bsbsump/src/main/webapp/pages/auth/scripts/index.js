@@ -241,7 +241,7 @@ var Index = function() {
 		var targetFlag = $(obj).attr("target-flag");
 		if (!Sunline.isNull(href)) {
 			if (targetFlag == "N") {
-				href = Sunline.getBasePath() + "/path" + href;
+				href = Sunline.getBasePath() + "/path" + href; //页面地址
 			}
 
 			$.ajax({
