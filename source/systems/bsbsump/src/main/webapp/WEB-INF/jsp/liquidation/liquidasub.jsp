@@ -46,15 +46,15 @@
 					<thead>
 						<tr role="row" class="heading">
 							<th width="8%">账务日期</th>
-							<th width="8%">包商科目</th>
+							<th width="8%">惠金所科目</th>
 							<th width="8%">借贷方向</th>
 							<th width="8">日报发生额</th>
 							<th width="8">过渡账金额</th>
 							<th width="8%">总账发生额</th>
 							<th width="8%">微众余额</th>
 							<th width="8%">微众余额方向</th>
-							<th width="8%">包商上日余额</th>
-							<th width="8%">包商余额方向</th>
+							<th width="8%">惠金所上日余额</th>
+							<th width="8%">惠金所余额方向</th>
 							<th width="8%">余额差额</th>
 							<th width="8%">发生额核对结果</th>
 							<th width="8%">余额对账结果</th>

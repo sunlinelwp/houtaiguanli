@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<%@include file="/WEB-INF/common/comm-css.jsp"%>
-		<title>包商数字银行综合管理系统</title>
+		<title>惠金所综合管理系统</title>
 		<%@include file="/WEB-INF/common/comm-plugin-css.jsp"%>
 		<%@include file="/WEB-INF/common/comm-theme.jsp"%>
 		<link type="text/css" rel="stylesheet" href="${ctx}/pages/curtain/css/intran.css" />
@@ -18,7 +18,7 @@
 				<div class="container">
 					<!-- BEGIN LOGO -->
 					<div class="page-logo">
-						<img src="${ctx}/assets/admin/layout/img/logo-default.png" alt="logo" class="logo-default">
+						<img src="${ctx}/assets/admin/layout/img/logo-default.jpg" alt="logo" class="logo-default">
 					</div>
 					<!-- END LOGO -->
 					<!-- BEGIN RESPONSIVE MENU TOGGLER -->
