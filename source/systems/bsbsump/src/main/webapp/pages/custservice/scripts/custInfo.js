@@ -20,11 +20,11 @@ var custInfo = function() {
 				$("#forpal").html(data.forpal);
 				$("#forpay").html(data.forpay);
 				$("#repsum").html(data.repsum);
-				$("#reppal").html(data.haspal);
-				$("#reppay").html(data.hasint);
-				$("#foesum").html(data.forsum);
-				$("#foepal").html(data.forpal);
-				$("#foePay").html(data.custac);
+				$("#reppal").html(data.reppal);
+				$("#reppay").html(data.reppay);
+				$("#foesum").html(data.foesum);
+				$("#foepal").html(data.foepal);
+				$("#foePay").html(data.foepay);
 			}else{
 				bootbox.alert("无此客户信息");
 				$("#acctno").html("");

@@ -1,7 +1,5 @@
 package cn.sunline.tmp.yqrx.check;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,37 +11,59 @@ import javax.persistence.Table;
 @Table(name = "TMP_YQRX_AMOU")
 public class TmpYqrxAmou {
 	@Id
-	@Column(name = "keepdt")
-	private String keepdt;
-
-	@Column(name = "crcycd")
-	private String crcycd;
-
-	@Column(name = "tranam")
-	private BigDecimal tranam;
+	@Column(name = "amouid")
+	private String amouid;
 
 	@Column(name = "acctno")
 	private String acctno;
 
-	@Id
-	@Column(name = "fronsq")
-	private String fronsq;
+	@Column(name = "payeac")
+	private String payeac;
 
-	@Id
-	@Column(name = "frondt")
-	private String frondt;
+	@Column(name = "payena")
+	private String payena;
 
-	@Column(name = "cardno")
-	private String cardno;
+	@Column(name = "tranam")
+	private String tranam;
 
-	@Column(name = "acctnm")
-	private String acctnm;
+	@Column(name = "crcycd")
+	private String crcycd;
 
-	@Column(name = "tranfe")
-	private BigDecimal tranfe;
+	@Column(name = "chgeam")
+	private String chgeam;
 
-	@Column(name = "linkno")
-	private String linkno;
+	@Column(name = "pswdtp")
+	private String pswdtp;
+
+	@Column(name = "pwflag")
+	private String pwflag;
+
+	@Column(name = "tranpw")
+	private String tranpw;
+
+	@Column(name = "remark")
+	private String remark;
+
+	@Column(name = "banknm")
+	private String banknm;
+
+	@Column(name = "provic")
+	private String provic;
+
+	@Column(name = "garden")
+	private String garden;
+
+	@Column(name = "ftbkcd")
+	private String ftbkcd;
+
+	@Column(name = "acctpr")
+	private String acctpr;
+
+	@Column(name = "chnlcd")
+	private String chnlcd;
+
+	@Column(name = "pytype")
+	private String pytype;
 
 	@Column(name = "cometp")
 	private String cometp;
@@ -51,28 +71,15 @@ public class TmpYqrxAmou {
 	@Column(name = "states")
 	private String states;
 
-	public String getKeepdt() {
-		return keepdt;
+	@Column(name = "amoudt")
+	private String amoudt;
+
+	public String getAmouid() {
+		return amouid;
 	}
 
-	public void setKeepdt(String keepdt) {
-		this.keepdt = keepdt;
-	}
-
-	public String getCrcycd() {
-		return crcycd;
-	}
-
-	public void setCrcycd(String crcycd) {
-		this.crcycd = crcycd;
-	}
-
-	public BigDecimal getTranam() {
-		return tranam;
-	}
-
-	public void setTranam(BigDecimal tranam) {
-		this.tranam = tranam;
+	public void setAmouid(String amouid) {
+		this.amouid = amouid;
 	}
 
 	public String getAcctno() {
@@ -83,52 +90,132 @@ public class TmpYqrxAmou {
 		this.acctno = acctno;
 	}
 
-	public String getFronsq() {
-		return fronsq;
+	public String getPayeac() {
+		return payeac;
 	}
 
-	public void setFronsq(String fronsq) {
-		this.fronsq = fronsq;
+	public void setPayeac(String payeac) {
+		this.payeac = payeac;
 	}
 
-	public String getFrondt() {
-		return frondt;
+	public String getPayena() {
+		return payena;
 	}
 
-	public void setFrondt(String frondt) {
-		this.frondt = frondt;
+	public void setPayena(String payena) {
+		this.payena = payena;
 	}
 
-	public String getCardno() {
-		return cardno;
+	public String getTranam() {
+		return tranam;
 	}
 
-	public void setCardno(String cardno) {
-		this.cardno = cardno;
+	public void setTranam(String tranam) {
+		this.tranam = tranam;
 	}
 
-	public String getAcctnm() {
-		return acctnm;
+	public String getCrcycd() {
+		return crcycd;
 	}
 
-	public void setAcctnm(String acctnm) {
-		this.acctnm = acctnm;
+	public void setCrcycd(String crcycd) {
+		this.crcycd = crcycd;
 	}
 
-	public BigDecimal getTranfe() {
-		return tranfe;
+	public String getChgeam() {
+		return chgeam;
 	}
 
-	public void setTranfe(BigDecimal tranfe) {
-		this.tranfe = tranfe;
+	public void setChgeam(String chgeam) {
+		this.chgeam = chgeam;
 	}
 
-	public String getLinkno() {
-		return linkno;
+	public String getPswdtp() {
+		return pswdtp;
 	}
 
-	public void setLinkno(String linkno) {
-		this.linkno = linkno;
+	public void setPswdtp(String pswdtp) {
+		this.pswdtp = pswdtp;
+	}
+
+	public String getPwflag() {
+		return pwflag;
+	}
+
+	public void setPwflag(String pwflag) {
+		this.pwflag = pwflag;
+	}
+
+	public String getTranpw() {
+		return tranpw;
+	}
+
+	public void setTranpw(String tranpw) {
+		this.tranpw = tranpw;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public String getBanknm() {
+		return banknm;
+	}
+
+	public void setBanknm(String banknm) {
+		this.banknm = banknm;
+	}
+
+	public String getProvic() {
+		return provic;
+	}
+
+	public void setProvic(String provic) {
+		this.provic = provic;
+	}
+
+	public String getGarden() {
+		return garden;
+	}
+
+	public void setGarden(String garden) {
+		this.garden = garden;
+	}
+
+	public String getFtbkcd() {
+		return ftbkcd;
+	}
+
+	public void setFtbkcd(String ftbkcd) {
+		this.ftbkcd = ftbkcd;
+	}
+
+	public String getAcctpr() {
+		return acctpr;
+	}
+
+	public void setAcctpr(String acctpr) {
+		this.acctpr = acctpr;
+	}
+
+	public String getChnlcd() {
+		return chnlcd;
+	}
+
+	public void setChnlcd(String chnlcd) {
+		this.chnlcd = chnlcd;
+	}
+
+	public String getPytype() {
+		return pytype;
+	}
+
+	public void setPytype(String pytype) {
+		this.pytype = pytype;
 	}
 
 	public String getCometp() {
@@ -145,6 +232,14 @@ public class TmpYqrxAmou {
 
 	public void setStates(String states) {
 		this.states = states;
+	}
+
+	public String getAmoudt() {
+		return amoudt;
+	}
+
+	public void setAmoudt(String amoudt) {
+		this.amoudt = amoudt;
 	}
 
 }

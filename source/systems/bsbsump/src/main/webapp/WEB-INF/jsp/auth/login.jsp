@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<%@include file="/WEB-INF/common/comm-css.jsp"%>
-		<title>包商数字银行综合管理系统</title>
+		<title>惠金所综合管理系统</title>
 		<link href="${ctx}/assets/global/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>
 		<link href="${ctx}/pages/auth/css/login-soft.css" rel="stylesheet" type="text/css"/>
 		<%@include file="/WEB-INF/common/comm-theme.jsp"%>
@@ -12,13 +12,13 @@
 	<body class="login">
 		<div class="logo">
 			<a href="index.do">
-				<img src="${ctx}/assets/admin/layout/img/logo-big.png" alt="" /> 
+				<%-- <img src="${ctx}/assets/admin/layout/img/logo-big.png" alt="" />  --%>
 			</a>
 		</div>
 		<div class="content">
 			<!-- BEGIN LOGIN FORM --> 
 			<form class="login-form"  >  
-				<h3 class="form-title">统一管理系统</h3>
+				<h3 class="form-title">惠金所综合管理系统</h3>
 				<div class="alert alert-danger display-hide">
 					<button class="close" data-close="alert"></button>
 					<span class='login_msg'>输入用户名和密码</span>
@@ -27,7 +27,7 @@
 					<label class="control-label visible-ie8 visible-ie9">金融机构</label>
 					<div>
 						<select class="form-control" id="registCd">
-							<option value="001">包商数字银行</option>
+							<option value="001">惠金所</option>
 						</select>
 					</div>
 				</div>
