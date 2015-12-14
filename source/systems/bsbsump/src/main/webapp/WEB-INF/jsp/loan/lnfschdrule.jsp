@@ -63,6 +63,31 @@
 							<th scope="col">宽限期收息规则</th>
 							<th scope="col">宽限期转逾期规则</th>
 							<th scope="col">宽限期节假日规则</th>
+							
+							
+							<th scope="col">等额处理规则</th>
+							<th scope="col">累进值</th>
+							<th scope="col">累进区间期数</th>
+							<th scope="col">多还款账户标志</th>
+							<th scope="col">循环贷款</th>
+							<th scope="col">提前出账标志</th>
+							<th scope="col">提前出账天数</th>
+							<th scope="col">返还合格性编号</th>
+							<th scope="col">返还方式</th>
+							<th scope="col">返还频率</th>
+							<th scope="col">返还计算方式</th>
+							<th scope="col">返还金额或比例</th>
+							<th scope="col">提前还款锁定期</th>
+							<th scope="col">每年可提前还款最大次数</th>
+							<th scope="col">期限内提前还款最大次数</th>
+							<th scope="col">提前还款最低金额规则</th>
+							<th scope="col">提前还款最低金额取值</th>
+							<th scope="col">提前还款最高金额规则</th>
+							<th scope="col">提前还款最高金额取值</th>
+							<th scope="col">多次放款调整计划</th>
+							<th scope="col">是否允许部分还款</th>
+							<th scope="col">部分还款最低金额规则</th>
+							<th scope="col">部分还款最低金额或比例</th>
 							<th scope="col" colspan="2">操作</th>
 						</tr>
 					</thead>
@@ -198,6 +223,73 @@
 														placeholder="选择允许调整还款方式">
 												</div>
 											</div>
+											
+											<div class="form-group">
+												<label class="col-md-3 control-label">等额处理规则</label>
+												<div class="col-md-9">
+													<input type="text" name="eqmode"
+														class="form-control input-inline input-medium form-value"
+														placeholder="等额处理规则">
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<label class="col-md-3 control-label">累进值</label>
+												<div class="col-md-9">
+													<input type="text" name="progvl"
+														class="form-control input-inline input-medium form-value"
+														placeholder="累进值">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">累进区间期数</label>
+												<div class="col-md-9">
+													<input type="text" name="progpv"
+														class="form-control input-inline input-medium form-value"
+														placeholder="累进区间期数">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">多还款账户标志</label>
+												<div class="col-md-9">
+													<input type="text" name="ismuac"
+														class="form-control input-inline input-medium form-value"
+														placeholder="多还款账户标志">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">循环贷款</label>
+												<div class="col-md-9">
+													<input type="text" name="iscycl"
+														class="form-control input-inline input-medium form-value"
+														placeholder="循环贷款">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">提前出账标志</label>
+												<div class="col-md-9">
+													<input type="text" name="isintf"
+														class="form-control input-inline input-medium form-value"
+														placeholder="提前出账标志">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">提前出账天数</label>
+												<div class="col-md-9">
+													<input type="text" name="intfdy"
+														class="form-control input-inline input-medium form-value"
+														placeholder="提前出账天数">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">返还合格性编号</label>
+												<div class="col-md-9">
+													<input type="text" name="retncd"
+														class="form-control input-inline input-medium form-value"
+														placeholder="返还合格性编号">
+												</div>
+											</div>
+											 
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
@@ -304,6 +396,64 @@
 														placeholder="选择提前还款还息方式">
 												</div>
 											</div>
+											
+											<div class="form-group">
+												<label class="col-md-3 control-label">返还方式</label>
+												<div class="col-md-9">
+													<input type="text" name="retntp"
+														class="form-control input-inline input-medium form-value"
+														placeholder="返还方式">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">返还频率</label>
+												<div class="col-md-9">
+													<input type="text" name="retnfr"
+														class="form-control input-inline input-medium form-value"
+														placeholder="返还频率">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">返还计算方式</label>
+												<div class="col-md-9">
+													<input type="text" name="retnca"
+														class="form-control input-inline input-medium form-value"
+														placeholder="返还计算方式">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">返还金额或比例</label>
+												<div class="col-md-9">
+													<input type="text" name="retnpt"
+														class="form-control input-inline input-medium form-value"
+														placeholder="返还金额或比例">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">提前还款锁定期</label>
+												<div class="col-md-9">
+													<input type="text" name="epymlk"
+														class="form-control input-inline input-medium form-value"
+														placeholder="提前还款锁定期">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">每年可提前还款最大次数</label>
+												<div class="col-md-9">
+													<input type="text" name="mxyrts"
+														class="form-control input-inline input-medium form-value"
+														placeholder="每年可提前还款最大次数">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">期限内提前还款最大次数</label>
+												<div class="col-md-9">
+													<input type="text" name="mxtlts"
+														class="form-control input-inline input-medium form-value"
+														placeholder="期限内提前还款最大次数">
+												</div>
+											</div>
+											 
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
@@ -411,6 +561,72 @@
 														placeholder="选择宽限期节假日规则">
 												</div>
 											</div>
+											
+											<div class="form-group">
+												<label class="col-md-3 control-label">提前还款最低金额规则</label>
+												<div class="col-md-9">
+													<input type="text" name="mnepru"
+														class="form-control input-inline input-medium form-value"
+														placeholder="提前还款最低金额规则">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">提前还款最低金额取值</label>
+												<div class="col-md-9">
+													<input type="text" name="mnepvl"
+														class="form-control input-inline input-medium form-value"
+														placeholder="提前还款最低金额取值">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">提前还款最高金额规则</label>
+												<div class="col-md-9">
+													<input type="text" name="mxepru"
+														class="form-control input-inline input-medium form-value"
+														placeholder="提前还款最高金额规则">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">提前还款最高金额取值</label>
+												<div class="col-md-9">
+													<input type="text" name="mxepvl"
+														class="form-control input-inline input-medium form-value"
+														placeholder="提前还款最高金额取值">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">多次放款调整计划</label>
+												<div class="col-md-9">
+													<input type="text" name="ldchsc"
+														class="form-control input-inline input-medium form-value"
+														placeholder="多次放款调整计划">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">是否允许部分还款</label>
+												<div class="col-md-9">
+													<input type="text" name="ispart"
+														class="form-control input-inline input-medium form-value"
+														placeholder="是否允许部分还款">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">部分还款最低金额规则</label>
+												<div class="col-md-9">
+													<input type="text" name="parttp"
+														class="form-control input-inline input-medium form-value"
+														placeholder="部分还款最低金额规则">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label">部分还款最低金额或比例</label>
+												<div class="col-md-9">
+													<input type="text" name="partvl"
+														class="form-control input-inline input-medium form-value"
+														placeholder="部分还款最低金额或比例">
+												</div>
+											</div>
+											 
 										</div>
 									</div>
 

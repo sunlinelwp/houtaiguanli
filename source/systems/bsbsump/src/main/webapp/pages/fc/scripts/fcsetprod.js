@@ -1,8 +1,8 @@
 var fcsetprod = function() {    
 	
-	var prodstDict =Sunline.getDict("F_PRODST");//产品状态
-	var prodtpDict =Sunline.getDict("F_PRODTP");//产品类型
-	var onlyfgDict =Sunline.getDict("F_ONLYFG");//唯一规则
+	var prodstDict =Sunline.getDict("E_PRODST");//产品状态
+	var prodtpDict =Sunline.getDict("E_PRODTP");//产品类型
+	var onlyfgDict =Sunline.getDict("E_ONLYFG");//唯一规则
 	
 	//增加
 	var crcycdDict = Sunline.getDict("E_CRCYCD");//币种
@@ -41,7 +41,15 @@ var fcsetprod = function() {
 								{
 									"data" : "prodtp",
 									"sortable" : false,
-									"searchable" : false
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										for (var i = 0; i < prodmdDict.length; i++) {
+											if (prodmdDict[i].id == data) {
+												return prodmdDict[i].text;
+											}
+										}
+										return data;
+									}
 								},
 								{
 									"data" : "prodde",
@@ -98,12 +106,12 @@ var fcsetprod = function() {
 									}
 								},
 								{
-									"data" : "rvbson",
+									"data" : "rvbsno",
 									"sortable" : false,
 									"searchable" : false
 								},
 								{
-									"data" : "pybson",
+									"data" : "pybsno",
 									"sortable" : false,
 									"searchable" : false
 								},
@@ -112,9 +120,9 @@ var fcsetprod = function() {
 									"sortable" : false,
 									"searchable" : false,
 									"render" : function(data, type, full) {
-										for (var i = 0; i < lesrulDict.length; i++) {
-											if (lesrulDict[i].id == data) {
-												return lesrulDict[i].text;
+										for (var i = 0; i < crcycdDict.length; i++) {
+											if (crcycdDict[i].id == data) {
+												return crcycdDict[i].text;
 											}
 										}
 										return data;

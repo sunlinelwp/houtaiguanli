@@ -64,6 +64,23 @@
 							placeholder="产品关联的日历类型">
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<label class="col-md-3 control-label">产品建立日期</label>
+					<div class="col-md-9">
+						<div class="input-group col-md-12 date input-medium date-picker"
+							data-date-format="yyyymmdd" data-date-viewmode="years"
+							data-date-minviewmode="months">
+							<input type="text" class="form-control" name="creadt"
+								maxlength="8" placeholder="产品建立日期"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
@@ -136,6 +153,14 @@
 								</button>
 							</span>
 						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 control-label">产品建立柜员</label>
+					<div class="col-md-9">
+						<input type="text" name="creaus"
+							class="form-control input-inline input-medium form-value"
+							placeholder="产品建立柜员">
 					</div>
 				</div>
 			</div>
