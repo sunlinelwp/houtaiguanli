@@ -117,6 +117,7 @@ public class YqrxController {
 		TmpYqrxAmou tya = tmpYqrxAmouService.queryOneEntities(tyaPK);
 		//根据电子账号查询行号和行名称
 		reqmap.put("custac", tya.getAcctno());
+		reqmap.put("userid", user.getUserid());
 		Map<String, Object> mapcard = clict.callClient("secaac", reqmap);
 		reqmap.put("banknm", mapcard.get("brchna"));
 		reqmap.put("ftbkcd", mapcard.get("brchno"));
@@ -140,11 +141,12 @@ public class YqrxController {
 		reqmap.put("chnlcd", tya.getChnlcd());
 		reqmap.put("pytype", tya.getPytype());
 		reqmap.put("target", "1");//前置拦截
-		logger.debug(reqmap+"----------123");
 		Map<String, Object> map = clict.callClient("hfaxtx", reqmap);
 		if(map.get("retCode")=="0000"){
 			int i = tmpYqrxAmouService.updateStates(reqmap.get("amouid").toString(), "1");
 		}
+		logger.debug(reqmap.get("custac")+"----------123");
+		logger.debug(mapcard+"----------456");
 		logger.debug("-------------------------有钱任信 出金结束-------------------------");
 		return map;
 	}
