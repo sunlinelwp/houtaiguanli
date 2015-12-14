@@ -56,7 +56,7 @@
 			<!-- END HEADER TOP -->
 			<!-- BEGIN HEADER MENU -->
 			<div class="page-header-menu">
-				<div class="container">
+				<div class="container" style="width:1200px;">
 				
 					<!-- BEGIN MEGA MENU -->
 					<!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
