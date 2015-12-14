@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 public interface TmpYqrxAmouRepository extends JpaRepository<TmpYqrxAmou, TmpYqrxAmouPK>, JpaSpecificationExecutor<TmpYqrxAmou>{
 
 	@Modifying
-	@Query(value = "update TmpYqrxAmou a set a.states = ?3 where a.frondt = ?1 and a.fronsq = ?2 ")
-	int changeStates(String frondt, String fronsq, String states);
+	@Query(value = "update TmpYqrxAmou a set a.states = ?2 where a.amouid = ?1")
+	int changeStates(String amouid, String states);
 	
-	@Query(value = "select count(1) from TmpYqrxAmou a where a.keepdt = ?1 and a.cometp = ?2 ")
-	int getCountByKeepdt(String keepdt, String cometp);
+	@Query(value = "select count(1) from TmpYqrxAmou a where a.amoudt = ?1 and a.cometp = ?2 ")
+	int getCountByAmoudt(String amoudt, String cometp);
 }

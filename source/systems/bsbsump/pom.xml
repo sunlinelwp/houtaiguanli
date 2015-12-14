@@ -11,7 +11,7 @@
 	<artifactId>bsbsump</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>包商统一管理平台</name>
+	<name>惠金所统一管理平台</name>
   
 	<dependencies>
 		<dependency>
