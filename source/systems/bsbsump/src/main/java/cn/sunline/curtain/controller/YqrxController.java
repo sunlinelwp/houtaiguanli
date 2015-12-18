@@ -119,10 +119,16 @@ public class YqrxController {
 		reqmap.put("custac", tya.getAcctno());
 		reqmap.put("userid", user.getUserid());
 		Map<String, Object> mapcard = clict.callClient("secaac", reqmap);
+		if(!(mapcard.get("retCode")=="0000")){
+			mapcard.put("retMsg", "电子账号有误，操作失败");
+			return mapcard;
+		}
 		reqmap.put("banknm", mapcard.get("brchna"));
 		reqmap.put("ftbkcd", mapcard.get("brchno"));
+		reqmap.put("idtfno", mapcard.get("idtfno"));
+		reqmap.put("acctpr", mapcard.get("acctpr"));
 		
-		reqmap.put("userid", user.getUserid());
+		
 		reqmap.put("acctno", tya.getAcctno());
 		reqmap.put("payeac", tya.getPayeac());
 		reqmap.put("payena", tya.getPayena());
@@ -137,7 +143,7 @@ public class YqrxController {
 		reqmap.put("provic", tya.getProvic());
 		reqmap.put("garden", tya.getGarden());
 //		reqmap.put("ftbkcd", tya.getFtbkcd());
-		reqmap.put("acctpr", tya.getAcctpr());
+//		reqmap.put("acctpr", tya.getAcctpr());
 		reqmap.put("chnlcd", tya.getChnlcd());
 		reqmap.put("pytype", tya.getPytype());
 		reqmap.put("target", "1");//前置拦截
