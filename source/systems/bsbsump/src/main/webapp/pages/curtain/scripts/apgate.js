@@ -3,6 +3,7 @@ var Apgate = function(){
 	var paystausDict=Sunline.getDict("payStatus");
 	var signstausDict=Sunline.getDict("signStatus");
 	var checkstausDict=Sunline.getDict("checkStatus");
+	var keyelementDict=Sunline.getDict("keyElement");
 	var grid = new Datatable();
 	var _isFirst = true;
 	var _tranDate = "0000";
@@ -261,14 +262,14 @@ var Apgate = function(){
 			            	    return data;
 			            	}
 			            },{ 
-			            	"data": "signStatus",
+			            	"data": "keyElement",
 			            	"width": "8%",
 			            	"sortable": false,
 			            	"searchable": false,
 			            	"render": function (data, type, full) {
-			            	    for (var i = 0; i < signstausDict.length; i++) {
-			                          if (signstausDict[i].id == data) {
-			                            return signstausDict[i].dictName;
+			            	    for (var i = 0; i < keyelementDict.length; i++) {
+			                          if (keyelementDict[i].id == data) {
+			                            return keyelementDict[i].dictName;
 			                          }
 			                        }
 			            	    return data;

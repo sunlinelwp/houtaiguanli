@@ -266,19 +266,21 @@ var Apcltn = function(){
 			                        }
 			            	    return data;
 			            	}
-			            },{ 
-			            	"data": "signStatus",
-			            	"sortable": false,
-			            	"searchable": false,
-			            	"render": function (data, type, full) {
-			            	    for (var i = 0; i < signstausDict.length; i++) {
-			                          if (signstausDict[i].id == data) {
-			                            return signstausDict[i].dictName;
-			                          }
-			                        }
-			            	    return data;
-			            	}
-			            },{ 
+			            },
+//			            { 
+//			            	"data": "signStatus",
+//			            	"sortable": false,
+//			            	"searchable": false,
+//			            	"render": function (data, type, full) {
+//			            	    for (var i = 0; i < signstausDict.length; i++) {
+//			                          if (signstausDict[i].id == data) {
+//			                            return signstausDict[i].dictName;
+//			                          }
+//			                        }
+//			            	    return data;
+//			            	}
+//			            },
+			            { 
 			            	"data": "keyElement",
 			            	"sortable": false,
 			            	"searchable": false,
