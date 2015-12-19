@@ -11,6 +11,10 @@
 			</div>
 		</div>
 		<div class="portlet-body">
+			<div class="form-group">
+				<label class="col-md-6" style = "margin-top:5px">已录入金额:&nbsp;&nbsp;<span id="inptam" style = "font-size:18px;font-weight:700;color:blue;"></span></label> 
+				<label class="col-md-6" style = "margin-top:5px">总金额:&nbsp;&nbsp;<span id="totlam" style = "font-size:18px;font-weight:700;color:blue;"></span></label> 
+			</div>
 			<div class="table-container">
 			
 				<div class="table-actions-wrapper">
