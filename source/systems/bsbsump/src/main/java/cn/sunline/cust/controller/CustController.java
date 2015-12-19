@@ -195,7 +195,7 @@ public class CustController {
 		return rspmap;
 	}
 	
-	/*
+		/*
 	 * 大额审核订单信息查询
 	 */
 	@RequestMapping(value = "/qrordr")
@@ -230,6 +230,10 @@ public class CustController {
 		remap.put("iTotalRecords",
 				rspmap.get("counts") == null ? Integer.parseInt("0") : rspmap.get("counts"));
 		
+		remap.put("totlam", rspmap.get("totlam") == null ? Integer.parseInt("0")
+				: rspmap.get("totlam"));
+		remap.put("inptam", rspmap.get("inptam") == null ? Integer.parseInt("0")
+				: rspmap.get("inptam"));
 		return remap;
 	}
 	
