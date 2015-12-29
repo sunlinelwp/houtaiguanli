@@ -261,20 +261,22 @@ var Apcpay = function(){
 			                        }
 			            	    return data;
 			            	}
-			            },{ 
-			            	"data": "signStatus",
-			            	"width": "8%",
-			            	"sortable": false,
-			            	"searchable": false,
-			            	"render": function (data, type, full) {
-			            	    for (var i = 0; i < signstausDict.length; i++) {
-			                          if (signstausDict[i].id == data) {
-			                            return signstausDict[i].dictName;
-			                          }
-			                        }
-			            	    return data;
-			            	}
-			            },{ 
+			            },
+//			            { 
+//			            	"data": "signStatus",
+//			            	"width": "8%",
+//			            	"sortable": false,
+//			            	"searchable": false,
+//			            	"render": function (data, type, full) {
+//			            	    for (var i = 0; i < signstausDict.length; i++) {
+//			                          if (signstausDict[i].id == data) {
+//			                            return signstausDict[i].dictName;
+//			                          }
+//			                        }
+//			            	    return data;
+//			            	}
+//			            },
+			            { 
 			            	"data": "keyElement",
 			            	"width": "8%",
 			            	"sortable": false,

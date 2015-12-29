@@ -22,6 +22,15 @@
 						<input type="text" id="custac" name="custac" class="form-control input-inline input-medium" maxlength="10" placeholder="输入电子帐号">
 					</div>
 				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-3 control-label">手机号</label>
+					<div class="input-icon col-md-9">
+						<i class="fa fa-credit-card"></i>
+						<input type="text" id="teleno" name="teleno" class="form-control input-inline input-medium" maxlength="10" placeholder="输入手机号">
+					</div>
+				</div>
+				
+				
 				<div class="form-actions cust-action">
 					<button type="button" class="btn blue" id="submit" onclick="tranferInfo.queryCust()">查询</button>
 					<button type="button" class="btn gray" id="cancle">清空</button>
@@ -45,33 +54,20 @@
 					id="datatable_prod">
 					<thead>
 						<tr role="row" class="heading">
-							<th scope="col">标的编号</th>
+							<th scope="col"></th>
 							<th scope="col">借款标题</th>
-							<th scope="col">标的状态</th>
-							<th scope="col">收益利率</th>
-							<th scope="col">投资金额</th>
+							<th scope="col">转让总额(元)</th>
+							<th scope="col">剩余期限</th>
+							<th scope="col">转出金额(元)</th>
+							<th scope="col">投资金额(元)</th>
+							<th scope="col">收益(元)</th>
 							
 							
-							<th scope="col" style="display:none;">货币代码</th>
-							<th scope="col" style="display:none;">账户余额</th>
-							<th scope="col" style="display:none;">待收本金</th>
-							<th scope="col" style="display:none;">待收利息</th>
-							<th scope="col" style="display:none;">已收本金</th>
-							<th scope="col" style="display:none;">已收利息</th>
-							<th scope="col" style="display:none;">顺序号</th>
-							<th scope="col" style="display:none;">起息日期</th>
-							<th scope="col" style="display:none;">到期日期</th>
-							<th scope="col" style="display:none;">待收本息</th>
-							<th scope="col" style="display:none;">转让总额</th>
-							<th scope="col" style="display:none;">转出金额</th>
-							<th scope="col" style="display:none;">投资金额</th>
-							<th scope="col" style="display:none;">收益</th>
-							<th scope="col" style="display:none;">状态</th>
-							<th scope="col" style="display:none;">转让标的编号</th>
-							<th scope="col" style="display:none;">转让标的名称</th>
+							
+							 
 							
 							
-							<th scope="col">操作</th>
+						
 						</tr>
 					</thead>
 					<tbody>
@@ -98,6 +94,32 @@
 						<td>货币代码</td>
 						<td><span id = "crcycd"></span></td>
 					</tr>
+					
+					<tr>
+						<td>转让总额</td>
+						<td><span id = "quamou"></span></td>
+						<td>剩余期限</td>
+						<td><span id = ""></span></td>
+						<td>转出金额</td>
+						<td><span id = "qucuam"></span></td>
+					</tr>
+					<tr>
+						<td>投资金额</td>
+						<td><span id = "trcuam"></span></td>
+						<td>收益</td>
+						<td><span id = "profit"></span></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>受让人</td>
+						<td><span id = ""></span></td>
+						<td>受让金额</td>
+						<td><span id = "profit"></span></td>
+						<td>转让日期</td>
+						<td></td>
+					</tr>
+					<!-- 
 					<tr>
 						<td>账户余额</td>
 						<td><span id = "onlnbl"></span></td>
@@ -150,6 +172,7 @@
 						<td></td>
 						<td></td>
 					</tr>
+					 -->
 				</table>
 			</div>
 	</div>
@@ -157,6 +180,39 @@
 		<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
 	</div>
 </div>
+
+<!-- 转让记录 -->
+<div id="tranferhistory" class="modal fade bs-modal-sm" tabindex="-1" data-backdrop="static" data-keyboard="false" data-width = "1100">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+		<h4 class="modal-title">转让详情</h4>
+	</div>
+	<div class="modal-body">
+		<div class="table-container">
+				<table class="table table-striped table-bordered table-hover" id="tran_history_ajax">
+					<thead>
+						<tr role="row" class="heading">
+							<th width="8%">
+								受让人
+							</th>	
+							<th width="8%">
+								受让金额(元)
+							</th>
+							<th width="10%">
+								转让日期
+							</th>													
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
+	</div>
+</div>
+
 <script src="${ctx}/pages/custservice/scripts/tranferInfo.js"></script>
 <script>
 	jQuery(document).ready(function() {    

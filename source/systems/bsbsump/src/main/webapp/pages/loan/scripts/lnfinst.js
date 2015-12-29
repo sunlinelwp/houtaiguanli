@@ -1,4 +1,5 @@
 var lnfinst = function() {
+	var isflag = Sunline.getDict("E_ISAULD");
 	var crcycdDict = Sunline.getDict("crcycd"); // 币种
 	$("input[name='crcycd']").select2({
 		data : crcycdDict,
@@ -106,7 +107,7 @@ var lnfinst = function() {
 
 	var cainfgDict = Sunline.getDict("E_CAINFG");
 	$("input[name='cainfg']").select2({
-		data : cainfgDict,
+		data : isflag,
 		allowClear : true
 	});
 
@@ -121,12 +122,13 @@ var lnfinst = function() {
 		data : cainrtDict,
 		allowClear : true
 	});
+	
 	$("input[name='isbkrt']").select2({
-		data : cainfgDict,
+		data : isflag,
 		allowClear : true
 	});
 	$("input[name='isltrt']").select2({
-		data : cainfgDict,
+		data : isflag,
 		allowClear : true
 	});
 	var instbsDict = Sunline.getDict("E_INSTBS");
@@ -161,7 +163,7 @@ var lnfinst = function() {
 	});
 	var instfgDict = Sunline.getDict("E_INSGFG");
 	$("input[name='instfg']").select2({
-		data : instfgDict,
+		data : isflag,
 		allowClear : true
 	});
 	var instfgDict = Sunline.getDict("E_INSTFG");
@@ -171,7 +173,7 @@ var lnfinst = function() {
 	});
 
 	$("input[name='cistfg']").select2({
-		data : instfgDict,
+		data : isflag,
 		allowClear : true
 	});
 	var disctpDict = Sunline.getDict("E_DISCTP");

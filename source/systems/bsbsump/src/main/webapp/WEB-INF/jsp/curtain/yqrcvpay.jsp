@@ -56,25 +56,16 @@
 					<thead>
 						<tr role="row" class="heading">	
 							<th width="10%">
-								清算日期
+								序列号
 							</th>
 							<th width="10%">
-								客户账号
+								电子账号
 							</th>
 							<th width="10%">
-								客户名称
+								收款人账号
 							</th>
 							<th width="10%">
-								前置日期
-							</th>
-							<th width="10%">
-								前置流水
-							</th>
-							<th width="10%">
-								收款账号
-							</th>
-							<th width="10%">
-								币种
+								收款账号名称
 							</th>
 							<th width="10%">
 								金额
@@ -83,10 +74,19 @@
 								 手续费
 							</th>
 							<th width="10%">
-								 连笔号
+								账户属性
 							</th>
 							<th width="10%">
-								 来源渠道
+								渠道类型
+							</th>
+							<th width="10%">
+								支付方式
+							</th>
+							<th width="10%">
+								 来源文件
+							</th>
+							<th width="10%">
+								 日期
 							</th>
 							<th width="10%">
 								 处理状态

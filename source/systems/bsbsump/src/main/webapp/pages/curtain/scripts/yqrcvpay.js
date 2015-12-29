@@ -1,7 +1,10 @@
 var yqrcvpay = function(){
-	var yqrxrvDict=Sunline.getDict("yqrxrv");
-	var cometpDict=Sunline.getDict("cometp");
-	var crcycdDict = Sunline.getDict("crcycd");
+	var yqrxrvDict=Sunline.getDict("yqrxrv");//处理状态
+	var cometpDict=Sunline.getDict("cometp");//来源文件
+	var crcycdDict = Sunline.getDict("crcycd");//币种
+	var chnlcdDict = Sunline.getDict("chnlcd");//渠道类型
+	var pytypeDict = Sunline.getDict("pytype");//支付方式
+	var acctprDict = Sunline.getDict("acctpr");//账号属性
 	var grid = new Datatable();
 	var _tranDate = "0000";
 	var _status = "0000";
@@ -103,9 +106,11 @@ var yqrcvpay = function(){
 			var input = {};
 			var trandt = $('#check-date').val();
 			if($('#cometp').val() == '1' ){
-				input.file = 'yqrx_errtra_';//交易失败文件
+				input.file = 'inve_fail_';//交易失败文件
 			}else if($('#cometp').val() == '2'){
-				input.file = 'yqrx_rcvpay_';//回款交易文件
+				input.file = 'inve_repy_';//回款交易文件
+			}else if($('#cometp').val() == '3'){
+				input.file = 'inve_chpa_';//CP对账出金文件
 			}
 			input.trandt = trandt;
 			input.cometp = $('#cometp').val();
@@ -146,16 +151,7 @@ var yqrcvpay = function(){
 	            		return;
 	            	}
 				var input = {};
-				input.keepdt = $(nRowA[0]).text();
-				input.crcycd = _formartDict(crcycdDict,$(nRowA[6]).text());
-				input.tranam = $(nRowA[7]).text();
-				input.acctno = $(nRowA[1]).text();
-				input.fronsq = $(nRowA[4]).text();
-				input.frondt = $(nRowA[3]).text();
-				input.cardno = $(nRowA[5]).text();
-				input.acctnm = $(nRowA[2]).text();
-				input.tranfe = $(nRowA[8]).text();
-				input.linkno = $(nRowA[9]).text();
+				input.amouid = $(nRowA[0]).text();
 				$("#myModal").modal('show');
 				Sunline.ajaxRouter(
 		        	"yqrx/senaou", 
@@ -205,7 +201,7 @@ var yqrcvpay = function(){
 		            },
 		            "columns" : [
 		                {     
-			            	"data": "keepdt",
+			            	"data": "amouid",
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
@@ -213,48 +209,60 @@ var yqrcvpay = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
-			            	"data": "acctnm",
+			            	"data": "payeac",
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
-			            	"data": "frondt",
+			            	"data": "payena",
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
-			            	"data": "fronsq",
-			            	"sortable": false,
-			            	"searchable": false
-			            },{ 
-			            	"data": "cardno",
-			            	"sortable": false,
-			            	"searchable": false
-			            },{ 
-			            	"data": "crcycd",
+			            	"data": "tranam",
 			            	"sortable": false,
 			            	"searchable": false,
 			            	"render": function (data, type, full) {
-			            	    for (var i = 0; i < crcycdDict.length; i++) {
-			                          if (crcycdDict[i].id == data) {
-			                            return crcycdDict[i].dictName;
+			            	    return formartM(data);
+			            	}
+			            },{ 
+			            	"data": "chgeam",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
+			            	"data": "acctpr",
+			            	"sortable": false,
+			            	"searchable": false,
+			            	"render": function (data, type, full) {
+			            	    for (var i = 0; i < acctprDict.length; i++) {
+			                          if (acctprDict[i].id == data) {
+			                            return acctprDict[i].dictName;
+			                          }
+			                        }
+			            	    return acctprDict[1].dictName;
+			            	}
+			            },{ 
+			            	"data": "chnlcd",
+			            	"sortable": false,
+			            	"searchable": false,
+			            	"render": function (data, type, full) {
+			            	    for (var i = 0; i < chnlcdDict.length; i++) {
+			                          if (chnlcdDict[i].id == data) {
+			                            return chnlcdDict[i].dictName;
 			                          }
 			                        }
 			            	    return data;
 			            	}
 			            },{ 
-			            	"data": "tranam",
+			            	"data": "pytype",
 			            	"sortable": false,
 			            	"searchable": false,
-			            	"render" : function(data,type,full){
-			            		return formartM(data+"");
+			            	"render": function (data, type, full) {
+			            	    for (var i = 0; i < pytypeDict.length; i++) {
+			                          if (pytypeDict[i].id == data) {
+			                            return pytypeDict[i].dictName;
+			                          }
+			                        }
+			            	    return data;
 			            	}
-			            },{ 
-			            	"data": "tranfe",
-			            	"sortable": false,
-			            	"searchable": false
-			            },{ 
-			            	"data": "linkno",
-			            	"sortable": false,
-			            	"searchable": false
 			            },{ 
 			            	"data": "cometp",
 			            	"sortable": false,
@@ -267,6 +275,10 @@ var yqrcvpay = function(){
 			                        }
 			            	    return data;
 			            	}
+			            },{ 
+			            	"data": "amoudt",
+			            	"sortable": false,
+			            	"searchable": false
 			            },{ 
 			            	"data": "states",
 			            	"sortable": false,

@@ -16,10 +16,17 @@
 					<span>输入交易参数有误</span>
 				</div>
 				<div class="form-group col-md-6">
-					<label class="col-md-3 control-label">电子帐号</label>
+					<label class="col-md-3 control-label">要查询的信息</label>
 					<div class="input-icon col-md-9">
 						<i class="fa fa-credit-card"></i>
-						<input type="text" id="custac" name="custac" class="form-control input-inline input-medium" maxlength="10" placeholder="输入电子帐号">
+						<input type="text" id="custac" name="custac" class="form-control input-inline input-medium" maxlength="10" placeholder="输入电子帐号或平台名称">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-3 control-label">手机号码</label>
+					<div class="input-icon col-md-9">
+						<i class="fa fa-credit-card"></i>
+						<input type="text" id="phoneNo" name="phoneNo" class="form-control input-inline input-medium" maxlength="10" placeholder="输入手机号码">
 					</div>
 				</div>
 				<div class="form-actions cust-action">

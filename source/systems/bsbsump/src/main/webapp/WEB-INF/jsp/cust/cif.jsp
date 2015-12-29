@@ -251,6 +251,51 @@
 		<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
 	</div>
 </div>
+
+
+<!--银行卡展示域-->
+<div id="banktranModal" class="modal fade bs-modal-sm" tabindex="-1" data-backdrop="static" data-keyboard="false" data-width = "1100">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+		<h4 class="modal-title">用户绑卡信息</h4>
+	</div>
+	<div class="modal-body">
+		<div class="table-container">
+				<table class="table table-striped table-bordered table-hover" id="cif_tran_ajax_bank">
+					<thead>
+						<tr role="row" class="heading">
+							<th width="8%">
+								绑定卡号
+							</th>	
+							<th width="8%">
+								卡开户行号
+							</th>
+							<th width="10%">
+								账户名称
+							</th>													
+							<th width="8%">
+								卡开户行名称
+							</th>
+							<th width="9%">
+								绑定日期
+							</th>
+							<th width="10%">
+								子账户查询状态
+							</th>
+							<th width="8%">
+								维护时间
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
+	</div>
+</div>
 <script src="${ctx}/assets/global/plugins/jquery-validation/js/acdInput.js" type="text/javascript"></script>
 <script type="text/javascript" src="${ctx}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="${ctx}/assets/global/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js"></script>

@@ -32,6 +32,8 @@ var knlordrInfo = function() {
 					src : $("#ordrinfo_ajax"),
 					deleteData : typesendData1,
 					onSuccess : function(grid) {
+						$("#inptam").text(grid.getDataTable().context['0'].json['inptam']);
+						$("#totlam").text(grid.getDataTable().context['0'].json['totlam']);
 					},
 					onError : function(grid) {
 					},

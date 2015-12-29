@@ -200,6 +200,15 @@ public class ClearController {
 					payGateCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
 					succAmount+=1;
 				}
+			} else if("5".equals(pay.get("chkStatus").toString())){
+				//我方少订单，需要工作人员自己手工去录订单
+				//修改记录状态
+				String checkDate = pay.get("checkDate").toString();
+				String merchantDt = pay.get("merchantDt").toString();
+				String cpSeqno = pay.get("billno").toString();
+				String checkStatus = "Y";
+				payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+				succAmount+=1;
 			}
 		}
 		map.put("retCode", "0000");
@@ -504,6 +513,15 @@ public class ClearController {
 					cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
 					succAmount+=1;
 				}
+			} else if("5".equals(pay.get("chkStatus").toString())){
+				//我方少订单，需要工作人员自己手工去录订单
+				//修改记录状态
+				String checkDate = pay.get("checkDate").toString();
+				String merchantDt = pay.get("merchantDt").toString();
+				String cpSeqno = pay.get("billno").toString();
+				String checkStatus = "Y";
+				payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+				succAmount+=1;
 			}
 		}
 		map.put("retCode", "0000");

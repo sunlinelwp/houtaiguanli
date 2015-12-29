@@ -30,8 +30,8 @@ public class TmpYqrxAmouServiceImpl implements TmpYqrxAmouService {
 	}
 
 	@Override
-	public boolean checkIsExitByKeepdt(String keepdt, String cometp) {
-		int count = tmpYqrxAmouRepository.getCountByKeepdt(keepdt, cometp);
+	public boolean checkIsExitByAmoudt(String amoudt, String cometp) {
+		int count = tmpYqrxAmouRepository.getCountByAmoudt(amoudt, cometp);
 		boolean flag = false;
 		if(count != 0){
 			flag = true;
@@ -44,11 +44,10 @@ public class TmpYqrxAmouServiceImpl implements TmpYqrxAmouService {
 		return new Specification<TmpYqrxAmou>() {
 	        @Override
 	        public Predicate toPredicate(Root<TmpYqrxAmou> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-	        	root.<String>get("keepdt");
 	            Predicate predicate = cb.conjunction();
 	            List<Expression<Boolean>> expressions = predicate.getExpressions();
-	            if (tmp.getKeepdt() != null) {
-	                expressions.add(cb.equal(root.<String>get("keepdt"), tmp.getKeepdt()));
+	            if (tmp.getAmoudt() != null) {
+	                expressions.add(cb.equal(root.<String>get("amoudt"), tmp.getAmoudt()));
 	            }
 	            if (tmp.getCometp() != null) {
 	                expressions.add(cb.equal(root.<String>get("cometp"), tmp.getCometp()));
@@ -72,8 +71,14 @@ public class TmpYqrxAmouServiceImpl implements TmpYqrxAmouService {
 
 	@Override
 	@Transactional
-	public int updateStates(String frondt, String fronsq, String states) {
-		int i = tmpYqrxAmouRepository.changeStates(frondt, fronsq, states);
+	public int updateStates(String amouid, String states) {
+		int i = tmpYqrxAmouRepository.changeStates(amouid, states);
 		return i;
+	}
+
+	@Override
+	public TmpYqrxAmou queryOneEntities(TmpYqrxAmouPK amouid) {
+		TmpYqrxAmou tya = tmpYqrxAmouRepository.findOne(amouid);
+		return tya;
 	}
 }

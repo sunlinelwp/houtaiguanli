@@ -58,6 +58,11 @@ public class CustServiceController {
 		if (reqmap.get("q_custac") != null && reqmap.get("q_custac") != "") {
 			map.put("custac", reqmap.get("q_custac"));
 		}
+		
+		if (reqmap.get("q_phoneNo") != null && reqmap.get("q_phoneNo") != "") {
+			map.put("moblie", reqmap.get("q_phoneNo"));
+		}
+		
 		map.put("userid", user.getUserid()); 
 
 		int length = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
@@ -92,6 +97,11 @@ public class CustServiceController {
 		if (reqmap.get("q_custac") != null && reqmap.get("q_custac") != "") {
 			map.put("custac", reqmap.get("q_custac"));
 		}
+		
+		if (reqmap.get("q_phoneNo") != null && reqmap.get("q_phoneNo") != "") {
+			map.put("mobile", reqmap.get("q_phoneNo"));
+		}
+		
 		map.put("trantp", "3"); //已转出
 		map.put("userid", user.getUserid()); 
 
@@ -112,6 +122,94 @@ public class CustServiceController {
 		resmap.put("iTotalRecords",
 				resmap.get("counts") == null ? "0" : resmap.get("counts"));
 		logger.debug("-----------------转让信息结束-----------------"+resmap);
+		return resmap;
+	}
+	
+	
+	
+	/**
+	 * 根据电子账号查询转让信息
+	 */
+	@RequestMapping(value = "/qrdbsbin")
+	public Map<String, Object> qrdbsbin(@RequestParam Map<String, Object> reqmap,
+			@ModelAttribute("User") BSBUser user) {
+		logger.debug("------------------转让信息开始-----------------"+reqmap);
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (reqmap.get("q_custac") != null && reqmap.get("q_custac") != "") {
+			map.put("custac", reqmap.get("q_custac"));
+		}
+		
+		if (reqmap.get("q_phoneNo") != null && reqmap.get("q_phoneNo") != "") {
+			map.put("mobile", reqmap.get("q_phoneNo"));
+		}
+		
+		map.put("trantp", "4"); //已转出
+		map.put("userid", user.getUserid()); 
+
+		int length = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
+				.get("length")) ? (String) reqmap.get("length") : "10", 10);
+		int start = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
+				.get("start")) ? (String) reqmap.get("start") : "1", 10);
+		map.put("pageno", start / length + 1);
+		map.put("record", length);
+		Map<String, Object> resmap = new HashMap<String, Object>();
+		resmap = client.callClient("qrdbsb", map);
+		resmap.put(
+				"data",
+				resmap.get("subjif") == null ? new ArrayList<Object>() : resmap
+						.get("subjif"));
+		resmap.put("iTotalDisplayRecords", resmap.get("counts") == null ? "0"
+				: resmap.get("counts"));
+		resmap.put("iTotalRecords",
+				resmap.get("counts") == null ? "0" : resmap.get("counts"));
+		logger.debug("-----------------转让信息结束-----------------"+resmap);
+		return resmap;
+	}
+	
+	
+	/**
+	 * 查询转让下的详细记录
+	 * @author jianlei
+	 */
+	@RequestMapping(value = "/tranhistory")
+	public Map<String, Object> tranferHistory(@RequestParam Map<String, Object> reqmap,
+			@ModelAttribute("User") BSBUser user) {
+		
+		logger.debug("------------------转让的记录查询开始-----------------"+reqmap);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		
+		map.put("custac", reqmap.get("custac")); //电子账号
+		map.put("debtcd", reqmap.get("debtcd")); //转让标的编号
+		
+		map.put("userid", user.getUserid()); 
+
+		int length = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
+				.get("length")) ? (String) reqmap.get("length") : "10", 10);
+		int start = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
+				.get("start")) ? (String) reqmap.get("start") : "1", 10);
+		
+		map.put("pageno", start / length + 1);
+		map.put("record", length);
+		
+		Map<String, Object> resmap = new HashMap<String, Object>();
+		
+		resmap = client.callClient("fczrdt", map);
+		
+		resmap.put(
+				"data",
+				resmap.get("tranif") == null ? new ArrayList<Object>() : resmap
+						.get("tranif"));
+		
+		resmap.put("iTotalDisplayRecords", resmap.get("counts") == null ? "0"
+				: resmap.get("counts"));
+		
+		resmap.put("iTotalRecords",
+				resmap.get("counts") == null ? "0" : resmap.get("counts"));
+		
+		logger.debug("----------------转让的记录查询技术-----------------"+resmap);
+		
 		return resmap;
 	}
 	
