@@ -39,6 +39,7 @@ var investInfo = function() {
 	var handleTable = function(){
 		var i = 0;
 		prodgrid.setAjaxParam("custac","");
+		prodgrid.setAjaxParam("phoneNo","");
 		var produrl = Sunline.ajaxPath("custService/fclnqr");
 		prodgrid.init({
 					src : $("#datatable_prod"),
@@ -148,15 +149,21 @@ var investInfo = function() {
 								]
 					}
 				});
+		
 		var sendData = ["custac"];
 		prodgrid.bindTableEdit(sendData,editForm);
 	       }
+
+	
+
+	
 	//查询
 	var submitInfo = function(){
 		if(!$('#cust-form').validate().form()){
 			return;
 		}
 		prodgrid.setAjaxParam("q_custac",$('#custac').val());
+		prodgrid.setAjaxParam("q_phoneNo",$('#phoneNo').val());
 		prodgrid.submitFilter();
 	}
 	return {

@@ -392,4 +392,37 @@ public class CustController {
 		
 		return remap;
 	}
+	
+	
+	/*
+	 * 银行卡查询
+	 * @author zjl
+	 */
+	@RequestMapping(value = "/bankcardif")
+	public Map<String,Object> getCustBankCard(@RequestParam Map<String,Object> reqmap,@ModelAttribute("User") BSBUser user){
+		Map<String , Object> map = new HashMap<String, Object>();
+		Date date = new Date();
+		int start = Integer.parseInt(reqmap.get("start").toString());
+		int length  = Integer.parseInt(reqmap.get("length").toString());
+		int pageno = start/length+1;
+		map.put("pageno", pageno);
+		map.put("record", length);
+		map.put("custac", reqmap.get("custac").toString());
+		map.put("status", "1");
+		map.put("userid", user.getUserid());
+		logger.debug("请求map========"+map);
+		Map<String,Object> rspmap = new HashMap<String, Object>();
+		Map<String,Object> remap = new HashMap<String, Object>();
+		try {
+			rspmap = clict.callClient("caslbc", map);//请求核心接口
+		} catch (SumpException e) {
+			remap.put("retCode", e.getErrCode());
+			remap.put("retMsg", e.getErrMsg());
+		}
+		remap.put("sEcho", date.getTime());
+		remap.put("iTotalRecords", rspmap.get("recdsm"));
+		remap.put("iTotalDisplayRecords", rspmap.get("recdsm"));
+		remap.put("data", rspmap.get("selBindCardInfo"));
+		return remap;
+	}
 }

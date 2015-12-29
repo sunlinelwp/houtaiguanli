@@ -2,7 +2,10 @@ var tranferInfo = function() {
 	var crcycdDict=Sunline.getDict("E_CRCYCD");//币种
 	var subjstDict=Sunline.getDict("E_SUBJST");//标的状态
 	var transtDict=Sunline.getDict("E_SUBJTP");//状态
-	
+	var feramoqucuam=0;
+	var bankIsNotF=true;
+	var custac = "";
+	var trangrid = new Datatable();
 	var formartDict = function(dict,value){
 		for(var i=0 ; i<dict.length ; i++){
 			if(value == dict[i].dictId){
@@ -16,35 +19,14 @@ var tranferInfo = function() {
 	};
 	
 	var editForm = function(nRowA){
-		$('#subjcd').text($(nRowA[0]).text());
-		$('#subjnm').text($(nRowA[1]).text());
-		$('#subjst').text($(nRowA[2]).text());
-		$('#instrt').text($(nRowA[3]).text());
-		$('#inveam').text($(nRowA[4]).text());
-		$('#crcycd').text(formartDict(crcycdDict,$(nRowA[5]).text()));
-		$('#onlnbl').text($(nRowA[6]).text());
-		$('#ndrcpr').text($(nRowA[7]).text());
-		$('#ndrcin').text($(nRowA[8]).text());
-		$('#rcpram').text($(nRowA[9]).text());
-		$('#rcinam').text($(nRowA[10]).text());
-		$('#sequen').text($(nRowA[11]).text());
-		$('#instdt').text($(nRowA[12]).text());
-		$('#matudt').text($(nRowA[13]).text());
-		$('#ndrcam').text($(nRowA[14]).text());
-		$('#quamou').text($(nRowA[15]).text());
-		$('#qucuam').text($(nRowA[16]).text());
-		$('#trcuam').text($(nRowA[17]).text());
-		$('#profit').text($(nRowA[18]).text());
-		$('#transt').text(formartDict(transtDict,$(nRowA[19]).text()));
-		$('#oldjcd').text($(nRowA[20]).text());
-		$('#newjnm').text($(nRowA[21]).text());
-       	$("#tranModal").modal('show');
+		 
 	};
 	
 	var prodgrid = new Datatable();
 	var handleTable = function(){
 		var i = 0;
 		prodgrid.setAjaxParam("custac","");
+		prodgrid.setAjaxParam("teleno","");
 		var produrl = Sunline.ajaxPath("custService/qrdbsb");
 		prodgrid.init({
 					src : $("#datatable_prod"),
@@ -57,11 +39,15 @@ var tranferInfo = function() {
 							"url" : produrl,
 						},
 						"columns" : [
-								 {
-									"data" : "subjcd",
-									"sortable" : false,
-									"searchable" : false
-								},
+								{
+									"data": "null",
+									"sortable": false,
+									"searchable": false,
+									"width": "2%",
+									"render": function (data, type, full) {
+										return '<input type="checkbox" class="checkboxes" value="1"/>';
+									}
+								},     
 								{
 									"data" : "subjnm",
 									"sortable" : false,
@@ -69,133 +55,118 @@ var tranferInfo = function() {
 									
 								},
 								{
-									"data" : "subjst",
-									"sortable" : false,
-									"searchable" : false,
-					            	"render" : function(data,type,full){
-					            		for(var i=0 ; i<subjstDict.length ; i++){
-					            			if(data == subjstDict[i].dictId){
-					            				return subjstDict[i].dictName;
-					            			}
-					            		}
-					            		return data;
-					            	}
-								},
-								{
-									"data" : "instrt",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "inveam",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "crcycd",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "onlnbl",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "ndrcpr",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "ndrcin",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "rcpram",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "rcinam",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "sequen",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "instdt",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "matudt",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "ndrcam",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
 									"data" : "quamou",
 									"sortable" : false,
 									"searchable" : false
 								},
 								{
-									"data" : "qucuam",
+									"data" : "remday",
 									"sortable" : false,
 									"searchable" : false
 								},
 								{
-									"data" : "trcuam",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "profit",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "transt",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "oldjcd",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : "newjnm",
-									"sortable" : false,
-									"searchable" : false
-								},
-								{
-									"data" : null,
+									"data" : "traamo",
 									"sortable" : false,
 									"searchable" : false,
-									"render" : function(data, type, full) {
-										return "<a class='edit' href='javascript:;' data-src='" + data + " data-value="+i+"'>详情 </a>";
-									}
-								}							
+									"render" : function(data,type,full){
+										feramoqucuam =data;
+										return data;  
+					            	}
+								},
+								{
+									"data" : "qucuam",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data,type,full){
+										feramoqucuam =feramoqucuam-data
+										return data;  
+					            	}
+								},
+							    {
+									"data" : "null",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data,type,full){
+										 
+										return feramoqucuam.toFixed(2);  
+					            	}
+								} 						
 								]
 					}
 				});
+		$(".table-group-actions").append("<button id='tran_history_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;查看转让记录</button></div>");
 		var sendData = ["custac"];
 		prodgrid.bindTableEdit(sendData,editForm);
+		//转让记录查询
+		$('#tran_history_btn').click(function(){
+			
+			var rows = prodgrid.getSelectedRows();
+			if(rows.length != 1){
+				bootbox.alert("请选择一条信息");
+				return;
+			}
+			
+			var debtcd = $(rows[0].children()[1]).text();
+			var url1 = Sunline.ajaxPath("custService/tranhistory");
+			
+			console.info(bankIsNotF);
+			
+			if(bankIsNotF){
+				trangrid.setAjaxParam("custac",custac);
+				trangrid.setAjaxParam("debtcd",debtcd);
+				
+				trangrid.init({
+			        src: $("#tran_history_ajax"),
+			        onSuccess: function (grid) {
+//			        	$('.cif_tran_ajax_wrapper .alert-danger').css("display","none");
+			        },
+			        onError: function (grid) {
+			            // execute some code on network or other general error
+			        	//$('.cif_tran_ajax_wrapper .alert-danger').css("display","none");
+			        	//console.info("It is error!");
+			        },
+			        dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
+			            "ajax": {
+			                "url": url1, // ajax source
+			            },
+			            "columns" : [{
+				            	"data": "loantm",
+				            	"sortable": false,
+				            	"searchable": false
+			            	},{
+				            	"data": "invtam",
+				            	"sortable": false,
+				            	"searchable": false
+				            },{     
+				            	"data": "trandt",
+				            	"sortable": false,
+				            	"searchable": false
+				            }
+			            ]
+			        }
+			    });
+				bankIsNotF = false;
+			} else {
+				console.info(trangrid.gettableContainer());
+				console.info(trangrid.getDataTable());
+				console.info(trangrid.getTable());
+				trangrid.setAjaxParam("custac",custac);
+				trangrid.submitFilter();
+			}
+			$("#tranferhistory").modal('show');
+		});
 	       }
+	
+	
+  
 	//查询
 	var submitInfo = function(){
 		if(!$('#cust-form').validate().form()){
 			return;
 		}
 		prodgrid.setAjaxParam("q_custac",$('#custac').val());
+		custac = $('#custac').val();//每次查询重新赋值用户的电子账号
+		prodgrid.setAjaxParam("q_phoneNo",$('#teleno').val());
 		prodgrid.submitFilter();
 	}
 	return {
@@ -207,23 +178,7 @@ var tranferInfo = function() {
 		},
 		clickWindow : function(){
 			setTimeout(function () { 
-				$("#datatable_prod tbody tr").find('td:eq(5)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(6)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(7)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(8)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(9)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(10)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(11)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(12)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(13)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(14)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(15)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(16)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(17)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(18)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(19)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(20)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(21)').css("display","none");
+				
 		    }, 500);
 		}
 	}

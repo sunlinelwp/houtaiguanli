@@ -22,6 +22,13 @@
 						<input type="text" id="custac" name="custac" class="form-control input-inline input-medium" maxlength="10" placeholder="输入电子帐号或平台名称">
 					</div>
 				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-3 control-label">手机号码</label>
+					<div class="input-icon col-md-9">
+						<i class="fa fa-credit-card"></i>
+						<input type="text" id="phoneNo" name="phoneNo" class="form-control input-inline input-medium" maxlength="10" placeholder="输入手机号码">
+					</div>
+				</div>
 				<div class="form-actions cust-action">
 					<button type="button" class="btn blue" id="submit" onclick="custInfo.queryCust()">查询</button>
 					<button type="button" class="btn gray" id="cancle">清空</button>

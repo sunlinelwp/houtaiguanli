@@ -2,6 +2,7 @@ var custInfo = function() {
 	var handleTable = function(){
 		var input = {};
 		input.custac = $("#custac").val();
+		input.mobile = $("#phoneNo").val();
 		Sunline.ajaxRouter("custService/mypage", input, "POST", function(data) {
 			if(data.retCode == "0000"){
 				$("#acctno").html(data.custac);
