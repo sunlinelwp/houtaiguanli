@@ -60,7 +60,7 @@ public class CustServiceController {
 		}
 		
 		if (reqmap.get("q_phoneNo") != null && reqmap.get("q_phoneNo") != "") {
-			map.put("moblie", reqmap.get("q_phoneNo"));
+			map.put("mobile", reqmap.get("q_phoneNo"));
 		}
 		
 		map.put("userid", user.getUserid()); 

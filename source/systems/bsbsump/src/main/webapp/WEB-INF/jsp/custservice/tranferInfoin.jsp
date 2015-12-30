@@ -26,7 +26,7 @@
 					<label class="col-md-3 control-label">手机号</label>
 					<div class="input-icon col-md-9">
 						<i class="fa fa-credit-card"></i>
-						<input type="text" id="teleno" name="teleno" class="form-control input-inline input-medium" maxlength="10" placeholder="输入手机号">
+						<input type="text" id="teleno" name="teleno" class="form-control input-inline input-medium" maxlength="11" placeholder="输入手机号">
 					</div>
 				</div>
 				
