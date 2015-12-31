@@ -175,21 +175,20 @@ var kuprole = function() {
 						if (n.name != undefined && n.name != ""
 								&& n.name != null) {
 							data[n.name] = n.value;
+							
 						}
 					});
 					data.n_yin = $('#n_yin').val();
-					Sunline.ajaxRouter("paychannel/adchcg" +
-							"chcg", data, 'post',
+					Sunline.ajaxRouter("paychannel/adchcg", data, 'post',
 							function(resmap) {
 								if (resmap.retMsg === "success") {
 									bootbox.alert("交易成功！");
 								} else {
-									bootbox.alert("交易失败！");
+									bootbox.alert(resmap.msg+"！");
 								}
 								$(".msg", $('form', $("#editModal"))).text(
 										resmap.msg);
 							});
-
 				}
 				);
 				$(".filter-cancel").click(function(){

@@ -34,7 +34,7 @@
 						<th width="8%">对公司单笔限额</th>
 						<th width="8%">对公司日累限额</th>
 						<th width="8%">生效状态</th>
-						<th width="30%" style="text-align:center;" colspan="2">操作</th>
+						<th width="30%" style="text-align:center;" colspan="2">  操    作 </th>
 					</tr>
 					<tr role="row" class="filter">
 						<td></td>

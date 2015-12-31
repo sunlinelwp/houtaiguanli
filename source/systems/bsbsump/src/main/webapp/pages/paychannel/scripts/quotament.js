@@ -2,7 +2,7 @@ var kuprole = function() {
 //	var inclfgDict = Sunline.getDict("E_INCLFG");
 	var syscodDict = Sunline.getDict("PayChannel");//状态
 	var status = Sunline.getDict("E_PYTYPE");//支付方式
-	
+	$("#transt").show();
 	$("input[name='n_pytype']").select2({
 		data : status,
 		allowClear : true
@@ -112,15 +112,6 @@ var kuprole = function() {
 												return "<a class='edit' href='javascript:;' data-src='"
 														+ data.chnlcd+ "'>编辑 </a>";
 											}
-										},
-										{
-											"data" : null,
-											"sortable" : false,
-											"searchable" : false,
-											"render" : function(data, type, full) {
-												return "<a class='delete' href='javascript:;' data-src='"
-														+ data.chnlcd+ "'>删除 </a>";
-											}
 										} ]
 							}
 						});
@@ -129,6 +120,7 @@ var kuprole = function() {
 				function(nRowA) {
 					// 主键不可修改
 				$("input[name='chnlcd']").attr("readOnly",true);
+				$("input[name='transt']").removeAttr("readOnly");
 				$("input[name='chnlcd']").val($(nRowA[0]).text()); 
 				$("input[name='chnlnm']").val($(nRowA[1]).text());
 				$("input[name='ftbkcd']").val($(nRowA[2]).text());
@@ -161,7 +153,10 @@ var kuprole = function() {
 				"click",
 				function() {
 					// 解除input readOnly属性
-					$('input', $("#edit_form")).removeAttr("readOnly");				
+//					$("#transt").show();
+//					$("#transt").hide();
+					$('input', $("#edit_form")).removeAttr("readOnly");
+					$("input[name='transt']").attr("readOnly",true);
 					// 清空 input值
 					$("input", $("#editModal")).val("").trigger("change");
 					$("#remark").val("");
