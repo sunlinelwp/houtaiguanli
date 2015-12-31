@@ -40,6 +40,7 @@ public class TmpAinPayPayGateCheckDataWriterImpl implements DataWriter{
 				pay.setAcoutStatus(data[8]);
 				pay.setTradeStatus(data[9]);
 				pay.setClearAmt(data[7]);
+				pay.setKeyElement(data[11]);
 				
 				pay.setSignStatus("0");
 				pay.setCheckStatus("N");
