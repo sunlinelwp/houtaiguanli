@@ -88,7 +88,7 @@
 										<div>
 											<input type="text" id="inchnl" name="inchnl"
 												class="form-control input-inline input-medium"
-												maxlength="10" placeholder="输入渠道编码">
+												maxlength="10" placeholder="输入接入渠道编码">
 										</div>
 									</div>
 								</div>
@@ -97,15 +97,15 @@
 									<div class="col-md-9">
 										<input type="text" id="inchnm" name="inchnm"
 											class="form-control input-inline input-medium"
-											maxlength="100" placeholder="输入渠道名称">
+											maxlength="100" placeholder="输入接入渠道名称">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">支付方式</label>
 									<div class="col-md-9">
-										<input type="text" id="ftbkcd" name="ftbkcd"
+										<input type="hidden" id="pytype" name="pytype"
 											class="form-control input-inline input-medium" maxlength="20"
-											placeholder="输入前置银行代码">
+											placeholder="输入支付方式">
 									</div>
 								</div>
 								<div class="form-group">
@@ -113,7 +113,7 @@
 									<div class="col-md-9">
 										<input type="text" id="bankcd" name="bankcd"
 											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入银行名称">
+											placeholder="输入前端规定银行代码">
 									</div>
 								</div>
 								<div class="form-group">
@@ -121,23 +121,23 @@
 									<div class="col-md-9">
 										<input type="text" id="bankna" name="bankna"
 											class="form-control input-inline input-medium" maxlength="1"
-											placeholder="输入渠道银行代码">
+											placeholder="输入银行名称">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">支付渠道编码</label>
 									<div class="col-md-9">
-										<input type="hidden" id="pychnl" name="pychnl"
+										<input type="text" id="pychnl" name="pychnl"
 											class="form-control input-inline input-medium" maxlength="5"
-											placeholder="输入银行状态">
+											placeholder="输入支付渠道编码">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">支付渠道名称</label>
 									<div class="col-md-9">
-										<input type="hidden" id="pychnm" name="pychnm"
+										<input type="text" id="pychnm" name="pychnm"
 											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+											placeholder="输入支付渠道名称">
 									</div>
 								</div>
 								<div class="form-group">
@@ -145,7 +145,7 @@
 									<div class="col-md-9">
 										<input type="hidden" id="status" name="status"
 											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+											placeholder="输入配置信息是否生效">
 									</div>
 								</div>
 							</div>
