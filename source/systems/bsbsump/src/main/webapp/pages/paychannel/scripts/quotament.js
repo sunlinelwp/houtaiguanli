@@ -1,8 +1,8 @@
 var kuprole = function() {
 //	var inclfgDict = Sunline.getDict("E_INCLFG");
-//	var syscodDict = Sunline.getDict("PayChannel");//状态
+	var syscodDict = Sunline.getDict("PayChannel");//状态
 	var status = Sunline.getDict("E_PYTYPE");//支付方式
-	
+	$("#transt").show();
 	$("input[name='n_pytype']").select2({
 		data : status,
 		allowClear : true
@@ -11,10 +11,10 @@ var kuprole = function() {
 		data : status,
 		allowClear : true
 	});
-//	$("input[name='status']").select2({
-//		data : syscodDict,
-//		allowClear : true
-//	});
+	$("input[name='transt']").select2({
+		data : syscodDict,
+		allowClear : true
+	});
 	
 	var handleTable = function() {
 		var typegrid = new Datatable();
@@ -72,24 +72,37 @@ var kuprole = function() {
 											}
 										},
 										{
-											"data" : "psltam", // 对个人单笔限额
+											"data" : "pypslt", // 对个人单笔限额
 											"sortable" : false,  
 											"searchable" : false,
 										},
 										{
-											"data" : "pdltam", // 对个人日累限额
+											"data" : "pypdlt", // 对个人日累限额
 											"sortable" : false,  
 											"searchable" : false,
 										},
 										{
-											"data" : "csltam", // 对公司单笔限额
+											"data" : "pycslt", // 对公司单笔限额
 											"sortable" : false,  
 											"searchable" : false,
 										},
 										{
-											"data" : "cdltam", // 对公司日累限额
+											"data" : "pycdlt", // 对公司日累限额
 											"sortable" : false,  
 											"searchable" : false,
+										},
+										{
+											"data" : "transt", // 状态
+											"sortable" : false,  
+											"searchable" : false,
+											"render" : function(data, type, full) {
+												for (var i = 0; i < syscodDict.length; i++) {
+													if (syscodDict[i].id == data) {
+														return syscodDict[i].text;
+													}
+												}
+												return data;
+											}
 										},
 										{
 											"data" : null,
@@ -99,15 +112,6 @@ var kuprole = function() {
 												return "<a class='edit' href='javascript:;' data-src='"
 														+ data.chnlcd+ "'>编辑 </a>";
 											}
-										},
-										{
-											"data" : null,
-											"sortable" : false,
-											"searchable" : false,
-											"render" : function(data, type, full) {
-												return "<a class='delete' href='javascript:;' data-src='"
-														+ data.chnlcd+ "'>删除 </a>";
-											}
 										} ]
 							}
 						});
@@ -116,17 +120,18 @@ var kuprole = function() {
 				function(nRowA) {
 					// 主键不可修改
 				$("input[name='chnlcd']").attr("readOnly",true);
+				$("input[name='transt']").removeAttr("readOnly");
 				$("input[name='chnlcd']").val($(nRowA[0]).text()); 
 				$("input[name='chnlnm']").val($(nRowA[1]).text());
 				$("input[name='ftbkcd']").val($(nRowA[2]).text());
 				$("input[name='bankna']").val($(nRowA[3]).text());
 				$("input[name='bankcd']").val($(nRowA[4]).text());
-//				$("input[name='status']").val($(nRowA[5]).text().substring($(nRowA[3]).text().indexOf("[")+1,$(nRowA[3]).text().indexOf("]"))).trigger("change");
-				$("input[name='pytype']").val($(nRowA[5]).text().substring($(nRowA[3]).text().indexOf("[")+1,$(nRowA[3]).text().indexOf("]"))).trigger("change");
-				$("input[name='psltam']").val($(nRowA[6]).text());
-				$("input[name='pdltam']").val($(nRowA[7]).text());
-				$("input[name='csltam']").val($(nRowA[8]).text());
-				$("input[name='cdltam']").val($(nRowA[9]).text());
+				$("input[name='pytype']").val($(nRowA[5]).text().substring($(nRowA[5]).text().indexOf("[")+1,$(nRowA[5]).text().indexOf("]"))).trigger("change");
+				$("input[name='pypslt']").val($(nRowA[6]).text());
+				$("input[name='pypdlt']").val($(nRowA[7]).text());
+				$("input[name='pycslt']").val($(nRowA[8]).text());
+				$("input[name='pycdlt']").val($(nRowA[9]).text());
+				$("input[name='transt']").val($(nRowA[10]).text().substring($(nRowA[10]).text().indexOf("[")+1,$(nRowA[10]).text().indexOf("]"))).trigger("change");
 				$("input[name='n_yin']").val($(nRowA[0]).text());
 					$("#editModal").modal('show');
 					$("#editModal").on(
@@ -148,7 +153,10 @@ var kuprole = function() {
 				"click",
 				function() {
 					// 解除input readOnly属性
-					$('input', $("#edit_form")).removeAttr("readOnly");				
+//					$("#transt").show();
+//					$("#transt").hide();
+					$('input', $("#edit_form")).removeAttr("readOnly");
+					$("input[name='transt']").attr("readOnly",true);
 					// 清空 input值
 					$("input", $("#editModal")).val("").trigger("change");
 					$("#remark").val("");
@@ -196,7 +204,7 @@ var kuprole = function() {
 				}
 				);
 				$(".filter-cancel").click(function(){
-					$("input[name='q_status']").select2("val","");
+					$("input[name='n_pytype']").select2("val","");
 				});
 	};
 

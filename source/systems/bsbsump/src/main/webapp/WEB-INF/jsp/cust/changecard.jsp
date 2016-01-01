@@ -74,7 +74,14 @@
 						<input class="form-control input-inline input-medium" type="text"
 							maxlength="35" placeholder="卡类型" id="cardtp" name="cardtp" />
 					</div>
-				</div>	
+				</div>
+				<div class="form-group">	
+					<label class="col-md-3 control-label">对公对私客户标志</label>
+					<div class="input-icon col-md-9">
+						<input class="form-control input-inline input-medium" type="text"
+							maxlength="35" placeholder="对公对私客户标志" id="acctpr" name="acctpr" />
+					</div>
+				</div>
 				</div>
 				<div class="form-actions form-group col-md-2">
 					<button type="submit" id="qry_btn" class="btn blue">换绑卡</button>
