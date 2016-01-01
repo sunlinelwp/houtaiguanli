@@ -34,7 +34,7 @@
 						<th width="8%">对公司单笔限额</th>
 						<th width="8%">对公司日累限额</th>
 						<th width="8%">生效状态</th>
-						<th width="30%" style="text-align:center;" colspan="2">  操    作 </th>
+						<th width="30%" style="text-align: center;" colspan="2">操 作</th>
 					</tr>
 					<tr role="row" class="filter">
 						<td></td>
@@ -169,7 +169,7 @@
 											placeholder="输入对公司日累限额">
 									</div>
 								</div>
-																<div class="form-group">
+								<div class="form-group">
 									<label class="col-md-3 control-label">生效状态</label>
 									<div class="col-md-9">
 										<input type="text" id="transt" name="transt"

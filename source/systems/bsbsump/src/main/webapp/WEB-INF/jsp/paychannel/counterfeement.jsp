@@ -25,7 +25,7 @@
 				<thead>
 					<tr role="row" class="heading">
 						<th width="10%">前置日期</th>
-						<th width="10%">前置流水</th>					
+						<th width="10%">前置流水</th>
 						<th width="10%">渠道编码</th>
 						<th width="10%">渠道名称</th>
 						<th width="10%">支付方式</th>
@@ -37,7 +37,7 @@
 						<th width="10%">最低费用</th>
 						<th width="10%">最高费用</th>
 						<th width="10%">收费比例</th>
-						<th width="15%" colspan="2" style="text-align:center;">操作</th>
+						<th width="15%" colspan="2" style="text-align: center;">操作</th>
 					</tr>
 					<tr role="row" class="filter">
 						<td></td>
@@ -59,7 +59,7 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td colspan="2"  nowrap="nowrap">
+						<td colspan="2" nowrap="nowrap">
 							<button class="btn btn-sm yellow filter-submit margin-bottom">
 								<i class="fa fa-search"></i> 查询
 							</button>
@@ -90,7 +90,7 @@
 									<button class="close" data-close="alert"></button>
 									输入有误，请检查下面表单！返回信息 ：<span class="msg"></span>
 								</div>
-																<div class="form-group">
+								<div class="form-group">
 									<label class="col-md-3 control-label">前置日期</label>
 									<div class="col-md-9">
 										<input type="text" id="orfbdt" name="orfbdt"
@@ -98,7 +98,7 @@
 											placeholder="输入渠道编码">
 									</div>
 								</div>
-																<div class="form-group">
+								<div class="form-group">
 									<label class="col-md-3 control-label">前置流水</label>
 									<div class="col-md-9">
 										<input type="text" id="orfbsq" name="orfbsq"
@@ -106,7 +106,7 @@
 											placeholder="输入渠道编码">
 									</div>
 								</div>
-								
+
 								<div class="form-group">
 									<label class="col-md-3 control-label">渠道编码</label>
 									<div class="col-md-9">
@@ -115,7 +115,7 @@
 											placeholder="输入渠道编码">
 									</div>
 								</div>
-																<div class="form-group">
+								<div class="form-group">
 									<label class="col-md-3 control-label">渠道名称</label>
 									<div class="col-md-9">
 										<input type="text" id="chnlnm" name="chnlnm"

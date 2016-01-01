@@ -134,8 +134,10 @@ public class PaychannelController {
 		}
 		return resmap;
 	}
+
 	/**
 	 * 限额信息查询
+	 * 
 	 * @param req
 	 * @param user
 	 * @return
@@ -239,6 +241,7 @@ public class PaychannelController {
 
 	/**
 	 * 手续费查询
+	 * 
 	 * @param req
 	 * @param user
 	 * @return
@@ -336,9 +339,10 @@ public class PaychannelController {
 		}
 		return resmap;
 	}
-	
+
 	/**
 	 * 接入渠道配置信息查询
+	 * 
 	 * @param req
 	 * @param user
 	 * @return
@@ -424,7 +428,7 @@ public class PaychannelController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/rmchcg", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/qychcg", method = { RequestMethod.DELETE })
 	public Map<String, Object> rmchcg(@RequestBody Map<String, Object> req,
 			@ModelAttribute("User") BSBUser user) {
 		req.put("userid", user.getUserid());
@@ -439,8 +443,10 @@ public class PaychannelController {
 		}
 		return resmap;
 	}
+
 	/**
 	 * 接入渠道信息查询
+	 * 
 	 * @param req
 	 * @param user
 	 * @return
@@ -499,10 +505,11 @@ public class PaychannelController {
 				+ req.toString());
 		String jiaoyi = "";
 		if (req.get("n_yin") != null && req.get("n_yin") != "") {
-			req.put("mduser", user.getUserna());// 创建人
+			req.put("cruser", user.getUserna());// 修改人
 			req.put("target", '1');
 			jiaoyi = "upinch";
 		} else {
+			req.put("cruser", user.getUserna());// 创建人
 			req.put("target", '1');
 			jiaoyi = "adinch";
 		}
@@ -526,7 +533,7 @@ public class PaychannelController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/rminch", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/qyinch", method = { RequestMethod.DELETE })
 	public Map<String, Object> rminch(@RequestBody Map<String, Object> req,
 			@ModelAttribute("User") BSBUser user) {
 		req.put("userid", user.getUserid());

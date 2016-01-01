@@ -112,7 +112,7 @@
 									<label class="col-md-3 control-label">前端规定银行代码</label>
 									<div class="col-md-9">
 										<input type="text" id="bankcd" name="bankcd"
-											class="form-control input-inline input-medium" maxlength="2"
+											class="form-control input-inline input-medium" maxlength="20"
 											placeholder="输入前端规定银行代码">
 									</div>
 								</div>
@@ -120,7 +120,7 @@
 									<label class="col-md-3 control-label">银行名称</label>
 									<div class="col-md-9">
 										<input type="text" id="bankna" name="bankna"
-											class="form-control input-inline input-medium" maxlength="1"
+											class="form-control input-inline input-medium" maxlength="20"
 											placeholder="输入银行名称">
 									</div>
 								</div>
@@ -128,7 +128,7 @@
 									<label class="col-md-3 control-label">支付渠道编码</label>
 									<div class="col-md-9">
 										<input type="text" id="pychnl" name="pychnl"
-											class="form-control input-inline input-medium" maxlength="5"
+											class="form-control input-inline input-medium" maxlength="20"
 											placeholder="输入支付渠道编码">
 									</div>
 								</div>
@@ -136,7 +136,7 @@
 									<label class="col-md-3 control-label">支付渠道名称</label>
 									<div class="col-md-9">
 										<input type="text" id="pychnm" name="pychnm"
-											class="form-control input-inline input-medium" maxlength="2"
+											class="form-control input-inline input-medium" maxlength="20"
 											placeholder="输入支付渠道名称">
 									</div>
 								</div>
@@ -144,8 +144,16 @@
 									<label class="col-md-3 control-label">配置信息是否生效</label>
 									<div class="col-md-9">
 										<input type="hidden" id="status" name="status"
-											class="form-control input-inline input-medium" maxlength="2"
+											class="form-control input-inline input-medium" maxlength="20"
 											placeholder="输入配置信息是否生效">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label">修改类型</label>
+									<div class="col-md-9">
+										<input type="text" id="transt" name="transt"
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入修改类型">
 									</div>
 								</div>
 							</div>

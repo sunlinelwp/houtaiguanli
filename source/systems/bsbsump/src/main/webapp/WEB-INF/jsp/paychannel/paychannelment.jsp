@@ -52,8 +52,8 @@
 						<td></td>
 						<td></td>
 						<td><input type="text"
-							class="form-control form-filter input-sm" id="n_yin" style="display: none;"
-							name="n_yin"/></td>
+							class="form-control form-filter input-sm" id="n_yin"
+							style="display: none;" name="n_yin" /></td>
 						<td colspan="2">
 							<button class="btn btn-sm yellow filter-submit margin-bottom">
 								<i class="fa fa-search"></i> 查询
@@ -138,7 +138,7 @@
 								<div class="form-group">
 									<label class="col-md-3 control-label">备注</label>
 									<div class="col-md-9">
-									  <textarea id="remark" name="remark" style="height: 60px;"
+										<textarea id="remark" name="remark" style="height: 60px;"
 											class="form-control input-inline input-medium"
 											maxlength="200" placeholder="输入备注"></textarea>
 									</div>
