@@ -43,11 +43,11 @@
 							class="form-control form-filter input-sm" id="n_banknm"
 							name="n_banknm" placeholder="银行名称" /></td>
 						<td><input type="text"
-							class="form-control form-filter input-sm" id="n_yin" style="display: none;"
-							 name="n_yin" /></td>
-							 <td></td>
+							class="form-control form-filter input-sm" id="n_yin"
+							style="display: none;" name="n_yin" /></td>
+						<td></td>
 						<td><input type="hidden"
-							class="form-control form-filter input-sm" id="n_pytype" 
+							class="form-control form-filter input-sm" id="n_pytype"
 							name="n_pytype" placeholder="支付方式" /></td>
 						<td colspan="2">
 							<button class="btn btn-sm yellow filter-submit margin-bottom">
