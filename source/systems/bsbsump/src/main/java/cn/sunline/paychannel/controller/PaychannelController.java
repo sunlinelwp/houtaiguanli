@@ -136,109 +136,8 @@ public class PaychannelController {
 	}
 
 	/**
-	 * 银行信息查询
-	 * @param req
-	 * @param user
-	 * @return
-	 */
-	@RequestMapping(value = "/qybank")
-	public Map<String, Object> qybank(@RequestParam Map<String, Object> req,
-			@ModelAttribute("User") BSBUser user) {
-		logger.debug("--------------------查询银行信息查询开始------------------------"
-				+ req.toString());
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		if (req.get("n_chnlnm") != null && req.get("n_chnlnm") != "") {
-			map.put("chnlnm", req.get("n_chnlnm"));
-		}
-		if (req.get("n_banknm") != null && req.get("n_banknm") != "") {
-			map.put("banknm", req.get("n_banknm"));
-		}
-		if (req.get("n_pytype") != null && req.get("n_pytype") != "") {
-			map.put("pytype", req.get("n_pytype"));
-		}
-		int length = Integer.parseInt(StringUtils.isNotEmpty((String) req
-				.get("length")) ? (String) req.get("length") : "10", 10);
-		int start = Integer.parseInt(StringUtils.isNotEmpty((String) req
-				.get("start")) ? (String) req.get("start") : "1", 10);
-		map.put("pagenm", start / length + 1);// 当前页数
-		map.put("rcrdnm", length); // 每页记录数
-		map.put("target", '1');
-		Map<String, Object> resmap = new HashMap<String, Object>();
-
-		logger.debug("0000000000000" + map.toString());
-		resmap = client.callClient("qybank", map);
-		logger.debug("-----------------" + resmap + "-----------------");
-		resmap.put(
-				"data",
-				resmap.get("listnm") == null ? new ArrayList<Object>() : resmap
-						.get("listnm"));
-		resmap.put("iTotalDisplayRecords", resmap.get("totanm") == null ? "0"
-				: resmap.get("totanm"));
-		resmap.put("iTotalRecords",
-				resmap.get("totanm") == null ? "0" : resmap.get("totanm"));
-		logger.debug("-----------------银行信息查询结束-----------------");
-		return resmap;
-	}
-
-	/**
-	 * 新增或修改银行信息
-	 * 
-	 * @param req
-	 * @param user
-	 * @return
-	 */
-	@RequestMapping(value = "/adbank")
-	public Map<String, Object> adbank(@RequestBody Map<String, Object> req,
-			@ModelAttribute("User") BSBUser user) {
-		logger.debug("--------------------新增或修改银行信息开始------------------------"
-				+ req.toString());
-		String jiaoyi = "";
-		if (req.get("n_yin") != null && req.get("n_yin") != "") {
-			req.put("mduser", user.getUserna());// 创建人
-			req.put("target", '1');
-			jiaoyi = "upbank";
-		} else {
-			req.put("target", '1');
-			jiaoyi = "adbank";
-		}
-		Map<String, Object> resmap = client.callClient(jiaoyi, req);
-
-		if (resmap.get("retCode").toString().equals("0000")) {
-			resmap.put("retMsg", "success");
-			resmap.put("msg", "银行信息表操作成功");
-		} else {
-			resmap.put("msg", resmap.get("retMsg").toString());
-		}
-
-		logger.debug("--------------------新增或修改银行信息结束------------------------");
-		return resmap;
-	}
-
-	/**
-	 * 删除角色
-	 * 
-	 * @param req
-	 * @param user
-	 * @return
-	 */
-	@RequestMapping(value = "/rmbank", method = { RequestMethod.DELETE })
-	public Map<String, Object> rmbank(@RequestBody Map<String, Object> req,
-			@ModelAttribute("User") BSBUser user) {
-		req.put("userid", user.getUserid());
-		req.put("target", '1');
-		Map<String, Object> resmap = new HashMap<String, Object>();
-		resmap = client.callClient("rmbank", req); //
-		if (resmap.get("retCode").toString().equals("0000")) {
-			resmap.put("ret", "success");
-			resmap.put("msg", "银行信息表删除成功");
-		} else {
-			resmap.put("msg", resmap.get("retMsg").toString());
-		}
-		return resmap;
-	}
-	/**
 	 * 限额信息查询
+	 * 
 	 * @param req
 	 * @param user
 	 * @return
@@ -324,7 +223,7 @@ public class PaychannelController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/rmlimt", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/qylimt", method = { RequestMethod.DELETE })
 	public Map<String, Object> rmlimt(@RequestBody Map<String, Object> req,
 			@ModelAttribute("User") BSBUser user) {
 		req.put("userid", user.getUserid());
@@ -342,6 +241,7 @@ public class PaychannelController {
 
 	/**
 	 * 手续费查询
+	 * 
 	 * @param req
 	 * @param user
 	 * @return
@@ -355,9 +255,6 @@ public class PaychannelController {
 
 		if (req.get("n_chnlnm") != null && req.get("n_chnlnm") != "") {
 			map.put("chnlnm", req.get("n_chnlnm"));
-		}
-		if (req.get("n_banknm") != null && req.get("n_banknm") != "") {
-			map.put("banknm", req.get("n_banknm"));
 		}
 		if (req.get("n_pytype") != null && req.get("n_pytype") != "") {
 			map.put("pytype", req.get("n_pytype"));
@@ -427,7 +324,7 @@ public class PaychannelController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/rmchge", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/qychge", method = { RequestMethod.DELETE })
 	public Map<String, Object> rmchge(@RequestBody Map<String, Object> req,
 			@ModelAttribute("User") BSBUser user) {
 		req.put("userid", user.getUserid());
@@ -442,9 +339,10 @@ public class PaychannelController {
 		}
 		return resmap;
 	}
-	
+
 	/**
 	 * 接入渠道配置信息查询
+	 * 
 	 * @param req
 	 * @param user
 	 * @return
@@ -530,7 +428,7 @@ public class PaychannelController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/rmchcg", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/qychcg", method = { RequestMethod.DELETE })
 	public Map<String, Object> rmchcg(@RequestBody Map<String, Object> req,
 			@ModelAttribute("User") BSBUser user) {
 		req.put("userid", user.getUserid());
@@ -545,8 +443,10 @@ public class PaychannelController {
 		}
 		return resmap;
 	}
+
 	/**
 	 * 接入渠道信息查询
+	 * 
 	 * @param req
 	 * @param user
 	 * @return
@@ -605,10 +505,11 @@ public class PaychannelController {
 				+ req.toString());
 		String jiaoyi = "";
 		if (req.get("n_yin") != null && req.get("n_yin") != "") {
-			req.put("mduser", user.getUserna());// 创建人
+			req.put("cruser", user.getUserna());// 修改人
 			req.put("target", '1');
 			jiaoyi = "upinch";
 		} else {
+			req.put("cruser", user.getUserna());// 创建人
 			req.put("target", '1');
 			jiaoyi = "adinch";
 		}
@@ -632,7 +533,7 @@ public class PaychannelController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/rminch", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/qyinch", method = { RequestMethod.DELETE })
 	public Map<String, Object> rminch(@RequestBody Map<String, Object> req,
 			@ModelAttribute("User") BSBUser user) {
 		req.put("userid", user.getUserid());
