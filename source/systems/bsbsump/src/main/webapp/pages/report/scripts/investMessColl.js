@@ -24,9 +24,11 @@ var investMessColl = function() {
 			});
 			data.rpt_code = rpt_code;
 			Sunline.ajaxRouter("repo/qryrpt", data, "post", function(res) {
+				$("#find_report").removeAttr("disabled");
 				content.html(res.html);
 				Metronic.initUniform();
 			}, function(xhr, ajaxOptions, thrownError) {
+				$("#find_report").removeAttr("disabled");
 				bootbox.alert("获取报表失败");
 			}, "json");
 		}else if(opreation=="down"){
@@ -47,7 +49,14 @@ var investMessColl = function() {
 	}, {
 		subjectCd : {
 			required : true
+		},
+		bidStartTime : {
+			required : true
+		},
+		bidendTime : {
+			required : true
 		}
+		
 	});
 	var toggleButton = function(el) {
 		if (typeof el == 'undefined') {
@@ -62,8 +71,14 @@ var investMessColl = function() {
 	return {
 		init : function() {
 			$("#find_report").click(function(e) {
+				$("#find_report").attr("disabled","disabled");
 				e.preventDefault();
 				opreation = "find";
+				var startTime = $("input[name='bidStartTime']", $("#report_form")).val();
+				var endTime =$("input[name='bidendTime']", $("#report_form")).val();
+				if(startTime=="" || endTime=="" ){ 
+					$("#find_report").removeAttr("disabled");
+				}
 				$("#report_form").submit();
 			});
 			$("a","#down").on("click",function(e){
