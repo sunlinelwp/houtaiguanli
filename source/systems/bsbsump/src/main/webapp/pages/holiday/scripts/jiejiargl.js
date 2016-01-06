@@ -19,19 +19,7 @@ var jiejiargl = function() {
 		Sunline.ajaxRouter("holiday/dehody", input, "POST", function(data) {
 			if(data.retCode=="0000"){
 		       	$("#tranModal").modal('hide');
-				$.ajax({
-					type : "POST",
-					url : Sunline.getBasePath() + "/path/holiday/jiejiargl",
-					success : function(data) {
-						$("#main-content").html(data);
-					},
-					statusCode : {
-						404 : function() {
-							var err = Sunline.getBasePath() + "/error/404";
-							$("#main-content").load(err);
-						}
-					}
-				});
+		       	submitInfo();
 			}else{
 				bootbox.alert("删除失败，"+data.retMsg);
 			}
@@ -160,19 +148,7 @@ var jiejiargl = function() {
 			Sunline.ajaxRouter("holiday/aphody", input, "POST", function(data) {
 				if(data.retCode=="0000"){
 			       	$("#tranModal").modal('hide');
-					$.ajax({
-						type : "POST",
-						url : Sunline.getBasePath() + "/path/holiday/jiejiargl",
-						success : function(data) {
-							$("#main-content").html(data);
-						},
-						statusCode : {
-							404 : function() {
-								var err = Sunline.getBasePath() + "/error/404";
-								$("#main-content").load(err);
-							}
-						}
-					});
+			       	submitInfo();
 				}else{
 					bootbox.alert("新增失败，"+data.retMsg);
 				}
@@ -188,19 +164,7 @@ var jiejiargl = function() {
 			Sunline.ajaxRouter("holiday/adwekd", input, "POST", function(data) {
 				if(data.retCode=="0000"){
 			       	$("#tranModal").modal('hide');
-					$.ajax({
-						type : "POST",
-						url : Sunline.getBasePath() + "/path/holiday/jiejiargl",
-						success : function(data) {
-							$("#main-content").html(data);
-						},
-						statusCode : {
-							404 : function() {
-								var err = Sunline.getBasePath() + "/error/404";
-								$("#main-content").load(err);
-							}
-						}
-					});
+			       	submitInfo();
 				}else{
 					bootbox.alert("新增失败，"+data.retMsg);
 				}
