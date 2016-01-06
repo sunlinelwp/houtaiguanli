@@ -18,9 +18,11 @@ var runBaseMess = function() {
 			});
 			data.rpt_code = rpt_code;
 			Sunline.ajaxRouter("repo/qryrpt", data, "post", function(res) {
+				$("#find_report").removeAttr("disabled");
 				content.html(res.html);
 				Metronic.initUniform();
 			}, function(xhr, ajaxOptions, thrownError) {
+				$("#find_report").removeAttr("disabled");
 				bootbox.alert("获取报表失败");
 			}, "json");
 		}else if(opreation=="down"){
@@ -64,8 +66,12 @@ var runBaseMess = function() {
 	return {
 		init : function() {
 			$("#find_report").click(function(e) {
+				$("#find_report").attr("disabled","disabled");
 				e.preventDefault();
 				opreation = "find";
+				if($("#acctdt").val()==""){
+					$("#find_report").removeAttr("disabled");
+				}
 				$("#report_form").submit();
 			});
 			$("a","#down").on("click",function(e){

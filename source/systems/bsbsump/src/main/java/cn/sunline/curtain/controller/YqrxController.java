@@ -72,7 +72,7 @@ public class YqrxController {
 		}catch (SumpException e) {
 			e.printStackTrace();
 			map.put("retCode", "1111");
-			map.put("retMsg", "导入差错信息异常，请确认文件是否存在");
+			map.put("retMsg", "导出差错信息异常，请确认文件是否存在");
 			return map;
 		}
 

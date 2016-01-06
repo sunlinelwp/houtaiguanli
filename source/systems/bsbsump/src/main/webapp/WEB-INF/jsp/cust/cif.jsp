@@ -128,6 +128,20 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-md-3 control-label">证件号码</label>
+						<div class="input-icon col-md-9">
+							<i class="fa fa-credit-card"></i>
+							<input type="text" id="m_idtfno" name="m_idtfno" class="form-control input-inline input-medium" readOnly>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label">手机号码</label>
+						<div class="input-icon col-md-9">
+							<i class="fa fa-credit-card"></i>
+							<input type="text" id="m_teleno" name="m_teleno" class="form-control input-inline input-medium">
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-md-3 control-label">通讯地址</label>
 						<div class="input-icon col-md-9">
 							<i class="fa fa-map-marker"></i>

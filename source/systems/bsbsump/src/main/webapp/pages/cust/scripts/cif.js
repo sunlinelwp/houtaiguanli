@@ -56,6 +56,8 @@ var Cif = function(){
 			o_acctst = formartDict(acctstDict,$(nRowA[9]).text());
 			$('#m_ecctno').val($(nRowA[1]).text());
 			$('#m_ecctna').val($(nRowA[2]).text());
+			$('#m_teleno').val($(nRowA[4]).text());
+			$('#m_idtfno').val($(nRowA[3]).text());
 			$('#m_addr').val($(nRowA[6]).text());
 			$('#m_email').val($(nRowA[5]).text());
 			$('#m_acctst').select2("val",formartDict(acctstDict,$(nRowA[9]).text()));
@@ -363,6 +365,8 @@ var Cif = function(){
 			var ecctno = $('#m_ecctno').val();
 			var address = $('#m_addr').val();
 			var email = $('#m_email').val();
+			var idtfno = $('#m_idtfno').val();
+			var teleno = $('#m_teleno').val();
 			var acctst = $('#m_acctst').select2("val");
 			if(address == o_addr && email == o_email && acctst == o_acctst) {
 				return ;
@@ -372,6 +376,8 @@ var Cif = function(){
 			input.addres = address;
 			input.emails = email;
 			input.acctst = acctst;
+			input.idtfno = idtfno;
+			input.teleno = teleno;
 			$("#myModal").modal('show');
 			Sunline.ajaxRouter(
 		         	"cust/update", 
@@ -382,6 +388,7 @@ var Cif = function(){
 		         		//console.info("success:",redata);
 		         		if(redata.retCode!='0000'){
 		         			bootbox.alert(redata.retMsg);
+		        			$("#myModal").modal('hide');
 		         			return;
 		         		}
 		         		$("#myModal").modal('hide');
