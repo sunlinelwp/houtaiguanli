@@ -35,8 +35,17 @@ public class TmpAllinPayPayCheckDataWriterImpl implements DataWriter{
 				pay.setMerchantDt(data[0]);
 				pay.setBillno(data[1]);
 				pay.setAcctno(data[4]);
+				if (data[5] == null || "".equals(data[5])) {
+					pay.setTransAmt(BigDecimal.ZERO);
+				} else {
+					pay.setTransAmt(NumberTools.string2BigDecimalMill(data[5]));
+				}
 				pay.setTransAmt(NumberTools.string2BigDecimalMill(data[5]));
-				pay.setFeeAmt(NumberTools.string2BigDecimalMill(data[6]));
+				if (data[6] == null || "".equals(data[6])) {
+					pay.setFeeAmt(BigDecimal.ZERO);
+				} else {
+					pay.setFeeAmt(NumberTools.string2BigDecimalMill(data[6]));
+				}
 				pay.setCoreDate(data[12]);
 				pay.setCoreSeqno(data[13]);
 				pay.setChkStatus(data[10]);
@@ -67,8 +76,16 @@ public class TmpAllinPayPayCheckDataWriterImpl implements DataWriter{
 	public void writerHeadData(String[] datas, String inputDate) {
 		TmpAllinPayPayHeadCheck pay = new TmpAllinPayPayHeadCheck();
 		pay.setCheckDate(inputDate);
-		pay.setFee(new BigDecimal(datas[5]));
-		pay.setAmount(new BigDecimal(datas[4]));
+		if (datas[5] == null || "".equals(datas[5])) {
+			pay.setFee(BigDecimal.ZERO);
+		} else {
+			pay.setFee(new BigDecimal(datas[5]));
+		}
+		if (datas[4] == null || "".equals(datas[4])) {
+			pay.setAmount(BigDecimal.ZERO);
+		} else {
+			pay.setAmount(new BigDecimal(datas[4]));
+		}
 		pay.setCheckStatus("N");
 		tmpAllinPayPayCheckService.saveTmpAllinPayPayHeadCheck(pay);
 	}
