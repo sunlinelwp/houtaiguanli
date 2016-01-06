@@ -401,6 +401,11 @@ public class PaychannelController {
 				+ req.toString());
 		String jiaoyi = "";
 		if (req.get("n_yin") != null && req.get("n_yin") != "") {
+			if (req.get("transt") != null && req.get("transt") != "") {
+
+			} else {
+				req.put("transt", "01");// 修改状态
+			}
 			req.put("mduser", user.getUserna());// 创建人
 			req.put("target", '1');
 			jiaoyi = "upchcg";
