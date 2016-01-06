@@ -51,10 +51,8 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><input type="text"
-							class="form-control form-filter input-sm" id="n_yin"
-							style="display: none;" name="n_yin" /></td>
-						<td colspan="2">
+						<td><input type="text" class="form-control form-filter input-sm" id="n_yin" style="display: none;" name="n_yin" /></td>
+						<td colspan="2" nowrap="nowrap">
 							<button class="btn btn-sm yellow filter-submit margin-bottom">
 								<i class="fa fa-search"></i> 查询
 							</button>
