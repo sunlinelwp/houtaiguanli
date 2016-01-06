@@ -167,6 +167,7 @@ var kuprole = function() {
 		typegrid.bindTableEdit(typesendData,
 				function(nRowA) {
 					// 主键不可修改
+					$("input[name='efctdt']").removeAttr("readOnly");
 					$("input[name='orfbdt']").attr("readOnly", true);
 					$("input[name='orfbsq']").attr("readOnly", true);
 					$("input[name='chnlnm']").attr("readOnly", true);
@@ -211,6 +212,7 @@ var kuprole = function() {
 		$("#add_btn").bind("click", function() {
 			// 解除input readOnly属性
 			$('input', $("#edit_form")).removeAttr("readOnly");
+			$("input[name='efctdt']").attr("readOnly", true);
 			// 清空 input值
 			$("input", $("#editModal")).val("").trigger("change");
 			$("#remark").val("");
@@ -251,7 +253,7 @@ var kuprole = function() {
 							});
 				});
 		$(".filter-cancel").click(function() {
-			$("input[name='q_pytype']").select2("val", "");
+			$("input[name='n_pytype']").select2("val", "");
 		});
 	};
 

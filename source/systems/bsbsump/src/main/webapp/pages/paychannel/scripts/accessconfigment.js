@@ -1,7 +1,35 @@
 var kuprole = function() {
-	// var inclfgDict = Sunline.getDict("E_INCLFG");
+
 	var syscodDict = Sunline.getDict("PayChannel");// 状态
 	var status = Sunline.getDict("E_PYTYPE");// 支付方式
+	var transt = Sunline.getDict("E_TRANST");// 修改类型
+	$("#transt").on("change", function(e) {
+		$("input[name='transt']").attr("readOnly", true);
+		// console.info(e);
+		if (e.val == '01') {
+			$("input[name='transt']").attr("readOnly", false);
+			$("input[name='pychnl']").attr("readOnly", true);
+			$("input[name='inchnl']").attr("readOnly", true);
+			$("input[name='bankcd']").attr("readOnly", true);
+			$("input[name='pytype']").attr("readOnly", true);
+		} else if (e.val == "02") {
+			$("input[name='transt']").attr("readOnly", false);
+			$("input[name='bankcd']").attr("readOnly", true);
+			$("input[name='pychnl']").attr("readOnly", false);
+			$("input[name='inchnl']").attr("readOnly", false);
+			$("input[name='pytype']").attr("readOnly", false);
+		} else if (e.val == "03") {
+			$("input[name='transt']").attr("readOnly", false);
+			$("input[name='bankcd']").attr("readOnly", false);
+			$("input[name='pychnl']").attr("readOnly", false);
+			$("input[name='inchnl']").attr("readOnly", false);
+			$("input[name='pytype']").attr("readOnly", true);
+		} else {
+//			$("input[name='transt']").select2("val",'01');
+//			$("input[name='transt']").attr("readOnly", true);
+
+		}
+	});
 
 	$("input[name='n_pytype']").select2({
 		data : status,
@@ -15,7 +43,10 @@ var kuprole = function() {
 		data : syscodDict,
 		allowClear : true
 	});
-
+	$("input[name='transt']").select2({
+		data : transt,
+		allowClear : true
+	});
 	var handleTable = function() {
 		var typegrid = new Datatable();
 		var typeurl = Sunline.ajaxPath("paychannel/qychcg"); // URL???
@@ -122,12 +153,12 @@ var kuprole = function() {
 		typegrid.bindTableEdit(typesendData,
 				function(nRowA) {
 					// 主键不可修改
-
-					$("input[name='chnlcd']").attr("readOnly", true);
-					$("input[name='inchnl']").attr("readOnly", true);
-					$("input[name='bankcd']").attr("readOnly", true);
-					$("input[name='pytype']").attr("readOnly", true);
-					$("input[name='pychnl']").attr("readOnly", true);
+			$("input[name='pychnl']").attr("readOnly", true);
+			$("input[name='inchnl']").attr("readOnly", true);
+			$("input[name='bankcd']").attr("readOnly", true);
+			$("input[name='pytype']").attr("readOnly", true);
+			$("input[name='transt']").select2("val",'');
+					$("input[name='transt']").removeAttr("readOnly");
 					$("input[name='inchnl']").val($(nRowA[0]).text());
 					$("input[name='inchnm']").val($(nRowA[1]).text());
 					$("input[name='pytype']").val(
@@ -144,7 +175,7 @@ var kuprole = function() {
 									$(nRowA[7]).text().indexOf("[") + 1,
 									$(nRowA[7]).text().indexOf("]"))).trigger(
 							"change");
-					$("input[name='transt']").val('0');
+//					$("input[name='transt']").select2("val",'01');
 					$("input[name='n_yin']").val($(nRowA[0]).text());
 					$("#editModal").modal('show');
 					$("#editModal").on("hide.bs.modal", function() {
@@ -159,6 +190,8 @@ var kuprole = function() {
 		// 新增窗口
 		$("#add_btn").bind("click", function() {
 			// 解除input readOnly属性
+//			$("input[name='transt']").select2("val",'');
+//			$("input[name='transt']").attr("readOnly", true);
 			$('input', $("#edit_form")).removeAttr("readOnly");
 			// 清空 input值
 			$("input", $("#editModal")).val("").trigger("change");
@@ -189,6 +222,7 @@ var kuprole = function() {
 						}
 					});
 					data.n_yin = $('#n_yin').val();
+
 					Sunline.ajaxRouter("paychannel/adchcg", data, 'post',
 							function(resmap) {
 								if (resmap.retMsg === "success") {
@@ -201,7 +235,7 @@ var kuprole = function() {
 							});
 				});
 		$(".filter-cancel").click(function() {
-			$("input[name='q_status']").select2("val", "");
+			$("input[name='n_pytype']").select2("val", "");
 		});
 	};
 
