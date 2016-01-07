@@ -119,7 +119,7 @@
 									<label class="col-md-3 control-label">渠道名称</label>
 									<div class="col-md-9">
 										<input type="text" id="chnlnm" name="chnlnm"
-											class="form-control input-inline input-medium" maxlength="20"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入渠道名称">
 									</div>
 								</div>
@@ -135,7 +135,7 @@
 									<label class="col-md-3 control-label">生效日期</label>
 									<div class="col-md-9">
 										<input type="text" id="efctdt" name="efctdt"
-											class="form-control input-inline input-medium" maxlength="20"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入生效日期">
 									</div>
 								</div>
