@@ -147,8 +147,9 @@ var jiejiargl = function() {
 			input.effcdt = $("#effcdt").val();
 			Sunline.ajaxRouter("holiday/aphody", input, "POST", function(data) {
 				if(data.retCode=="0000"){
-			       	$("#tranModal").modal('hide');
-//			       	submitInfo();
+					bootbox.alert("新增成功");
+//			       	$("#tranModal").modal('hide');
+			       	submitInfo();
 				}else{
 					bootbox.alert("新增失败，"+data.retMsg);
 				}
