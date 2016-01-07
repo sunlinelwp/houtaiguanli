@@ -117,7 +117,7 @@
 									<label class="col-md-3 control-label">银行名称</label>
 									<div class="col-md-9">
 										<input type="text" id="banknm" name="bankna"
-											class="form-control input-inline input-medium" maxlength="2"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入银行名称">
 									</div>
 								</div>
@@ -125,7 +125,7 @@
 									<label class="col-md-3 control-label">渠道银行代码</label>
 									<div class="col-md-9">
 										<input type="text" id="bankcd" name="bankcd"
-											class="form-control input-inline input-medium" maxlength="1"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入渠道银行代码">
 									</div>
 								</div>
@@ -141,7 +141,7 @@
 									<label class="col-md-3 control-label">对个人单笔限额</label>
 									<div class="col-md-9">
 										<input type="text" id="pypslt" name="pypslt"
-											class="form-control input-inline input-medium" maxlength="5"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入对个人单笔限额">
 									</div>
 								</div>
@@ -149,7 +149,7 @@
 									<label class="col-md-3 control-label">对个人日累限额</label>
 									<div class="col-md-9">
 										<input type="text" id="pypdlt" name="pypdlt"
-											class="form-control input-inline input-medium" maxlength="5"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入对个人日累限额">
 									</div>
 								</div>
@@ -157,7 +157,7 @@
 									<label class="col-md-3 control-label">对公司单笔限额</label>
 									<div class="col-md-9">
 										<input type="text" id="pycslt" name="pycslt"
-											class="form-control input-inline input-medium" maxlength="5"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入对公司单笔限额">
 									</div>
 								</div>
@@ -165,7 +165,7 @@
 									<label class="col-md-3 control-label">对公司日累限额</label>
 									<div class="col-md-9">
 										<input type="text" id="pycdlt" name="pycdlt"
-											class="form-control input-inline input-medium" maxlength="5"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入对公司日累限额">
 									</div>
 								</div>
@@ -173,7 +173,7 @@
 									<label class="col-md-3 control-label">生效状态</label>
 									<div class="col-md-9">
 										<input type="text" id="transt" name="transt"
-											class="form-control input-inline input-medium" maxlength="5"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入生效状态">
 									</div>
 								</div>

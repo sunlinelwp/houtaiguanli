@@ -110,7 +110,7 @@
 									<label class="col-md-3 control-label">银行名称</label>
 									<div class="col-md-9">
 										<input type="text" id="bankna" name="bankna"
-											class="form-control input-inline input-medium" maxlength="2"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入银行名称">
 									</div>
 								</div>
@@ -118,7 +118,7 @@
 									<label class="col-md-3 control-label">渠道银行代码</label>
 									<div class="col-md-9">
 										<input type="text" id="bankcd" name="bankcd"
-											class="form-control input-inline input-medium" maxlength="1"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入渠道银行代码">
 									</div>
 								</div>
@@ -126,7 +126,7 @@
 									<label class="col-md-3 control-label">银行状态</label>
 									<div class="col-md-9">
 										<input type="hidden" id="status" name="status"
-											class="form-control input-inline input-medium" maxlength="5"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入银行状态">
 									</div>
 								</div>
@@ -134,7 +134,7 @@
 									<label class="col-md-3 control-label">支付方式</label>
 									<div class="col-md-9">
 										<input type="hidden" id="pytype" name="pytype"
-											class="form-control input-inline input-medium" maxlength="2"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入提现">
 									</div>
 								</div>
