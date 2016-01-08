@@ -15,33 +15,43 @@
 					<button class="close" data-close="alert"></button>
 					<span>输入交易参数有误</span>
 				</div>
-				<div class="form-group col-md-5">
-					<label class="col-md-3 control-label">年份</label>
-					<div class="input-icon col-md-9">
-						<input type="text" id="inyear" name="inyear" class="form-control input-inline input-medium" maxlength="10" placeholder="请选择年份">
+				<div class="form-group col-md-12 ">
+					<div class="form-group col-md-5">
+						<label class="col-md-3 control-label">年份</label>
+						<div class="input-icon col-md-9">
+							<input type="text" id="inyear" name="inyear" class="form-control input-inline input-medium" maxlength="10" placeholder="请选择年份">
+						</div>
 					</div>
-				</div>
-				<div class="form-group col-md-5">
-					<label class="col-md-3 control-label">节假日期</label>
-					<div class="col-md-9">
-						<div class="input-group col-md-12 date input-medium date-picker"
-							data-date-format="yyyymmdd" data-date-viewmode="years"
-							data-date-minviewmode="months" id="mubiao">
-							<input type="text" class="form-control" id="indate"
-								maxlength="8" placeholder="输入目标日期"> <span
-								class="input-group-btn">
-								<button class="btn default" type="button">
-									<i class="fa fa-calendar"></i>
-								</button>
-							</span>
+					<div class="form-group col-md-5">
+						<label class="col-md-3 control-label">月份</label>
+						<div class="input-icon col-md-9">
+							<input type="text" id="inmoth" name="inmoth" class="form-control input-inline input-medium" maxlength="10" placeholder="请选择年份">
 						</div>
 					</div>
 				</div>
-				<div class="form-actions cust-action">
-					<button type="button" class="btn blue" id="submit" onclick="jiejiargl.queryCust()">查询</button>
-					<button type="button" class="btn gray" id="cancle">清空</button>
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-5">
+						<label class="col-md-3 control-label">节假日期</label>
+						<div class="col-md-9">
+							<div class="input-group col-md-12 date input-medium date-picker"
+								data-date-format="yyyymmdd" data-date-viewmode="years"
+								data-date-minviewmode="months" id="mubiao">
+								<input type="text" class="form-control" id="indate"
+									maxlength="8" placeholder="输入目标日期"> <span
+									class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-actions cust-action">
+						<button type="button" class="btn blue" id="submit" onclick="jiejiargl.queryCust()">查询</button>
+						<button type="button" class="btn gray" id="cancle">清空</button>
+					</div>
+					<div class="cif-pp"></div>
 				</div>
-				<div class="cif-pp"></div>
 			</form>
 			 <div class="table-container">
 				<div class="table-actions-wrapper">

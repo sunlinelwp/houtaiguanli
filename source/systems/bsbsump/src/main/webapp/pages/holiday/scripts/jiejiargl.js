@@ -34,6 +34,7 @@ var jiejiargl = function() {
 		var i = 0;
 		prodgrid.setAjaxParam("indate","");
 		prodgrid.setAjaxParam("inyear",$('#inyear').val());
+		prodgrid.setAjaxParam("inmoth",$('#inmoth').val());
 		var produrl = Sunline.ajaxPath("holiday/qrhody");
 		prodgrid.init({
 					src : $("#datatable_prod"),
@@ -83,6 +84,7 @@ var jiejiargl = function() {
 		}
 		prodgrid.setAjaxParam("inyear",$('#inyear').val());
 		prodgrid.setAjaxParam("indate",$('#indate').val());
+		prodgrid.setAjaxParam("inmoth",$('#inmoth').val());
 		prodgrid.submitFilter();
 	}
 	//时间插件
@@ -132,6 +134,41 @@ var jiejiargl = function() {
 			 }
 		});
 		$("#inyear").select2("val",myDate.getFullYear());
+		
+		
+
+		var list_m = new Array();
+		var month = 1;
+
+		var map_i = {};
+		map_i.id = "__";
+		map_i.text = "全部";
+		list_m[0] = map_i;
+		
+		for(var i = 1; i < 10; i++){
+			var map = {};
+			m = i + month - 1;
+			map.id = "0"+m;
+			map.text = m+"月";
+			list_m[i] = map;
+		}
+		for(var i = 10; i < 13; i++){
+			var map = {};
+			m = i + month - 1;
+			map.id = m;
+			map.text = m+"月";
+			list_m[i] = map;
+		}
+		$("#inmoth").select2({
+			data : list_m,
+			formatSelection: function(item){
+				 return item.text;
+			 },
+			 formatResult: function(item){
+				 return item.text;
+			 }
+		});
+		$("#inmoth").select2("val","__");
 	}
 	var click = function(){
 		//新增
@@ -147,11 +184,21 @@ var jiejiargl = function() {
 			input.effcdt = $("#effcdt").val();
 			Sunline.ajaxRouter("holiday/aphody", input, "POST", function(data) {
 				if(data.retCode=="0000"){
-					bootbox.alert("新增成功");
+					bootbox.confirm("新增成功！是否继续新增", function(result) {
+			        	if(!result){
+					       	$("#tranModal").modal('hide');
+			        		return;
+			        	}
+					});
 //			       	$("#tranModal").modal('hide');
 			       	submitInfo();
 				}else{
-					bootbox.alert("新增失败，"+data.retMsg);
+					bootbox.confirm("新增失败，"+data.retMsg+"！是否继续新增", function(result) {
+			        	if(!result){
+					       	$("#tranModal").modal('hide');
+			        		return;
+			        	}
+				  });
 				}
 			}, function(data) {
 			});
