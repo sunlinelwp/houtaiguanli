@@ -1,14 +1,14 @@
 var fcsetprod = function() {    
 	
-	var prodstDict =Sunline.getDict("E_PRODST");//产品状态
-	var prodtpDict =Sunline.getDict("E_PRODTP");//产品类型
-	var onlyfgDict =Sunline.getDict("E_ONLYFG");//唯一规则
+	var prodstDict =Sunline.getDict("F_PRODST");//产品状态
+	var prodtpDict =Sunline.getDict("F_PRODTP");//产品类型
+	var onlyfgDict =Sunline.getDict("F_ONLYFG");//唯一规则
 	
 	//增加
 	var crcycdDict = Sunline.getDict("E_CRCYCD");//币种
 	var prodmdDict = Sunline.getDict("E_PRODMD");//产品模式
 	var lesrulDict = Sunline.getDict("E_LESRUL");//不足额规则
-	var addrulDict = Sunline.getDict("E_ADDRUL");//追加起投规则
+	var addrulDict = Sunline.getDict("F_ADDRUL");//追加起投规则
 	var learulDict = Sunline.getDict("E_LEARUL");//不足额追加规则
 	//结束
 	var handleTable = function() {
@@ -43,9 +43,9 @@ var fcsetprod = function() {
 									"sortable" : false,
 									"searchable" : false,
 									"render" : function(data, type, full) {
-										for (var i = 0; i < prodmdDict.length; i++) {
-											if (prodmdDict[i].id == data) {
-												return prodmdDict[i].text;
+										for (var i = 0; i < prodtpDict.length; i++) {
+											if (prodtpDict[i].id == data) {
+												return prodtpDict[i].text;
 											}
 										}
 										return data;
