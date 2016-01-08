@@ -50,6 +50,8 @@ values ('E_TRANST', '02', '修改所以银行代码记录', null, null, 'Y', 2);
 insert into ap_sys_dict (DICT_TYPE, DICT_ID, DICT_NAME, PARENT_DICT_TYPE, PARENT_DICT_ID, STATUS, SORT_NO)
 values ('E_TRANST', '03', '修改所以支付方式记录', null, null, 'Y', 3);
 
+insert into ap_sys_dict (DICT_TYPE, DICT_ID, DICT_NAME, Parent_Dict_Type, Parent_Dict_Id, Status, Sort_No)  values ('F_ADDRUL', '0', '金额不限制', null, null, 'Y', '1'); 
+insert into ap_sys_dict (DICT_TYPE, DICT_ID, DICT_NAME, Parent_Dict_Type, Parent_Dict_Id, Status, Sort_No)  values ('F_ADDRUL', '1', '金额限制', null, null, 'Y', '2');
 
 prompt Done.
 commit;
