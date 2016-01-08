@@ -79,6 +79,8 @@ values ('rqId', 'ÇëÇóID', null, 'rqId', 'S', '', '', '', 'N', 4, '', '', '', 'up
 insert into ap_sys_column (COLUMN_CD, COLUMN_NAME, COLUMN_LENGTH, COLUMN_MAPPING, COLUMN_TYPE, VALUE_DIGIT, DATE_PATTERN, DEFAULT_VALUE, CYCLING_FLAG, SORT_SEQ, CYCLING_COLUMN, POLISH_TYPE, POLISH_CHAR, MSG_CD)
 values ('status', '×´Ì¬', null, 'status', 'S', '', '', '', 'N', 5, '', '', '', 'uplimtrsp');
 
+insert into ap_sys_column (COLUMN_CD, COLUMN_NAME, COLUMN_LENGTH, COLUMN_MAPPING, COLUMN_TYPE, VALUE_DIGIT, DATE_PATTERN, DEFAULT_VALUE, CYCLING_FLAG, SORT_SEQ, CYCLING_COLUMN, POLISH_TYPE, POLISH_CHAR, MSG_CD)
+values ('inmoth', 'ÔÂ·Ý', null, 'inmoth', 'S', '', '', '', 'N', 5, 'input', '', '', 'qrhodyreq');
 commit;
 
 
