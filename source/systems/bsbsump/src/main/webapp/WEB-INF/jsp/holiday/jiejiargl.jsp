@@ -46,6 +46,12 @@
 							</div>
 						</div>
 					</div>
+					<div class="form-group col-md-5">
+						<label class="col-md-3 control-label">节假日名称</label>
+						<div class="input-icon col-md-9">
+							<input type="text" id="remark" name="remark" class="form-control input-inline input-medium" >
+						</div>
+					</div>
 					<div class="form-actions cust-action">
 						<button type="button" class="btn blue" id="submit" onclick="jiejiargl.queryCust()">查询</button>
 						<button type="button" class="btn gray" id="cancle">清空</button>

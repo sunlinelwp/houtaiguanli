@@ -90,6 +90,9 @@ public class HolidayController {
 		if (reqmap.get("inmoth") != null && reqmap.get("inmoth") != "") {
 			map.put("inmoth", reqmap.get("inmoth"));
 		}
+		if (reqmap.get("remark") != null && reqmap.get("remark") != "") {
+			map.put("remark", reqmap.get("remark"));
+		}
 		map.put("userid", user.getUserid()); 
 
 		int length = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap

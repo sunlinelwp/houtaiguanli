@@ -35,6 +35,7 @@ var jiejiargl = function() {
 		prodgrid.setAjaxParam("indate","");
 		prodgrid.setAjaxParam("inyear",$('#inyear').val());
 		prodgrid.setAjaxParam("inmoth",$('#inmoth').val());
+		prodgrid.setAjaxParam("remark",$('#remark').val());
 		var produrl = Sunline.ajaxPath("holiday/qrhody");
 		prodgrid.init({
 					src : $("#datatable_prod"),
@@ -85,6 +86,7 @@ var jiejiargl = function() {
 		prodgrid.setAjaxParam("inyear",$('#inyear').val());
 		prodgrid.setAjaxParam("indate",$('#indate').val());
 		prodgrid.setAjaxParam("inmoth",$('#inmoth').val());
+		prodgrid.setAjaxParam("remark",$('#remark').val());
 		prodgrid.submitFilter();
 	}
 	//时间插件
