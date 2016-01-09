@@ -25,7 +25,7 @@
 					<div class="form-group col-md-5">
 						<label class="col-md-3 control-label">月份</label>
 						<div class="input-icon col-md-9">
-							<input type="text" id="inmoth" name="inmoth" class="form-control input-inline input-medium" maxlength="10" placeholder="请选择年份">
+							<input type="text" id="inmoth" name="inmoth" class="form-control input-inline input-medium" maxlength="10" placeholder="请选择月份">
 						</div>
 					</div>
 				</div>
