@@ -262,6 +262,7 @@ var knlbillsign = function() {
 									$('.alert-danger',
 											$('form', $("#editModal")))
 											.hide();
+									$("#editModal").modal('hide');	
 								} else {
 									$(".alert-success",
 											$('form', $("#editModal")))
