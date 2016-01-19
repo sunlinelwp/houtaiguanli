@@ -46,6 +46,11 @@ var knlbillsign = function() {
 									"searchable" : false
 								},
 								{
+									"data" : "brchna", 
+									"sortable" : false,
+									"searchable" : false
+								},
+								{
 									"data" : "tranam", 
 									"sortable" : false,
 									"searchable" : false

@@ -206,8 +206,8 @@ public class ClearController {
 				String checkDate = pay.get("checkDate").toString();
 				String merchantDt = pay.get("merchantDt").toString();
 				String cpSeqno = pay.get("billno").toString();
-				String checkStatus = "Y";
-				payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+				String checkstatus = "Y";
+				payGateCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkstatus);
 				succAmount+=1;
 			}
 		}
@@ -520,7 +520,7 @@ public class ClearController {
 				String merchantDt = pay.get("merchantDt").toString();
 				String cpSeqno = pay.get("billno").toString();
 				String checkStatus = "Y";
-				payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+				cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
 				succAmount+=1;
 			}
 		}
