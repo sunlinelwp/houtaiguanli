@@ -178,12 +178,16 @@ var knlbillsign = function() {
 					// 主键不可修改
 					$("input[name='custac']").val($(nRowA[0]).text());
 					$("input[name='custna']").val($(nRowA[1]).text());
+					$("input[name='tranam']").val($(nRowA[2]).text());
 					$("input[name='fronsq']").val($(nRowA[3]).text());
 					$("input[name='frondt']").val($(nRowA[4]).text());
+					$("input[name='teleno']").val($(nRowA[14]).text());
 					$("input[name='custac']").attr("readOnly",true);
 					$("input[name='custna']").attr("readOnly",true);
 					$("input[name='fronsq']").attr("readOnly",true);
 					$("input[name='frondt']").attr("readOnly",true);
+					$("input[name='teleno']").attr("readOnly",true);
+					$("input[name='tranam']").attr("readOnly",true);
 					if ($(nRowA[17]).text() == ckstatDict[3].text) {
 						content.html('');						    
 					        $.ajax({
@@ -317,6 +321,7 @@ var knlbillsign = function() {
 					$("input[name='q_frondt_sign']").select2("val","");
 					$("input[name='q_status']").select2("val","");
 				});
+
 	};
 
 	return {

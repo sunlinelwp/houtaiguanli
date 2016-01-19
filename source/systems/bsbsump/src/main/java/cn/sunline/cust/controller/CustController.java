@@ -189,6 +189,14 @@ public class CustController {
 		if (rspmap.get("retCode").toString().equals("0000")) {
 			rspmap.put("ret", "success");
 			rspmap.put("msg", "大额提现审核登记信息修改操作成功");
+			if(reqmap.get("ckstat").toString().equals("03")){
+				Map<String , Object> map = new HashMap<String, Object>();
+				map.put("phone", reqmap.get("teleno"));
+				String content = "尊敬的["+reqmap.get("custna")+"]，["+reqmap.get("frondt")+"]您申请的提现￥["+reqmap.get("tranam")+"]元，财务人员已经处理完毕，请您注意查收";
+				map.put("content", content);
+				logger.debug("请求map========"+map);
+				clict.callClient("sendSms", map);
+			}
 		} else {
 			rspmap.put("msg", rspmap.get("retMsg").toString());
 		}

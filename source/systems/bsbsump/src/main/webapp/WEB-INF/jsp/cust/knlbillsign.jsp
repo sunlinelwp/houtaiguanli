@@ -189,6 +189,8 @@
 										<label class="col-md-3 control-label">备注信息</label>
 										<div class="col-md-9">
 											<input type="text" id="remark" name="remark" class="form-control input-inline input-medium" maxlength="200" placeholder="输入备注信息">
+											<input type="text" id="teleno" name="teleno" class="form-control input-inline input-medium"  style="display: none;">
+											<input type="text" id="tranam" name="tranam" class="form-control input-inline input-medium"  style="display: none;">
 										</div>
 									</div>
 								</div>
