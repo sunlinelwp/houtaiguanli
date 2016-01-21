@@ -178,9 +178,9 @@ var knlbillsign = function() {
 					// 主键不可修改
 					$("input[name='custac']").val($(nRowA[0]).text());
 					$("input[name='custna']").val($(nRowA[1]).text());
-					$("input[name='tranam']").val($(nRowA[2]).text());
-					$("input[name='fronsq']").val($(nRowA[3]).text());
-					$("input[name='frondt']").val($(nRowA[4]).text());
+					$("input[name='tranam']").val($(nRowA[3]).text());
+					$("input[name='fronsq']").val($(nRowA[4]).text());
+					$("input[name='frondt']").val($(nRowA[5]).text());
 					$("input[name='teleno']").val($(nRowA[14]).text());
 					$("input[name='custac']").attr("readOnly",true);
 					$("input[name='custna']").attr("readOnly",true);
@@ -200,8 +200,8 @@ var knlbillsign = function() {
 					                content.ready(function(){               	
 					                	  Metronic.initUniform();
 					                	  try{      
-					                		  if (!Sunline.isNull($(nRowA[3]).text())) {
-					                			  knlordrInfo.init($(nRowA[4]).text(),$(nRowA[18]).text(),$(nRowA[3]).text(),$(nRowA[0]).text());
+					                		  if (!Sunline.isNull($(nRowA[4]).text())) {
+					                			  knlordrInfo.init($(nRowA[5]).text(),$(nRowA[17]).text(),$(nRowA[4]).text(),$(nRowA[0]).text());
 					                		  }
 					                	  }catch(e){
 					                		  bootbox.alert("子页面加载失败！");
