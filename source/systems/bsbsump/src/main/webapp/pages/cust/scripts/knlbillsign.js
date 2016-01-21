@@ -91,11 +91,6 @@ var knlbillsign = function() {
 									"searchable" : false
 								},
 								{
-									"data" : "cactpt", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
 									"data" : "crcycd", 
 									"sortable" : false,  
 									"searchable" : false,

@@ -57,9 +57,6 @@
 								账号类型
 							</th>
 							<th width="6%">
-								账号属性
-							</th>
-							<th width="6%">
 								币种
 							</th>
 							<th width="6%">
