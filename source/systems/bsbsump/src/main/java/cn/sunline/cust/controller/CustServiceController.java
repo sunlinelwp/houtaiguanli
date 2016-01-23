@@ -30,21 +30,25 @@ public class CustServiceController {
 	private static Logger logger = LoggerFactory.getLogger(CustServiceController.class);
 	
 	/**
-	 * 根据电子账号查询客户信息
+	 * 分页查询客户信息
 	 */
-	@RequestMapping(value ="/mypage")
+	@RequestMapping(value ="/qrcuif")
 	public Map<String,Object> getCust(@RequestBody Map<String,Object> reqmap,@ModelAttribute("User") BSBUser user){
-		logger.info("客户信息查询开始---------------------------"+reqmap);	
+		logger.info("客户信息查询开始---------------------------");	
 		reqmap.put("userid", user.getUserid());
-		Map<String,Object> rspmap = new HashMap<String, Object>();
-		try {
-			rspmap = client.callClient("mypage", reqmap);
-		} catch (SumpException e) {
-			rspmap.put("retCode", e.getErrCode());
-			rspmap.put("retMsg", e.getErrMsg());
-		}
-		logger.info("客户信息查询结束---------------------------"+reqmap);
-		return rspmap;
+		int length = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
+				.get("length")) ? (String) reqmap.get("length") : "10", 10);
+		int start = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
+				.get("start")) ? (String) reqmap.get("start") : "1", 10);
+		reqmap.put("pageno", start / length + 1);//当前页数
+		reqmap.put("pagesz", length); //每页记录数
+		Map<String,Object> resmap = new HashMap<String, Object>();
+		resmap = client.callClient("mypage", reqmap);
+		resmap.put("data",resmap.get("fcinfo") == null ? new ArrayList<Object>() : resmap.get("fcinfo"));
+		resmap.put("iTotalDisplayRecords",resmap.get("counts") == null ? "0" : resmap.get("counts"));
+		resmap.put("iTotalRecords",resmap.get("counts") == null ? "0" : resmap.get("counts"));
+		logger.info("客户信息查询结束---------------------------");
+		return resmap;
 	}
 	
 	/**
