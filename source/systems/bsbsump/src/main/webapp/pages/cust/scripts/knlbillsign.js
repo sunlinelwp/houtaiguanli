@@ -259,7 +259,7 @@ var knlbillsign = function() {
 					});
 					Sunline.ajaxRouter("cust/ckrtsd", data, 'post',
 							function(ret) {
-								if (ret.ret === "success") {
+								if (ret.ret == "success") {
 									$(".alert-success",
 											$('form', $("#editModal")))
 											.show();
