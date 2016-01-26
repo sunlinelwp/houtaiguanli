@@ -79,12 +79,12 @@ public class TmpAllinPayPayCheckDataWriterImpl implements DataWriter{
 		if (datas[5] == null || "".equals(datas[5])) {
 			pay.setFee(BigDecimal.ZERO);
 		} else {
-			pay.setFee(new BigDecimal(datas[5]));
+			pay.setFee(NumberTools.string2BigDecimalMill(datas[5]));
 		}
 		if (datas[4] == null || "".equals(datas[4])) {
 			pay.setAmount(BigDecimal.ZERO);
 		} else {
-			pay.setAmount(new BigDecimal(datas[4]));
+			pay.setAmount(NumberTools.string2BigDecimalMill(datas[4]));
 		}
 		pay.setCheckStatus("N");
 		tmpAllinPayPayCheckService.saveTmpAllinPayPayHeadCheck(pay);

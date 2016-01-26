@@ -82,13 +82,13 @@ public class TmpAllinPayCltnCheckDataWriterImpl implements DataWriter {
 		if (datas[6] == null || "".equals(datas[6])) {
 			cltn.setFee(BigDecimal.ZERO);
 		} else {
-			cltn.setFee(new BigDecimal(datas[6]));
+			cltn.setFee(NumberTools.string2BigDecimalMill(datas[6]));
 		}
 		BigDecimal amount = BigDecimal.ZERO;
 		if (datas[2] == null || "".equals(datas[2])) {
 			cltn.setAmount(amount);
 		} else {
-			cltn.setAmount(new BigDecimal(datas[2]));
+			cltn.setAmount(NumberTools.string2BigDecimalMill(datas[2]));
 		}
 		cltn.setCheckStatus("N");
 		tmpAllinPayCltnCheckService.saveTmpAllinPayCltnHeadCheck(cltn);
