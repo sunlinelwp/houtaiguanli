@@ -38,8 +38,16 @@ public class TmpAllinPayCltnCheckDataWriterImpl implements DataWriter {
 				cltn.setMerchantDt(data[0]);
 				cltn.setBillNo(data[1]);
 				cltn.setAcctno(data[4]);
-				cltn.setTransAmt(NumberTools.string2BigDecimalMill(data[5]));
-				cltn.setFeeAmt(NumberTools.string2BigDecimalMill(data[6]));
+				if (data[5] == null || "".equals(data[5])) {
+					cltn.setTransAmt(BigDecimal.ZERO);
+				} else {
+					cltn.setTransAmt(NumberTools.string2BigDecimalMill(data[5]));
+				}
+				if (data[6] == null || "".equals(data[6])) {
+					cltn.setFeeAmt(BigDecimal.ZERO);
+				} else {
+					cltn.setFeeAmt(NumberTools.string2BigDecimalMill(data[6]));
+				}
 				cltn.setCoreDate(data[12]);
 				cltn.setCoreSeqno(data[13]);
 				cltn.setAcoutStatus(data[7]);
@@ -71,8 +79,17 @@ public class TmpAllinPayCltnCheckDataWriterImpl implements DataWriter {
 	public void writerHeadData(String[] datas, String inputDate) {
 		TmpAllinPayCltnHeadCheck cltn = new TmpAllinPayCltnHeadCheck();
 		cltn.setCheckDate(inputDate);
-		cltn.setFee(new BigDecimal(datas[6]));
-		cltn.setAmount(new BigDecimal(datas[2]));
+		if (datas[6] == null || "".equals(datas[6])) {
+			cltn.setFee(BigDecimal.ZERO);
+		} else {
+			cltn.setFee(new BigDecimal(datas[6]));
+		}
+		BigDecimal amount = BigDecimal.ZERO;
+		if (datas[2] == null || "".equals(datas[2])) {
+			cltn.setAmount(amount);
+		} else {
+			cltn.setAmount(new BigDecimal(datas[2]));
+		}
 		cltn.setCheckStatus("N");
 		tmpAllinPayCltnCheckService.saveTmpAllinPayCltnHeadCheck(cltn);
 		
