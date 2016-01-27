@@ -160,12 +160,12 @@ var Cif = function(){
 	};
 	var handlerForm = function(){
 		
-		jQuery.validator.addMethod("id_no", function(value, element, param) {
-			if((!Sunline.isNull(value)) && param == true){
-				return IdCardValidate(value);
-			}
-			return true;
-		}, $.validator.format("证件号码输入有误"));
+//		jQuery.validator.addMethod("id_no", function(value, element, param) {
+//			if((!Sunline.isNull(value)) && param == true){
+//				return IdCardValidate(value);
+//			}
+//			return true;
+//		}, $.validator.format("证件号码输入有误"));
 		$('#cust-form').validate({
 			errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -174,10 +174,10 @@ var Cif = function(){
             	custac: {
                     required: false
             	},
-            	idcard : {
-            		required: false,
-            		id_no : true
-            	},
+//            	idcard : {
+//            		required: false,
+//            		id_no : true
+//            	},
             	telecd : {
             		required: false,
             		rangelength : [11,11]
@@ -187,9 +187,9 @@ var Cif = function(){
             	checkdate: {
                     required: "对账日期必填"
                 },
-                idcard : {
-            		id_no : "证件号输入有误"
-            	},
+//                idcard : {
+//            		id_no : "证件号输入有误"
+//            	},
             	telecd : {
             		rangelength : "手机号码位数不正确"
             	}
