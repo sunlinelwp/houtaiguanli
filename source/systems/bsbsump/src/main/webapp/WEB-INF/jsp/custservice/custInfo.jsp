@@ -36,6 +36,12 @@
 				<div class="cif-pp"></div>
 			</form>
 			 <div class="table-container">
+			 	<div class="table-actions-wrapper">
+					<button id="add_prod_btn"
+						class="btn btn-sm green table-group-action-submit">
+						<i class="fa fa-plus"></i> 导出EXCEL
+					</button>
+				</div>
 			 	<table class="table table-striped table-bordered table-hover"
 					id="datatable_cust">
 					<thead>

@@ -14,6 +14,35 @@ var custInfo = function() {
 			$("#phoneNo").val("");
 			submitInfo();
 		});
+		//导出excel
+		$('#add_prod_btn').click(function(){
+			$('#add_prod_btn').attr("disabled",true);
+			var input = {};
+			input.custac = $('#custac').val();
+			input.mobile = $('#phoneNo').val();
+			Sunline.ajaxRouter(
+		        	"custService/getCustInfoFile",
+		        	 input,
+		        	"POST",
+		            function(redata){
+		        		$('#add_prod_btn').attr("disabled",false);
+		        		if(redata.retCode == '0000'){
+		        			_filename = redata.fileName;
+		        			bootbox.alert("文件["+redata.fileName+"]已生成，确定下载文件？",function(){
+		        				window.location.href = Sunline.getBasePath() + '/rest/download/downLoadFile?path=' + redata.filePath + redata.fileName;
+		        			});
+		        		} else {
+		        			bootbox.alert(redata.retMsg);
+		        		}
+		        	},
+		        	function(redata){
+		        		$('#add_prod_btn').attr("disabled",false);
+		        		console.info(redata);
+		        		bootbox.alert("网络异常，请重试！"); 
+		        	},
+		        	"json",
+		        	false); 
+		});
 	}
 	var prodgrid = new Datatable();
 	var handleTable = function(){
