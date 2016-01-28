@@ -42,10 +42,7 @@ var redBagSearch = function() {
 		}
 
 	}, {
-		investendTime : {
-			required : true
-		},
-		investStartTime : {
+		tags : {
 			required : true
 		}
 				
@@ -66,7 +63,7 @@ var redBagSearch = function() {
 				$("#find_report").attr("disabled","disabled");
 				e.preventDefault();
 				opreation = "find";
-				if($("#investStartTime").val()=="" || $("#investendTime").val()==""){
+				if($("#tags").val()==""){
 					$("#find_report").removeAttr("disabled");
 				}
 				$("#report_form").submit();
