@@ -5,13 +5,12 @@ var redBagSearch = function() {
 	var content = $('.inbox-content');
 	var listListing = '';
 	
-	/* var reportDict = "";
-	 $("input[name='rfresh']", $("#report_form")).select2({
-			data : reportDict
-	 });*/
+	 var crcycdDict=Sunline.getDict("tags_cd");
+	 $("input[name='tags']", $("#report_form")).select2({
+   	  data:crcycdDict
+     });
 	 
 	var reportValid = Sunline.getValidate($("#report_form"), function() {
-		var tagText =$("#acctTag option:selected").val(); 
 		if(opreation=="find"){
 			content.html('');
 			toggleButton($("#report_form"));
@@ -22,7 +21,6 @@ var redBagSearch = function() {
 				}
 			});
 			data.rpt_code = rpt_code;
-//			alert(JSON.stringify(data));
 			Sunline.ajaxRouter("repo/qryrpt", data, "post", function(res) {
 				$("#find_report").removeAttr("disabled");
 				content.html(res.html);
