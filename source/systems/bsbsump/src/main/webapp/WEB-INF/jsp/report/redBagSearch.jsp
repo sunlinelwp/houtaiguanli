@@ -23,26 +23,13 @@
 						<button class="close" data-close="alert"></button>
 						表单提交成功！<span class="msg"></span>
 					</div>	
-						<div class="col-md-4">
+						<div class="col-md-6">
 						<div class="form-group">
-							<label class="col-md-3 control-label">会员标签：</label>
+							<label class="col-md-3 control-label">会员标签</label>
 							<div class="col-md-9">
-							<select id="acctTag" name ="tags_cd">
-								<option value="-1">请选择</option>
-								<option value="1001">惠金所用户</option>
-								<option value="1002">集团用户</option>
-							</select>
-								<!-- <div class="input-group col-md-12 date input-medium date-picker"
-									data-date-format="yyyymmdd" data-date-viewmode="years"
-									data-date-minviewmode="months">
-									<input type="text" class="form-control" name="investStartTime" id="investStartTime"
-										maxlength="8" placeholder="选择日期"> <span
-										class="input-group-btn">
-										<button class="btn default" type="button">
-											<i class="fa fa-calendar"></i>
-										</button>
-									</span>
-								</div> -->
+							<input type="text" name="tags" id ="tags"
+									class="form-control input-inline input-medium form-value"
+									 placeholder="选择会员标签">
 							</div>
 						</div>
 						</div>
