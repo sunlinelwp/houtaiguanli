@@ -5,7 +5,6 @@ var liruReport = function() {
 	var rpt_type;
 	
 	 var crcycdDict=Sunline.getDict("crcycd");
-	 alert(JSON.stringify(crcycdDict));
 	 $("input[name='crcycd']", $("#report_form")).select2({
    	  data:crcycdDict
      });
