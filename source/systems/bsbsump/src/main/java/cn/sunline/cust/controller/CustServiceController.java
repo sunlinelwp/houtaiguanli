@@ -41,7 +41,7 @@ public class CustServiceController {
 	 * 分页查询客户信息
 	 */
 	@RequestMapping(value ="/qrcuif")
-	public Map<String,Object> getCust(@RequestBody Map<String,Object> reqmap,@ModelAttribute("User") BSBUser user){
+	public Map<String,Object> getCust(@RequestParam Map<String,Object> reqmap,@ModelAttribute("User") BSBUser user){
 		logger.info("客户信息查询开始---------------------------");	
 		reqmap.put("userid", user.getUserid());
 		int length = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
@@ -238,7 +238,7 @@ public class CustServiceController {
 	 * @throws InterruptedException 
 	 */
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value ="/getIncomeFile")
+	@RequestMapping(value ="/getCustInfoFile")
 	public Map<String,Object> getIncomeFile(HttpServletRequest request, @RequestBody Map<String,Object> reqmap , @ModelAttribute("User") BSBUser user,HttpServletResponse response) {
 		String path = request.getSession().getServletContext().getRealPath("download")+File.separator;
 		String fileName = "custInfo_"+DateTools.getNow("yyyyMMddHHmmss")+".xlsx";
@@ -247,7 +247,7 @@ public class CustServiceController {
 		List<List<ExcelEntity>> cells = new ArrayList<List<ExcelEntity>>();
 		reqmap.put("userid", user.getUserid());
 		reqmap.put("pageno", "1");
-		reqmap.put("record", "10");
+		reqmap.put("pagesz", "10");
 		logger.debug("路径===================="+path+fileName);
 		map = client.callClient("qrcuif", reqmap);
 		List<Map<String,Object>> list = (List<Map<String, Object>>) map.get("fcinfo");
