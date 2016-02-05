@@ -35,12 +35,12 @@ public class TmpAinPayPayGateCheckDataWriterImpl implements DataWriter{
 				if (data[5] == null || "".equals(data[5])) {
 					pay.setTransAmt(BigDecimal.ZERO);
 				} else {
-					pay.setTransAmt(NumberTools.string2BigDecimalMill(data[5]));
+					pay.setTransAmt(new BigDecimal(data[5]));
 				}
 				if (data[6] == null || "".equals(data[6])) {
 					pay.setFeeAmt(BigDecimal.ZERO);
 				} else {
-					pay.setFeeAmt(NumberTools.string2BigDecimalMill(data[6]));
+					pay.setFeeAmt(new BigDecimal(data[6]));
 				}
 				pay.setCoreDate(data[12]);
 				pay.setCoreSeqno(data[13]);
@@ -79,12 +79,12 @@ public class TmpAinPayPayGateCheckDataWriterImpl implements DataWriter{
 		if (datas[6] == null || "".equals(datas[6])) {
 			pay.setFee(BigDecimal.ZERO);
 		} else {
-			pay.setFee(NumberTools.string2BigDecimalMill(datas[6]));
+			pay.setFee(new BigDecimal(datas[6]));
 		}
 		if (datas[6] == null || "".equals(datas[6])) {
 			pay.setAmount(BigDecimal.ZERO);
 		} else {
-			pay.setAmount(NumberTools.string2BigDecimalMill(datas[3]));
+			pay.setAmount(new BigDecimal(datas[3]));
 		}
 		pay.setCheckSeqno(datas[10]);
 		System.out.println("111"+datas[7]+"222");
@@ -93,13 +93,13 @@ public class TmpAinPayPayGateCheckDataWriterImpl implements DataWriter{
 		} else if ("".equals(datas[7])) {
 			pay.setClearAmt(BigDecimal.ZERO);
 		} else {
-			pay.setClearAmt(NumberTools.string2BigDecimalMill(datas[7]));
+			pay.setClearAmt(new BigDecimal(datas[7]));
 		}
 		pay.setClearDate(datas[8]);
 		if (datas[5] == null || "".equals(datas[5])) {
 			pay.setRefAmt(BigDecimal.ZERO);
 		} else {
-			pay.setRefAmt(NumberTools.string2BigDecimalMill(datas[5]));
+			pay.setRefAmt(new BigDecimal(datas[5]));
 		}
 		pay.setRefund(datas[4]);
 		pay.setSuccesCount(datas[2]);

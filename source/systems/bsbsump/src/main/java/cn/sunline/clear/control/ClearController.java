@@ -463,8 +463,8 @@ public class ClearController {
 				admap.put("acctno", pay.get("acctno"));
 				admap.put("toacct", pay.get("toacct"));
 				admap.put("tranam", pay.get("tranam"));
-				admap.put("frondt", pay.get("merchantDt"));
-				admap.put("fronsq",pay.get("billNo"));
+				admap.put("frondt", "");
+				admap.put("fronsq", "");
 				admap.put("crcycd", "01");
 				admap.put("quotfs", "1");
 				admap.put("userid", user.getUserid());
