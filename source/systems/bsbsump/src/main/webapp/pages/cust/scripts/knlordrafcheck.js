@@ -116,6 +116,7 @@ var knlordrafcheck = function() {
 				$("input[name='odorod']").val($(nRowA[0]).text()); 
 				$("input[name='ordrid']").val($(nRowA[0]).text()); 
 				$("input[name='ordram']").val($(nRowA[1]).text());
+				$("input[name='ordram']").attr("disabled","disabled");
 				$("input[name='keepdt']").val($(nRowA[2]).text());
 				$("input[name='chgeam']").val($(nRowA[3]).text());
 				$("input[name='scapno']").val($(nRowA[4]).text());
