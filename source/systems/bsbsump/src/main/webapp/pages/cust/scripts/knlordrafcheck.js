@@ -151,7 +151,7 @@ var knlordrafcheck = function() {
 				function() {
 					// 解除input readOnly属性
 					$('input', $("#edit_form1")).removeAttr("readOnly");
-				
+					$("input[name='ordram']").removeAttr("disabled");
 					// 清空 input值
 					$("input", $("#editModal1")).val("").trigger("change");
 //					$("input[name='typecd']", $("#edittypeModal")).val(prodcd);
