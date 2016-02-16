@@ -77,6 +77,9 @@
 							<th width="10%">
 								状态
 							</th>
+							<th width="8%">
+								前置时间
+							</th>
 							<th width="24" colspan="2">
 								 操作
 							</th> 

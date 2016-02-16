@@ -6,8 +6,8 @@
 		<div class="portlet-title">
 			<div class="caption">
 				<i class="fa fa-gift font-green-sharp"></i>
-				<span class="caption-subject font-green-sharp bold uppercase">大额提现审核列表</span>
-				<span class="caption-helper">大额提现审核...</span>
+				<span class="caption-subject font-green-sharp bold uppercase">大额提现对账后订单列表</span>
+				<span class="caption-helper">大额提现对账后订单列表...</span>
 			</div>
 		</div>
 		<div class="portlet-body">
@@ -76,6 +76,9 @@
 							</th>
 							<th width="10%">
 								状态
+							</th>
+							<th width="8%">
+								前置时间
 							</th>
 							<th width="24" colspan="2">
 								 操作

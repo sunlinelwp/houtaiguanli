@@ -152,6 +152,11 @@ var knlsignafcheck = function() {
 									}
 								},
 								{
+									"data" : "frontm", 
+									"sortable" : false,  
+									"searchable" : false
+								},
+								{
 									"data" : null,
 									"sortable" : false,
 									"searchable" : false,
