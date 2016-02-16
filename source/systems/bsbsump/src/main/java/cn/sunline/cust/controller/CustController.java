@@ -341,6 +341,12 @@ public class CustController {
 		if (reqmap.get("odorod") == null) {
 			reqmap.put("odorod", "");
 		}
+		if (reqmap.get("odorod") != null && reqmap.get("odorod") != "") {
+			String odorod = reqmap.get("odorod").toString();
+			if (odorod.contains("[") || odorod.contains("]")) {
+				reqmap.put("odorod",odorod.substring(odorod.indexOf("[")+1, odorod.indexOf("]")));
+			}
+		}
 		Map<String,Object> rspmap = new HashMap<String, Object>();
 		try {
 			rspmap = clict.callClient("ordrmd", reqmap);
