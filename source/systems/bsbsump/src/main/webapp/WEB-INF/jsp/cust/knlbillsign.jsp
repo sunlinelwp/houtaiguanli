@@ -123,6 +123,8 @@
 							<td>
 								<input type="text" class="form-control form-filter input-sm" id="q_status" name="q_status" /> 		
 							</td>
+							<td>
+							</td>
 							<td  colspan="2">
 								<button class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> 查询</button>
 								<button class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> 清空</button>
