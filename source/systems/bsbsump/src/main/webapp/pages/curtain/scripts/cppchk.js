@@ -146,11 +146,13 @@ var Cppchk = function(){
 		                    	var input = {};
 		            			var trandt = $('#check-date').val();
 		            			input.trandt = trandt;
+        		        		$("#myModal").modal('show');
 		            			Sunline.ajaxRouter(
 		            		        	"curtain/dealPay", 
 		            		        	 input,
 		            		        	"POST",
 		            		            function(redata){
+		            		        		$("#myModal").modal('hide');
 		            		        		if(redata.retCode == '0000'){
 		            		        			$('#c_status').text("已清算");
 		            		        			bootbox.alert("清算成功！"); 

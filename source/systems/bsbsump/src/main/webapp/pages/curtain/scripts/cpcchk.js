@@ -147,6 +147,7 @@ var Cpcchk = function(){
 		                    label: "确认",
 		                    className: "blue",
 		                    callback: function() {
+        		        		$("#myModal").modal('show');
 		                    	var input = {};
 		            			var trandt = $('#check-date').val();
 		            			input.trandt = trandt;
@@ -155,6 +156,7 @@ var Cpcchk = function(){
 		            		        	 input,
 		            		        	"POST",
 		            		            function(redata){
+		            		        		$("#myModal").modal('hide');
 		            		        		if(redata.retCode == '0000'){
 		            		        			$('#c_status').text("已清算");
 		            		        			bootbox.alert("清算成功！"); 
