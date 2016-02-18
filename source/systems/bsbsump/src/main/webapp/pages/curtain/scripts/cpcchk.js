@@ -376,11 +376,28 @@ var Cpcchk = function(){
 			});
 		_tranDate = $('#check-date').val();
 	};
+	
+	var addSelect2 = function(){
+		var input = {};
+		Sunline.ajaxRouter("inac/qrinna", input, "POST", function(data) {
+			$("#inacno").select2({
+				data : data.data,
+				formatSelection: function(item){
+					 return item.text;
+				 },
+				 formatResult: function(item){
+					 return item.text;
+				 }
+			});
+		}, function(data) {
+		});
+	}
 	return {
 		init : function(){
 			readFile();
 			handleForm();
 			handlerTable();
+			addSelect2();
 		}
 	}
 }()

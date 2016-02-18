@@ -1,7 +1,9 @@
 package cn.sunline.inac.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -302,6 +304,34 @@ public class InacController {
 		rspmap.put("iTotalDisplayRecords", infos.get("count"));
 		rspmap.put("data",infos.get("billInfos"));
 		logger.info("返回参数=========================="+infos);
+		return rspmap;
+	}
+	
+	/**
+	 * <p>查询内部户账户号与名称 </p>
+	 * 
+	 */
+	@RequestMapping(value ="/qrinna")
+	public Map<String,Object> qrinna(@RequestBody Map<String,Object> reqmap,@ModelAttribute("User") BSBUser user){
+		logger.info("qrinna开始---------------------------"+reqmap);	
+		reqmap.put("userid", user.getUserid());
+		Map<String,Object> rspmap = new HashMap<String, Object>();
+		try {
+			rspmap = clict.callClient("qrinna", reqmap);
+		} catch (SumpException e) {
+			rspmap.put("retCode", e.getErrCode());
+			rspmap.put("retMsg", e.getErrMsg());
+		}
+		List<Map<String,Object>> list =(List<Map<String,Object>>) rspmap.get("inAcctInfo");
+		List<Map<String,Object>> list1 = new ArrayList<Map<String,Object>>();
+		for (Map<String,Object> bankna : list) {
+			Map<String,Object> map1 = new HashMap<String,Object>();
+			map1.put("id", bankna.get("acctno"));
+			map1.put("text", bankna.get("acctna"));
+			list1.add(map1);
+		}
+		rspmap.put("data", list1);
+		logger.info("qrinna结束---------------------------"+reqmap);
 		return rspmap;
 	}
 }
