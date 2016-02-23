@@ -103,11 +103,11 @@ var knlbillsign = function() {
 //										return data;
 //									}
 //								},
-								{
-									"data" : "idtfno", 
-									"sortable" : false,  
-									"searchable" : false
-								},
+//								{
+//									"data" : "idtfno", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
 //								{
 //									"data" : "idtftp", 
 //									"sortable" : false,  
@@ -186,14 +186,14 @@ var knlbillsign = function() {
 					$("input[name='tranam']").val($(nRowA[3]).text());
 					$("input[name='fronsq']").val($(nRowA[4]).text());
 					$("input[name='frondt']").val($(nRowA[5]).text());
-					$("input[name='teleno']").val($(nRowA[9]).text());
+					$("input[name='teleno']").val($(nRowA[7]).text());
 					$("input[name='custac']").attr("readOnly",true);
 					$("input[name='custna']").attr("readOnly",true);
 					$("input[name='fronsq']").attr("readOnly",true);
 					$("input[name='frondt']").attr("readOnly",true);
 					$("input[name='teleno']").attr("readOnly",true);
 					$("input[name='tranam']").attr("readOnly",true);
-					if ($(nRowA[9]).text() == ckstatDict[3].text) {
+					if ($(nRowA[8]).text() == ckstatDict[3].text) {
 						content.html('');						    
 					        $.ajax({
 					            type: "GET",
@@ -206,7 +206,7 @@ var knlbillsign = function() {
 					                	  Metronic.initUniform();
 					                	  try{      
 					                		  if (!Sunline.isNull($(nRowA[4]).text())) {
-					                			  knlordrInfo.init($(nRowA[5]).text(),$(nRowA[9]).text(),$(nRowA[4]).text(),$(nRowA[0]).text());
+					                			  knlordrInfo.init($(nRowA[5]).text(),$(nRowA[8]).text(),$(nRowA[4]).text(),$(nRowA[0]).text());
 					                		  }
 					                	  }catch(e){
 					                		  bootbox.alert("子页面加载失败！");
@@ -230,7 +230,7 @@ var knlbillsign = function() {
 											"");
 									typegrid.submitFilter();
 								});
-					} else if ($(nRowA[9]).text() == ckstatDict[0].text){
+					} else if ($(nRowA[8]).text() == ckstatDict[0].text){
 						$("#editModal").modal('show');	
 
 						$("#editModal").on(
