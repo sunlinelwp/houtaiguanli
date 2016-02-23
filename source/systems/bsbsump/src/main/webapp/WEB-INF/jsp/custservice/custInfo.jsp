@@ -50,6 +50,7 @@
 							<th scope="col">借款记录</th>
 							<th scope="col">投资记录</th>
 							<th scope="col">账户总额</th>
+							<th scope="col">账户余额</th>
 							<th scope="col">可用余额</th>
 							<th scope="col">冻结金额</th>
 							<th scope="col">总收益</th>

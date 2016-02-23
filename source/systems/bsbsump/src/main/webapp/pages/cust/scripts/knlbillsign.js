@@ -65,77 +65,77 @@ var knlbillsign = function() {
 									"sortable" : false,  
 									"searchable" : false
 								},
-								{
-									"data" : "busino", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "brchno", 
-									"sortable" : false,  
-									"searchable" : false
-								},
+//								{
+//									"data" : "busino", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "brchno", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
 								{
 									"data" : "cardno", 
 									"sortable" : false,  
 									"searchable" : false
 								},
-								{
-									"data" : "acctna", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "cacttp", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "crcycd", 
-									"sortable" : false,  
-									"searchable" : false,
-									"render" : function(data, type, full) {
-										for (var i = 0; i < crcycdDict.length; i++) {
-											if (crcycdDict[i].id == data) {
-												return crcycdDict[i].text;
-											}
-										}
-										return data;
-									}
-								},
+//								{
+//									"data" : "acctna", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "cacttp", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "crcycd", 
+//									"sortable" : false,  
+//									"searchable" : false,
+//									"render" : function(data, type, full) {
+//										for (var i = 0; i < crcycdDict.length; i++) {
+//											if (crcycdDict[i].id == data) {
+//												return crcycdDict[i].text;
+//											}
+//										}
+//										return data;
+//									}
+//								},
 								{
 									"data" : "idtfno", 
 									"sortable" : false,  
 									"searchable" : false
 								},
-								{
-									"data" : "idtftp", 
-									"sortable" : false,  
-									"searchable" : false, 
-									"render" : function(data, type, full) {
-										for (var i = 0; i < idtftpDict.length; i++) {
-											if (idtftpDict[i].id == data) {
-												return idtftpDict[i].text;
-											}
-										}
-										return data;
-									}
-								},
+//								{
+//									"data" : "idtftp", 
+//									"sortable" : false,  
+//									"searchable" : false, 
+//									"render" : function(data, type, full) {
+//										for (var i = 0; i < idtftpDict.length; i++) {
+//											if (idtftpDict[i].id == data) {
+//												return idtftpDict[i].text;
+//											}
+//										}
+//										return data;
+//									}
+//								},
 								{
 									"data" : "teleno", 
 									"sortable" : false,  
 									"searchable" : false
 								},
-								{
-									"data" : "ysxxfe", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "reason", 
-									"sortable" : false,  
-									"searchable" : false
-								},
+//								{
+//									"data" : "ysxxfe", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "reason", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
 								{
 									"data" : "ckstat", 
 									"sortable" : false,  
@@ -186,14 +186,14 @@ var knlbillsign = function() {
 					$("input[name='tranam']").val($(nRowA[3]).text());
 					$("input[name='fronsq']").val($(nRowA[4]).text());
 					$("input[name='frondt']").val($(nRowA[5]).text());
-					$("input[name='teleno']").val($(nRowA[14]).text());
+					$("input[name='teleno']").val($(nRowA[9]).text());
 					$("input[name='custac']").attr("readOnly",true);
 					$("input[name='custna']").attr("readOnly",true);
 					$("input[name='fronsq']").attr("readOnly",true);
 					$("input[name='frondt']").attr("readOnly",true);
 					$("input[name='teleno']").attr("readOnly",true);
 					$("input[name='tranam']").attr("readOnly",true);
-					if ($(nRowA[17]).text() == ckstatDict[3].text) {
+					if ($(nRowA[9]).text() == ckstatDict[3].text) {
 						content.html('');						    
 					        $.ajax({
 					            type: "GET",
@@ -206,7 +206,7 @@ var knlbillsign = function() {
 					                	  Metronic.initUniform();
 					                	  try{      
 					                		  if (!Sunline.isNull($(nRowA[4]).text())) {
-					                			  knlordrInfo.init($(nRowA[5]).text(),$(nRowA[17]).text(),$(nRowA[4]).text(),$(nRowA[0]).text());
+					                			  knlordrInfo.init($(nRowA[5]).text(),$(nRowA[9]).text(),$(nRowA[4]).text(),$(nRowA[0]).text());
 					                		  }
 					                	  }catch(e){
 					                		  bootbox.alert("子页面加载失败！");
@@ -230,7 +230,7 @@ var knlbillsign = function() {
 											"");
 									typegrid.submitFilter();
 								});
-					} else if ($(nRowA[17]).text() == ckstatDict[0].text){
+					} else if ($(nRowA[9]).text() == ckstatDict[0].text){
 						$("#editModal").modal('show');	
 
 						$("#editModal").on(

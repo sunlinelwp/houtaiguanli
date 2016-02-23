@@ -81,7 +81,12 @@ var custInfo = function() {
 							"searchable" : false
 						},
 						{
-							"data" : "usable",//可用余额
+							"data" : "usable",//账户余额
+							"sortable" : false,
+							"searchable" : false
+						},
+						{
+							"data" : "acctbl",//可用余额
 							"sortable" : false,
 							"searchable" : false
 						},
