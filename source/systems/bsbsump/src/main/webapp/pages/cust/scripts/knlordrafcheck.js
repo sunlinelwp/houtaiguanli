@@ -156,6 +156,7 @@ var knlordrafcheck = function() {
 //					$("input[name='typecd']", $("#edittypeModal")).val(prodcd);
 					$("#orfbsq").val(q_fronsq);
 					$("#orfbdt").val(q_frondt);
+					$("#odorod").val("");
 					$("#editModal1").modal('show');
 					$("#editModal1").on(
 							"hide.bs.modal",
