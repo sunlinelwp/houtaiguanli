@@ -77,11 +77,16 @@
 							<th width="10%">
 								状态
 							</th>
+							<th width="8%">
+								前置时间
+							</th>
 							<th width="24" colspan="2">
 								 操作
 							</th> 
 						</tr>
 						<tr role="row" class="filter">
+							<td>
+							</td>
 							<td>
 							</td>
 							<td>
@@ -116,9 +121,9 @@
 							<td>
 							</td>
 							<td>
+								<input type="text" class="form-control form-filter input-sm" id="q_status" name="q_status" /> 		
 							</td>
 							<td>
-								<input type="text" class="form-control form-filter input-sm" id="q_status" name="q_status" /> 		
 							</td>
 							<td  colspan="2">
 								<button class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> 查询</button>

@@ -147,6 +147,7 @@ var Cpcchk = function(){
 		                    label: "确认",
 		                    className: "blue",
 		                    callback: function() {
+        		        		$("#myModal").modal('show');
 		                    	var input = {};
 		            			var trandt = $('#check-date').val();
 		            			input.trandt = trandt;
@@ -155,6 +156,7 @@ var Cpcchk = function(){
 		            		        	 input,
 		            		        	"POST",
 		            		            function(redata){
+		            		        		$("#myModal").modal('hide');
 		            		        		if(redata.retCode == '0000'){
 		            		        			$('#c_status').text("已清算");
 		            		        			bootbox.alert("清算成功！"); 
@@ -374,11 +376,28 @@ var Cpcchk = function(){
 			});
 		_tranDate = $('#check-date').val();
 	};
+	
+	var addSelect2 = function(){
+		var input = {};
+		Sunline.ajaxRouter("inac/qrinna", input, "POST", function(data) {
+			$("#inacno").select2({
+				data : data.data,
+				formatSelection: function(item){
+					 return item.text;
+				 },
+				 formatResult: function(item){
+					 return item.text;
+				 }
+			});
+		}, function(data) {
+		});
+	}
 	return {
 		init : function(){
 			readFile();
 			handleForm();
 			handlerTable();
+			addSelect2();
 		}
 	}
 }()

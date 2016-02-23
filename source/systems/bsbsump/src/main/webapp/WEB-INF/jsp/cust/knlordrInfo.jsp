@@ -91,7 +91,7 @@
 										<label class="col-md-3 control-label">订单号</label>
 										<div class="col-md-9">
 											<div>
-												<input type="text" id="ordrid" name="ordrid" readOnly class="form-control input-inline input-medium" maxlength="40" placeholder="输入订单号"onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\W]/g,''))">
+												<input type="text" id="ordrid" name="ordrid" readOnly class="form-control input-inline input-medium" maxlength="40" placeholder="输入订单号">
 											</div>
 										</div>
 									</div>

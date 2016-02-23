@@ -36,5 +36,16 @@ public class CardController {
 		return rspmap;
 	}
 	
+	/**
+	 * 正常解绑卡
+	 */
+	@RequestMapping(value ="/hfcard")
+	public Map<String,Object> hfcard(@RequestBody Map<String,Object> reqmap,@ModelAttribute("User") BSBUser user){
+		reqmap.put("userid", user.getUserid());
+		logger.info("------------------"+reqmap.toString());
+		Map<String,Object> rspmap = clict.callClient("hfcard", reqmap);
+		return rspmap;
+	}
+	
 
 }

@@ -16,6 +16,7 @@
 					<button class="close" data-close="alert"></button>
 					<span>输入交易参数有误</span>
 				</div>
+				<div class="col-md-12">
 				<div class="col-md-3">
 					<div class="form-group">
 						<label class="control-label col-md-4">对账日期</label>
@@ -35,7 +36,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="form-group">
 						<label class="control-label col-md-4">清算账户</label>
 						<div class="input-group col-md-8">
@@ -43,7 +44,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-actions file-action col-md-3">
+				</div>
+				<div class="form-actions file-action col-md-12">
 					<button type="button" class="btn blue" id="submit">导出差错信息</button>
 				</div>
 			</form>

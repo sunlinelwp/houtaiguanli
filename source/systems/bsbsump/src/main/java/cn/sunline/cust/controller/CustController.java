@@ -341,10 +341,10 @@ public class CustController {
 		if (reqmap.get("odorod") == null) {
 			reqmap.put("odorod", "");
 		}
-		if (reqmap.get("odorod") != null && reqmap.get("odorod") != "") {
-			String odorod = reqmap.get("odorod").toString();
-			if (odorod.contains("[") || odorod.contains("]")) {
-				reqmap.put("odorod",odorod.substring(odorod.indexOf("[")+1, odorod.indexOf("]")));
+		if (reqmap.get("scapno") != null && reqmap.get("scapno") != "") {
+			String scapno = reqmap.get("scapno").toString();
+			if (scapno.contains("[") || scapno.contains("]")) {
+				reqmap.put("scapno",scapno.substring(scapno.indexOf("[")+1, scapno.indexOf("]")));
 			}
 		}
 		Map<String,Object> rspmap = new HashMap<String, Object>();
