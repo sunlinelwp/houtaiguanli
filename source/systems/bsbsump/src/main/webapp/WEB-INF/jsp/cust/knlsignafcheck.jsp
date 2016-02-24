@@ -38,15 +38,18 @@
 							<th width="8%">
 								前置日期
 							</th>
+							<!-- 
 							<th width="13%">
 								业务编码
 							</th>
 							<th width="6%">
 								银行行号
 							</th>
+							 -->
 							<th width="6%">
 								银行卡号
 							</th>
+							<!-- 
 							<th width="6%">
 								账户名称
 							</th>
@@ -65,15 +68,18 @@
 							<th width="6%">
 								证件类型
 							</th>
+							 -->
 							<th width="6%">
 								电话号码
 							</th>
+							<!-- 
 							<th width="6%">
 								手续费
 							</th>
 							<th width="6%">
 								审核原因
 							</th>
+							 -->
 							<th width="10%">
 								状态
 							</th>
@@ -96,6 +102,15 @@
 							<td>
 								<input type="text" class="form-control form-filter input-sm" id="q_frondt_sign" name="q_frondt_sign" /> 
 							</td>
+							<!-- 
+							<td>
+							</td>
+							<td>
+							</td>
+							 -->
+							<td>
+							</td>
+							<!-- 
 							<td>
 							</td>
 							<td>
@@ -106,20 +121,17 @@
 							</td>
 							<td>
 							</td>
+							-->
+							<td>
+							</td>
+							<!-- 
 							<td>
 							</td>
 							<td>
 							</td>
 							<td>
 							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
+							 -->
 							<td>
 								<input type="text" class="form-control form-filter input-sm" id="q_status" name="q_status" /> 		
 							</td>

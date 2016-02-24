@@ -60,82 +60,82 @@ var knlsignafcheck = function() {
 									"sortable" : false,  
 									"searchable" : false
 								},
-								{
-									"data" : "busino", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "brchno", 
-									"sortable" : false,  
-									"searchable" : false
-								},
+//								{
+//									"data" : "busino", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "brchno", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
 								{
 									"data" : "cardno", 
 									"sortable" : false,  
 									"searchable" : false
 								},
-								{
-									"data" : "acctna", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "cacttp", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "cactpt", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "crcycd", 
-									"sortable" : false,  
-									"searchable" : false,
-									"render" : function(data, type, full) {
-										for (var i = 0; i < crcycdDict.length; i++) {
-											if (crcycdDict[i].id == data) {
-												return crcycdDict[i].text;
-											}
-										}
-										return data;
-									}
-								},
-								{
-									"data" : "idtfno", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "idtftp", 
-									"sortable" : false,  
-									"searchable" : false, 
-									"render" : function(data, type, full) {
-										for (var i = 0; i < idtftpDict.length; i++) {
-											if (idtftpDict[i].id == data) {
-												return idtftpDict[i].text;
-											}
-										}
-										return data;
-									}
-								},
+//								{
+//									"data" : "acctna", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "cacttp", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "cactpt", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "crcycd", 
+//									"sortable" : false,  
+//									"searchable" : false,
+//									"render" : function(data, type, full) {
+//										for (var i = 0; i < crcycdDict.length; i++) {
+//											if (crcycdDict[i].id == data) {
+//												return crcycdDict[i].text;
+//											}
+//										}
+//										return data;
+//									}
+//								},
+//								{
+//									"data" : "idtfno", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "idtftp", 
+//									"sortable" : false,  
+//									"searchable" : false, 
+//									"render" : function(data, type, full) {
+//										for (var i = 0; i < idtftpDict.length; i++) {
+//											if (idtftpDict[i].id == data) {
+//												return idtftpDict[i].text;
+//											}
+//										}
+//										return data;
+//									}
+//								},
 								{
 									"data" : "teleno", 
 									"sortable" : false,  
 									"searchable" : false
 								},
-								{
-									"data" : "ysxxfe", 
-									"sortable" : false,  
-									"searchable" : false
-								},
-								{
-									"data" : "reason", 
-									"sortable" : false,  
-									"searchable" : false
-								},
+//								{
+//									"data" : "ysxxfe", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
+//								{
+//									"data" : "reason", 
+//									"sortable" : false,  
+//									"searchable" : false
+//								},
 								{
 									"data" : "ckstat", 
 									"sortable" : false,  
@@ -189,7 +189,7 @@ var knlsignafcheck = function() {
 					$("input[name='custna']").attr("readOnly",true);
 					$("input[name='fronsq']").attr("readOnly",true);
 					$("input[name='frondt']").attr("readOnly",true);
-					if ($(nRowA[17]).text() == ckstatDict[3].text || $(nRowA[17]).text() == ckstatDict[1].text) {
+					if ($(nRowA[7]).text() == ckstatDict[3].text || $(nRowA[7]).text() == ckstatDict[1].text) {
 						content.html('');						    
 					        $.ajax({
 					            type: "GET",
@@ -202,7 +202,7 @@ var knlsignafcheck = function() {
 					                	  Metronic.initUniform();
 					                	  try{      
 					                		  if (!Sunline.isNull($(nRowA[3]).text())) {
-					                			  knlordrafcheck.init($(nRowA[4]).text(),$(nRowA[18]).text(),$(nRowA[3]).text(),$(nRowA[0]).text());
+					                			  knlordrafcheck.init($(nRowA[4]).text(),$(nRowA[7]).text(),$(nRowA[3]).text(),$(nRowA[0]).text());
 					                		  }
 					                	  }catch(e){
 					                		  bootbox.alert("子页面加载失败！");
@@ -226,7 +226,7 @@ var knlsignafcheck = function() {
 											"");
 									typegrid.submitFilter();
 								});
-					} else if ($(nRowA[17]).text() == ckstatDict[0].text){
+					} else if ($(nRowA[7]).text() == ckstatDict[0].text){
 						$("#editModal").modal('show');	
 
 						$("#editModal").on(
