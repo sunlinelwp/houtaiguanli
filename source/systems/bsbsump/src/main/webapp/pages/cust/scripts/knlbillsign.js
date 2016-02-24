@@ -283,6 +283,29 @@ var knlbillsign = function() {
 								$(".msg", $('form', $("#editModal"))).text(
 										ret.msg);
 							});
+					if ($("#ckstat").val() != null && $("#ckstat").val() != "" && $("#ckstat").val() == "03") {
+						Sunline.ajaxRouter("cust/sendms", data, 'post',
+								function(ret) {
+									if (ret.ret == "success") {
+										$(".alert-success",
+												$('form', $("#editModal")))
+												.show();
+										$('.alert-danger',
+												$('form', $("#editModal")))
+												.hide();
+										$("#editModal").modal('hide');	
+									} else {
+										$(".alert-success",
+												$('form', $("#editModal")))
+												.hide();
+										$('.alert-danger',
+												$('form', $("#editModal")))
+												.show();
+									}
+									$(".msg", $('form', $("#editModal"))).text(
+											ret.msg);
+								});
+					}
 
 				}
 				);
