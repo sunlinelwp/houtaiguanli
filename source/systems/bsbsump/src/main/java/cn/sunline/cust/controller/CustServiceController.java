@@ -522,4 +522,51 @@ public class CustServiceController {
 		map.put("retCode", "0000");
 		return map;
 	}
+	
+	
+	/***
+	 * @auth zjl
+	 * @date 2016年2月26日17:29:22
+	 * @param reqmap 
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value = "/custTag")
+	public Map<String, Object> custTag(@RequestParam Map<String, Object> reqmap,
+			@ModelAttribute("User") BSBUser user) {
+		logger.debug("------------------查询用户标签开始-----------------"+reqmap);
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (reqmap.get("q_custac") != null && reqmap.get("q_custac") != "") {
+			map.put("custac", reqmap.get("q_custac"));
+		}
+		
+		/*if (reqmap.get("q_phoneNo") != null && reqmap.get("q_phoneNo") != "") {
+			map.put("mobile", reqmap.get("q_phoneNo"));
+		}*/
+		
+		map.put("userid", user.getUserid()); 
+
+		int length = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
+				.get("length")) ? (String) reqmap.get("length") : "10", 10);
+		int start = Integer.parseInt(StringUtils.isNotEmpty((String) reqmap
+				.get("start")) ? (String) reqmap.get("start") : "1", 10);
+		map.put("pageno", start / length + 1);
+		map.put("pagesz", length);
+		
+		Map<String, Object> resmap = new HashMap<String, Object>();
+		resmap = client.callClient("qrytag", map);//接收到返回值
+		resmap.put(
+				"data",
+				resmap.get("tagsinfo") == null ? new ArrayList<Object>() : resmap
+						.get("tagsinfo"));
+		
+		resmap.put("iTotalDisplayRecords", resmap.get("counts") == null ? "0"
+				: resmap.get("counts"));
+		
+		resmap.put("iTotalRecords",
+				resmap.get("counts") == null ? "0" : resmap.get("counts"));
+		
+		logger.debug("-----------------查询用户标签结束-----------------"+resmap);
+		return resmap;
+	}
 }
