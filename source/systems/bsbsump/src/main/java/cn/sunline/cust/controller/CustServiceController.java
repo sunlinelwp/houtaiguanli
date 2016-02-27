@@ -569,4 +569,25 @@ public class CustServiceController {
 		logger.debug("-----------------查询用户标签结束-----------------"+resmap);
 		return resmap;
 	}
+	
+
+	@RequestMapping(value = "/intags")
+	public Map<String, Object> intags(@RequestBody Map<String, Object> reqmap,
+			@ModelAttribute("User") BSBUser user) {
+		logger.debug("------------------新增用户标签开始-----------------"+reqmap);
+		
+		 // 添加运营数据
+		reqmap.put("userid", user.getUserid()); 
+		reqmap.put("target", "1"); 
+		Map<String, Object> resmap = new HashMap<String, Object>();
+		resmap = client.callClient("intags", reqmap);//接收到返回值
+		if(resmap.get("retCode").equals("0000")){
+			//如果成功则添加核心数据
+			reqmap.remove("target");
+			resmap = client.callClient("intags", reqmap);
+		}
+		
+		logger.debug("-----------------新增用户标签结束-----------------"+resmap);
+		return resmap;
+	}
 }

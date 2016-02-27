@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/common/taglib.jsp"%>
-<div class="col-md-12" onclick = "investInfo.clickWindow()">
+<div class="col-md-12">
 	<div class="portlet light">
 		<div class="portlet-title">
 			<div class="caption">
@@ -19,15 +19,10 @@
 					<label class="col-md-3 control-label">电子帐号</label>
 					<div class="input-icon col-md-9">
 						<i class="fa fa-credit-card"></i>
-						<input type="text" id="custac" name="custac" class="form-control input-inline input-medium" maxlength="10" placeholder="输入电子帐号/平台名称">
+						<input type="text" id="custac" name="custac" class="form-control input-inline input-medium"  placeholder="输入电子帐号/平台名称">
 					</div>
 				</div>
 				<div class="form-group col-md-6">
-					<!-- <label class="col-md-3 control-label">手机号码</label>
-					<div class="input-icon col-md-9">
-						<i class="fa fa-credit-card"></i>
-						<input type="text" id="phoneNo" name="phoneNo" class="form-control input-inline input-medium" maxlength="11" placeholder="输入手机号码">
-					</div> -->
 				</div>
 				<div class="form-actions cust-action">
 					<button type="button" class="btn blue" id="submit" onclick="investInfo.queryCust()">查询</button>
@@ -36,18 +31,12 @@
 				<div class="cif-pp"></div>
 			</form>
 			 <div class="table-container">
-			<!-- 	<div class="form-group col-md-6">
-					<label class="col-md-3 control-label">总投入本金</label>
-					<div class="input-icon col-md-9">
-						<span></span>
-					</div>
+ 			 	<div class="table-actions-wrapper">
+					<button id="add_prod_btn"
+						class="btn btn-sm green table-group-action-submit">
+						<i class="fa fa-plus"></i> 新增
+					</button>
 				</div>
-				<div class="form-group col-md-6">
-					<label class="col-md-3 control-label">总收益</label>
-					<div class="input-icon col-md-9">
-						<span></span>
-					</div>
-				</div> -->
 				<table class="table table-striped table-bordered table-hover"
 					id="datatable_prod">
 					<thead>
@@ -65,62 +54,27 @@
 		</div>
 	</div>
 </div>
-<div id="tranModal" class="modal fade bs-modal-sm" tabindex="-1" data-backdrop="static" data-keyboard="false" data-width = "1100">
+<div id="tranModal" class="modal fade bs-modal-sm" tabindex="-1" data-backdrop="static" data-keyboard="false" >
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-		<h4 class="modal-title">投资详细信息</h4>
+		<h4 class="modal-title">新增客户标签</h4>
 	</div>
 	<div class="modal-body">
 		<div class="table-container">
 				<table class="table table-striped table-bordered table-hover" id="cif_tran_ajax">
 					<tr>
-						<td>顺序号</td>
-						<td><span id = "sequen"></span></td>
-						<td>标题</td>
-						<td><span id = "suname"></span></td>
-						<td>投资金额</td>
-						<td><span id = "amount"></span></td>
+						<td>电子账号</td>
+						<td><input type="text" placeholder="输入电子账号"  class="form-control input-inline input-medium valid" name="custna" id="custna"></td>
 					</tr>
 					<tr>
-						<td>还款方式</td>
-						<td><span id = "repsta"></span></td>
-						<td>实际年利率</td>
-						<td><span id = "anrate"></span></td>
-						<td>期限</td>
-						<td><span id = "loterm"></span></td>
-					</tr><tr>
-						<td>发布时间</td>
-						<td><span id = "sttime"></span></td>
-						<td>标的编号</td>
-						<td><span id = "sunumb"></span></td>
-						<td>分录编号</td>
-						<td><span id = "journo"></span></td>
-					</tr><tr>
-						<td>状态</td>
-						<td><span id = "itstat"></span></td>
-						<td>起息日期</td>
-						<td><span id = "begndt"></span></td>
-						<td>到期日期</td>
-						<td><span id = "termdt"></span></td>
-					</tr><tr>
-						<td>预计收益</td>
-						<td><span id = "forpay"></span></td>
-						<td>已到账收益</td>
-						<td><span id = "hasint"></span></td>
-						<td>待收本金</td>
-						<td><span id = "ndrcpr"></span></td>
-					</tr><tr>
-						<td>借据号</td>
-						<td><span id = "lncfno"></span></td>
-						<td>借款时间</td>
-						<td><span id = "lotime"></span></td>
-						<td></td>
-						<td></td>
+						<td>标签号</td>
+						<td><input type="text" placeholder="输入标签号"  class="form-control input-inline input-medium valid" name="tagscd" id="tagscd"></td>
 					</tr>
 				</table>
 			</div>
 	</div>
 	<div class="modal-footer">
+		<button type="button" id="m_save_debt" class="btn blue">保存</button>
 		<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
 	</div>
 </div>
