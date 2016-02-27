@@ -157,6 +157,11 @@ var knlbillsign = function() {
 									"searchable" : false
 								},
 								{
+									"data" : "servtp", 
+									"sortable" : false,  
+									"searchable" : false
+								},
+								{
 									"data" : null,
 									"sortable" : false,
 									"searchable" : false,
@@ -206,7 +211,7 @@ var knlbillsign = function() {
 					                	  Metronic.initUniform();
 					                	  try{      
 					                		  if (!Sunline.isNull($(nRowA[4]).text())) {
-					                			  knlordrInfo.init($(nRowA[5]).text(),$(nRowA[8]).text(),$(nRowA[4]).text(),$(nRowA[0]).text());
+					                			  knlordrInfo.init($(nRowA[5]).text(),$(nRowA[8]).text(),$(nRowA[4]).text(),$(nRowA[0]).text(),$(nRowA[10]).text());
 					                		  }
 					                	  }catch(e){
 					                		  bootbox.alert("子页面加载失败！");

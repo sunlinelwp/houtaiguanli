@@ -6,7 +6,8 @@ var knlordrInfo = function() {
 		allowClear : true,
 		placeholder : "请选择"
 	});
-	var handleTable = function(q_frondt, q_ckstat,q_fronsq,q_custac) {
+	var handleTable = function(q_frondt, q_ckstat,q_fronsq,q_custac, q_servtp) {
+		
 		var grid = new Datatable();
 		var typeurl1 = Sunline.ajaxPath("cust/qrordr"); // URL???
 		var typesendData1 = ["ordrid", "ordram"]; // 主键
@@ -160,6 +161,7 @@ var knlordrInfo = function() {
 //					$("input[name='typecd']", $("#edittypeModal")).val(prodcd);
 					$("#orfbsq").val(q_fronsq);
 					$("#orfbdt").val(q_frondt);
+					$("#servtp").val(q_servtp);  
 					$("#editModal1").modal('show');
 					$("#editModal1").on(
 							"hide.bs.modal",
@@ -285,12 +287,16 @@ var knlordrInfo = function() {
 				var data = {};
 				$.each($("input", editform), function(i, n) {
 					if (n.name != "") {
+						if (n.name == "ordrsq" && (n.value == null || n.value == "")) {
+							n.value = "0";
+						}
 						data[n.name] = n.value;
 						console.info(n.name);
 						console.info(n.value);
 					}
 				});
-				
+
+				console.info(data);
 				var r = confirm('数据提交后将不允许修改，请检查数据！');
 				if (r == false) {
 					return;
@@ -315,8 +321,8 @@ var knlordrInfo = function() {
 	};
 
 	return {
-		init : function(q_frondt, q_ckstat,q_fronsq,q_custac) {
-			handleTable(q_frondt, q_ckstat,q_fronsq,q_custac);
+		init : function(q_frondt, q_ckstat,q_fronsq,q_custac,q_servtp) {
+			handleTable(q_frondt, q_ckstat,q_fronsq,q_custac,q_servtp);
 		}
 	}
 

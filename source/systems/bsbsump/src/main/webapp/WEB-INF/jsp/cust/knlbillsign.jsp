@@ -86,6 +86,9 @@
 							<th width="8%">
 								前置时间
 							</th>
+							<th width="8%">
+								渠道号
+							</th>
 							<th width="24" colspan="2">
 								 操作
 							</th> 
@@ -134,6 +137,8 @@
 							 -->
 							<td>
 								<input type="text" class="form-control form-filter input-sm" id="q_status" name="q_status" /> 		
+							</td>
+							<td>
 							</td>
 							<td>
 							</td>

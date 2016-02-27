@@ -139,13 +139,20 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label">渠道号</label>
 										<div class="col-md-9">
-										   	<input type="text" id="scapno" name="scapno" class="form-control input-inline input-medium" maxlength="4" placeholder="输入渠道号">						
+										   	<input type="text" id="scapno" name="scapno" class="form-control input-inline input-medium" maxlength="4" placeholder="输入渠道号">	
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">订单顺序号</label>
+										<div class="col-md-9">
+										   	<input type="text" id="ordrsq" name="ordrsq" class="form-control input-inline input-medium" placeholder="输入订单顺序号">	
 										</div>
 									</div>
 								</div>
 								<div class="modal-footer">
 									<input type="hidden" id="orfbsq" name="orfbsq" readOnly class="form-control input-inline input-medium" maxlength="40" >
 									<input type="hidden" id="orfbdt" name="orfbdt" readOnly class="form-control input-inline input-medium" maxlength="20" >
+									<input type="hidden" id="servtp" name="servtp" class="form-control input-inline input-medium" >	
 									<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
 									<button type="submit" class="btn blue" id="btn_save_edit1">保存</button>
 								</div>
@@ -155,7 +162,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>		
 	<!-- End: life time stats -->
 </div>
 <script type="text/javascript" src="${ctx}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
