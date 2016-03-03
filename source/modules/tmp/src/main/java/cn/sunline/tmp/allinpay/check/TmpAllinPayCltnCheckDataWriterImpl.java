@@ -1,7 +1,6 @@
 package cn.sunline.tmp.allinpay.check;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,13 +22,10 @@ public class TmpAllinPayCltnCheckDataWriterImpl implements DataWriter {
 	@Override
 	public void writerDBData(List<String[]> datas, String inputDate) {
 		List<TmpAllinPayCltnCheck> ls = new LinkedList<>();
-		List<String[]> dataArray = new ArrayList<>();
+		long i = 0L;
 		for (String[] data : datas) {
 			
-			if ("0".equals(data[3])) {
-				//代付
-				dataArray.add(data);
-			} else if ("1".equals(data[3])) {
+			if ("1".equals(data[3])) {
 				//代扣，代收
 				TmpAllinPayCltnCheck cltn = new TmpAllinPayCltnCheck();
 				cltn.setCheckDate(inputDate);
@@ -60,16 +56,26 @@ public class TmpAllinPayCltnCheckDataWriterImpl implements DataWriter {
 				cltn.setChkStatus(chkStatus);
 				cltn.setSignStatus("0"); //验签结果 暂定为0-通过
 				cltn.setCheckStatus("N");
-				
+
+				cltn.setTlCardno(data[14]);
+				if (data[15] == null || "".equals(data[15])) {
+					cltn.setBankTranam(BigDecimal.ZERO);
+				} else {
+					cltn.setBankTranam(NumberTools.string2BigDecimalMill(data[15]));
+				}
+				cltn.setBankCardno(data[16]);
+				cltn.setTimetm(System.currentTimeMillis()+i);
+
+				i++;
 				ls.add(cltn);
 				
 			}
 			
 		}
 		//将代付时候的数据插入到代付的表中
-		if (dataArray.size() > 0) {
-			tmpAllinPayPayCheckDataWriter.writerDBData(dataArray, inputDate);
-		}
+//		if (dataArray.size() > 0) {
+//			tmpAllinPayPayCheckDataWriter.writerDBData(dataArray, inputDate);
+//		}
 		if (ls.size() > 0) {
 			tmpAllinPayCltnCheckService.saveTmpAllinPayCltnCheck(ls);
 		}

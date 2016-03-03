@@ -14,6 +14,16 @@ public class TmpAllinPayCltnCheckPK implements Serializable {
 	private String merchantDt;
 	
 	private String billNo;
+	
+	private long timetm;
+
+	public long getTimetm() {
+		return timetm;
+	}
+
+	public void setTimetm(long timetm) {
+		this.timetm = timetm;
+	}
 
 	public String getCheckDate() {
 		return checkDate;

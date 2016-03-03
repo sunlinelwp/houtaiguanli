@@ -290,6 +290,21 @@ var Apcpay = function(){
 			            	    return data;
 			            	}
 			            },{ 
+			            	"data": "tlCardno",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
+			            	"data": "bankTranam",
+			            	"sortable": false,
+			            	"searchable": false,
+			            	"render" : function(data,type,full){
+			            		return formartM(data+"");
+			            	}
+			            },{ 
+			            	"data": "bankCardno",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
 			            	"data": "checkStatus",
 			            	"sortable": false,
 			            	"searchable": false,

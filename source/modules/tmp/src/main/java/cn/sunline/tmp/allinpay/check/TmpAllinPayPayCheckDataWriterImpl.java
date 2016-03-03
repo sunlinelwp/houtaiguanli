@@ -1,7 +1,6 @@
 package cn.sunline.tmp.allinpay.check;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class TmpAllinPayPayCheckDataWriterImpl implements DataWriter{
 	@Override
 	public void writerDBData(List<String[]> datas, String inputDate) {
 		List<TmpAllinPayPayCheck> ls = new LinkedList<>();
-		List<String[]> dataArray = new ArrayList<>();
+		long i = 0L;
 		for (String[] data : datas) {
 			
 			if ("0".equals(data[3])) {
@@ -57,16 +56,20 @@ public class TmpAllinPayPayCheckDataWriterImpl implements DataWriter{
 				pay.setSignStatus("0");
 				pay.setCheckStatus("N");
 				
+				pay.setTlCardno(data[14]);
+				if (data[15] == null || "".equals(data[15])) {
+					pay.setBankTranam(BigDecimal.ZERO);
+				} else {
+					pay.setBankTranam(NumberTools.string2BigDecimalMill(data[15]));
+				}
+				pay.setBankCardno(data[16]);
+				pay.setTimetm(System.currentTimeMillis()+i);
+
+				i++;
 				ls.add(pay);
-			} else if ("1".equals(data[3])) {
-				dataArray.add(data);
 			}
-			
 		}
-		//将代扣时候的数据插入到代扣的表中
-		if (dataArray.size() > 0) {
-			tmpAllinPayCltnCheckDataWriter.writerDBData(dataArray, inputDate);
-		}
+
 		if (ls.size() > 0) {
 			tmpAllinPayPayCheckService.saveTmpAllinPayPayCheck(ls);
 		}

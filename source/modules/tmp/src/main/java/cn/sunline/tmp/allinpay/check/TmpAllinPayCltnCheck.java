@@ -51,6 +51,43 @@ public class TmpAllinPayCltnCheck {
 	private String tlStatus;//通联状态
 	@Column(name = "key_element")
 	private String keyElement;//关键要素
+
+	@Column(name = "tl_cardno")
+	private String tlCardno;//通联交易卡号
+	
+	@Column(name = "bank_tranam")
+	private BigDecimal bankTranam;//行内交易金额
+	
+	@Column(name = "bank_cardno")
+	private String bankCardno;//行内交易卡号
+
+	@Id
+	@Column(name = "timetm")
+	private long timetm;//时间戳
+	public String getTlCardno() {
+		return tlCardno;
+	}
+	public void setTlCardno(String tlCardno) {
+		this.tlCardno = tlCardno;
+	}
+	public BigDecimal getBankTranam() {
+		return bankTranam;
+	}
+	public void setBankTranam(BigDecimal bankTranam) {
+		this.bankTranam = bankTranam;
+	}
+	public String getBankCardno() {
+		return bankCardno;
+	}
+	public void setBankCardno(String bankCardno) {
+		this.bankCardno = bankCardno;
+	}
+	public long getTimetm() {
+		return timetm;
+	}
+	public void setTimetm(long timetm) {
+		this.timetm = timetm;
+	}
 	public String getKeyElement() {
 		return keyElement;
 	}
