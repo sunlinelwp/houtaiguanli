@@ -604,7 +604,7 @@ public class CustServiceController {
 		if(resmap.get("retCode").equals("0000")){
 			//如果成功则删除核心数据
 			reqmap.remove("target");
-			resmap = client.callClient("intags", reqmap);
+			resmap = client.callClient("detags", reqmap);
 		}
 		
 		logger.debug("-----------------删除用户标签结束-----------------"+resmap);

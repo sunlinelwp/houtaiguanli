@@ -25,7 +25,7 @@
 				<div class="form-group col-md-6">
 				</div>
 				<div class="form-actions cust-action">
-					<button type="button" class="btn blue" id="submit" onclick="investInfo.queryCust()">查询</button>
+					<button type="button" class="btn blue" id="submit" onclick="custtag.queryCust()">查询</button>
 					<button type="button" class="btn gray" id="cancle">清空</button>
 				</div>
 				<div class="cif-pp"></div>
@@ -45,6 +45,7 @@
 							<th scope="col">电子账号</th>
 							<th scope="col">平台名称</th>
 							<th scope="col">标签</th>
+							<th scope="col">操作</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -81,6 +82,6 @@
 <script src="${ctx}/pages/custservice/scripts/custtag.js"></script>
 <script>
 	jQuery(document).ready(function() {    
-		investInfo.init();
+		custtag.init();
 	});
 </script>

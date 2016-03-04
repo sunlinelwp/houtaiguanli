@@ -1,5 +1,26 @@
-var investInfo = function() {
+var custtag = function() {
 	var prodgrid = new Datatable();
+	var editForm = function(nRowA){
+		bootbox.confirm("是否确定删除？", function(result) {
+        	if(!result){
+        		return;
+        	}else{
+        		var input  = {};
+        		input.custac = $(nRowA[1]).text();
+        		input.tagscd = $(nRowA[3]).text();
+        		Sunline.ajaxRouter("custService/detags", input, "POST", function(data) {
+        			if(data.retCode=="0000"){
+        		       	submitInfo();
+        			}else{
+        				bootbox.alert("删除失败，"+data.retMsg);
+        			}
+        		}, function(data) {
+        		});
+        	}
+		});
+		return false;
+	
+	};
 	var handleTable = function(){
 		var i = 0;
 		prodgrid.setAjaxParam("custac","");
@@ -35,10 +56,23 @@ var investInfo = function() {
 									"data" : "tagscd",
 									"sortable" : false,
 									"searchable" : false
-								}							
+								},
+								{
+									"data" : "tagscd",
+									"sortable" : false,
+									"searchable" : false,
+									"render" : function(data, type, full) {
+										if(!Sunline.isNull(data)){
+											return "<a class='edit' href='javascript:;' data-src='" + data + " data-value="+i+"'>删除</a>";
+										}
+										return "";
+									}
+								}						
 								]
 					}
 				});
+		var sendData = ["custac","tagscd"];
+		prodgrid.bindTableEdit(sendData,editForm);
 	       }
 
 	//查询
