@@ -47,6 +47,11 @@ var custtag = function() {
 									"sortable" : false,
 									"searchable" : false
 									
+								},{
+									"data" : "idtfno",
+									"sortable" : false,
+									"searchable" : false
+									
 								},
 								{
 									"data" : "custpt",

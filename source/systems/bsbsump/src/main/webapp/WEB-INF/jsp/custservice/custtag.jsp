@@ -50,6 +50,7 @@
 						<tr role="row" class="heading">
 							<th scope="col">客户姓名</th>
 							<th scope="col">电子账号</th>
+							<th scope="col">证件号码</th>
 							<th scope="col">平台名称</th>
 							<th scope="col">标签</th>
 							<th scope="col">操作</th>
