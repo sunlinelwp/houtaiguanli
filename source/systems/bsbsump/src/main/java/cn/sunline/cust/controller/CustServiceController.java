@@ -540,6 +540,10 @@ public class CustServiceController {
 			map.put("custac", reqmap.get("q_custac"));
 		}
 		
+		if (reqmap.get("q_idtfno") != null && reqmap.get("q_idtfno") != "") {
+			map.put("idtfno", reqmap.get("q_idtfno"));
+		}
+		
 		/*if (reqmap.get("q_phoneNo") != null && reqmap.get("q_phoneNo") != "") {
 			map.put("mobile", reqmap.get("q_phoneNo"));
 		}*/

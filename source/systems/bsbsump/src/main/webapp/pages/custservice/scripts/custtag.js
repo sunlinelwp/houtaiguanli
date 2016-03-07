@@ -24,6 +24,7 @@ var custtag = function() {
 	var handleTable = function(){
 		var i = 0;
 		prodgrid.setAjaxParam("custac","");
+		prodgrid.setAjaxParam("idtfno","");
 		var produrl = Sunline.ajaxPath("custService/custTag");
 		prodgrid.init({
 					src : $("#datatable_prod"),
@@ -81,6 +82,7 @@ var custtag = function() {
 			return;
 		}
 		prodgrid.setAjaxParam("q_custac",$('#custac').val());
+		prodgrid.setAjaxParam("q_idtfno",$('#idtfno').val());
 		prodgrid.submitFilter();
 	}
 	var click = function(){

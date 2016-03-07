@@ -23,6 +23,13 @@
 					</div>
 				</div>
 				<div class="form-group col-md-6">
+				<label class="col-md-3 control-label">证件号码</label>
+					<div class="input-icon col-md-9">
+						<i class="fa fa-credit-card"></i>
+						<input type="text" id="idtfno" name="idtfno" class="form-control input-inline input-medium"  placeholder="输入证件号码">
+				</div>
+				</div>
+				<div class="form-group col-md-6">
 				</div>
 				<div class="form-actions cust-action">
 					<button type="button" class="btn blue" id="submit" onclick="custtag.queryCust()">查询</button>
