@@ -94,6 +94,10 @@ var custtag = function() {
 		$('#add_prod_btn').bind("click", function() {
 			$("#tranModal").modal('show');
 		});
+		$('#cancle').bind("click", function() {
+			$("#custac").val('');
+			$("#idtfno").val('');
+		});
 		$('#m_save_debt').bind("click", function() {
 			var input  = {};
 			input.custac = $("#custna").val();
