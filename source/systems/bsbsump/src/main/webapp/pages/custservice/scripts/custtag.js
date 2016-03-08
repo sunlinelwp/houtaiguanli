@@ -7,7 +7,7 @@ var custtag = function() {
         	}else{
         		var input  = {};
         		input.custac = $(nRowA[1]).text();
-        		input.tagscd = $(nRowA[3]).text();
+        		input.tagscd = $(nRowA[4]).text();
         		Sunline.ajaxRouter("custService/detags", input, "POST", function(data) {
         			if(data.retCode=="0000"){
         		       	submitInfo();
