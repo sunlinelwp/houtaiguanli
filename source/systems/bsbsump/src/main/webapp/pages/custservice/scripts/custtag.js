@@ -105,9 +105,9 @@ var custtag = function() {
 			Sunline.ajaxRouter("custService/intags", input, "POST", function(data) {
 				if(data.retCode=="0000"){
 					bootbox.alert("新增成功！");
+					$("#custna").val('');
+					$("#tagscd").val('');
 			       	$("#tranModal").modal('hide');
-					$("#custac").val('');
-					$("#idtfno").val('');
 			       	submitInfo();
 				}else{
 					bootbox.alert("新增失败，"+data.retMsg+"！");
