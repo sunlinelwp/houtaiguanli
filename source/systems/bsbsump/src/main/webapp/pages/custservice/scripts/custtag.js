@@ -106,6 +106,8 @@ var custtag = function() {
 				if(data.retCode=="0000"){
 					bootbox.alert("新增成功！");
 			       	$("#tranModal").modal('hide');
+					$("#custac").val('');
+					$("#idtfno").val('');
 			       	submitInfo();
 				}else{
 					bootbox.alert("新增失败，"+data.retMsg+"！");
