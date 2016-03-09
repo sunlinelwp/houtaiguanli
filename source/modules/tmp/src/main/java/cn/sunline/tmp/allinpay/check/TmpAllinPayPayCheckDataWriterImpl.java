@@ -39,7 +39,6 @@ public class TmpAllinPayPayCheckDataWriterImpl implements DataWriter{
 				} else {
 					pay.setTransAmt(NumberTools.string2BigDecimalMill(data[5]));
 				}
-				pay.setTransAmt(NumberTools.string2BigDecimalMill(data[5]));
 				if (data[6] == null || "".equals(data[6])) {
 					pay.setFeeAmt(BigDecimal.ZERO);
 				} else {

@@ -305,6 +305,10 @@ var Apcpay = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
+			            	"data": "timetm",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
 			            	"data": "checkStatus",
 			            	"sortable": false,
 			            	"searchable": false,
@@ -361,6 +365,7 @@ var Apcpay = function(){
 					var merchantDt = $(row[2]).text();
 					var checkDate = $(row[1]).text();
 					var billno = $(row[3]).text();
+					var timetm = $(row[14]).text();//唯一标识符
 					var rowData = {};
 					rowData.tranam = tranam;
 					rowData.transq = transq;
@@ -370,6 +375,7 @@ var Apcpay = function(){
 					rowData.merchantDt = merchantDt;
 					rowData.checkDate = checkDate;
 					rowData.chkStatus = chkStatus;
+					rowData.timetm = timetm;
 					data.push(rowData);
 					//debtDeal(rows[i].children());
 				}

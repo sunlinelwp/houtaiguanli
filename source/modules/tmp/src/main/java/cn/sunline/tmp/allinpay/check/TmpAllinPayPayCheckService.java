@@ -27,7 +27,7 @@ public interface TmpAllinPayPayCheckService {
 	
 	boolean checkIsExitByCheckDate(String checkDate);
 	
-	int updateStatus(String checkDate , String merchantDt , String cpSeqno , String checkStatus);
+	int updateStatus(String checkDate , String merchantDt , String cpSeqno , String checkStatus, long timetm);
 	
 	int upHeadCheckStatus(String checkDate,String checkStatus);
 	

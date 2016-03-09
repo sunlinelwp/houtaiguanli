@@ -23,7 +23,7 @@ public interface TmpAllinPayCltnCheckService {
 	 */
 	int saveTmpAllinPayCltnCheck(List<TmpAllinPayCltnCheck> entity);
 	
-	int updateStatus(String checkDate ,String merchantDt, String billNo , String checkStatus);
+	int updateStatus(String checkDate ,String merchantDt, String billNo , String checkStatus,long timetm);
 	
 	int upHeadCheckStatus(String checkDate,String checkStatus);
 	

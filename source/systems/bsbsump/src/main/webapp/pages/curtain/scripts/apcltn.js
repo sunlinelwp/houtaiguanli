@@ -308,6 +308,10 @@ var Apcltn = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
+			            	"data": "timetm",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
 			            	"data": "checkStatus",
 			            	"sortable": false,
 			            	"searchable": false,
@@ -349,16 +353,18 @@ var Apcltn = function(){
 				var acctno = inacno;//通联渠道清算账户
 				var chkStatus = _formartDict(chkStatusDict,$(row[8]).text());
 				var merchantDt = $(row[3]).text();
-				var billNo = $(row[4]).text();
+				var billno = $(row[4]).text();
 				var checkDate = $(row[1]).text();
+				var timetm = $(row[13]).text();
 				var rowData = {};
 				rowData.tranam = tranam;
 				rowData.acctno = acctno;
 				rowData.toacct = toacct;
 				rowData.merchantDt = merchantDt;
-				rowData.billNo = billNo;
+				rowData.billno = billno;
 				rowData.checkDate = checkDate;
 				rowData.chkStatus = chkStatus;
+				rowData.timetm = timetm;
 				data.push(rowData);
 				//debtDeal(rows[i].children());
 			}
