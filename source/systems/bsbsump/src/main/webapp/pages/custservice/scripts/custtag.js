@@ -1,4 +1,17 @@
 var custtag = function() {
+	var tagsnoDict=Sunline.getDict("tagsno");
+	
+	var formartDict = function(dict,value){
+		for(var i=0 ; i<dict.length ; i++){
+			if(value == dict[i].dictId){
+				return dict[i].dictName;
+			}
+			if(value == dict[i].dictName){
+				return dict[i].dictId;
+			}
+		}
+		return value;
+	};
 	var prodgrid = new Datatable();
 	var editForm = function(nRowA){
 		bootbox.confirm("是否确定删除？", function(result) {
@@ -7,7 +20,7 @@ var custtag = function() {
         	}else{
         		var input  = {};
         		input.custac = $(nRowA[1]).text();
-        		input.tagscd = $(nRowA[4]).text();
+        		input.tagscd = formartDict(tagsnoDict,$(nRowA[4]).text());
         		Sunline.ajaxRouter("custService/detags", input, "POST", function(data) {
         			if(data.retCode=="0000"){
         		       	submitInfo();
@@ -61,7 +74,15 @@ var custtag = function() {
 								{
 									"data" : "tagscd",
 									"sortable" : false,
-									"searchable" : false
+									"searchable" : false,
+					            	"render" : function(data,type,full){
+					            		for(var i=0 ; i<tagsnoDict.length ; i++){
+					            			if(data == tagsnoDict[i].dictId){
+					            				return tagsnoDict[i].dictName;
+					            			}
+					            		}
+					            		return data;
+					            	}
 								},
 								{
 									"data" : "tagscd",
@@ -106,7 +127,7 @@ var custtag = function() {
 				if(data.retCode=="0000"){
 					bootbox.alert("新增成功！");
 					$("#custna").val('');
-					$("#tagscd").val('');
+					$("#tagscd").select2("val","");
 			       	$("#tranModal").modal('hide');
 			       	submitInfo();
 				}else{
@@ -115,6 +136,16 @@ var custtag = function() {
 			}, function(data) {
 			});
 			return false;
+		});
+		
+		$("#tagscd").select2({
+			data : tagsnoDict,
+			formatSelection: function(item){
+				return item.dictName;
+			},
+		    formatResult: function(item){
+				return item.dictName;
+			}
 		});
 	}
 	return {
