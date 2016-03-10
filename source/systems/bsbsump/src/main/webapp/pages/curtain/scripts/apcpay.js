@@ -234,7 +234,10 @@ var Apcpay = function(){
 			            },{ 
 			            	"data": "acctno",
 			            	"sortable": false,
-			            	"searchable": false
+			            	"searchable": false,
+			            	"render" : function(data,type,full){
+			            		return "<a onclick='' href='#'>"+acctno+"</a>";
+			            	}
 			            },{ 
 			            	"data": "transAmt",
 			            	"sortable": false,
@@ -518,7 +521,7 @@ var Apcpay = function(){
 			readFile();
 			handleForm();
 			handlerTable();
-			addSelect2();
+//			addSelect2();
 		}
 	}
 }()

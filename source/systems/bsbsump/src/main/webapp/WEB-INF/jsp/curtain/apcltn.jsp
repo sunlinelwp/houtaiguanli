@@ -39,7 +39,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-4">清算账户</label>
 						<div class="input-group col-md-8">
-							<input id="inacno" name="inacno" class="form-control input-inline" placeholder="清算账户"/>
+							<input id="inacno" name="inacno" class="form-control input-inline" placeholder="清算账户" value="900101300102000002" readOnly = "readOnly"/>
 						</div>
 					</div>
 				</div>
