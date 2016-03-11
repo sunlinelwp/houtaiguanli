@@ -37,6 +37,9 @@ public class UpcnzwController {
 		if (reqmap.get("tranam") != null && !"".equals(reqmap.get("tranam"))) {
 			reqmap.put("tranam", reqmap.get("tranam"));
 		}
+		if (reqmap.get("coresq") != null && !"".equals(reqmap.get("coresq"))) {
+			reqmap.put("coresq", reqmap.get("coresq"));
+		}
 		System.out.println("----------------------"+reqmap);
 		Map<String,Object> rspmap = new HashMap<String, Object>();
 		try{
