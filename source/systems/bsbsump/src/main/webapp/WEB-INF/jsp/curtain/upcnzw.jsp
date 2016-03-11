@@ -31,6 +31,15 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label">交易顺序号:</label>
+						<div class="input-icon">
+							<i class="fa fa-pencil"></i>
+							<input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="可以为空" id="coresq" name="coresq"/>
+						</div>
+					</div>
+				</div>
 				<div class="padd"></div>
 				<div class="form-actions intran-action">
 					<button type="button" class="btn blue" id="submit">确认</button>
