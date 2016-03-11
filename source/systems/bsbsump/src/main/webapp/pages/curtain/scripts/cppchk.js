@@ -496,7 +496,7 @@ var Cppchk = function(){
 			readFile();
 			handleForm();
 			handlerTable();
-//			addSelect2();
+			addSelect2();
 		}
 	}
 }()

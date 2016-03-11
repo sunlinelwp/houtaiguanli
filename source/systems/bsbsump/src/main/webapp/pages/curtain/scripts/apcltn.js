@@ -418,7 +418,7 @@ var Apcltn = function(){
 			readFile();
 			handleForm();
 			handlerTable();
-//			addSelect2();
+			addSelect2();
 		}
 	}
 }()
