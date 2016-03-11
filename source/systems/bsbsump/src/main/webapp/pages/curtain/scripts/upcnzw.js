@@ -9,6 +9,7 @@ var Upcnzw = function(){
 			 var input={};
              input.acctno =$("#acctno").val();
              input.tranam = $("#tranam").val();
+             input.coresq = $("#coresq").val();
          	Sunline.ajaxRouter(
          	"upcntain/upcnsj", 
          	 input,
@@ -23,6 +24,7 @@ var Upcnzw = function(){
         		bootbox.alert(info, function() {
         			$("#acctno").val('');
                     $("#tranam").val('');
+                    $("#coresq").val('');
                 }); 
          	},
          	function(redata){
@@ -36,6 +38,7 @@ var Upcnzw = function(){
 		$("#cancle").click(function(){
 			$("#acctno").val('');
             $("#tranam").val('');
+            $("#coresq").val('');
 		});
 	
 	};
