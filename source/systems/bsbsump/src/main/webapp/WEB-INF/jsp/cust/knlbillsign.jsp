@@ -16,9 +16,9 @@
 				<div class="table-actions-wrapper">
 					<span>
 					</span>
-					<!-- 
-					 <button id="add_btn" class="btn btn-sm green table-group-action-submit"><i class="fa fa-plus"></i> 新增</button>
-					 -->
+					
+					 <button id="download" class="btn btn-sm green table-group-action-submit"><i class="fa fa-plus"></i> 导出数据</button>
+					
 				</div>
 				<table class="table table-striped table-bordered table-hover" id="datatable_ajax">
 					<thead>

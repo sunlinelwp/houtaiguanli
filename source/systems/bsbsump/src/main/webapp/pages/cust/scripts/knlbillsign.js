@@ -350,6 +350,40 @@ var knlbillsign = function() {
 //
 //				}
 //				);
+		
+		//下载
+		$('#download').click(function(){
+			$('#download').attr("disabled",true);
+			var input = {};
+			input.frondt = $('#q_frondt_sign').val();
+			input.status = $('#q_status').val();
+			Sunline.ajaxRouter(
+		        	"cust/getSignFile",
+		        	 input,
+		        	"POST",
+		            function(redata){
+		        		$('#download').attr("disabled",false);
+		        		if(redata.retCode == '0000'){
+		        			_filename = redata.fileName;
+		        			bootbox.confirm("文件["+redata.fileName+"]已生成，确定下载文件？",function(res){
+		        				if (!res) {
+		        					return;
+		        				}
+		        				window.location.href = Sunline.getBasePath() + '/rest/download/downLoadFile?path=' + redata.filePath + redata.fileName;
+		        			});
+		        		} else {
+		        			bootbox.alert(redata.retMsg);
+		        		}
+		        	},
+		        	function(redata){
+		        		$('#download').attr("disabled",false);
+		        		console.info(redata);
+		        		bootbox.alert("网络异常，请重试！"); 
+		        	},
+		        	"json",
+		        	false); 
+		});
+		
 				$(".filter-cancel").click(function(){
 					$("input[name='q_frondt_sign']").select2("val","");
 					$("input[name='q_status']").select2("val","");

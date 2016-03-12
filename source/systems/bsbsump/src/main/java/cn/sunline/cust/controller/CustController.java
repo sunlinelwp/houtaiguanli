@@ -1,11 +1,13 @@
 package cn.sunline.cust.controller;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -22,6 +24,20 @@ import java.util.Map;
 
 
 
+
+
+
+
+
+
+
+
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.ss.usermodel.Cell;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +51,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import cn.sunline.client.ClientImpl;
+import cn.sunline.dict.ApSysDict;
+import cn.sunline.dict.ApSysDictService;
 import cn.sunline.domain.endauth.BSBUser;
 import cn.sunline.exception.SumpException;
+import cn.sunline.file.ExcelEntity;
+import cn.sunline.file.ExcelUtil;
+import cn.sunline.utils.DateTools;
 
 @Controller("CustController")
 @RequestMapping(value = "/rest/cust")
@@ -45,6 +66,9 @@ import cn.sunline.exception.SumpException;
 public class CustController {
 	@Autowired
 	ClientImpl clict;
+	@Autowired
+	private ApSysDictService apSysDictService;
+
 	private static Logger logger = LoggerFactory.getLogger(CustController.class);
 	
 	/*
@@ -466,5 +490,230 @@ public class CustController {
 		remap.put("iTotalDisplayRecords", rspmap.get("recdsm"));
 		remap.put("data", rspmap.get("selBindCardInfo"));
 		return remap;
+	}
+	
+	/**
+	 * 生成大额提现登记薄文件
+	 * 1.查询第一数据，获取总记录数和首页记录
+	 * 2.根据总记录从第二页开始循环查询记录
+	 * 3.写文件
+	 * 4.请求重定向至文件，下载
+	 * @param reqmap
+	 * @param user
+	 * @param response
+	 * @throws InterruptedException 
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/getSignFile")
+	public Map<String, Object> getSignFile(HttpServletRequest request, @RequestBody Map<String,Object> reqmap , @ModelAttribute("User") BSBUser user,HttpServletResponse response) {
+		String path = request.getSession().getServletContext().getRealPath("download")+File.separator;
+		String fileName = "signinfo_"+DateTools.getNow("yyyyMMddHHmmss")+".xlsx";
+		Map<String,Object> map = new HashMap<String, Object>();
+		
+		List<List<ExcelEntity>> cells = new ArrayList<List<ExcelEntity>>();
+		logger.debug("------------------查询万份收益及七日年化表开始-----------------");
+		map.put("userid", user.getUserid()); //设置操作柜员	
+		map.put("frondt", reqmap.get("frondt") == null ? null : reqmap
+				.get("frondt"));
+		map.put("status", reqmap.get("status") == null ? null : reqmap
+				.get("status"));
+		map.put("pageno", "1");
+		map.put("pagect", "10");
+		Map<String, Object> resmap = new HashMap<String, Object>();
+		resmap = clict.callClient("qrhpay", map);
+		resmap.put("data",resmap.get("bsInfs") == null ? new ArrayList<Object>() : resmap.get("bsInfs"));
+		resmap.put("iTotalDisplayRecords",resmap.get("counts") == null ? "0" : resmap.get("counts"));
+		resmap.put("iTotalRecords",resmap.get("counts") == null ? "0" : resmap.get("counts"));
+		
+		List<ApSysDict> aplist=apSysDictService.getDictsByDictType("E_CKSTAT");
+		
+		List<Map<String,Object>> list = (List<Map<String, Object>>) resmap.get("bsInfs");
+		if(list.isEmpty()){
+			logger.debug("是否为空===================="+"YES");
+		} else {
+			logger.debug("是否为空===================="+"NO");
+			for(Map<String,Object> bill : list){
+				List<ExcelEntity> row = new ArrayList<ExcelEntity>();
+				ExcelEntity e1 = new ExcelEntity();
+				e1.setData(bill.get("custac").toString());
+				e1.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e1);
+				
+				ExcelEntity e2 = new ExcelEntity();
+				e2.setData(bill.get("custna").toString());
+				e2.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e2);
+				
+				ExcelEntity e3 = new ExcelEntity();
+				e3.setData(bill.get("brchna").toString());
+				e3.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e3);
+				
+				ExcelEntity e4 = new ExcelEntity();
+				String tranam1 = String.format("%.2f", bill.get("tranam"));
+				e4.setData(tranam1.toString());
+				e4.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e4);
+				
+				ExcelEntity e5 = new ExcelEntity();
+				e5.setData(bill.get("fronsq").toString());
+				e5.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e5);
+
+//				ExcelEntity e6 = new ExcelEntity();
+//				for (int i = 0; i < aplist.size(); i++) {
+//					if (aplist.get(i).getDictId().equals(bill.get("intrst").toString())) {
+//						e6.setData(aplist.get(i).getDictName());
+//					}
+//				}
+//				e6.setDataType((short) Cell.CELL_TYPE_STRING);
+//				row.add(e6);
+				
+				ExcelEntity e6 = new ExcelEntity();
+				e6.setData(bill.get("frondt").toString());
+				e6.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e6);
+				
+				ExcelEntity e7 = new ExcelEntity();
+				e7.setData(bill.get("cardno").toString());
+				e7.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e7);
+				
+				ExcelEntity e8 = new ExcelEntity();
+				e8.setData(bill.get("teleno").toString());
+				e8.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e8);
+				
+				ExcelEntity e9 = new ExcelEntity();
+				for (int i = 0; i < aplist.size(); i++) {
+					if (aplist.get(i).getDictId().equals(bill.get("ckstat").toString())) {
+						e9.setData(aplist.get(i).getDictName());
+					}
+				}
+				e9.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e9);
+				
+				ExcelEntity e10 = new ExcelEntity();
+				e10.setData(bill.get("frontm").toString());
+				e10.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e10);
+				
+				ExcelEntity e11 = new ExcelEntity();
+				e11.setData(bill.get("servtp").toString());
+				e11.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e11);
+				cells.add(row);
+			}
+			int amount = (int) Math.ceil(Integer.parseInt(resmap.get("counts").toString())/10.0);
+			if(amount>1){
+				for(int i=2;i<=amount;i++){
+					map.put("pageno", i);
+					resmap = clict.callClient("qrhpay", map);
+					list = (List<Map<String, Object>>) resmap.get("bsInfs");
+					if(list == null){
+						logger.debug("是否为空===================="+"YES");
+					} else {
+						logger.debug("是否为空===================="+"NO");
+						for(Map<String,Object> bill : list){
+							List<ExcelEntity> row = new ArrayList<ExcelEntity>();
+							ExcelEntity e1 = new ExcelEntity();
+							e1.setData(bill.get("custac").toString());
+							e1.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e1);
+							
+							ExcelEntity e2 = new ExcelEntity();
+							e2.setData(bill.get("custna").toString());
+							e2.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e2);
+							
+							ExcelEntity e3 = new ExcelEntity();
+							e3.setData(bill.get("brchna").toString());
+							e3.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e3);
+							
+							ExcelEntity e4 = new ExcelEntity();
+							String tranam1 = String.format("%.2f", bill.get("tranam"));
+							e4.setData(tranam1.toString());
+							e4.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e4);
+							
+							ExcelEntity e5 = new ExcelEntity();
+							e5.setData(bill.get("fronsq").toString());
+							e5.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e5);
+
+//							ExcelEntity e6 = new ExcelEntity();
+//							for (int i = 0; i < aplist.size(); i++) {
+//								if (aplist.get(i).getDictId().equals(bill.get("intrst").toString())) {
+//									e6.setData(aplist.get(i).getDictName());
+//								}
+//							}
+//							e6.setDataType((short) Cell.CELL_TYPE_STRING);
+//							row.add(e6);
+							
+							ExcelEntity e6 = new ExcelEntity();
+							e6.setData(bill.get("frondt").toString());
+							e6.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e6);
+							
+							ExcelEntity e7 = new ExcelEntity();
+							e7.setData(bill.get("cardno").toString());
+							e7.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e7);
+							
+							ExcelEntity e8 = new ExcelEntity();
+							e8.setData(bill.get("teleno").toString());
+							e8.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e8);
+							
+							ExcelEntity e9 = new ExcelEntity();
+							for (int j = 0; j < aplist.size(); j++) {
+								if (aplist.get(j).getDictId().equals(bill.get("ckstat").toString())) {
+									e9.setData(aplist.get(j).getDictName());
+								}
+							}
+							e9.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e9);
+							
+							ExcelEntity e10 = new ExcelEntity();
+							e10.setData(bill.get("frontm").toString());
+							e10.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e10);
+							
+							ExcelEntity e11 = new ExcelEntity();
+							e11.setData(bill.get("servtp").toString());
+							e11.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e11);
+							cells.add(row);
+						}
+					}
+				}
+			}
+		}
+		//文件头行
+		List<String> head = new ArrayList<String>();
+		head.add("客户账号");
+		head.add("客户名称");
+		head.add("开户行名称");
+		head.add("交易金额");
+		head.add("前置流水");
+		head.add("前置日期");
+		head.add("银行卡号");
+		head.add("电话号码");
+		head.add("状态");
+		head.add("前置时间");
+		head.add("渠道号");
+		
+		File file = new File(path);
+		if(!file.exists()){
+			file.mkdirs();
+		}
+		logger.debug("path >>>>>>>>>>>>>>>>>>>"+path);
+		ExcelUtil excelUtil = new ExcelUtil(fileName,path);
+		excelUtil.writeExcel("大额提现登记簿信息", head, cells);
+		map.put("fileName", fileName);
+		map.put("filePath", path);
+		map.put("retCode", "0000");
+		return map;
 	}
 }
