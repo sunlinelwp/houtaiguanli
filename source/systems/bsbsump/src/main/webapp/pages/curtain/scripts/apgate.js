@@ -383,7 +383,7 @@ var Apgate = function(){
 				return;
 			}
 			var row = rows[0].children();
-			$("#tran_custac").val($(row[5]).text());
+			$("#tran_custac").val($(row[6]).text());
 			custBill.queryInfo();
 			$("#bianji").modal('show');
 		});
