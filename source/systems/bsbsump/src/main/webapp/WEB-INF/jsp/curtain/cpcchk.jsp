@@ -53,7 +53,7 @@
 			<div class="clean"></div>
 		</div>
 		<div class="portlet-body">
-		 <div class="table-container">
+		 <div class="table-container" id="cpcchk_table">
 				<table class="table table-striped table-bordered table-hover" id="cppchk_ajax">
 					<thead>
 						<tr role="row" class="heading">	
@@ -140,11 +140,24 @@
 		<img alt="" src="${ctx}/assets/global/img/loading-spinner-grey.gif"><span>处理中</span>
 	</div>
 </div>
+<div id="bianji" class="modal fade out" tabindex="-1"
+	data-backdrop="static" data-keyboard="false" data-width="1280">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true"></button>
+		<h4 class="modal-title">客户交易明细</h4>
+		<div class=" col-md-12"></div>
+	</div>
+	<div class="modal-body" id="edit_load">
+		<jsp:include page="/WEB-INF/jsp/cust/custBill.jsp"></jsp:include>
+	</div>
+</div>
 <script type="text/javascript" src="${ctx}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="${ctx}/assets/global/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js"></script>
 <script src="${ctx}/pages/curtain/scripts/cpcchk.js"></script>
 <script>
 	jQuery(document).ready(function() {    
+		custBill.init();
 		Cpcchk.init();
 	});
 </script>

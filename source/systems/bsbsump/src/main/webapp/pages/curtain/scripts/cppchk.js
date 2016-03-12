@@ -303,7 +303,9 @@ var Cppchk = function(){
 		            ]
 		        }
 		    });
-			$(".table-group-actions").append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#cppchk_table")).append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#cppchk_table")).append("&nbsp;&nbsp;&nbsp;<button id='tran_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;查询交易信息</button></div>");
+
 			var sendData = ["checkDate"];
 	        grid.bindTableDelete(sendData);
 	        grid.bindTableEdit(sendData,editForm);
@@ -386,96 +388,21 @@ var Cppchk = function(){
 	            	false); 
 			});
 		_tranDate = $('#check-date').val();
+		
+		
+		// 交易明细
+		$("#tran_btn").bind("click", function() {
+			var rows = grid.getSelectedRows();
+			if(rows.length != 1){
+				bootbox.alert("请选择一条数据数据");
+				return;
+			}
+			var row = rows[0].children();
+			$("#tran_custac").val($(row[5]).text());
+			custBill.queryInfo();
+			$("#bianji").modal('show');
+		});
 	};
-//	var debtDeal = function(row){
-//		var tranam = $(row[8]).text();
-//		var transq = $(row[5]).text();
-//		var acctno = $(row[6]).text();
-//		var acctna = $(row[7]).text();
-//		var toacct = '900101300100000001';//ChinaPay清算账户
-//		var chkStatus = $(row[11]).text();
-//		var merchantDt = $(row[2]).text();
-//		var cpSeqno = $(row[3]).text();
-//		var checkDate = $(row[1]).text();
-//		var data = {};
-//		data.checkDate = checkDate;
-//		data.merchantDt = merchantDt;
-//		data.cpSeqno = cpSeqno;
-//		data.checkStatus = 'Y';
-//		if(chkStatus == '3'){
-//			//银行少账，重新记账
-//			console.info("调账");
-//			var input = {};
-//			input.acctno = acctno;
-//			input.toacct = toacct;
-//			input.tranam = tranam;
-//			input.crcycd = '01';
-//			input.quotfs = '1';
-//			console.info(input);
-//			Sunline.ajaxRouter(
-//	            	"curtain/adjust", 
-//	            	 input,
-//	            	"POST",
-//	                function(redata){
-//	            		if(redata.retCode!='0000'){
-//	    	     			bootbox.alert(redata.retMsg);
-//	    	     			return;
-//	    	     		}
-//	            		//修改记录
-//	            		modifyStatus(data);
-//	            	},
-//	            	function(redata){
-//	            		bootbox.alert("交易异常哦，请检查网络设置货重新登录", function() {
-//	            			
-//	                    }); 
-//	            	},
-//	            	"json",
-//	            	false); 
-//		} else if (chkStatus == '2'){
-//			//银行多，冲账
-//			console.info("冲账");
-//			var input = {};
-//			input.yszjylsh = transq;
-//			input.beizhuuu = "差错对账";
-//			Sunline.ajaxRouter(
-//	        	"curtain/strike", 
-//	        	 input,
-//	        	"POST",
-//	            function(redata){
-//	        		if(redata.retCode!='0000'){
-//		     			bootbox.alert(redata.retMsg);
-//		     			return;
-//		     		}
-//	        		modifyStatus(data);
-//	        	},
-//	        	function(redata){
-//	        		bootbox.alert("交易异常哦，请检查网络设置货重新登录", function() {
-//	                }); 
-//	        	},
-//	        	"json",
-//	        	false); 
-//		}
-//		
-//	};
-//	var modifyStatus = function(data){
-//		Sunline.ajaxRouter(
-//    	"curtain/upstatus", 
-//    	 data,
-//    	"POST",
-//        function(redata){
-//    		if(redata.retCode!='0000'){
-//     			bootbox.alert(redata.retMsg);
-//     			return false;
-//     		}
-//    		//修改记录
-//    		return true;
-//    	},
-//    	function(redata){
-//    		return false;
-//    	},
-//    	"json",
-//    	false); 
-//	}
 	var addSelect2 = function(){
 		var input = {};
 		Sunline.ajaxRouter("inac/qrinna", input, "POST", function(data) {

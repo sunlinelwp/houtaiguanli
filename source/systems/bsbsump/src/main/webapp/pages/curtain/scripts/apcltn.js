@@ -327,7 +327,9 @@ var Apcltn = function(){
 		            ]
 		        }
 		    });
-			$(".table-group-actions").append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#apcltn_table")).append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#apcltn_table")).append("&nbsp;&nbsp;&nbsp;<button id='tran_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;查询交易信息</button></div>");
+
 			var sendData = ["checkDate","checkStatus"];
 	        grid.bindTableDelete(sendData);
 	        grid.bindTableEdit(sendData,editForm);
@@ -397,6 +399,19 @@ var Apcltn = function(){
             	false); 
 			});
 		_tranDate = $('#check-date').val();
+		
+		// 交易明细
+		$("#tran_btn").bind("click", function() {
+			var rows = grid.getSelectedRows();
+			if(rows.length != 1){
+				bootbox.alert("请选择一条数据数据");
+				return;
+			}
+			var row = rows[0].children();
+			$("#tran_custac").val($(row[5]).text());
+			custBill.queryInfo();
+			$("#bianji").modal('show');
+		});
 	};
 	var addSelect2 = function(){
 		var input = {};
