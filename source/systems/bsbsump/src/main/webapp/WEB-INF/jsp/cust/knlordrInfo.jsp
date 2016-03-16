@@ -91,7 +91,7 @@
 										<label class="col-md-3 control-label">订单号</label>
 										<div class="col-md-9">
 											<div>
-												<input type="text" id="ordrid" name="ordrid" readOnly class="form-control input-inline input-medium" maxlength="40" placeholder="输入订单号">
+												<input type="text" id="ordrid" name="ordrid" readOnly class="form-control input-inline input-medium" maxlength="40" placeholder="文件名">
 											</div>
 										</div>
 									</div>
@@ -108,7 +108,7 @@
 												data-date-format="yyyymmdd" data-date-viewmode="years"
 												data-date-minviewmode="months">
 											<input type="text" class="form-control form-value" name="keepdt"
-													maxlength="8" placeholder="输入清算日期"> <span
+													maxlength="8" placeholder="完成时间"> <span
 											class="input-group-btn">
 											<button class="btn" type="button">
 													<i class="fa fa-calendar"></i>
@@ -145,7 +145,7 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label">订单顺序号</label>
 										<div class="col-md-9">
-										   	<input type="text" id="ordrsq" name="ordrsq" class="form-control input-inline input-medium" placeholder="输入订单顺序号">	
+										   	<input type="text" id="ordrsq" name="ordrsq" class="form-control input-inline input-medium" placeholder="记录序号">	
 										</div>
 									</div>
 								</div>
