@@ -181,8 +181,8 @@ var investInfo = function() {
 				$("#datatable_prod tbody tr").find('td:eq(8)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(9)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(10)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(11)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(12)').css("display","none");
+//				$("#datatable_prod tbody tr").find('td:eq(11)').css("display","none");
+//				$("#datatable_prod tbody tr").find('td:eq(12)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(13)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(14)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(15)').css("display","none");
