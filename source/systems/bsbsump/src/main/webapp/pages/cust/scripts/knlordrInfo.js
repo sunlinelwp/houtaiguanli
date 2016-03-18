@@ -6,7 +6,7 @@ var knlordrInfo = function() {
 		allowClear : true,
 		placeholder : "请选择"
 	});
-	var handleTable = function(q_frondt, q_ckstat,q_fronsq,q_custac, q_servtp) {
+	var handleTable = function(q_frondts, q_ckstat,q_fronsq,q_custac, q_servtp) {
 		
 		var grid = new Datatable();
 		var typeurl1 = Sunline.ajaxPath("cust/qrordr"); // URL???
@@ -20,10 +20,10 @@ var knlordrInfo = function() {
 //			grid.setAjaxParam("q_custac",q_custac);
 //        	$("#q_custac",$("#editModal1")).val(q_custac);
 //        }
-		if(!Sunline.isNull(q_frondt)){
-			grid.setAjaxParam("q_frondt",q_frondt);
-        	$("#orfbdt",$("#editModal1")).val(q_frondt);
-        	$("#q_frondt").val(q_frondt);
+		if(!Sunline.isNull(q_frondts)){
+			grid.setAjaxParam("q_frondt",q_frondts);
+        	$("#orfbdt",$("#editModal1")).val(q_frondts);
+        	$("#q_frondts").val(q_frondts);
         }
 //		if(!Sunline.isNull(q_ckstat)){
 //			grid.setAjaxParam("q_ckstat",q_ckstat);
@@ -125,7 +125,7 @@ var knlordrInfo = function() {
 				$("input[name='chgeam']").val($(nRowA[3]).text());
 				$("input[name='scapno']").val($(nRowA[4]).text());
 				$("input[name='chckno']").val($(nRowA[5]).text());
-				$("input[name='orfbdt']").val(q_frondt);
+				$("input[name='orfbdt']").val(q_frondts);
 				$("input[name='orfbsq']").val(q_fronsq);
 					$("#editModal1").modal('show');
 					$("#editModal1").on(
@@ -160,7 +160,7 @@ var knlordrInfo = function() {
 					$("input", $("#editModal1")).val("").trigger("change");
 //					$("input[name='typecd']", $("#edittypeModal")).val(prodcd);
 					$("#orfbsq").val(q_fronsq);
-					$("#orfbdt").val(q_frondt);
+					$("#orfbdt").val(q_frondts);
 					$("#servtp").val(q_servtp);  
 					$("#editModal1").modal('show');
 					$("#editModal1").on(
@@ -321,8 +321,8 @@ var knlordrInfo = function() {
 	};
 
 	return {
-		init : function(q_frondt, q_ckstat,q_fronsq,q_custac,q_servtp) {
-			handleTable(q_frondt, q_ckstat,q_fronsq,q_custac,q_servtp);
+		init : function(q_frondts, q_ckstat,q_fronsq,q_custac,q_servtp) {
+			handleTable(q_frondts, q_ckstat,q_fronsq,q_custac,q_servtp);
 		}
 	}
 

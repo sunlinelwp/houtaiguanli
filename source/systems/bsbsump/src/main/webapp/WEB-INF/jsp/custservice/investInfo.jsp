@@ -65,8 +65,8 @@
 							<th scope="col" style="display:none;">期限</th>
 							<th scope="col" style="display:none;">分录编号</th>
 							<th scope="col" style="display:none;">状态</th>
-							<th scope="col" style="display:none;">起息日期</th>
-							<th scope="col" style="display:none;">到期日期</th>
+							<th scope="col" >起息日期</th>
+							<th scope="col" >到期日期</th>
 							<th scope="col" style="display:none;">已到帐收益</th>
 							<th scope="col" style="display:none;">待收本金</th>
 							<th scope="col" style="display:none;">借据号</th>
