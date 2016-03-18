@@ -41,6 +41,8 @@ public class TmpAllinPayCltnCheck {
 	private String coreSeqno;//银行状态
 	@Column(name = "core_date")
 	private String coreDate;//处理状态
+
+	@Id
 	@Column(name = "billid")
 	private String billid;//订单序号
 	@Column(name = "acout_status")
@@ -61,7 +63,6 @@ public class TmpAllinPayCltnCheck {
 	@Column(name = "bank_cardno")
 	private String bankCardno;//行内交易卡号
 
-	@Id
 	@Column(name = "timetm")
 	private long timetm;//时间戳
 	public String getTlCardno() {

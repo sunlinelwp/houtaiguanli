@@ -15,14 +15,14 @@ public class TmpAllinPayCltnCheckPK implements Serializable {
 	
 	private String billNo;
 	
-	private long timetm;
+	private String billid;
 
-	public long getTimetm() {
-		return timetm;
+	public String getBillid() {
+		return billid;
 	}
 
-	public void setTimetm(long timetm) {
-		this.timetm = timetm;
+	public void setBillid(String billid) {
+		this.billid = billid;
 	}
 
 	public String getCheckDate() {

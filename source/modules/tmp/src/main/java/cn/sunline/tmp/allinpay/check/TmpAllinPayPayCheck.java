@@ -50,7 +50,8 @@ public class TmpAllinPayPayCheck {
 
 	@Column(name = "check_status")
 	private String checkStatus;
-	
+
+	@Id
 	@Column(name = "billid")
 	private String billid;//订单序号
 	@Column(name = "acout_status")
@@ -71,7 +72,6 @@ public class TmpAllinPayPayCheck {
 	@Column(name = "bank_cardno")
 	private String bankCardno;//行内交易卡号
 
-	@Id
 	@Column(name = "timetm")
 	private long timetm;//时间戳
 

@@ -13,8 +13,8 @@ public interface TmpAllinPayPayCheckRepository extends JpaRepository<TmpAllinPay
 	int deleteByCheckDate(String checkDate);
 	
 	@Modifying
-	@Query(value = "update TmpAllinPayPayCheck a set a.checkStatus = ?4 where a.checkDate = ?1 and a.merchantDt = ?2 and a.billno = ?3 and a.timetm = ?5")
-	int updateStatus(String checkDate , String merchantDt , String billno ,String checkStatus, long timetm);
+	@Query(value = "update TmpAllinPayPayCheck a set a.checkStatus = ?4 where a.checkDate = ?1 and a.merchantDt = ?2 and a.billno = ?3 and a.billid = ?5")
+	int updateStatus(String checkDate , String merchantDt , String billno ,String checkStatus, String billid);
 	
 	@Query(value = "select count(1) from TmpAllinPayPayCheck a where a.checkDate = ?1 and a.checkStatus = ?2")
 	int getCPCltnCountByStatus (String checkDate , String status);

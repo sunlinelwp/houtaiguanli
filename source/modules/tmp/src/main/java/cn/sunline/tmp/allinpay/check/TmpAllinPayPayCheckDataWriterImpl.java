@@ -48,7 +48,11 @@ public class TmpAllinPayPayCheckDataWriterImpl implements DataWriter{
 				pay.setCoreSeqno(data[13]);
 				pay.setChkStatus(data[10]);
 				pay.setAcoutStatus(data[7]);
-				pay.setBillid(data[2]);
+				if(data[2] == null || "".equals(data[2])){
+					pay.setBillid("0");
+				}else{
+					pay.setBillid(data[2]);
+				}
 				pay.setTradeStatus(data[8]);
 				pay.setTlStatus(data[9]);
 				pay.setKeyElement(data[11]);

@@ -237,6 +237,10 @@ var Apcltn = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
+			            	"data": "billid",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
 			            	"data": "acctno",
 			            	"sortable": false,
 			            	"searchable": false
@@ -308,10 +312,6 @@ var Apcltn = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
-			            	"data": "timetm",
-			            	"sortable": false,
-			            	"searchable": false
-			            },{ 
 			            	"data": "checkStatus",
 			            	"sortable": false,
 			            	"searchable": false,
@@ -350,14 +350,20 @@ var Apcltn = function(){
 			var data = [];
 			for (i=0;i<rows.length;i++){
 				var row = rows[i].children();
-				var tranam = $(row[6]).text();
-				var toacct = $(row[5]).text();
+				var tranam;
+				var chkStatus = _formartDict(chkStatusDict,$(row[9]).text());
+				//对账结果为2（我方多）时，调账金额用行内交易金额
+				if(chkStatus == 2){
+					tranam = $(row[12]).text();
+				}else{
+					tranam = $(row[7]).text();
+				}
+				var toacct = $(row[6]).text();
 				var acctno = inacno;//通联渠道清算账户
-				var chkStatus = _formartDict(chkStatusDict,$(row[8]).text());
 				var merchantDt = $(row[3]).text();
 				var billno = $(row[4]).text();
 				var checkDate = $(row[1]).text();
-				var timetm = $(row[13]).text();
+				var billid = $(row[5]).text();
 				var rowData = {};
 				rowData.tranam = tranam;
 				rowData.acctno = acctno;
@@ -366,12 +372,13 @@ var Apcltn = function(){
 				rowData.billno = billno;
 				rowData.checkDate = checkDate;
 				rowData.chkStatus = chkStatus;
-				rowData.timetm = timetm;
+				rowData.billid = billid;
 				data.push(rowData);
 				//debtDeal(rows[i].children());
 			}
 			var input = {};
 			input.data = data;
+			console.info(input);
 			$("#myModal").modal('show');
 			Sunline.ajaxRouter(
             	"clear/checkcltndeal", 
@@ -408,7 +415,7 @@ var Apcltn = function(){
 				return;
 			}
 			var row = rows[0].children();
-			$("#tran_custac").val($(row[5]).text());
+			$("#tran_custac").val($(row[6]).text());
 			custBill.queryInfo();
 			$("#bianji").modal('show');
 		});

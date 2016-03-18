@@ -46,8 +46,12 @@ public class TmpAllinPayCltnCheckDataWriterImpl implements DataWriter {
 				}
 				cltn.setCoreDate(data[12]);
 				cltn.setCoreSeqno(data[13]);
-				cltn.setAcoutStatus(data[7]);
-				cltn.setBillid(data[2]);
+				cltn.setAcoutStatus(data[7]);				
+				if(data[2] == null || "".equals(data[2])){
+					cltn.setBillid("0");
+				}else{
+					cltn.setBillid(data[2]);
+				}
 				cltn.setTradeStatus(data[8]);
 				cltn.setTlStatus(data[9]);
 				cltn.setKeyElement(data[11]);

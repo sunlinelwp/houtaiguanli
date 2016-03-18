@@ -59,9 +59,9 @@ public class TmpAllinPayCltnCheckServiceImpl implements
 
 	@Override
 	@Transactional
-	public int updateStatus(String checkDate, String merchantDt,String billNo, String checkStatus, long timetm) {
+	public int updateStatus(String checkDate, String merchantDt,String billNo, String checkStatus, String billid) {
 		
-		return tmpAllinPayCltnCheckRepository.updateStatus(checkDate,merchantDt, billNo, checkStatus, timetm);
+		return tmpAllinPayCltnCheckRepository.updateStatus(checkDate,merchantDt, billNo, checkStatus, billid);
 	}
 
 	@Override

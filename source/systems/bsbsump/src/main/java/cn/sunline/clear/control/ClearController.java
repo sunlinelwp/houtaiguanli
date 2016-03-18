@@ -387,9 +387,9 @@ public class ClearController {
 					String checkDate = pay.get("checkDate").toString();
 					String merchantDt = pay.get("merchantDt").toString();
 					String cpSeqno = pay.get("billno").toString();
-					long timetm = Long.parseLong(pay.get("timetm").toString());
+					String billid = pay.get("billid").toString();
 					String checkStatus = "Y";
-					payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,timetm);
+					payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 					succAmount+=1;
 				}else{
 				}
@@ -412,9 +412,9 @@ public class ClearController {
 					String checkDate = pay.get("checkDate").toString();
 					String merchantDt = pay.get("merchantDt").toString();
 					String cpSeqno = pay.get("billno").toString();
-					long timetm = Long.parseLong(pay.get("timetm").toString());
+					String billid = pay.get("billid").toString();
 					String checkStatus = "Y";
-					payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,timetm);
+					payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 					succAmount+=1;
 				}
 			} else if("5".equals(pay.get("chkStatus").toString())){
@@ -423,9 +423,9 @@ public class ClearController {
 				String checkDate = pay.get("checkDate").toString();
 				String merchantDt = pay.get("merchantDt").toString();
 				String cpSeqno = pay.get("billno").toString();
-				long timetm = Long.parseLong(pay.get("timetm").toString());
+				String billid = pay.get("billid").toString();
 				String checkStatus = "Y";
-				payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,timetm);
+				payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 				succAmount+=1;
 			}
 		}
@@ -487,10 +487,10 @@ public class ClearController {
 					String merchantDt = pay.get("merchantDt").toString();
 					logger.debug(checkDate+"|"+merchantDt+"|修改请求");
 					String cpSeqno = pay.get("billNo").toString();
-					long timetm = Long.parseLong(pay.get("timetm").toString());
+					String billid = pay.get("billid").toString();
 					String checkStatus = "Y";
 					logger.debug(checkDate+"|"+merchantDt+"|"+cpSeqno+"|修改请求");
-					int r = cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus, timetm);
+					int r = cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus, billid);
 					succAmount+=1;
 					logger.debug("修改状态成功"+succAmount+"修改条数"+r);
 				}else{
@@ -513,9 +513,9 @@ public class ClearController {
 					String checkDate = pay.get("checkDate").toString();
 					String merchantDt = pay.get("merchantDt").toString();
 					String cpSeqno = pay.get("billno").toString();
-					long timetm = Long.parseLong(pay.get("timetm").toString());
+					String billid = pay.get("billid").toString();
 					String checkStatus = "Y";
-					cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,timetm);
+					cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 					succAmount+=1;
 				}
 			} else if("5".equals(pay.get("chkStatus").toString())){
@@ -524,9 +524,9 @@ public class ClearController {
 				String checkDate = pay.get("checkDate").toString();
 				String merchantDt = pay.get("merchantDt").toString();
 				String cpSeqno = pay.get("billno").toString();
-				long timetm = Long.parseLong(pay.get("timetm").toString());
+				String billid = pay.get("billid").toString();
 				String checkStatus = "Y";
-				cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,timetm);
+				cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 				succAmount+=1;
 			}
 		}

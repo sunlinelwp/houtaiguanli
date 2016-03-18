@@ -71,6 +71,9 @@
 								订单号
 							</th>
 							<th width="8%">
+								订单序号
+							</th>
+							<th width="8%">
 								收款账号
 							</th>
 							<th width="6%">
@@ -98,9 +101,6 @@
 							</th>
 							<th width="8%">
 								行内交易卡号
-							</th>
-							<th width="8%">
-								唯一标识
 							</th>
 							<th width="8%">
 								处理状态

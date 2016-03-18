@@ -223,6 +223,10 @@ var Apcpay = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
+			            	"data": "billid",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
 			            	"data": "coreDate",
 			            	"sortable": false,
 			            	"searchable": false
@@ -305,10 +309,6 @@ var Apcpay = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
-			            	"data": "timetm",
-			            	"sortable": false,
-			            	"searchable": false
-			            },{ 
 			            	"data": "checkStatus",
 			            	"sortable": false,
 			            	"searchable": false,
@@ -358,15 +358,20 @@ var Apcpay = function(){
 				var data = [];
 				for (var i=0;i<rows.length;i++){
 					var row = rows[i].children();
-					var tranam = $(row[7]).text();
-					var transq = $(row[5]).text();
-					var acctno = $(row[6]).text();
+					var chkStatus = _formartDict(chkStatusDict,$(row[10]).text());
+					var tranam;
+					if(chkStatus == 2){
+						tranam = $(row[13]).text();
+					}else{
+						tranam = $(row[8]).text();
+					}
+					var transq = $(row[6]).text();
+					var acctno = $(row[7]).text();
 					var toacct = inacno;//AllinPay清算账户
-					var chkStatus = _formartDict(chkStatusDict,$(row[9]).text());
 					var merchantDt = $(row[2]).text();
 					var checkDate = $(row[1]).text();
 					var billno = $(row[3]).text();
-					var timetm = $(row[14]).text();//唯一标识符
+					var billid = $(row[4]).text();//唯一标识符
 					var rowData = {};
 					rowData.tranam = tranam;
 					rowData.transq = transq;
@@ -376,7 +381,7 @@ var Apcpay = function(){
 					rowData.merchantDt = merchantDt;
 					rowData.checkDate = checkDate;
 					rowData.chkStatus = chkStatus;
-					rowData.timetm = timetm;
+					rowData.billid = billid;
 					data.push(rowData);
 					//debtDeal(rows[i].children());
 				}
@@ -418,7 +423,7 @@ var Apcpay = function(){
 				return;
 			}
 			var row = rows[0].children();
-			$("#tran_custac").val($(row[6]).text());
+			$("#tran_custac").val($(row[7]).text());
 			custBill.queryInfo();
 			$("#bianji").modal('show');
 		});
