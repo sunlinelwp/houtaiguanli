@@ -11,29 +11,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -162,10 +139,20 @@ public class CustController {
 		int pageno = start/length+1;
 		map.put("pageno", pageno);
 		map.put("pagect", length);
-		map.put("frondt", reqmap.get("q_frondt_sign") == null ? null : reqmap
-				.get("q_frondt_sign"));
-		map.put("status", reqmap.get("q_status") == null ? null : reqmap
-				.get("q_status"));
+		map.put("frondt", reqmap.get("frondt") == null ? null : reqmap
+				.get("frondt"));
+		map.put("status", reqmap.get("status") == null ? null : reqmap
+				.get("status"));
+		map.put("custac", reqmap.get("custac") == null ? null : reqmap
+				.get("custac"));
+		map.put("custna", reqmap.get("custna") == null ? null : reqmap
+				.get("custna"));
+		map.put("enddat", reqmap.get("enddat") == null ? null : reqmap
+				.get("enddat"));
+		map.put("teleno", reqmap.get("teleno") == null ? null : reqmap
+				.get("teleno"));
+		map.put("servno", reqmap.get("servno") == null ? null : reqmap
+				.get("servno"));
 		map.put("userid", user.getUserid());
 		logger.debug("请求map========"+map);
 		Map<String,Object> rspmap = new HashMap<String, Object>();
@@ -511,12 +498,22 @@ public class CustController {
 		Map<String,Object> map = new HashMap<String, Object>();
 		
 		List<List<ExcelEntity>> cells = new ArrayList<List<ExcelEntity>>();
-		logger.debug("------------------查询万份收益及七日年化表开始-----------------");
+		logger.debug("------------------查询大额提现登记簿信息开始-----------------");
 		map.put("userid", user.getUserid()); //设置操作柜员	
 		map.put("frondt", reqmap.get("frondt") == null ? null : reqmap
 				.get("frondt"));
 		map.put("status", reqmap.get("status") == null ? null : reqmap
 				.get("status"));
+		map.put("custac", reqmap.get("custac") == null ? null : reqmap
+				.get("custac"));
+		map.put("custna", reqmap.get("custna") == null ? null : reqmap
+				.get("custna"));
+		map.put("enddat", reqmap.get("enddat") == null ? null : reqmap
+				.get("enddat"));
+		map.put("teleno", reqmap.get("teleno") == null ? null : reqmap
+				.get("teleno"));
+		map.put("servno", reqmap.get("servno") == null ? null : reqmap
+				.get("servno"));
 		map.put("pageno", "1");
 		map.put("pagect", "10");
 		Map<String, Object> resmap = new HashMap<String, Object>();
@@ -556,9 +553,15 @@ public class CustController {
 				row.add(e4);
 				
 				ExcelEntity e5 = new ExcelEntity();
-				e5.setData(bill.get("fronsq").toString());
+				String tranam2 = String.format("%.2f", bill.get("canuse"));
+				e5.setData(tranam2.toString());
 				e5.setDataType((short) Cell.CELL_TYPE_STRING);
 				row.add(e5);
+				
+				ExcelEntity e6 = new ExcelEntity();
+				e6.setData(bill.get("fronsq").toString());
+				e6.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e6);
 
 //				ExcelEntity e6 = new ExcelEntity();
 //				for (int i = 0; i < aplist.size(); i++) {
@@ -569,39 +572,39 @@ public class CustController {
 //				e6.setDataType((short) Cell.CELL_TYPE_STRING);
 //				row.add(e6);
 				
-				ExcelEntity e6 = new ExcelEntity();
-				e6.setData(bill.get("frondt").toString());
-				e6.setDataType((short) Cell.CELL_TYPE_STRING);
-				row.add(e6);
-				
 				ExcelEntity e7 = new ExcelEntity();
-				e7.setData(bill.get("cardno").toString());
+				e7.setData(bill.get("frondt").toString());
 				e7.setDataType((short) Cell.CELL_TYPE_STRING);
 				row.add(e7);
 				
 				ExcelEntity e8 = new ExcelEntity();
-				e8.setData(bill.get("teleno").toString());
+				e8.setData(bill.get("cardno").toString());
 				e8.setDataType((short) Cell.CELL_TYPE_STRING);
 				row.add(e8);
 				
 				ExcelEntity e9 = new ExcelEntity();
-				for (int i = 0; i < aplist.size(); i++) {
-					if (aplist.get(i).getDictId().equals(bill.get("ckstat").toString())) {
-						e9.setData(aplist.get(i).getDictName());
-					}
-				}
+				e9.setData(bill.get("teleno").toString());
 				e9.setDataType((short) Cell.CELL_TYPE_STRING);
 				row.add(e9);
 				
 				ExcelEntity e10 = new ExcelEntity();
-				e10.setData(bill.get("frontm").toString());
+				for (int i = 0; i < aplist.size(); i++) {
+					if (aplist.get(i).getDictId().equals(bill.get("ckstat").toString())) {
+						e10.setData(aplist.get(i).getDictName());
+					}
+				}
 				e10.setDataType((short) Cell.CELL_TYPE_STRING);
 				row.add(e10);
 				
 				ExcelEntity e11 = new ExcelEntity();
-				e11.setData(bill.get("servtp").toString());
+				e11.setData(bill.get("frontm").toString());
 				e11.setDataType((short) Cell.CELL_TYPE_STRING);
 				row.add(e11);
+				
+				ExcelEntity e12 = new ExcelEntity();
+				e12.setData(bill.get("servtp").toString());
+				e12.setDataType((short) Cell.CELL_TYPE_STRING);
+				row.add(e12);
 				cells.add(row);
 			}
 			int amount = (int) Math.ceil(Integer.parseInt(resmap.get("counts").toString())/10.0);
@@ -638,9 +641,15 @@ public class CustController {
 							row.add(e4);
 							
 							ExcelEntity e5 = new ExcelEntity();
-							e5.setData(bill.get("fronsq").toString());
+							String tranam2 = String.format("%.2f", bill.get("canuse"));
+							e5.setData(tranam2.toString());
 							e5.setDataType((short) Cell.CELL_TYPE_STRING);
 							row.add(e5);
+							
+							ExcelEntity e6 = new ExcelEntity();
+							e6.setData(bill.get("fronsq").toString());
+							e6.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e6);
 
 //							ExcelEntity e6 = new ExcelEntity();
 //							for (int i = 0; i < aplist.size(); i++) {
@@ -651,39 +660,39 @@ public class CustController {
 //							e6.setDataType((short) Cell.CELL_TYPE_STRING);
 //							row.add(e6);
 							
-							ExcelEntity e6 = new ExcelEntity();
-							e6.setData(bill.get("frondt").toString());
-							e6.setDataType((short) Cell.CELL_TYPE_STRING);
-							row.add(e6);
-							
 							ExcelEntity e7 = new ExcelEntity();
-							e7.setData(bill.get("cardno").toString());
+							e7.setData(bill.get("frondt").toString());
 							e7.setDataType((short) Cell.CELL_TYPE_STRING);
 							row.add(e7);
 							
 							ExcelEntity e8 = new ExcelEntity();
-							e8.setData(bill.get("teleno").toString());
+							e8.setData(bill.get("cardno").toString());
 							e8.setDataType((short) Cell.CELL_TYPE_STRING);
 							row.add(e8);
 							
 							ExcelEntity e9 = new ExcelEntity();
-							for (int j = 0; j < aplist.size(); j++) {
-								if (aplist.get(j).getDictId().equals(bill.get("ckstat").toString())) {
-									e9.setData(aplist.get(j).getDictName());
-								}
-							}
+							e9.setData(bill.get("teleno").toString());
 							e9.setDataType((short) Cell.CELL_TYPE_STRING);
 							row.add(e9);
 							
 							ExcelEntity e10 = new ExcelEntity();
-							e10.setData(bill.get("frontm").toString());
+							for (int j = 0; j < aplist.size(); j++) {
+								if (aplist.get(j).getDictId().equals(bill.get("ckstat").toString())) {
+									e10.setData(aplist.get(j).getDictName());
+								}
+							}
 							e10.setDataType((short) Cell.CELL_TYPE_STRING);
 							row.add(e10);
 							
 							ExcelEntity e11 = new ExcelEntity();
-							e11.setData(bill.get("servtp").toString());
+							e11.setData(bill.get("frontm").toString());
 							e11.setDataType((short) Cell.CELL_TYPE_STRING);
 							row.add(e11);
+							
+							ExcelEntity e12 = new ExcelEntity();
+							e12.setData(bill.get("servtp").toString());
+							e12.setDataType((short) Cell.CELL_TYPE_STRING);
+							row.add(e12);
 							cells.add(row);
 						}
 					}
@@ -696,6 +705,7 @@ public class CustController {
 		head.add("客户名称");
 		head.add("开户行名称");
 		head.add("交易金额");
+		head.add("可用余额");
 		head.add("前置流水");
 		head.add("前置日期");
 		head.add("银行卡号");
