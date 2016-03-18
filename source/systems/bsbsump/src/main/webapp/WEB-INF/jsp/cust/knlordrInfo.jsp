@@ -60,7 +60,7 @@
 							</td>
 							<td  colspan="2">
 								<input type="hidden" id="q_fronsq" name="q_fronsq" class="form-control form-filter input-sm" maxlength="40" >
-								<input type="hidden" id="q_frondt" name="q_frondt" class="form-control form-filter input-sm" maxlength="20" >
+								<input type="hidden" id="q_frondts" name="q_frondts" class="form-control form-filter input-sm" maxlength="20" >
 							</td>
 						</tr>
 					</thead>
