@@ -105,10 +105,10 @@
 								可用金额
 							</th>
 							<th scope="col">
-								前置流水
+								流        水
 							</th>
 							<th scope="col">
-								前置日期
+								日        期
 							</th>
 							<th scope="col">
 								银行卡号
@@ -117,10 +117,10 @@
 								电话号码
 							</th>
 							<th scope="col">
-								状态
+								状        态
 							</th>
 							<th scope="col">
-								前置时间
+								时        间
 							</th>
 							<th scope="col">
 								渠道号
@@ -171,13 +171,13 @@
 										</div>									
 									</div>
 									<div class="form-group">
-										<label class="col-md-3 control-label">前置流水</label>
+										<label class="col-md-3 control-label">流        水</label>
 										<div class="col-md-9">
 											<input type="text" id="fronsq" name="fronsq" class="form-control input-inline input-medium">
 										</div>									
 									</div>
 									<div class="form-group">
-										<label class="col-md-3 control-label">前置日期</label>
+										<label class="col-md-3 control-label">日        期</label>
 										<div class="col-md-9">
 											<input type="text" id="frondt" name="frondt" class="form-control input-inline input-medium">
 										</div>									
