@@ -38,8 +38,8 @@ var investInfo = function() {
 	var prodgrid = new Datatable();
 	var handleTable = function(){
 		var i = 0;
-		prodgrid.setAjaxParam("custac","");
-		prodgrid.setAjaxParam("phoneNo","");
+		prodgrid.setAjaxParam("q_custac","1");
+		prodgrid.setAjaxParam("q_phoneNo","");
 		var produrl = Sunline.ajaxPath("custService/fclnqr");
 		prodgrid.init({
 					src : $("#datatable_prod"),
@@ -166,12 +166,20 @@ var investInfo = function() {
 		prodgrid.setAjaxParam("q_phoneNo",$('#phoneNo').val());
 		prodgrid.submitFilter();
 	}
+	//清空
+	var custClean = function(){
+		$("#phoneNo").val("");
+		$("#custac").val("");
+	}
 	return {
 		init : function() {
 			handleTable();
 		},
 		queryCust : function() {
 			submitInfo();
+		},
+		cleanCust : function(){
+			custClean();
 		},
 		clickWindow : function(){
 			setTimeout(function () { 
