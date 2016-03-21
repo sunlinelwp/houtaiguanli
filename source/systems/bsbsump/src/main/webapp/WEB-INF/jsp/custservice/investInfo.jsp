@@ -31,7 +31,7 @@
 				</div>
 				<div class="form-actions cust-action">
 					<button type="button" class="btn blue" id="submit" onclick="investInfo.queryCust()">查询</button>
-					<button type="button" class="btn gray" id="cancle">清空</button>
+					<button type="button" class="btn gray" id="cancle" onclick="investInfo.cleanCust()">清空</button>
 				</div>
 				<div class="cif-pp"></div>
 			</form>
