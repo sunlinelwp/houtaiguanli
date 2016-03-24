@@ -706,12 +706,12 @@ public class CustController {
 		head.add("开户行名称");
 		head.add("交易金额");
 		head.add("可用余额");
-		head.add("流        水");
-		head.add("日        期");
+		head.add("流    水");
+		head.add("日    期");
 		head.add("银行卡号");
 		head.add("电话号码");
-		head.add("状        态");
-		head.add("时        间");
+		head.add("状    态");
+		head.add("时    间");
 		head.add("渠道号");
 		
 		File file = new File(path);
