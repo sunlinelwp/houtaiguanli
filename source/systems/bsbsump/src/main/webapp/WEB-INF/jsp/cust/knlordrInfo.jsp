@@ -25,23 +25,26 @@
 				<table class="table table-striped table-bordered table-hover" id="ordrinfo_ajax">
 					<thead>
 						<tr role="row" class="heading">	   		
-							<th width="20%">
+							<th width="19%">
 								订单号
 							</th>	
-							<th width="10%">
+							<th width="9%">
 								订单金额
 							</th>
-							<th width="10%">
+							<th width="9%">
 								清算日期
 							</th>
-							<th width="15%">
+							<th width="14%">
 								手续费
 							</th>
-							<th width="15%">
+							<th width="14%">
 								渠道号
 							</th>
-							<th width="15%">
+							<th width="14%">
 								操作员工
+							</th>
+							<th width="6%">
+								订单顺序号
 							</th>
 							<!-- <th width="24" colspan="2">
 								 操作
