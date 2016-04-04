@@ -91,6 +91,11 @@ var knlordrInfo = function() {
 									"data" : "chckno", 
 									"sortable" : false,  
 									"searchable" : false
+								},
+								{
+									"data" : "tranid", 
+									"sortable" : false,  
+									"searchable" : false
 								}
 /**								{
 									"data" : null,

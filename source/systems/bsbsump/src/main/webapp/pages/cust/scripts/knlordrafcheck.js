@@ -89,6 +89,11 @@ var knlordrafcheck = function() {
 									"sortable" : false,  
 									"searchable" : false
 								},
+								{
+									"data" : "tranid", 
+									"sortable" : false,  
+									"searchable" : false,
+								},
 							{
 									"data" : null,
 									"sortable" : false,
@@ -121,6 +126,7 @@ var knlordrafcheck = function() {
 				$("input[name='chgeam']").val($(nRowA[3]).text());
 				$("input[name='scapno']").val($(nRowA[4]).text());
 				$("input[name='chckno']").val($(nRowA[5]).text());
+				$("input[name='tranid']").val($(nRowA[6]).text());
 				$("input[name='orfbdt']").val(q_frondt);
 				$("input[name='orfbsq']").val(q_fronsq);
 					$("#editModal1").modal('show');
