@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/common/taglib.jsp"%>
 <div class="col-md-12">
@@ -20,16 +20,7 @@
 						<button class="close" data-close="alert"></button>
 						表单提交成功！<span class="msg"></span>
 					</div>	
-						<div class="col-md-6">
-						<div class="form-group">
-							<label class="col-md-3 control-label">交易类型</label>
-							<div class="col-md-9">
-							<input type="text" name="tags" id ="tags"
-									class="form-control input-inline input-medium form-value"
-									 placeholder="选择会员标签">
-							</div>
-						</div>
-						</div>
+						
 						<div class="col-md-4">
 						<div class="form-group">
 							<!-- <label class="col-md-3 control-label">会员标签：</label>
