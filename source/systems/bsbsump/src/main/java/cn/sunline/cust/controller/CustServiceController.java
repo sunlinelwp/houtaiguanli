@@ -87,12 +87,12 @@ public class CustServiceController {
 		resmap = client.callClient("fclnqr", map);
 		resmap.put(
 				"data",
-				resmap.get("lninfo") == null ? new ArrayList<Object>() : resmap
+				(resmap.get("lninfo") == null || resmap.get("lninfo") == "")? new ArrayList<Object>() : resmap
 						.get("lninfo"));
-		resmap.put("iTotalDisplayRecords", resmap.get("totshu") == null ? "0"
+		resmap.put("iTotalDisplayRecords", (resmap.get("totshu") == null || resmap.get("totshu") == "")? "0"
 				: resmap.get("totshu"));
 		resmap.put("iTotalRecords",
-				resmap.get("totshu") == null ? "0" : resmap.get("totshu"));
+				(resmap.get("totshu") == null || resmap.get("totshu") == "") ? "0" : resmap.get("totshu"));
 		logger.debug("-----------------投资信息结束-----------------"+resmap);
 		return resmap;
 	}
