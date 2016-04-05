@@ -38,7 +38,8 @@ var investInfo = function() {
 	var prodgrid = new Datatable();
 	var handleTable = function(){
 		var i = 0;
-		prodgrid.setAjaxParam("custac","");
+		prodgrid.setAjaxParam("q_custac","1");
+		prodgrid.setAjaxParam("q_phoneNo","");
 		var produrl = Sunline.ajaxPath("custService/fclnqr");
 		prodgrid.init({
 					src : $("#datatable_prod"),
@@ -148,16 +149,27 @@ var investInfo = function() {
 								]
 					}
 				});
+		
 		var sendData = ["custac"];
 		prodgrid.bindTableEdit(sendData,editForm);
 	       }
+
+	
+
+	
 	//查询
 	var submitInfo = function(){
 		if(!$('#cust-form').validate().form()){
 			return;
 		}
 		prodgrid.setAjaxParam("q_custac",$('#custac').val());
+		prodgrid.setAjaxParam("q_phoneNo",$('#phoneNo').val());
 		prodgrid.submitFilter();
+	}
+	//清空
+	var custClean = function(){
+		$("#phoneNo").val("");
+		$("#custac").val("");
 	}
 	return {
 		init : function() {
@@ -165,6 +177,9 @@ var investInfo = function() {
 		},
 		queryCust : function() {
 			submitInfo();
+		},
+		cleanCust : function(){
+			custClean();
 		},
 		clickWindow : function(){
 			setTimeout(function () { 
@@ -174,8 +189,8 @@ var investInfo = function() {
 				$("#datatable_prod tbody tr").find('td:eq(8)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(9)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(10)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(11)').css("display","none");
-				$("#datatable_prod tbody tr").find('td:eq(12)').css("display","none");
+//				$("#datatable_prod tbody tr").find('td:eq(11)').css("display","none");
+//				$("#datatable_prod tbody tr").find('td:eq(12)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(13)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(14)').css("display","none");
 				$("#datatable_prod tbody tr").find('td:eq(15)').css("display","none");

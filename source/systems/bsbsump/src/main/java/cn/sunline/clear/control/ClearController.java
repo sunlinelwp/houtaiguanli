@@ -200,6 +200,15 @@ public class ClearController {
 					payGateCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
 					succAmount+=1;
 				}
+			} else if("5".equals(pay.get("chkStatus").toString())){
+				//我方少订单，需要工作人员自己手工去录订单
+				//修改记录状态
+				String checkDate = pay.get("checkDate").toString();
+				String merchantDt = pay.get("merchantDt").toString();
+				String cpSeqno = pay.get("billno").toString();
+				String checkstatus = "Y";
+				payGateCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkstatus);
+				succAmount+=1;
 			}
 		}
 		map.put("retCode", "0000");
@@ -378,8 +387,9 @@ public class ClearController {
 					String checkDate = pay.get("checkDate").toString();
 					String merchantDt = pay.get("merchantDt").toString();
 					String cpSeqno = pay.get("billno").toString();
+					String billid = pay.get("billid").toString();
 					String checkStatus = "Y";
-					payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+					payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 					succAmount+=1;
 				}else{
 				}
@@ -402,8 +412,9 @@ public class ClearController {
 					String checkDate = pay.get("checkDate").toString();
 					String merchantDt = pay.get("merchantDt").toString();
 					String cpSeqno = pay.get("billno").toString();
+					String billid = pay.get("billid").toString();
 					String checkStatus = "Y";
-					payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+					payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 					succAmount+=1;
 				}
 			} else if("5".equals(pay.get("chkStatus").toString())){
@@ -412,8 +423,9 @@ public class ClearController {
 				String checkDate = pay.get("checkDate").toString();
 				String merchantDt = pay.get("merchantDt").toString();
 				String cpSeqno = pay.get("billno").toString();
+				String billid = pay.get("billid").toString();
 				String checkStatus = "Y";
-				payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+				payCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 				succAmount+=1;
 			}
 		}
@@ -454,8 +466,8 @@ public class ClearController {
 				admap.put("acctno", pay.get("acctno"));
 				admap.put("toacct", pay.get("toacct"));
 				admap.put("tranam", pay.get("tranam"));
-				admap.put("frondt", pay.get("merchantDt"));
-				admap.put("fronsq",pay.get("billNo"));
+				admap.put("frondt", "");
+				admap.put("fronsq", "");
 				admap.put("crcycd", "01");
 				admap.put("quotfs", "1");
 				admap.put("userid", user.getUserid());
@@ -475,9 +487,10 @@ public class ClearController {
 					String merchantDt = pay.get("merchantDt").toString();
 					logger.debug(checkDate+"|"+merchantDt+"|修改请求");
 					String cpSeqno = pay.get("billNo").toString();
+					String billid = pay.get("billid").toString();
 					String checkStatus = "Y";
 					logger.debug(checkDate+"|"+merchantDt+"|"+cpSeqno+"|修改请求");
-					int r = cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+					int r = cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus, billid);
 					succAmount+=1;
 					logger.debug("修改状态成功"+succAmount+"修改条数"+r);
 				}else{
@@ -500,10 +513,21 @@ public class ClearController {
 					String checkDate = pay.get("checkDate").toString();
 					String merchantDt = pay.get("merchantDt").toString();
 					String cpSeqno = pay.get("billno").toString();
+					String billid = pay.get("billid").toString();
 					String checkStatus = "Y";
-					cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus);
+					cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
 					succAmount+=1;
 				}
+			} else if("5".equals(pay.get("chkStatus").toString())){
+				//我方少订单，需要工作人员自己手工去录订单
+				//修改记录状态
+				String checkDate = pay.get("checkDate").toString();
+				String merchantDt = pay.get("merchantDt").toString();
+				String cpSeqno = pay.get("billno").toString();
+				String billid = pay.get("billid").toString();
+				String checkStatus = "Y";
+				cltnCheckService.updateStatus(checkDate, merchantDt, cpSeqno, checkStatus,billid);
+				succAmount+=1;
 			}
 		}
 		map.put("retCode", "0000");

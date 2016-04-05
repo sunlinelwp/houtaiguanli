@@ -22,9 +22,16 @@
 						<input type="text" id="custac" name="custac" class="form-control input-inline input-medium" maxlength="10" placeholder="输入电子帐号">
 					</div>
 				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-3 control-label">手机号码</label>
+					<div class="input-icon col-md-9">
+						<i class="fa fa-credit-card"></i>
+						<input type="text" id="phoneNo" name="phoneNo" class="form-control input-inline input-medium" maxlength="11" placeholder="输入手机号码">
+					</div>
+				</div>
 				<div class="form-actions cust-action">
 					<button type="button" class="btn blue" id="submit" onclick="investInfo.queryCust()">查询</button>
-					<button type="button" class="btn gray" id="cancle">清空</button>
+					<button type="button" class="btn gray" id="cancle" onclick="investInfo.cleanCust()">清空</button>
 				</div>
 				<div class="cif-pp"></div>
 			</form>
@@ -58,8 +65,8 @@
 							<th scope="col" style="display:none;">期限</th>
 							<th scope="col" style="display:none;">分录编号</th>
 							<th scope="col" style="display:none;">状态</th>
-							<th scope="col" style="display:none;">起息日期</th>
-							<th scope="col" style="display:none;">到期日期</th>
+							<th scope="col" >起息日期</th>
+							<th scope="col" >到期日期</th>
 							<th scope="col" style="display:none;">已到帐收益</th>
 							<th scope="col" style="display:none;">待收本金</th>
 							<th scope="col" style="display:none;">借据号</th>

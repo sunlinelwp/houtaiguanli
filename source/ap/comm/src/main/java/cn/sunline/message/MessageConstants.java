@@ -20,4 +20,10 @@ public class MessageConstants {
 	public final static String ERRORCD = "retCode";
 	// 错误信息
 	public final static String ERRMSG = "retMsg";
+	
+	//大额提现用
+	// 服务代码
+	public final static String SERVICECODE = "serviceCode";
+	// 服务渠道
+	public final static String SERVICECHANNEL = "serviceChannel";
 }

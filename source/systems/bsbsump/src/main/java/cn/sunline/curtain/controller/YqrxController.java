@@ -72,7 +72,7 @@ public class YqrxController {
 		}catch (SumpException e) {
 			e.printStackTrace();
 			map.put("retCode", "1111");
-			map.put("retMsg", "导入差错信息异常，请确认文件是否存在");
+			map.put("retMsg", "导出差错信息异常，请确认文件是否存在");
 			return map;
 		}
 
@@ -115,7 +115,20 @@ public class YqrxController {
 		TmpYqrxAmouPK tyaPK = new TmpYqrxAmouPK();
 		tyaPK.setAmouid(reqmap.get("amouid").toString());
 		TmpYqrxAmou tya = tmpYqrxAmouService.queryOneEntities(tyaPK);
+		//根据电子账号查询行号和行名称
+		reqmap.put("custac", tya.getAcctno());
 		reqmap.put("userid", user.getUserid());
+		Map<String, Object> mapcard = clict.callClient("secaac", reqmap);
+		if(!(mapcard.get("retCode")=="0000")){
+			mapcard.put("retMsg", "电子账号有误，操作失败");
+			return mapcard;
+		}
+		reqmap.put("banknm", mapcard.get("brchna"));
+		reqmap.put("ftbkcd", mapcard.get("brchno"));
+		reqmap.put("idtfno", mapcard.get("idtfno"));
+		reqmap.put("acctpr", mapcard.get("acctpr"));
+		
+		
 		reqmap.put("acctno", tya.getAcctno());
 		reqmap.put("payeac", tya.getPayeac());
 		reqmap.put("payena", tya.getPayena());
@@ -126,19 +139,20 @@ public class YqrxController {
 		reqmap.put("pwflag", tya.getPwflag());
 		reqmap.put("tranpw", tya.getTranpw());
 		reqmap.put("remark", tya.getRemark());
-		reqmap.put("banknm", tya.getBanknm());
+//		reqmap.put("banknm", tya.getBanknm());
 		reqmap.put("provic", tya.getProvic());
 		reqmap.put("garden", tya.getGarden());
-		reqmap.put("ftbkcd", tya.getFtbkcd());
-		reqmap.put("acctpr", tya.getAcctpr());
+//		reqmap.put("ftbkcd", tya.getFtbkcd());
+//		reqmap.put("acctpr", tya.getAcctpr());
 		reqmap.put("chnlcd", tya.getChnlcd());
 		reqmap.put("pytype", tya.getPytype());
 		reqmap.put("target", "1");//前置拦截
-		logger.debug(reqmap+"----------123");
 		Map<String, Object> map = clict.callClient("hfaxtx", reqmap);
 		if(map.get("retCode")=="0000"){
 			int i = tmpYqrxAmouService.updateStates(reqmap.get("amouid").toString(), "1");
 		}
+		logger.debug(reqmap.get("custac")+"----------123");
+		logger.debug(mapcard+"----------456");
 		logger.debug("-------------------------有钱任信 出金结束-------------------------");
 		return map;
 	}

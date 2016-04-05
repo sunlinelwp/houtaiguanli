@@ -89,6 +89,11 @@ var knlordrafcheck = function() {
 									"sortable" : false,  
 									"searchable" : false
 								},
+								{
+									"data" : "tranid", 
+									"sortable" : false,  
+									"searchable" : false,
+								},
 							{
 									"data" : null,
 									"sortable" : false,
@@ -116,10 +121,12 @@ var knlordrafcheck = function() {
 				$("input[name='odorod']").val($(nRowA[0]).text()); 
 				$("input[name='ordrid']").val($(nRowA[0]).text()); 
 				$("input[name='ordram']").val($(nRowA[1]).text());
+				$("input[name='ordram']").attr("disabled","disabled");
 				$("input[name='keepdt']").val($(nRowA[2]).text());
 				$("input[name='chgeam']").val($(nRowA[3]).text());
 				$("input[name='scapno']").val($(nRowA[4]).text());
 				$("input[name='chckno']").val($(nRowA[5]).text());
+				$("input[name='tranid']").val($(nRowA[6]).text());
 				$("input[name='orfbdt']").val(q_frondt);
 				$("input[name='orfbsq']").val(q_fronsq);
 					$("#editModal1").modal('show');
@@ -150,12 +157,13 @@ var knlordrafcheck = function() {
 				function() {
 					// 解除input readOnly属性
 					$('input', $("#edit_form1")).removeAttr("readOnly");
-				
+					$("input[name='ordram']").removeAttr("disabled");
 					// 清空 input值
 					$("input", $("#editModal1")).val("").trigger("change");
 //					$("input[name='typecd']", $("#edittypeModal")).val(prodcd);
 					$("#orfbsq").val(q_fronsq);
 					$("#orfbdt").val(q_frondt);
+					$("#odorod").val("");
 					$("#editModal1").modal('show');
 					$("#editModal1").on(
 							"hide.bs.modal",

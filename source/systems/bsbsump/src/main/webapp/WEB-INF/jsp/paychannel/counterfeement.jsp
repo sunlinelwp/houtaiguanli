@@ -24,9 +24,10 @@
 				id="datatable_ajax">
 				<thead>
 					<tr role="row" class="heading">
-						<th width="10%">原前置日期</th>
-						<th width="10%">原前置流水</th>
+						<th width="10%">前置日期</th>
+						<th width="10%">前置流水</th>
 						<th width="10%">渠道编码</th>
+						<th width="10%">渠道名称</th>
 						<th width="10%">支付方式</th>
 						<th width="10%">生效日期</th>
 						<th width="10%">账户属性</th>
@@ -36,19 +37,21 @@
 						<th width="10%">最低费用</th>
 						<th width="10%">最高费用</th>
 						<th width="10%">收费比例</th>
-						<th width="15%" colspan="2">操作</th>
+						<th width="15%" colspan="2" style="text-align: center;">操作</th>
 					</tr>
 					<tr role="row" class="filter">
+						<td></td>
+						<td></td>
 						<td></td>
 						<td><input type="text"
 							class="form-control form-filter input-sm" id="n_chnlnm"
 							name="n_chnlnm" placeholder="渠道名称" /></td>
-						<td><input type="text"
-							class="form-control form-filter input-sm" id="n_yin"
-							style="display: none;" name="n_yin" /></td>
 						<td><input type="hidden"
 							class="form-control form-filter input-sm" id="n_pytype"
 							name="n_pytype" placeholder="支付方式" /></td>
+						<td><input type="text"
+							class="form-control form-filter input-sm" id="n_yin"
+							style="display: none;" name="n_yin" /></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -56,8 +59,7 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td></td>
-						<td colspan="2">
+						<td colspan="2" nowrap="nowrap">
 							<button class="btn btn-sm yellow filter-submit margin-bottom">
 								<i class="fa fa-search"></i> 查询
 							</button>
@@ -89,61 +91,68 @@
 									输入有误，请检查下面表单！返回信息 ：<span class="msg"></span>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 control-label">原前置日期</label>
+									<label class="col-md-3 control-label">前置日期</label>
 									<div class="col-md-9">
-										<div>
-											<input type="text" id="orfbdt" name="orfbdt"
-												class="form-control input-inline input-medium"
-												maxlength="10" placeholder="输入渠道编码">
-										</div>
+										<input type="text" id="orfbdt" name="orfbdt"
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入渠道编码">
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-md-3 control-label">原前置流水</label>
+									<label class="col-md-3 control-label">前置流水</label>
 									<div class="col-md-9">
 										<input type="text" id="orfbsq" name="orfbsq"
-											class="form-control input-inline input-medium"
-											maxlength="100" placeholder="输入渠道名称">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入渠道编码">
 									</div>
 								</div>
+
 								<div class="form-group">
 									<label class="col-md-3 control-label">渠道编码</label>
 									<div class="col-md-9">
 										<input type="text" id="chnlcd" name="chnlcd"
 											class="form-control input-inline input-medium" maxlength="20"
-											placeholder="输入前置银行代码">
+											placeholder="输入渠道编码">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label">渠道名称</label>
+									<div class="col-md-9">
+										<input type="text" id="chnlnm" name="chnlnm"
+											class="form-control input-inline input-medium" maxlength="50"
+											placeholder="输入渠道名称">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">支付方式</label>
 									<div class="col-md-9">
 										<input type="hidden" id="pytype" name="pytype"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入银行名称">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入支付方式">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">生效日期</label>
 									<div class="col-md-9">
 										<input type="text" id="efctdt" name="efctdt"
-											class="form-control input-inline input-medium" maxlength="1"
-											placeholder="输入渠道银行代码">
+											class="form-control input-inline input-medium" maxlength="50"
+											placeholder="输入生效日期">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">账户属性</label>
 									<div class="col-md-9">
 										<input type="hidden" id="acctpp" name="acctpp"
-											class="form-control input-inline input-medium" maxlength="5"
-											placeholder="输入银行状态">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入账户属性">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">收费类型</label>
 									<div class="col-md-9">
 										<input type="hidden" id="chgetp" name="chgetp"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入收费类型">
 									</div>
 								</div>
 
@@ -151,40 +160,40 @@
 									<label class="col-md-3 control-label">计费起始金额</label>
 									<div class="col-md-9">
 										<input type="text" id="staram" name="staram"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入计费起始金额">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">计费最大金额</label>
 									<div class="col-md-9">
 										<input type="text" id="termam" name="termam"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入计费最大金额">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">最低费用</label>
 									<div class="col-md-9">
 										<input type="text" id="lowfee" name="lowfee"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入最低费用">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">最高费用</label>
 									<div class="col-md-9">
 										<input type="text" id="higfee" name="higfee"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入最高费用">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">收费比例</label>
 									<div class="col-md-9">
 										<input type="text" id="rateit" name="rateit"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+											class="form-control input-inline input-medium" maxlength="20"
+											placeholder="输入收费比例">
 									</div>
 								</div>
 							</div>

@@ -6,7 +6,8 @@ var knlordrInfo = function() {
 		allowClear : true,
 		placeholder : "请选择"
 	});
-	var handleTable = function(q_frondt, q_ckstat,q_fronsq,q_custac) {
+	var handleTable = function(q_frondts, q_ckstat,q_fronsq,q_custac, q_servtp) {
+		
 		var grid = new Datatable();
 		var typeurl1 = Sunline.ajaxPath("cust/qrordr"); // URL???
 		var typesendData1 = ["ordrid", "ordram"]; // 主键
@@ -19,10 +20,10 @@ var knlordrInfo = function() {
 //			grid.setAjaxParam("q_custac",q_custac);
 //        	$("#q_custac",$("#editModal1")).val(q_custac);
 //        }
-		if(!Sunline.isNull(q_frondt)){
-			grid.setAjaxParam("q_frondt",q_frondt);
-        	$("#orfbdt",$("#editModal1")).val(q_frondt);
-        	$("#q_frondt").val(q_frondt);
+		if(!Sunline.isNull(q_frondts)){
+			grid.setAjaxParam("q_frondt",q_frondts);
+        	$("#orfbdt",$("#editModal1")).val(q_frondts);
+        	$("#q_frondts").val(q_frondts);
         }
 //		if(!Sunline.isNull(q_ckstat)){
 //			grid.setAjaxParam("q_ckstat",q_ckstat);
@@ -32,6 +33,8 @@ var knlordrInfo = function() {
 					src : $("#ordrinfo_ajax"),
 					deleteData : typesendData1,
 					onSuccess : function(grid) {
+						$("#inptam").text(grid.getDataTable().context['0'].json['inptam']);
+						$("#totlam").text(grid.getDataTable().context['0'].json['totlam']);
 					},
 					onError : function(grid) {
 					},
@@ -88,6 +91,11 @@ var knlordrInfo = function() {
 									"data" : "chckno", 
 									"sortable" : false,  
 									"searchable" : false
+								},
+								{
+									"data" : "tranid", 
+									"sortable" : false,  
+									"searchable" : false
 								}
 /**								{
 									"data" : null,
@@ -122,7 +130,7 @@ var knlordrInfo = function() {
 				$("input[name='chgeam']").val($(nRowA[3]).text());
 				$("input[name='scapno']").val($(nRowA[4]).text());
 				$("input[name='chckno']").val($(nRowA[5]).text());
-				$("input[name='orfbdt']").val(q_frondt);
+				$("input[name='orfbdt']").val(q_frondts);
 				$("input[name='orfbsq']").val(q_fronsq);
 					$("#editModal1").modal('show');
 					$("#editModal1").on(
@@ -157,7 +165,8 @@ var knlordrInfo = function() {
 					$("input", $("#editModal1")).val("").trigger("change");
 //					$("input[name='typecd']", $("#edittypeModal")).val(prodcd);
 					$("#orfbsq").val(q_fronsq);
-					$("#orfbdt").val(q_frondt);
+					$("#orfbdt").val(q_frondts);
+					$("#servtp").val(q_servtp);  
 					$("#editModal1").modal('show');
 					$("#editModal1").on(
 							"hide.bs.modal",
@@ -283,12 +292,16 @@ var knlordrInfo = function() {
 				var data = {};
 				$.each($("input", editform), function(i, n) {
 					if (n.name != "") {
+						if (n.name == "ordrsq" && (n.value == null || n.value == "")) {
+							n.value = "0";
+						}
 						data[n.name] = n.value;
 						console.info(n.name);
 						console.info(n.value);
 					}
 				});
-				
+
+				console.info(data);
 				var r = confirm('数据提交后将不允许修改，请检查数据！');
 				if (r == false) {
 					return;
@@ -313,8 +326,8 @@ var knlordrInfo = function() {
 	};
 
 	return {
-		init : function(q_frondt, q_ckstat,q_fronsq,q_custac) {
-			handleTable(q_frondt, q_ckstat,q_fronsq,q_custac);
+		init : function(q_frondts, q_ckstat,q_fronsq,q_custac,q_servtp) {
+			handleTable(q_frondts, q_ckstat,q_fronsq,q_custac,q_servtp);
 		}
 	}
 

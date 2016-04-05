@@ -223,6 +223,10 @@ var Apcpay = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
+			            	"data": "billid",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
 			            	"data": "coreDate",
 			            	"sortable": false,
 			            	"searchable": false
@@ -261,20 +265,22 @@ var Apcpay = function(){
 			                        }
 			            	    return data;
 			            	}
-			            },{ 
-			            	"data": "signStatus",
-			            	"width": "8%",
-			            	"sortable": false,
-			            	"searchable": false,
-			            	"render": function (data, type, full) {
-			            	    for (var i = 0; i < signstausDict.length; i++) {
-			                          if (signstausDict[i].id == data) {
-			                            return signstausDict[i].dictName;
-			                          }
-			                        }
-			            	    return data;
-			            	}
-			            },{ 
+			            },
+//			            { 
+//			            	"data": "signStatus",
+//			            	"width": "8%",
+//			            	"sortable": false,
+//			            	"searchable": false,
+//			            	"render": function (data, type, full) {
+//			            	    for (var i = 0; i < signstausDict.length; i++) {
+//			                          if (signstausDict[i].id == data) {
+//			                            return signstausDict[i].dictName;
+//			                          }
+//			                        }
+//			            	    return data;
+//			            	}
+//			            },
+			            { 
 			            	"data": "keyElement",
 			            	"width": "8%",
 			            	"sortable": false,
@@ -287,6 +293,21 @@ var Apcpay = function(){
 			                        }
 			            	    return data;
 			            	}
+			            },{ 
+			            	"data": "tlCardno",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
+			            	"data": "bankTranam",
+			            	"sortable": false,
+			            	"searchable": false,
+			            	"render" : function(data,type,full){
+			            		return formartM(data+"");
+			            	}
+			            },{ 
+			            	"data": "bankCardno",
+			            	"sortable": false,
+			            	"searchable": false
 			            },{ 
 			            	"data": "checkStatus",
 			            	"sortable": false,
@@ -303,7 +324,8 @@ var Apcpay = function(){
 		            ]
 		        }
 		    });
-			$(".table-group-actions").append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#apcpay_table")).append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#apcpay_table")).append("&nbsp;&nbsp;&nbsp;<button id='tran_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;查询交易信息</button></div>");
 			var sendData = ["checkDate"];
 	        grid.bindTableDelete(sendData);
 	        grid.bindTableEdit(sendData,editForm);
@@ -336,14 +358,20 @@ var Apcpay = function(){
 				var data = [];
 				for (var i=0;i<rows.length;i++){
 					var row = rows[i].children();
-					var tranam = $(row[7]).text();
-					var transq = $(row[5]).text();
-					var acctno = $(row[6]).text();
+					var chkStatus = _formartDict(chkStatusDict,$(row[10]).text());
+					var tranam;
+					if(chkStatus == 2){
+						tranam = $(row[13]).text();
+					}else{
+						tranam = $(row[8]).text();
+					}
+					var transq = $(row[6]).text();
+					var acctno = $(row[7]).text();
 					var toacct = inacno;//AllinPay清算账户
-					var chkStatus = _formartDict(chkStatusDict,$(row[9]).text());
 					var merchantDt = $(row[2]).text();
 					var checkDate = $(row[1]).text();
 					var billno = $(row[3]).text();
+					var billid = $(row[4]).text();//唯一标识符
 					var rowData = {};
 					rowData.tranam = tranam;
 					rowData.transq = transq;
@@ -353,6 +381,7 @@ var Apcpay = function(){
 					rowData.merchantDt = merchantDt;
 					rowData.checkDate = checkDate;
 					rowData.chkStatus = chkStatus;
+					rowData.billid = billid;
 					data.push(rowData);
 					//debtDeal(rows[i].children());
 				}
@@ -385,6 +414,19 @@ var Apcpay = function(){
 	            	false); 
 			});
 		_tranDate = $('#check-date').val();
+
+		// 交易明细
+		$("#tran_btn").bind("click", function() {
+			var rows = grid.getSelectedRows();
+			if(rows.length != 1){
+				bootbox.alert("请选择一条数据数据");
+				return;
+			}
+			var row = rows[0].children();
+			$("#tran_custac").val($(row[7]).text());
+			custBill.queryInfo();
+			$("#bianji").modal('show');
+		});
 	};
 //	var debtDeal = function(row){
 //		var tranam = $(row[8]).text();
@@ -475,11 +517,27 @@ var Apcpay = function(){
 //    	"json",
 //    	false); 
 //	}
+	var addSelect2 = function(){
+		var input = {};
+		Sunline.ajaxRouter("inac/qrinna", input, "POST", function(data) {
+			$("#inacno").select2({
+				data : data.data,
+				formatSelection: function(item){
+					 return item.text;
+				 },
+				 formatResult: function(item){
+					 return item.text;
+				 }
+			});
+		}, function(data) {
+		});
+	}
 	return {
 		init : function(){
 			readFile();
 			handleForm();
 			handlerTable();
+			addSelect2();
 		}
 	}
 }()

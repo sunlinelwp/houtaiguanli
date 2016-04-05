@@ -3,6 +3,7 @@ var Apgate = function(){
 	var paystausDict=Sunline.getDict("payStatus");
 	var signstausDict=Sunline.getDict("signStatus");
 	var checkstausDict=Sunline.getDict("checkStatus");
+	var keyelementDict=Sunline.getDict("keyElement");
 	var grid = new Datatable();
 	var _isFirst = true;
 	var _tranDate = "0000";
@@ -261,14 +262,14 @@ var Apgate = function(){
 			            	    return data;
 			            	}
 			            },{ 
-			            	"data": "signStatus",
+			            	"data": "keyElement",
 			            	"width": "8%",
 			            	"sortable": false,
 			            	"searchable": false,
 			            	"render": function (data, type, full) {
-			            	    for (var i = 0; i < signstausDict.length; i++) {
-			                          if (signstausDict[i].id == data) {
-			                            return signstausDict[i].dictName;
+			            	    for (var i = 0; i < keyelementDict.length; i++) {
+			                          if (keyelementDict[i].id == data) {
+			                            return keyelementDict[i].dictName;
 			                          }
 			                        }
 			            	    return data;
@@ -289,7 +290,9 @@ var Apgate = function(){
 		            ]
 		        }
 		    });
-			$(".table-group-actions").append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#apgate_table")).append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#apgate_table")).append("&nbsp;&nbsp;&nbsp;<button id='tran_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;查询交易信息</button></div>");
+
 			var sendData = ["checkDate"];
 	        grid.bindTableDelete(sendData);
 	        grid.bindTableEdit(sendData,editForm);
@@ -371,6 +374,19 @@ var Apgate = function(){
 	            	false); 
 			});
 		_tranDate = $('#check-date').val();
+
+		// 交易明细
+		$("#tran_btn").bind("click", function() {
+			var rows = grid.getSelectedRows();
+			if(rows.length != 1){
+				bootbox.alert("请选择一条数据数据");
+				return;
+			}
+			var row = rows[0].children();
+			$("#tran_custac").val($(row[6]).text());
+			custBill.queryInfo();
+			$("#bianji").modal('show');
+		});
 	};
 //	var debtDeal = function(row){
 //		var tranam = $(row[8]).text();
@@ -461,11 +477,27 @@ var Apgate = function(){
 //    	"json",
 //    	false); 
 //	}
+	var addSelect2 = function(){
+		var input = {};
+		Sunline.ajaxRouter("inac/qrinna", input, "POST", function(data) {
+			$("#inacno").select2({
+				data : data.data,
+				formatSelection: function(item){
+					 return item.text;
+				 },
+				 formatResult: function(item){
+					 return item.text;
+				 }
+			});
+		}, function(data) {
+		});
+	}
 	return {
 		init : function(){
 			readFile();
 			handleForm();
 			handlerTable();
+			addSelect2();
 		}
 	}
 }()

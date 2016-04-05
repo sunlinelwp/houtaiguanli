@@ -12,7 +12,6 @@
 	</div>
 	<div class="portlet-body">
 		<div class="table-container">
-
 			<div class="table-actions-wrapper">
 				<span> </span>
 				<button id="add_btn"
@@ -34,7 +33,8 @@
 						<th width="8%">对个人日累限额</th>
 						<th width="8%">对公司单笔限额</th>
 						<th width="8%">对公司日累限额</th>
-						<th width="15%" colspan="2">操作</th>
+						<th width="8%">生效状态</th>
+						<th width="30%" style="text-align: center;" colspan="2">操 作</th>
 					</tr>
 					<tr role="row" class="filter">
 						<td></td>
@@ -43,7 +43,7 @@
 							name="n_chnlnm" placeholder="渠道名称" /></td>
 						<td></td>
 						<td><input type="text"
-							class="form-control form-filter input-sm" id="n_banknm"
+							class="form-control form-filter input-sm" id="bankna"
 							name="n_banknm" placeholder="银行名称" /></td>
 						<td><input type="text"
 							class="form-control form-filter input-sm" id="n_yin"
@@ -55,7 +55,8 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td colspan="2">
+						<td></td>
+						<td colspan="2" nowrap="nowrap">
 							<button class="btn btn-sm yellow filter-submit margin-bottom">
 								<i class="fa fa-search"></i> 查询
 							</button>
@@ -115,8 +116,8 @@
 								<div class="form-group">
 									<label class="col-md-3 control-label">银行名称</label>
 									<div class="col-md-9">
-										<input type="text" id="bankna" name="bankna"
-											class="form-control input-inline input-medium" maxlength="2"
+										<input type="text" id="banknm" name="bankna"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入银行名称">
 									</div>
 								</div>
@@ -124,7 +125,7 @@
 									<label class="col-md-3 control-label">渠道银行代码</label>
 									<div class="col-md-9">
 										<input type="text" id="bankcd" name="bankcd"
-											class="form-control input-inline input-medium" maxlength="1"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入渠道银行代码">
 									</div>
 								</div>
@@ -139,33 +140,41 @@
 								<div class="form-group">
 									<label class="col-md-3 control-label">对个人单笔限额</label>
 									<div class="col-md-9">
-										<input type="text" id="psltam" name="psltam"
-											class="form-control input-inline input-medium" maxlength="5"
+										<input type="text" id="pypslt" name="pypslt"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入对个人单笔限额">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">对个人日累限额</label>
 									<div class="col-md-9">
-										<input type="text" id="pdltam" name="pdltam"
-											class="form-control input-inline input-medium" maxlength="5"
+										<input type="text" id="pypdlt" name="pypdlt"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入对个人日累限额">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">对公司单笔限额</label>
 									<div class="col-md-9">
-										<input type="text" id="csltam" name="csltam"
-											class="form-control input-inline input-medium" maxlength="5"
+										<input type="text" id="pycslt" name="pycslt"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入对公司单笔限额">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">对公司日累限额</label>
 									<div class="col-md-9">
-										<input type="text" id="cdltam" name="cdltam"
-											class="form-control input-inline input-medium" maxlength="5"
+										<input type="text" id="pycdlt" name="pycdlt"
+											class="form-control input-inline input-medium" maxlength="50"
 											placeholder="输入对公司日累限额">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label">生效状态</label>
+									<div class="col-md-9">
+										<input type="text" id="transt" name="transt"
+											class="form-control input-inline input-medium" maxlength="50"
+											placeholder="输入生效状态">
 									</div>
 								</div>
 							</div>

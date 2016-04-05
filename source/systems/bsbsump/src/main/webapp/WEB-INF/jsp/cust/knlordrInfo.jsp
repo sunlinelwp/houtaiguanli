@@ -11,6 +11,10 @@
 			</div>
 		</div>
 		<div class="portlet-body">
+			<div class="form-group">
+				<label class="col-md-6" style = "margin-top:5px">已录入金额:&nbsp;&nbsp;<span id="inptam" style = "font-size:18px;font-weight:700;color:blue;"></span></label> 
+				<label class="col-md-6" style = "margin-top:5px">总金额:&nbsp;&nbsp;<span id="totlam" style = "font-size:18px;font-weight:700;color:blue;"></span></label> 
+			</div>
 			<div class="table-container">
 			
 				<div class="table-actions-wrapper">
@@ -21,23 +25,26 @@
 				<table class="table table-striped table-bordered table-hover" id="ordrinfo_ajax">
 					<thead>
 						<tr role="row" class="heading">	   		
-							<th width="20%">
+							<th width="19%">
 								订单号
 							</th>	
-							<th width="10%">
+							<th width="9%">
 								订单金额
 							</th>
-							<th width="10%">
+							<th width="9%">
 								清算日期
 							</th>
-							<th width="15%">
+							<th width="14%">
 								手续费
 							</th>
-							<th width="15%">
+							<th width="14%">
 								渠道号
 							</th>
-							<th width="15%">
+							<th width="14%">
 								操作员工
+							</th>
+							<th width="6%">
+								订单顺序号
 							</th>
 							<!-- <th width="24" colspan="2">
 								 操作
@@ -56,7 +63,7 @@
 							</td>
 							<td  colspan="2">
 								<input type="hidden" id="q_fronsq" name="q_fronsq" class="form-control form-filter input-sm" maxlength="40" >
-								<input type="hidden" id="q_frondt" name="q_frondt" class="form-control form-filter input-sm" maxlength="20" >
+								<input type="hidden" id="q_frondts" name="q_frondts" class="form-control form-filter input-sm" maxlength="20" >
 							</td>
 						</tr>
 					</thead>
@@ -87,7 +94,7 @@
 										<label class="col-md-3 control-label">订单号</label>
 										<div class="col-md-9">
 											<div>
-												<input type="text" id="ordrid" name="ordrid" readOnly class="form-control input-inline input-medium" maxlength="40" placeholder="输入订单号"onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\W]/g,''))">
+												<input type="text" id="ordrid" name="ordrid" readOnly class="form-control input-inline input-medium" maxlength="40" placeholder="文件名">
 											</div>
 										</div>
 									</div>
@@ -104,7 +111,7 @@
 												data-date-format="yyyymmdd" data-date-viewmode="years"
 												data-date-minviewmode="months">
 											<input type="text" class="form-control form-value" name="keepdt"
-													maxlength="8" placeholder="输入清算日期"> <span
+													maxlength="8" placeholder="完成时间"> <span
 											class="input-group-btn">
 											<button class="btn" type="button">
 													<i class="fa fa-calendar"></i>
@@ -135,13 +142,20 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label">渠道号</label>
 										<div class="col-md-9">
-										   	<input type="text" id="scapno" name="scapno" class="form-control input-inline input-medium" maxlength="4" placeholder="输入渠道号">						
+										   	<input type="text" id="scapno" name="scapno" class="form-control input-inline input-medium" maxlength="4" placeholder="输入渠道号">	
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">订单顺序号</label>
+										<div class="col-md-9">
+										   	<input type="text" id="ordrsq" name="ordrsq" class="form-control input-inline input-medium" placeholder="记录序号">	
 										</div>
 									</div>
 								</div>
 								<div class="modal-footer">
 									<input type="hidden" id="orfbsq" name="orfbsq" readOnly class="form-control input-inline input-medium" maxlength="40" >
 									<input type="hidden" id="orfbdt" name="orfbdt" readOnly class="form-control input-inline input-medium" maxlength="20" >
+									<input type="hidden" id="servtp" name="servtp" class="form-control input-inline input-medium" >	
 									<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
 									<button type="submit" class="btn blue" id="btn_save_edit1">保存</button>
 								</div>
@@ -151,7 +165,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>		
 	<!-- End: life time stats -->
 </div>
 <script type="text/javascript" src="${ctx}/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>

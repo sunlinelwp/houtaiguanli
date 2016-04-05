@@ -42,9 +42,9 @@
 						<td></td>
 						<td></td>
 						<td><input type="text"
-							class="form-control form-filter input-sm" id="n_yin" style="display: none;"
-							 name="n_yin" /></td>
-							 <td></td>
+							class="form-control form-filter input-sm" id="n_yin"
+							style="display: none;" name="n_yin" /></td>
+						<td></td>
 						<td></td>
 						<td></td>
 						<td colspan="2">
@@ -99,45 +99,20 @@
 								<div class="form-group">
 									<label class="col-md-3 control-label">渠道状态</label>
 									<div class="col-md-9">
-										<input type="text" id="status" name="status"
+										<input type="hidden" id="status" name="status"
 											class="form-control input-inline input-medium" maxlength="20"
-											placeholder="输入前置银行代码">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label">创建时间</label>
-									<div class="col-md-9">
-										<input type="text" id="creatm" name="creatm"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入银行名称">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label">创建人</label>
-									<div class="col-md-9">
-										<input type="text" id="cruser" name="cruser"
-											class="form-control input-inline input-medium" maxlength="1"
-											placeholder="输入渠道银行代码">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 control-label">修改人</label>
-									<div class="col-md-9">
-										<input type="hidden" id="mduser" name="mduser"
-											class="form-control input-inline input-medium" maxlength="5"
-											placeholder="输入银行状态">
+											placeholder="输入渠道状态">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-md-3 control-label">备注</label>
 									<div class="col-md-9">
-										<input type="hidden" id="remark" name="remark"
-											class="form-control input-inline input-medium" maxlength="2"
-											placeholder="输入提现">
+										<input type="text" id="remark" name="remark"
+											class="form-control input-inline input-medium"
+											maxlength="200" placeholder="输入备注">
 									</div>
 								</div>
 							</div>
-
 							<div class="modal-footer">
 								<button type="button" data-dismiss="modal"
 									class="btn btn-default">关闭</button>

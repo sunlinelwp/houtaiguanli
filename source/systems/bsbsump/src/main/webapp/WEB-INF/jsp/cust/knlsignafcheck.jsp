@@ -6,8 +6,8 @@
 		<div class="portlet-title">
 			<div class="caption">
 				<i class="fa fa-gift font-green-sharp"></i>
-				<span class="caption-subject font-green-sharp bold uppercase">大额提现审核列表</span>
-				<span class="caption-helper">大额提现审核...</span>
+				<span class="caption-subject font-green-sharp bold uppercase">大额提现对账后订单列表</span>
+				<span class="caption-helper">大额提现对账后订单列表...</span>
 			</div>
 		</div>
 		<div class="portlet-body">
@@ -38,15 +38,18 @@
 							<th width="8%">
 								前置日期
 							</th>
+							<!-- 
 							<th width="13%">
 								业务编码
 							</th>
 							<th width="6%">
 								银行行号
 							</th>
+							 -->
 							<th width="6%">
 								银行卡号
 							</th>
+							<!-- 
 							<th width="6%">
 								账户名称
 							</th>
@@ -65,17 +68,23 @@
 							<th width="6%">
 								证件类型
 							</th>
+							 -->
 							<th width="6%">
 								电话号码
 							</th>
+							<!-- 
 							<th width="6%">
 								手续费
 							</th>
 							<th width="6%">
 								审核原因
 							</th>
+							 -->
 							<th width="10%">
 								状态
+							</th>
+							<th width="8%">
+								前置时间
 							</th>
 							<th width="24" colspan="2">
 								 操作
@@ -93,6 +102,15 @@
 							<td>
 								<input type="text" class="form-control form-filter input-sm" id="q_frondt_sign" name="q_frondt_sign" /> 
 							</td>
+							<!-- 
+							<td>
+							</td>
+							<td>
+							</td>
+							 -->
+							<td>
+							</td>
+							<!-- 
 							<td>
 							</td>
 							<td>
@@ -103,22 +121,21 @@
 							</td>
 							<td>
 							</td>
+							-->
+							<td>
+							</td>
+							<!-- 
 							<td>
 							</td>
 							<td>
 							</td>
 							<td>
 							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
+							 -->
 							<td>
 								<input type="text" class="form-control form-filter input-sm" id="q_status" name="q_status" /> 		
+							</td>
+							<td>
 							</td>
 							<td  colspan="2">
 								<button class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> 查询</button>

@@ -56,6 +56,16 @@ public class TmpAinPayPayGateCheck {
 	private String tlSerialNo;//通联流水号
 	@Column(name = "clear_amt")
 	private String clearAmt;//清算金额
+	@Column(name = "key_element")
+	private String keyElement;//关键要素
+
+	public String getKeyElement() {
+		return keyElement;
+	}
+
+	public void setKeyElement(String keyElement) {
+		this.keyElement = keyElement;
+	}
 
 	public String getAcoutStatus() {
 		return acoutStatus;

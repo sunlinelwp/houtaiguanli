@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="form-actions file-action col-md-3" >
-					<button type="button" class="btn blue" id="submit">导入差错信息</button>
+					<button type="button" class="btn blue" id="submit">导出差错信息</button>
 				</div> 
 			</form>
 			<!-- END FILE FORM -->

@@ -14,6 +14,16 @@ public class TmpAllinPayCltnCheckPK implements Serializable {
 	private String merchantDt;
 	
 	private String billNo;
+	
+	private String billid;
+
+	public String getBillid() {
+		return billid;
+	}
+
+	public void setBillid(String billid) {
+		this.billid = billid;
+	}
 
 	public String getCheckDate() {
 		return checkDate;

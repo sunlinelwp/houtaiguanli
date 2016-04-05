@@ -77,6 +77,12 @@ public class ClientImpl implements Client {
 		reqData.put(MessageConstants.TRANTM, DateTools.getNow(DateTools.HHMMSS));
 		// 交易处理码
 		reqData.put(MessageConstants.PRCSCD, prcscd);
+		
+		//大额提现发送短信专用
+		// 服务代码
+		reqData.put(MessageConstants.SERVICECODE, prcscd);
+		// 服务渠道
+		reqData.put(MessageConstants.SERVICECHANNEL, "01");
 		/**
 		 * 转换请求报文
 		 */

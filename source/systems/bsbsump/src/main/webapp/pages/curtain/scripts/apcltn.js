@@ -237,6 +237,10 @@ var Apcltn = function(){
 			            	"sortable": false,
 			            	"searchable": false
 			            },{ 
+			            	"data": "billid",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
 			            	"data": "acctno",
 			            	"sortable": false,
 			            	"searchable": false
@@ -266,19 +270,21 @@ var Apcltn = function(){
 			                        }
 			            	    return data;
 			            	}
-			            },{ 
-			            	"data": "signStatus",
-			            	"sortable": false,
-			            	"searchable": false,
-			            	"render": function (data, type, full) {
-			            	    for (var i = 0; i < signstausDict.length; i++) {
-			                          if (signstausDict[i].id == data) {
-			                            return signstausDict[i].dictName;
-			                          }
-			                        }
-			            	    return data;
-			            	}
-			            },{ 
+			            },
+//			            { 
+//			            	"data": "signStatus",
+//			            	"sortable": false,
+//			            	"searchable": false,
+//			            	"render": function (data, type, full) {
+//			            	    for (var i = 0; i < signstausDict.length; i++) {
+//			                          if (signstausDict[i].id == data) {
+//			                            return signstausDict[i].dictName;
+//			                          }
+//			                        }
+//			            	    return data;
+//			            	}
+//			            },
+			            { 
 			            	"data": "keyElement",
 			            	"sortable": false,
 			            	"searchable": false,
@@ -290,6 +296,21 @@ var Apcltn = function(){
 			                        }
 			            	    return data;
 			            	}
+			            },{ 
+			            	"data": "tlCardno",
+			            	"sortable": false,
+			            	"searchable": false
+			            },{ 
+			            	"data": "bankTranam",
+			            	"sortable": false,
+			            	"searchable": false,
+			            	"render" : function(data,type,full){
+			            		return formartM(data+"");
+			            	}
+			            },{ 
+			            	"data": "bankCardno",
+			            	"sortable": false,
+			            	"searchable": false
 			            },{ 
 			            	"data": "checkStatus",
 			            	"sortable": false,
@@ -306,7 +327,9 @@ var Apcltn = function(){
 		            ]
 		        }
 		    });
-			$(".table-group-actions").append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#apcltn_table")).append("<button id='deal_btn' class='btn btn-sm green table-group-action-submit'><i class='fa fa-rotate-right'></i>&nbsp;差错处理</button></div>");
+			$(".table-group-actions",$("#apcltn_table")).append("&nbsp;&nbsp;&nbsp;<button id='tran_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;查询交易信息</button></div>");
+
 			var sendData = ["checkDate","checkStatus"];
 	        grid.bindTableDelete(sendData);
 	        grid.bindTableEdit(sendData,editForm);
@@ -327,26 +350,35 @@ var Apcltn = function(){
 			var data = [];
 			for (i=0;i<rows.length;i++){
 				var row = rows[i].children();
-				var tranam = $(row[6]).text();
-				var toacct = $(row[5]).text();
+				var tranam;
+				var chkStatus = _formartDict(chkStatusDict,$(row[9]).text());
+				//对账结果为2（我方多）时，调账金额用行内交易金额
+				if(chkStatus == 2){
+					tranam = $(row[12]).text();
+				}else{
+					tranam = $(row[7]).text();
+				}
+				var toacct = $(row[6]).text();
 				var acctno = inacno;//通联渠道清算账户
-				var chkStatus = _formartDict(chkStatusDict,$(row[8]).text());
 				var merchantDt = $(row[3]).text();
-				var billNo = $(row[4]).text();
+				var billno = $(row[4]).text();
 				var checkDate = $(row[1]).text();
+				var billid = $(row[5]).text();
 				var rowData = {};
 				rowData.tranam = tranam;
 				rowData.acctno = acctno;
 				rowData.toacct = toacct;
 				rowData.merchantDt = merchantDt;
-				rowData.billNo = billNo;
+				rowData.billno = billno;
 				rowData.checkDate = checkDate;
 				rowData.chkStatus = chkStatus;
+				rowData.billid = billid;
 				data.push(rowData);
 				//debtDeal(rows[i].children());
 			}
 			var input = {};
 			input.data = data;
+			console.info(input);
 			$("#myModal").modal('show');
 			Sunline.ajaxRouter(
             	"clear/checkcltndeal", 
@@ -374,12 +406,41 @@ var Apcltn = function(){
             	false); 
 			});
 		_tranDate = $('#check-date').val();
+		
+		// 交易明细
+		$("#tran_btn").bind("click", function() {
+			var rows = grid.getSelectedRows();
+			if(rows.length != 1){
+				bootbox.alert("请选择一条数据数据");
+				return;
+			}
+			var row = rows[0].children();
+			$("#tran_custac").val($(row[6]).text());
+			custBill.queryInfo();
+			$("#bianji").modal('show');
+		});
 	};
+	var addSelect2 = function(){
+		var input = {};
+		Sunline.ajaxRouter("inac/qrinna", input, "POST", function(data) {
+			$("#inacno").select2({
+				data : data.data,
+				formatSelection: function(item){
+					 return item.text;
+				 },
+				 formatResult: function(item){
+					 return item.text;
+				 }
+			});
+		}, function(data) {
+		});
+	}
 	return {
 		init : function(){
 			readFile();
 			handleForm();
 			handlerTable();
+			addSelect2();
 		}
 	}
 }()

@@ -12,8 +12,8 @@ public interface TmpAllinPayCltnCheckRepository extends JpaRepository<TmpAllinPa
 	int deleteByCheckDate(String checkDate);
 	
 	@Modifying
-	@Query(value = "update TmpAllinPayCltnCheck a set a.checkStatus = ?4 where a.checkDate = ?1 and a.merchantDt = ?2 and a.billNo = ?3")
-	int updateStatus(String checkDate ,String merchantDt, String billNo ,String checkStatus);
+	@Query(value = "update TmpAllinPayCltnCheck a set a.checkStatus = ?4 where a.checkDate = ?1 and a.merchantDt = ?2 and a.billNo = ?3 and a.billid = ?5")
+	int updateStatus(String checkDate ,String merchantDt, String billNo ,String checkStatus, String billid);
 	
 	@Query(value = "select count(1) from TmpAllinPayCltnCheck a where a.checkDate = ?1 and a.checkStatus = ?2")
 	int getCPCltnCountByStatus (String checkDate , String status);

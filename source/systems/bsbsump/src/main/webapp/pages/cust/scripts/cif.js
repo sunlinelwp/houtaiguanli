@@ -6,11 +6,14 @@ var Cif = function(){
 	var transtDict=Sunline.getDict("transt");
 	var grid = new Datatable();
 	var tran_grid = new Datatable();
+	var tran_grid_bank = new Datatable();
 	var o_ecctno;
 	var o_addr;
 	var o_email;
 	var o_acctst;
 	var isNotF = true;
+	var bankIsNotF = true;
+	var testaccount="";
 	var formartDict = function(dict,value){
 		for(var i=0 ; i<dict.length ; i++){
 			if(value == dict[i].dictId){
@@ -38,6 +41,12 @@ var Cif = function(){
 		}
 		return time.substr(0,2)+":"+time.substr(2,2)+":"+time.substr(4,2);
 	};
+	
+	//格式化时间为yyyy-mm-dd hh:mm:ss
+	var formartTimes = function (time){
+		return time.substr(0,4)+""+time.substr(4,2)+""+time.substr(6,2)+" ";//+time.substr(8,2)+":"+time.substr(10,2)+":"+time.substr(12,2);
+		
+	}
 	var handlerTable = function(){
 		
 		var editForm = function(nRowA){
@@ -47,6 +56,8 @@ var Cif = function(){
 			o_acctst = formartDict(acctstDict,$(nRowA[9]).text());
 			$('#m_ecctno').val($(nRowA[1]).text());
 			$('#m_ecctna').val($(nRowA[2]).text());
+			$('#m_teleno').val($(nRowA[4]).text());
+			$('#m_idtfno').val($(nRowA[3]).text());
 			$('#m_addr').val($(nRowA[6]).text());
 			$('#m_email').val($(nRowA[5]).text());
 			$('#m_acctst').select2("val",formartDict(acctstDict,$(nRowA[9]).text()));
@@ -141,19 +152,20 @@ var Cif = function(){
 	            ]
 	        }
 	    });
-		$(".table-group-actions").append("<button id='tran_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;查询交易信息</button></div>");
-		$(".table-group-actions").append("<button id='f_btn' class='btn btn-sm lightblue table-group-action-submit'><i class='fa icon-lock'></i>&nbsp;账户冻结明细</button></div>");
+		$(".table-group-actions").append("<button id='bank_tran_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;银行卡查询</button></div>");
+		$(".table-group-actions").append("&nbsp;&nbsp;&nbsp;<button id='tran_btn' class='btn btn-sm blue table-group-action-submit'><i class='fa icon-cloud-download'></i>&nbsp;查询交易信息</button></div>");
+		//$(".table-group-actions").append("<button id='f_btn'    class='btn btn-sm lightblue table-group-action-submit'><i class='fa icon-lock'></i>&nbsp;账户冻结明细</button></div>");
 		var sendData = ["ecctno"];
         grid.bindTableEdit(sendData,editForm);
 	};
 	var handlerForm = function(){
 		
-		jQuery.validator.addMethod("id_no", function(value, element, param) {
-			if((!Sunline.isNull(value)) && param == true){
-				return IdCardValidate(value);
-			}
-			return true;
-		}, $.validator.format("证件号码输入有误"));
+//		jQuery.validator.addMethod("id_no", function(value, element, param) {
+//			if((!Sunline.isNull(value)) && param == true){
+//				return IdCardValidate(value);
+//			}
+//			return true;
+//		}, $.validator.format("证件号码输入有误"));
 		$('#cust-form').validate({
 			errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -162,10 +174,10 @@ var Cif = function(){
             	custac: {
                     required: false
             	},
-            	idcard : {
-            		required: false,
-            		id_no : true
-            	},
+//            	idcard : {
+//            		required: false,
+//            		id_no : true
+//            	},
             	telecd : {
             		required: false,
             		rangelength : [11,11]
@@ -175,9 +187,9 @@ var Cif = function(){
             	checkdate: {
                     required: "对账日期必填"
                 },
-                idcard : {
-            		id_no : "证件号输入有误"
-            	},
+//                idcard : {
+//            		id_no : "证件号输入有误"
+//            	},
             	telecd : {
             		rangelength : "手机号码位数不正确"
             	}
@@ -353,6 +365,8 @@ var Cif = function(){
 			var ecctno = $('#m_ecctno').val();
 			var address = $('#m_addr').val();
 			var email = $('#m_email').val();
+			var idtfno = $('#m_idtfno').val();
+			var teleno = $('#m_teleno').val();
 			var acctst = $('#m_acctst').select2("val");
 			if(address == o_addr && email == o_email && acctst == o_acctst) {
 				return ;
@@ -362,6 +376,8 @@ var Cif = function(){
 			input.addres = address;
 			input.emails = email;
 			input.acctst = acctst;
+			input.idtfno = idtfno;
+			input.teleno = teleno;
 			$("#myModal").modal('show');
 			Sunline.ajaxRouter(
 		         	"cust/update", 
@@ -372,6 +388,7 @@ var Cif = function(){
 		         		//console.info("success:",redata);
 		         		if(redata.retCode!='0000'){
 		         			bootbox.alert(redata.retMsg);
+		        			$("#myModal").modal('hide');
 		         			return;
 		         		}
 		         		$("#myModal").modal('hide');
@@ -393,6 +410,94 @@ var Cif = function(){
 		         	"json",
 		         	true);
 		});
+		
+		
+		//银行卡查询
+		$('#bank_tran_btn').click(function(){
+			
+			var rows = grid.getSelectedRows();
+			if(rows.length != 1){
+				bootbox.alert("请选择一条信息");
+				return;
+			}
+			var ecctno = $(rows[0].children()[1]).text();
+			var url1 = Sunline.ajaxPath("cust/bankcardif");
+			
+			console.info(bankIsNotF);
+			if(bankIsNotF){
+				tran_grid_bank.setAjaxParam("custac",ecctno);
+				tran_grid_bank.init({
+			        src: $("#cif_tran_ajax_bank"),
+			        onSuccess: function (grid) {
+			        	$('.cif_tran_ajax_wrapper .alert-danger').css("display","none");
+			        },
+			        onError: function (grid) {
+			        	//$('.cif_tran_ajax_wrapper .alert-danger').css("display","none");
+			        	//console.info("It is error!");
+			        },
+			        dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
+			            "ajax": {
+			                "url": url1, // ajax source
+			            },
+			            "columns" : [{
+				            	"data": "cardno",
+				            	"sortable": false,
+				            	"searchable": false
+			            	},{     
+				            	"data": "brchno",
+				            	"sortable": false,
+				            	"searchable": false
+				            },{     
+				            	"data": "acctna",
+				            	"sortable": false,
+				            	"searchable": false
+				            },{ 
+				            	"data": "brchna",
+				            	"sortable": false,
+				            	"searchable": false
+				            },{     
+				            	"data": "binddt",
+				            	"sortable": false,
+				            	"searchable": false
+				            },{ 
+				            	"data": "status",
+				            	"sortable": false,
+				            	"searchable": false,
+				            	"render" : function(data,type,full){
+				            		
+				            		if((data+"") == "1"){
+				            			return "正常";
+				            		}else if((data+"") == "2"){
+				            			return "关闭";
+				            		}else if((data+"") == "3"){
+				            			return "睡眠";
+				            		}else{
+				            			return "";
+				            		}
+				            		
+				            	}
+				            },{ 
+				            	"data": "uptime",
+				            	"sortable": false,
+				            	"searchable": false,
+				            	"render" : function(data,type,full){
+				            		return formartTimes(data);
+				            	}
+				            }
+			            ]
+			        }
+			    });
+				bankIsNotF = false;
+			} else {
+				console.info(tran_grid_bank.gettableContainer());
+				console.info(tran_grid_bank.getDataTable());
+				console.info(tran_grid_bank.getTable());
+				tran_grid_bank.setAjaxParam("custac",ecctno);
+				tran_grid_bank.submitFilter();
+			}
+			$("#banktranModal").modal('show');
+		});
+		
 		
 		//交易明细
 		$('#tran_btn').click(function(){

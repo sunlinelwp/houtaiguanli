@@ -21,29 +21,34 @@
 				<table class="table table-striped table-bordered table-hover" id="ordrinfo_ajax">
 					<thead>
 						<tr role="row" class="heading">	   		
-							<th width="20%">
+							<th width="19%">
 								订单号
 							</th>	
-							<th width="10%">
+							<th width="9%">
 								订单金额
 							</th>
-							<th width="10%">
+							<th width="9%">
 								清算日期
 							</th>
-							<th width="15%">
+							<th width="14%">
 								手续费
 							</th>
-							<th width="15%">
+							<th width="14%">
 								渠道号
 							</th>
-							<th width="15%">
+							<th width="14%">
 								操作员工
+							</th>
+							<th width="6%">
+								交易顺序号
 							</th>
 							<th width="24" colspan="2">
 								 操作
 							</th> 
 						</tr>
 						<tr role="row" class="filter" style="display:none">
+							<td>
+							</td>
 							<td>
 							</td>
 							<td>
@@ -89,7 +94,7 @@
 										<label class="col-md-3 control-label">订单号</label>
 										<div class="col-md-9">
 											<div>
-												<input type="text" id="ordrid" name="ordrid" class="form-control input-inline input-medium" maxlength="40" placeholder="输入订单号"onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\W]/g,''))">
+												<input type="text" id="ordrid" name="ordrid" class="form-control input-inline input-medium" maxlength="40" placeholder="输入订单号">
 											</div>
 										</div>
 									</div>
@@ -138,6 +143,12 @@
 										<label class="col-md-3 control-label">渠道号</label>
 										<div class="col-md-9">
 										   	<input type="text" id="scapno" name="scapno" class="form-control input-inline input-medium" maxlength="4" placeholder="输入渠道号">						
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label">交易顺序号</label>
+										<div class="col-md-9">
+										   	<input type="text" id="tranid" name="tranid" class="form-control input-inline input-medium" maxlength="6" placeholder="输入交易顺序号">						
 										</div>
 									</div>
 								</div>
