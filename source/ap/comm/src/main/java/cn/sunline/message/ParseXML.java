@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Document;
@@ -22,6 +21,8 @@ import cn.sunline.message.dao.ApSysColumn;
 import cn.sunline.message.dao.ApSysColumnServiceImpl;
 import cn.sunline.message.dao.ApSysMsg;
 import cn.sunline.message.dao.ApSysMsgRepository;
+
+import javax.annotation.Resource;
 
 @Service("parseXML")
 public class ParseXML implements Parse {

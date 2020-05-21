@@ -25,6 +25,29 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- 前置报文解包工具Start -->
+		<dependency>
+			<groupId>cn.sunline.flow</groupId>
+			<artifactId>flow_base_core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.flow</groupId>
+			<artifactId>flow_pub_comm</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.flow</groupId>
+			<artifactId>flow_pub_pkt</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.sunline.flow</groupId>
+			<artifactId>gson-2.1</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<!-- 前置报文解包工具End -->
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>

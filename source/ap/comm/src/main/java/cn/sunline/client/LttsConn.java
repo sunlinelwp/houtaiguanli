@@ -8,4 +8,6 @@ public interface LttsConn {
 	
 	Map<String, Object> sendMsg(byte[] sendBuffer, String rspMsgCd,
 			ApSysServs serv) ;
+	Map<String, Object> sendMsg(byte[] sendBuffer, 
+			ApSysServs serv) ;
 }

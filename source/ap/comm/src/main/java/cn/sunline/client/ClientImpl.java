@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.sunline.flow.base.util.JsonUtils;
+
 import cn.sunline.client.dao.ApSysEncap;
 import cn.sunline.client.dao.ApSysEncapRepository;
 import cn.sunline.client.dao.ApSysServs;
@@ -26,6 +28,7 @@ import cn.sunline.message.MessageConstants;
 import cn.sunline.message.dao.ApSysMsg;
 import cn.sunline.message.dao.ApSysMsgRepository;
 import cn.sunline.utils.DateTools;
+import cn.sunline.utils.JsonPktUtil;
 
 @Service("client")
 public class ClientImpl implements Client {
@@ -263,5 +266,38 @@ public class ClientImpl implements Client {
 			
 		return specialCharater;
 			 
+	}
+
+	@Override
+	public Map<String, Object> callClientFlow(String prcscd,Map<String, Object> reqData) {
+		// 交易码不能为空
+				if (StringUtils.isEmpty(prcscd))
+					throw new SumpException("1100", "交易码不能为空");
+
+				ApSysTrans trans = apSysTransRepository.findOne(prcscd);
+		Map<String, Object> rspData = new ConcurrentHashMap<String, Object>();
+		
+		ApSysServs serv = apSysServsRepository.findOne(trans.getServiceCd());
+		// 调用服务
+		LttsConn conn = null;
+		switch (serv.getServiceType()) {
+		case "1":
+			// Socket通讯
+			conn = tcpSocket;
+			break;
+		default:
+			throw new SumpException("1130", "暂不支持的服务类型"
+					+ serv.getServiceType());
+		}
+		rspData = conn.sendMsg(	JsonPktUtil.puck(reqData),  serv);
+		
+		//统一处理错误码,0000或空转换成0000为正确码
+		String errorcd = rspData.get(MessageConstants.ERRORCD).toString();
+		if("0000".equals(errorcd) || StringUtils.isEmpty(errorcd)) {
+			rspData.put(MessageConstants.ERRORCD, "0000");
+		}
+
+		
+		return rspData;
 	}
 }
