@@ -40,7 +40,7 @@
 		<jaxen.version>1.1.4</jaxen.version>
 		<log4jdbc.version>1.2</log4jdbc.version>
 		<sitemesh.version>2.4.2</sitemesh.version>
-		<javamelody.version>1.54.0</javamelody.version>
+		<javamelody.version>1.74.0</javamelody.version>
 		<itext.version>2.1.7</itext.version>
 		<xstream.version>1.4.2</xstream.version>
 		<jrobin.version>1.5.9</jrobin.version>
