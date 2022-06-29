@@ -45,7 +45,7 @@
 		<xstream.version>1.4.2</xstream.version>
 		<jrobin.version>1.5.9</jrobin.version>
 		<quartz.version>2.2.1</quartz.version>
-		<poi.version>3.12</poi.version>
+		<poi.version>4.1.1</poi.version>
 		<!-- Plugin-->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
